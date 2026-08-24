@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>DAVBOT Business - Connexion</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Inter,sans-serif;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top right,#063d8f 0,transparent 35%),
+        radial-gradient(circle at bottom left,#001c45 0,transparent 35%),
+        #020817;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.card{
+    width:100%;
+    max-width:460px;
+    background:rgba(5,18,40,.88);
+    border:1px solid rgba(65,145,255,.25);
+    box-shadow:0 25px 80px rgba(0,0,0,.45);
+    border-radius:28px;
+    padding:30px;
+    backdrop-filter:blur(20px);
+}
+
+.logo{
+    width:65px;
+    height:65px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#087cff,#0047a8);
+    font-size:25px;
+    font-weight:800;
+    margin-bottom:20px;
+    box-shadow:0 10px 35px rgba(0,115,255,.35);
+}
+
+h1{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#91a4c4;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.tabs{
+    display:flex;
+    background:#08162d;
+    padding:5px;
+    border-radius:14px;
+    margin-bottom:22px;
+}
+
+.tabs button{
+    flex:1;
+    border:0;
+    padding:12px;
+    background:transparent;
+    color:#8296b7;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.tabs button.active{
+    background:#087cff;
+    color:#fff;
+}
+
+.form{
+    display:none;
+}
+
+.form.active{
+    display:block;
+}
+
+label{
+    display:block;
+    font-size:13px;
+    color:#a9bad5;
+    margin:14px 0 7px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border-radius:13px;
+    border:1px solid #17355d;
+    background:#061329;
+    color:#fff;
+    outline:none;
+}
+
+input:focus{
+    border-color:#087cff;
+    box-shadow:0 0 0 3px rgba(8,124,255,.12);
+}
+
+button.primary{
+    width:100%;
+    border:0;
+    padding:15px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#087cff,#0054ca);
+    color:white;
+    font-weight:800;
+    margin-top:20px;
+    cursor:pointer;
+}
+
+.forgot{
+    display:block;
+    text-align:right;
+    margin-top:12px;
+    color:#55a7ff;
+    font-size:13px;
+    cursor:pointer;
+}
+
+.msg{
+    margin-top:15px;
+    padding:12px;
+    border-radius:12px;
+    display:none;
+    font-size:13px;
+}
+
+.msg.show{
+    display:block;
+}
+
+.info{
+    margin-top:20px;
+    padding:14px;
+    background:#071832;
+    border:1px solid #15335b;
+    border-radius:14px;
+    color:#9eb1cf;
+    font-size:12px;
+    line-height:1.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="logo">J</div>
+
+    <h1>Jason Business</h1>
+
+    <div class="subtitle">
+        Crée ton compte et accède à ton espace business.
+    </div>
+
+    <div class="tabs">
+        <button id="loginTab" class="active">
+            Connexion
+        </button>
+
+        <button id="registerTab">
+            Inscription
+        </button>
+    </div>
+
+    <!-- CONNEXION -->
+    <form id="loginForm" class="form active">
+
+        <label>Adresse e-mail</label>
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="exemple@email.com"
+            required
+        >
+
+        <label>Mot de passe</label>
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="••••••••"
+            required
+        >
+
+        <span class="forgot" id="forgotPassword">
+            Mot de passe oublié ?
+        </span>
+
+        <button class="primary">
+            Se connecter
+        </button>
+
+    </form>
+
+    <!-- INSCRIPTION -->
+    <form id="registerForm" class="form">
+
+        <label>Nom complet</label>
+        <input
+            type="text"
+            id="registerName"
+            placeholder="Ton nom"
+            required
+        >
+
+        <label>Adresse e-mail</label>
+        <input
+            type="email"
+            id="registerEmail"
+            placeholder="exemple@email.com"
+            required
+        >
+
+        <label>Photo de profil</label>
+        <input
+            type="file"
+            id="registerPhoto"
+            accept="image/*"
+        >
+
+        <label>Mot de passe</label>
+        <input
+            type="password"
+            id="registerPassword"
+            placeholder="Minimum 6 caractères"
+            required
+        >
+
+        <label>Confirmation</label>
+        <input
+            type="password"
+            id="registerConfirm"
+            placeholder="Confirme ton mot de passe"
+            required
+        >
+
+        <label>
+            Code parrain
+            <small>(facultatif)</small>
+        </label>
+
+        <input
+            type="text"
+            id="registerReferral"
+            placeholder="Ex: Jason-X8K29"
+        >
+
+        <button class="primary">
+            Créer mon compte
+        </button>
+
+    </form>
+
+    <div id="message" class="msg"></div>
+
+    <div class="info">
+        En créant ton compte, tu peux recevoir des points
+        de fidélité grâce au programme de parrainage Jason.
+    </div>
+
+</div>
+
+<script type="module" src="./app.js"></script>
+
+</body>
+</html>

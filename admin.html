@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>DAVBOT Admin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background:#020817;
+    color:white;
+    font-family:Inter,sans-serif;
+}
+
+header{
+    padding:22px;
+    background:#06152c;
+    border-bottom:1px solid #153961;
+}
+
+.container{
+    max-width:1300px;
+    margin:auto;
+    padding:20px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.card{
+    background:#061329;
+    border:1px solid #12345e;
+    border-radius:18px;
+    padding:20px;
+}
+
+.card small{
+    color:#8ca4c4;
+}
+
+.card strong{
+    display:block;
+    font-size:25px;
+    margin-top:8px;
+}
+
+.section{
+    margin-top:25px;
+}
+
+.section h2{
+    margin-bottom:15px;
+}
+
+.tableWrap{
+    overflow:auto;
+    background:#061329;
+    border:1px solid #12345e;
+    border-radius:18px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:850px;
+}
+
+th,td{
+    padding:14px;
+    border-bottom:1px solid #122c4d;
+    text-align:left;
+    font-size:13px;
+}
+
+th{
+    color:#70adf5;
+    background:#071832;
+}
+
+button{
+    border:0;
+    padding:8px 11px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.approve{
+    background:#087c54;
+    color:#fff;
+}
+
+.reject{
+    background:#8e2137;
+    color:#fff;
+}
+
+.add{
+    background:#087cff;
+    color:white;
+}
+
+@media(max-width:900px){
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <strong>Jason ADMIN PANEL</strong>
+</header>
+
+<main class="container">
+
+<section class="cards">
+
+<div class="card">
+    <small>Utilisateurs</small>
+    <strong id="adminUsers">0</strong>
+</div>
+
+<div class="card">
+    <small>Commandes</small>
+    <strong id="adminOrders">0</strong>
+</div>
+
+<div class="card">
+    <small>Recharges</small>
+    <strong id="adminRecharges">0</strong>
+</div>
+
+<div class="card">
+    <small>Retraits</small>
+    <strong id="adminWithdrawals">0</strong>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>👥 Utilisateurs</h2>
+
+<div class="tableWrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Nom</th>
+<th>Email</th>
+<th>Solde</th>
+<th>Points</th>
+<th>Parrain</th>
+</tr>
+</thead>
+
+<tbody id="usersTable"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>🛒 Commandes</h2>
+
+<div class="tableWrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Utilisateur</th>
+<th>Produit</th>
+<th>Prix</th>
+<th>Date</th>
+<th>Statut</th>
+</tr>
+</thead>
+
+<tbody id="ordersTable"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>💰 Demandes de recharge</h2>
+
+<div class="tableWrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Utilisateur</th>
+<th>Montant</th>
+<th>Référence</th>
+<th>Statut</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="rechargesTable"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>🏦 Demandes de retrait</h2>
+
+<div class="tableWrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Utilisateur</th>
+<th>Montant</th>
+<th>Méthode</th>
+<th>Statut</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="withdrawalsTable"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</main>
+
+<script type="module" src="./app.js"></script>
+
+</body>
+
+</html>

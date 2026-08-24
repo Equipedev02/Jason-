@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>DAVBOT Business - Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background:#020817;
+    color:white;
+    font-family:Inter,sans-serif;
+    padding-bottom:90px;
+}
+
+header{
+    padding:25px 20px;
+    background:linear-gradient(180deg,#061a38,#020817);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:800;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+.hero{
+    padding:25px;
+    border-radius:25px;
+    background:
+        linear-gradient(135deg,#063b86,#06152e);
+    border:1px solid #174d88;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.hero p{
+    color:#aac0df;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.box{
+    background:#061329;
+    border:1px solid #12345e;
+    border-radius:20px;
+    padding:20px;
+}
+
+.box small{
+    color:#8ea4c5;
+}
+
+.value{
+    display:block;
+    font-size:25px;
+    font-weight:800;
+    margin-top:8px;
+}
+
+.nav{
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:calc(100% - 30px);
+    max-width:600px;
+    background:rgba(5,20,43,.95);
+    border:1px solid #194272;
+    border-radius:20px;
+    display:flex;
+    justify-content:space-around;
+    padding:10px;
+    backdrop-filter:blur(20px);
+}
+
+.nav a{
+    color:#91a7c6;
+    text-decoration:none;
+    padding:10px;
+    font-size:12px;
+}
+
+.nav a.active{
+    color:#45a0ff;
+}
+
+@media(max-width:700px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <div class="logo">DAVBOT Business</div>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+
+        <h1>
+            Bonjour <span id="userName">...</span> 👋
+        </h1>
+
+        <p>
+            Bienvenue dans ton espace business DAVBOT.
+        </p>
+
+    </section>
+
+    <section class="grid">
+
+        <div class="box">
+            <small>Solde disponible</small>
+            <span class="value">
+                <span id="balance">0</span> FC
+            </span>
+        </div>
+
+        <div class="box">
+            <small>Points fidélité</small>
+            <span class="value" id="points">
+                0
+            </span>
+        </div>
+
+        <div class="box">
+            <small>Commandes</small>
+            <span class="value" id="orders">
+                0
+            </span>
+        </div>
+
+    </section>
+
+</main>
+
+<nav class="nav">
+
+    <a class="active" href="dash.html">
+        Accueil
+    </a>
+
+    <a href="shop.html">
+        Boutique
+    </a>
+
+    <a href="profil.html">
+        Profil
+    </a>
+
+</nav>
+
+<script type="module" src="./app.js"></script>
+
+</body>
+</html>

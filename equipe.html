@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starlink - Mon Réseau</title>
+    <title>Jason- Mon Réseau</title>
     <style>
         :root { --blue: #00d2ff; --dark: #050a14; --gold: #ffd700; }
         body { 
@@ -43,7 +43,7 @@
 <body>
 
 <div class="overlay">
-    <h2 style="text-align: center; letter-spacing: 3px; color: white;">MON RÉSEAU <span style="color:var(--blue)">SATELLITE</span></h2>
+    <h2 style="text-align: center; letter-spacing: 3px; color: white;">MON RÉSEAU <span style="color:var(--blue)">JASON BUSINESS</span></h2>
     
     <div class="invite-card">
         <p style="margin:0; font-size: 12px; opacity: 0.8;">VOTRE LIEN DE PARRAINAGE</p>
@@ -109,7 +109,7 @@
         onValue(userRef, (snap) => {
             const data = snap.val();
             if(data) {
-                document.getElementById("myCode").innerText = data.inviteCode || "STAR-0000";
+                document.getElementById("myCode").innerText = data.inviteCode || "JASON-0000";
                 const gains = data.solde_commissions || 0;
                 document.getElementById("totalGains").innerText = gains.toLocaleString() + " FC";
                 
@@ -128,7 +128,7 @@
     document.getElementById("btnCopy").onclick = () => {
         const code = document.getElementById("myCode").innerText;
         // MISE À JOUR DU LIEN CI-DESSOUS
-        const link = "https://srdety.github.io/starlink-investissement/register.html?inviteCode=" + code;
+        const link = "https://jason-v7.vercel.app/register.html?inviteCode=" + code;
         
         navigator.clipboard.writeText(link).then(() => {
             const status = document.getElementById("copyStatus");

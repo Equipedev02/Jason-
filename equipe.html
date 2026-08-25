@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlink - Mon Réseau</title>
+    <style>
+        :root { --blue: #00d2ff; --dark: #050a14; --gold: #ffd700; }
+        body { 
+            margin: 0; font-family: 'Segoe UI', sans-serif; 
+            background: var(--dark) url('IMG_0870.jpeg') no-repeat center center fixed;
+            background-size: cover; color: white; padding-bottom: 100px;
+        }
+        .overlay { background: rgba(5, 10, 20, 0.9); min-height: 100vh; padding: 20px; }
+        .invite-card { 
+            background: linear-gradient(145deg, rgba(0, 210, 255, 0.1), rgba(0, 0, 0, 0.5));
+            border-radius: 25px; padding: 25px; border: 1px solid var(--blue);
+            backdrop-filter: blur(15px); text-align: center; margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+        }
+        .code-display { font-size: 32px; font-weight: 900; color: var(--blue); margin: 15px 0; letter-spacing: 5px; text-shadow: 0 0 10px var(--blue); }
+        .level-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 25px; }
+        .level-box { 
+            background: rgba(255, 255, 255, 0.05); padding: 15px 5px; border-radius: 15px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); text-align: center;
+        }
+        .level-box b { font-size: 18px; color: var(--blue); display: block; }
+        .level-box small { font-size: 10px; opacity: 0.7; text-transform: uppercase; }
+        .level-tag { font-size: 10px; background: var(--blue); color: black; padding: 2px 6px; border-radius: 5px; font-weight: bold; }
+        .btn-share { 
+            background: var(--blue); color: black; border: none; padding: 18px; 
+            border-radius: 15px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px;
+            transition: 0.3s; box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+        }
+        .global-stats { background: rgba(255,255,255,0.03); border-radius: 20px; padding: 20px; margin-top: 20px; border-left: 4px solid var(--blue); }
+        .stat-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
+        .stat-row span { color: var(--blue); font-weight: bold; }
+        .navbar { position: fixed; bottom: 0; left:0; width: 100%; background: rgba(5, 10, 20, 0.95); display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid rgba(0, 210, 255, 0.3); backdrop-filter: blur(15px); z-index: 1000; }
+        .nav-link { color: white; text-decoration: none; font-size: 11px; text-align: center; opacity: 0.4; }
+        .nav-link.active { opacity: 1; color: var(--blue); }
+    </style>
+</head>
+<body>
+
+<div class="overlay">
+    <h2 style="text-align: center; letter-spacing: 3px; color: white;">MON RÉSEAU <span style="color:var(--blue)">SATELLITE</span></h2>
+    
+    <div class="invite-card">
+        <p style="margin:0; font-size: 12px; opacity: 0.8;">VOTRE LIEN DE PARRAINAGE</p>
+        <div class="code-display" id="myCode">...</div>
+        <button class="btn-share" id="btnCopy">COPIER LE LIEN D'INVITATION</button>
+        <p id="copyStatus" style="font-size: 12px; color: #4caf50; margin-top: 10px; display: none; font-weight: bold;">✅ Lien sécurisé copié !</p>
+    </div>
+
+    <div class="level-grid">
+        <div class="level-box">
+            <span class="level-tag">25%</span>
+            <small>Niveau 1</small>
+            <b id="lvl1Count">0</b>
+        </div>
+        <div class="level-box">
+            <span class="level-tag">3%</span>
+            <small>Niveau 2</small>
+            <b id="lvl2Count">0</b>
+        </div>
+        <div class="level-box">
+            <span class="level-tag">1%</span>
+            <small>Niveau 3</small>
+            <b id="lvl3Count">0</b>
+        </div>
+    </div>
+
+    <div class="global-stats">
+        <div class="stat-row">Membres totaux : <span id="totalTeam">0</span></div>
+        <div class="stat-row">Commissions gagnées : <span id="totalGains">0 FC</span></div>
+        <div class="stat-row">Statut du réseau : <span style="color: #4caf50;">Actif 🛰️</span></div>
+    </div>
+</div>
+
+<nav class="navbar">
+    <a href="dashboard.html" class="nav-link">📊<br>Dash</a>
+    <a href="shop.html" class="nav-link">📡<br>Shop</a>
+    <a href="equipe.html" class="nav-link active">👥<br>Equipe</a>
+    <a href="profil.html" class="nav-link">👤<br>Profil</a>
+</nav>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
+        authDomain: "starlink-investit.firebaseapp.com",
+        databaseURL: "https://starlink-investit-default-rtdb.firebaseio.com",
+        projectId: "starlink-investit",
+        storageBucket: "starlink-investit.firebasestorage.app",
+        messagingSenderId: "807081599583",
+        appId: "1:807081599583:web:e00ec3959bc4acdae031ea"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const userPhone = localStorage.getItem("userPhone");
+
+    if(!userPhone) {
+        window.location.href = "login.html";
+    } else {
+        const userRef = ref(db, 'users/' + userPhone);
+        onValue(userRef, (snap) => {
+            const data = snap.val();
+            if(data) {
+                document.getElementById("myCode").innerText = data.inviteCode || "STAR-0000";
+                const gains = data.solde_commissions || 0;
+                document.getElementById("totalGains").innerText = gains.toLocaleString() + " FC";
+                
+                const l1 = parseInt(data.count_lvl1 || 0);
+                const l2 = parseInt(data.count_lvl2 || 0);
+                const l3 = parseInt(data.count_lvl3 || 0);
+                
+                document.getElementById("lvl1Count").innerText = l1;
+                document.getElementById("lvl2Count").innerText = l2;
+                document.getElementById("lvl3Count").innerText = l3;
+                document.getElementById("totalTeam").innerText = (l1 + l2 + l3);
+            }
+        });
+    }
+
+    document.getElementById("btnCopy").onclick = () => {
+        const code = document.getElementById("myCode").innerText;
+        // MISE À JOUR DU LIEN CI-DESSOUS
+        const link = "https://srdety.github.io/starlink-investissement/register.html?inviteCode=" + code;
+        
+        navigator.clipboard.writeText(link).then(() => {
+            const status = document.getElementById("copyStatus");
+            status.style.display = "block";
+            setTimeout(() => { status.style.display = "none"; }, 3000);
+        }).catch(() => {
+            alert("Lien : " + link);
+        });
+    };
+</script>
+</body>
+</html>

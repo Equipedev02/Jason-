@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlink - Historique</title>
+    <style>
+        :root { --blue: #00d2ff; --dark: #050a14; --glass: rgba(255, 255, 255, 0.05); }
+        body { 
+            margin: 0; font-family: 'Segoe UI', sans-serif; 
+            background: var(--dark) url('IMG_0870.jpeg') no-repeat center center fixed;
+            background-size: cover; color: white; padding-bottom: 80px;
+        }
+        .header { padding: 25px; text-align: center; background: rgba(0,0,0,0.7); border-bottom: 1px solid var(--blue); backdrop-filter: blur(10px); }
+        .container { padding: 15px; }
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab-btn { flex: 1; padding: 12px; border: 1px solid var(--blue); background: transparent; color: white; border-radius: 10px; cursor: pointer; font-weight: bold; }
+        .tab-btn.active { background: var(--blue); color: black; }
+        .list-container { display: none; }
+        .list-container.active { display: block; }
+        .trans-card { 
+            background: var(--glass); border: 1px solid rgba(255,255,255,0.1); 
+            padding: 15px; border-radius: 15px; margin-bottom: 10px;
+            backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center;
+        }
+        .status-En-attente { color: #ffeb3b; font-size: 12px; }
+        .status-Validé { color: #4caf50; font-size: 12px; }
+        .status-Rejeté { color: #f44336; font-size: 12px; }
+        .amount { font-weight: bold; font-size: 16px; }
+        .date { font-size: 10px; opacity: 0.5; margin-top: 4px; }
+        .navbar { 
+            position: fixed; bottom: 0; width: 100%; background: rgba(5, 10, 20, 0.98); 
+            display: flex; justify-content: space-around; padding: 15px 0; 
+            border-top: 1px solid var(--blue); backdrop-filter: blur(15px); 
+        }
+        .nav-link { color: white; text-decoration: none; font-size: 12px; text-align: center; opacity: 0.5; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h2 style="margin:0; letter-spacing:2px;">HISTORIQUE</h2>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('depots', this)">DÉPÔTS</button>
+        <button class="tab-btn" onclick="showTab('retraits', this)">RETRAITS</button>
+    </div>
+
+    <div id="depots" class="list-container active">
+        <div id="listeDepots"><p style="text-align:center; opacity:0.5;">Liaison satellite...</p></div>
+    </div>
+
+    <div id="retraits" class="list-container">
+        <div id="listeRetraits"><p style="text-align:center; opacity:0.5;">Liaison satellite...</p></div>
+    </div>
+</div>
+
+<nav class="navbar">
+    <a href="dashboard.html" class="nav-link">📊<br>Dash</a>
+    <a href="shop.html" class="nav-link">📡<br>Shop</a>
+    <a href="equipe.html" class="nav-link">👥<br>Equipe</a>
+    <a href="profil.html" class="nav-link">👤<br>Profil</a>
+</nav>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
+        authDomain: "starlink-investit.firebaseapp.com",
+        databaseURL: "https://starlink-investit-default-rtdb.firebaseio.com",
+        projectId: "starlink-investit",
+        storageBucket: "starlink-investit.firebasestorage.app",
+        messagingSenderId: "807081599583",
+        appId: "1:807081599583:web:e00ec3959bc4acdae031ea"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const userPhone = localStorage.getItem("userPhone");
+
+    window.showTab = (id, btn) => {
+        document.querySelectorAll('.list-container').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        btn.classList.add('active');
+    };
+
+    // Historique des Dépôts
+    onValue(ref(db, 'demandes_recharges'), (snap) => {
+        const list = document.getElementById("listeDepots");
+        list.innerHTML = "";
+        let count = 0;
+        snap.forEach(child => {
+            const data = child.val();
+            if(data.telephone === userPhone) {
+                count++;
+                const statusClass = "status-" + (data.statut || "En-attente").replace(" ", "-");
+                list.innerHTML += `
+                    <div class="trans-card">
+                        <div>
+                            <div class="amount">+ ${parseInt(data.montant).toLocaleString()} FC</div>
+                            <div class="date">${data.date}</div>
+                        </div>
+                        <div class="${statusClass}">${data.statut || "En attente"}</div>
+                    </div>
+                `;
+            }
+        });
+        if(count === 0) list.innerHTML = "<p style='text-align:center; opacity:0.5;'>Aucun dépôt trouvé.</p>";
+    });
+
+    // Historique des Retraits
+    onValue(ref(db, 'demandes_retraits'), (snap) => {
+        const list = document.getElementById("listeRetraits");
+        list.innerHTML = "";
+        let count = 0;
+        snap.forEach(child => {
+            const data = child.val();
+            if(data.telephone === userPhone) {
+                count++;
+                const statusClass = "status-" + (data.statut || "En-attente").replace(" ", "-");
+                list.innerHTML += `
+                    <div class="trans-card">
+                        <div>
+                            <div class="amount">- ${parseInt(data.montant).toLocaleString()} FC</div>
+                            <div class="date">${data.methode} - ${data.numero_reception}</div>
+                        </div>
+                        <div class="${statusClass}">${data.statut || "En attente"}</div>
+                    </div>
+                `;
+            }
+        });
+        if(count === 0) list.innerHTML = "<p style='text-align:center; opacity:0.5;'>Aucun retrait trouvé.</p>";
+    });
+</script>
+</body>
+</html>

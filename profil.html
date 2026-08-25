@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlink - Mon Profil</title>
+    <style>
+        :root { --blue: #00d2ff; --dark: #050a14; --glass: rgba(255, 255, 255, 0.05); }
+        body { 
+            margin: 0; font-family: 'Segoe UI', sans-serif; 
+            background: var(--dark) url('IMG_0870.jpeg') no-repeat center center fixed;
+            background-size: cover; color: white; padding-bottom: 100px;
+        }
+        .overlay-profil { min-height: 100vh; background: rgba(5, 10, 20, 0.85); }
+        
+        .header-profil { 
+            padding: 40px 20px; text-align: center; 
+            background: rgba(0,0,0,0.6); border-bottom: 1px solid var(--blue); 
+            backdrop-filter: blur(15px); 
+        }
+        .avatar { 
+            width: 80px; height: 80px; background: linear-gradient(135deg, var(--blue), #fff); 
+            border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; 
+            justify-content: center; font-size: 30px; color: black; font-weight: bold; 
+            box-shadow: 0 0 20px var(--blue); 
+        }
+        
+        .menu-container { padding: 20px; }
+        .menu-item { 
+            background: rgba(255, 255, 255, 0.07); margin-bottom: 12px; padding: 18px; 
+            border-radius: 18px; display: flex; align-items: center; text-decoration: none; 
+            color: white; border: 1px solid rgba(0, 210, 255, 0.1); backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+        .menu-item:active { background: rgba(0, 210, 255, 0.2); transform: scale(0.98); }
+        .menu-icon { margin-right: 15px; font-size: 22px; width: 30px; text-align: center; }
+        
+        .btn-logout { 
+            background: rgba(244, 67, 54, 0.15); color: #f44336; border: 1px solid #f44336; 
+            width: 100%; padding: 15px; border-radius: 15px; font-weight: bold; 
+            margin-top: 20px; cursor: pointer; backdrop-filter: blur(10px);
+        }
+        
+        .navbar { 
+            position: fixed; bottom: 0; width: 100%; background: rgba(5, 10, 20, 0.98); 
+            display: flex; justify-content: space-around; padding: 15px 0; 
+            border-top: 1px solid var(--blue); backdrop-filter: blur(15px); 
+        }
+        .nav-link { color: white; text-decoration: none; font-size: 12px; text-align: center; opacity: 0.5; }
+        .nav-link.active { opacity: 1; color: var(--blue); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="overlay-profil">
+    <div class="header-profil">
+        <div class="avatar" id="initiale">S</div>
+        <h3 id="userPhoneDisplay" style="margin:5px 0; letter-spacing: 1px;">+243 ...</h3>
+        <small id="userInviteCode" style="color:var(--blue); font-weight: bold; text-transform: uppercase;">ID: STAR-0000</small>
+    </div>
+
+    <div class="menu-container">
+        <a href="recharge.html" class="menu-item">
+            <span class="menu-icon">📥</span>
+            <span>Recharger le compte</span>
+        </a>
+        <a href="retrait.html" class="menu-item">
+            <span class="menu-icon">📤</span>
+            <span>Retirer mes gains</span>
+        </a>
+        
+        <a href="https://t.me/+LL6O9rfzYLQ5OGU0" target="_blank" class="menu-item" style="border-color: #229ED9; background: rgba(34, 158, 217, 0.05);">
+            <span class="menu-icon">✈️</span>
+            <span style="color: #229ED9; font-weight: bold;">Canal Officiel Telegram</span>
+        </a>
+
+        <a href="transactions.html" class="menu-item">
+            <span class="menu-icon">📊</span>
+            <span>Historique financier</span>
+        </a>
+
+        <button class="btn-logout" id="btnLogout">DÉCONNEXION DU TERMINAL</button>
+    </div>
+</div>
+
+<nav class="navbar">
+    <a href="dashboard.html" class="nav-link">📊<br>Dash</a>
+    <a href="shop.html" class="nav-link">📡<br>Shop</a>
+    <a href="equipe.html" class="nav-link">👥<br>Equipe</a>
+    <a href="profil.html" class="nav-link active">👤<br>Profil</a>
+</nav>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    // NOUVELLE CONFIGURATION STARLINK INVESTIT
+    const firebaseConfig = {
+        apiKey: "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
+        authDomain: "starlink-investit.firebaseapp.com",
+        databaseURL: "https://starlink-investit-default-rtdb.firebaseio.com",
+        projectId: "starlink-investit",
+        storageBucket: "starlink-investit.firebasestorage.app",
+        messagingSenderId: "807081599583",
+        appId: "1:807081599583:web:e00ec3959bc4acdae031ea"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const userPhone = localStorage.getItem("userPhone");
+
+    if(!userPhone) window.location.href = "login.html";
+
+    onValue(ref(db, 'users/' + userPhone), (snap) => {
+        const data = snap.val();
+        if(data) {
+            document.getElementById("userPhoneDisplay").innerText = userPhone;
+            document.getElementById("userInviteCode").innerText = "ID: " + (data.inviteCode || "STAR-0000");
+            document.getElementById("initiale").innerText = userPhone.substring(0, 2);
+        }
+    });
+
+    document.getElementById("btnLogout").onclick = () => {
+        if(confirm("Déconnexion du terminal Starlink ?")) {
+            localStorage.clear();
+            window.location.href = "login.html";
+        }
+    };
+</script>
+</body>
+</html>

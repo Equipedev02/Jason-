@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlink - Retrait</title>
+    <style>
+        :root { --blue: #00d2ff; --dark: #050a14; }
+        body { 
+            margin: 0; font-family: 'Segoe UI', sans-serif; 
+            background: var(--dark) url('IMG_0870.jpeg') no-repeat center center fixed;
+            background-size: cover; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh;
+        }
+        .card { 
+            background: rgba(0, 0, 0, 0.8); padding: 30px; border-radius: 20px; 
+            border: 1px solid var(--blue); width: 90%; max-width: 380px; backdrop-filter: blur(15px); text-align: center;
+        }
+        input, select { 
+            width: 100%; padding: 15px; margin: 10px 0; border-radius: 12px; 
+            border: 1px solid #333; background: #111; color: white; box-sizing: border-box; 
+        }
+        .btn-withdraw { 
+            width: 100%; padding: 15px; background: #f44336; color: white; 
+            border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 10px;
+            transition: 0.3s;
+        }
+        .btn-withdraw:disabled { background: #444; cursor: not-allowed; opacity: 0.7; }
+        
+        .info-solde { background: rgba(0, 210, 255, 0.1); padding: 10px; border-radius: 10px; margin-bottom: 20px; border: 1px dashed var(--blue); }
+        .status-msg { margin-top:10px; font-size:13px; color: #ffeb3b; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2 style="color: var(--blue); letter-spacing: 2px;">RETRAIT DE GAINS</h2>
+        
+        <div class="info-solde">
+            Solde disponible : <br>
+            <b id="displayGains" style="font-size: 20px;">0</b> <small>FC</small>
+        </div>
+
+        <input type="number" id="amount" placeholder="Montant à retirer (Min 5000)">
+        <select id="method">
+            <option value="M-Pesa">M-Pesa</option>
+            <option value="Airtel Money">Airtel Money</option>
+            <option value="Orange Money">Orange Money</option>
+        </select>
+        <input type="tel" id="wallet" placeholder="Numéro de réception">
+
+        <p style="font-size: 11px; opacity: 0.6; text-align: left;">* Frais de retrait : 5% <br> * Traitement : 1h à 24h</p>
+        
+        <button class="btn-withdraw" id="btnSubmit">VÉRIFICATION...</button>
+        <p><a href="profil.html" style="color:white; text-decoration:none; font-size:13px;">← Retour au profil</a></p>
+        <div id="status" class="status-msg"></div>
+    </div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, get, push, set, update, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
+        authDomain: "starlink-investit.firebaseapp.com",
+        databaseURL: "https://starlink-investit-default-rtdb.firebaseio.com",
+        projectId: "starlink-investit",
+        storageBucket: "starlink-investit.firebasestorage.app",
+        messagingSenderId: "807081599583",
+        appId: "1:807081599583:web:e00ec3959bc4acdae031ea"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const userPhone = localStorage.getItem("userPhone");
+
+    if(!userPhone) window.location.href = "login.html";
+
+    const userRef = ref(db, 'users/' + userPhone);
+
+    // --- MISE À JOUR EN TEMPS RÉEL ET CONDITION D'ACHAT ---
+    onValue(userRef, (snap) => {
+        if(snap.exists()) {
+            const data = snap.val();
+            
+            // 1. Calcul du solde total (Gains machines + Commissions parrainage)
+            const totalRetirable = (data.solde_gains || 0) + (data.solde_commissions || 0);
+            document.getElementById("displayGains").innerText = Math.floor(totalRetirable).toLocaleString();
+
+            // 2. Vérification si l'utilisateur a déjà acheté un produit
+            const aInvesti = data.mes_investissements && Object.keys(data.mes_investissements).length > 0;
+            
+            const btnSubmit = document.getElementById("btnSubmit");
+            const statusDiv = document.getElementById("status");
+
+            if (!aInvesti) {
+                btnSubmit.disabled = true;
+                btnSubmit.innerText = "ACHAT REQUIS";
+                statusDiv.innerText = "⚠️ Activez un satellite pour débloquer les retraits.";
+            } else {
+                btnSubmit.disabled = false;
+                btnSubmit.innerText = "DEMANDER LE PAIEMENT";
+                statusDiv.innerText = "";
+            }
+        }
+    });
+
+    // --- LOGIQUE DE RETRAIT ---
+    document.getElementById("btnSubmit").onclick = async () => {
+        const amount = parseFloat(document.getElementById("amount").value);
+        const wallet = document.getElementById("wallet").value.trim();
+        const method = document.getElementById("method").value;
+        const btnSubmit = document.getElementById("btnSubmit");
+
+        try {
+            const snap = await get(userRef);
+            if(!snap.exists()) return;
+            const data = snap.val();
+            
+            const soldeGains = data.solde_gains || 0;
+            const soldeComm = data.solde_commissions || 0;
+            const totalRetirable = soldeGains + soldeComm;
+
+            if (isNaN(amount) || amount < 5000) return alert("Minimum de retrait : 5000 FC");
+            if (amount > totalRetirable) return alert("Solde insuffisant !");
+            if (wallet.length < 10) return alert("Numéro de réception invalide");
+
+            btnSubmit.disabled = true;
+            btnSubmit.innerText = "TRANSMISSION...";
+
+            // 1. Déduction intelligente (On vide d'abord les gains, puis les commissions)
+            let nouveauSoldeGains = soldeGains;
+            let nouveauSoldeComm = soldeComm;
+
+            if (soldeGains >= amount) {
+                nouveauSoldeGains = soldeGains - amount;
+            } else {
+                const reste = amount - soldeGains;
+                nouveauSoldeGains = 0;
+                nouveauSoldeComm = soldeComm - reste;
+            }
+
+            // Mise à jour de la base de données
+            await update(userRef, { 
+                solde_gains: nouveauSoldeGains,
+                solde_commissions: nouveauSoldeComm
+            });
+
+            // 2. Création de la demande pour l'admin
+            const retraitRef = ref(db, 'demandes_retraits');
+            await push(retraitRef, {
+                telephone: userPhone,
+                montant: amount,
+                methode: method,
+                numero_reception: wallet,
+                statut: "En attente",
+                date: new Date().toLocaleString()
+            });
+
+            alert("🚀 Demande envoyée ! Traitement en cours.");
+            window.location.href = "profil.html";
+
+        } catch (e) {
+            alert("⚠️ Erreur de liaison satellite.");
+            btnSubmit.disabled = false;
+            btnSubmit.innerText = "RÉESSAYER";
+        }
+    };
+</script>
+</body>
+</html>

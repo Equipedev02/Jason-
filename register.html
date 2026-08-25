@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlink - Inscription</title>
+    <style>
+        :root { --blue: #00d2ff; --dark: #050a14; }
+        body { 
+            margin: 0; font-family: 'Segoe UI', sans-serif; 
+            background: var(--dark) url('IMG_0870.jpeg') no-repeat center center fixed;
+            background-size: cover; color: white; 
+            display: flex; justify-content: center; align-items: center; 
+            min-height: 100vh; text-align: center; 
+        }
+        .overlay-reg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 1; }
+        .card { 
+            background: rgba(0, 0, 0, 0.9); padding: 30px; border-radius: 25px; 
+            border: 1px solid var(--blue); width: 85%; max-width: 350px; 
+            backdrop-filter: blur(15px); z-index: 2; position: relative;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+        }
+        input { width: 100%; padding: 14px; margin: 10px 0; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); color: white; box-sizing: border-box; font-size: 16px; }
+        button { width: 100%; padding: 15px; background: var(--blue); color: black; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 15px; }
+        .status { margin-top: 15px; font-size: 13px; color: #ffeb3b; min-height: 20px; }
+        a { color: var(--blue); text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="overlay-reg"></div>
+
+    <div class="card">
+        <h1 style="color:var(--blue); letter-spacing:3px; margin-bottom: 5px;">STARLINK</h1>
+        <p style="margin-top: 0; opacity: 0.8;">CRÉER UN COMPTE</p>
+        
+        <input type="tel" id="regPhone" placeholder="Téléphone (ex: 08...)" maxlength="10">
+        <input type="password" id="regPass" placeholder="Mot de passe (6 car. min)">
+        <input type="text" id="referralInput" placeholder="Code d'invitation">
+        
+        <button id="btnAction">S'INSCRIRE MAINTENANT</button>
+        <div id="statusMsg" class="status"></div>
+        
+        <p style="font-size:13px; margin-top: 20px;">
+            Déjà membre ? <br>
+            <a href="login.html">Se connecter au terminal</a>
+        </p>
+    </div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, set, get, runTransaction } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    // NOUVELLE CONFIGURATION STARLINK INVESTIT
+    const firebaseConfig = {
+        apiKey: "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
+        authDomain: "starlink-investit.firebaseapp.com",
+        databaseURL: "https://starlink-investit-default-rtdb.firebaseio.com",
+        projectId: "starlink-investit",
+        storageBucket: "starlink-investit.firebasestorage.app",
+        messagingSenderId: "807081599583",
+        appId: "1:807081599583:web:e00ec3959bc4acdae031ea"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('inviteCode');
+    if (code) {
+        document.getElementById("referralInput").value = code;
+        document.getElementById("referralInput").readOnly = true;
+    }
+
+    document.getElementById("btnAction").onclick = async () => {
+        const phone = document.getElementById("regPhone").value.trim();
+        const pass = document.getElementById("regPass").value.trim();
+        const sponsorCode = document.getElementById("referralInput").value.trim();
+        const status = document.getElementById("statusMsg");
+
+        if (phone.length < 10 || pass.length < 6) {
+            status.innerText = "❌ Données incomplètes";
+            return;
+        }
+
+        status.innerText = "⏳ Liaison satellite...";
+
+        try {
+            const userSnap = await get(ref(db, 'users/' + phone));
+            if (userSnap.exists()) {
+                status.innerText = "❌ Numéro déjà enregistré";
+                return;
+            }
+
+            let parrainPhone = null;
+            if (sponsorCode) {
+                const usersSnap = await get(ref(db, 'users'));
+                if (usersSnap.exists()) {
+                    const users = usersSnap.val();
+                    for (let id in users) {
+                        if (users[id].inviteCode === sponsorCode) {
+                            parrainPhone = id;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            const myNewCode = "STAR-" + Math.floor(1000 + Math.random() * 9000);
+            const userData = {
+                password: pass,
+                inviteCode: myNewCode,
+                referredBy: parrainPhone || "DIRECT",
+                solde_principal: 0,
+                solde_commissions: 0,
+                solde_gains: 0,
+                count_lvl1: 0,
+                count_lvl2: 0,
+                count_lvl3: 0,
+                date_inscription: new Date().toISOString()
+            };
+
+            await set(ref(db, 'users/' + phone), userData);
+
+            if (parrainPhone) {
+                const parrainCountRef = ref(db, `users/${parrainPhone}/count_lvl1`);
+                await runTransaction(parrainCountRef, (currentCount) => {
+                    return (currentCount || 0) + 1;
+                });
+            }
+
+            status.style.color = "#4caf50";
+            status.innerText = "✅ Inscription réussie !";
+            setTimeout(() => { window.location.href = "login.html"; }, 1500);
+
+        } catch (e) {
+            status.innerText = "⚠️ Erreur de connexion";
+            console.error(e);
+        }
+    };
+</script>
+</body>
+</html>

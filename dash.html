@@ -1,186 +1,806 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>DAVBOT Business - Dashboard</title>
+<title>DAVBOT Dashboard</title>
+
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+
 <style>
+
+
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
+
 
 body{
-    background:#020817;
-    color:white;
-    font-family:Inter,sans-serif;
-    padding-bottom:90px;
+
+background:#020817;
+
+color:white;
+
+font-family:Inter,sans-serif;
+
 }
+
+
 
 header{
-    padding:25px 20px;
-    background:linear-gradient(180deg,#061a38,#020817);
+
+padding:20px;
+
+background:#06152c;
+
+border-bottom:1px solid #153961;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
 }
+
+
 
 .logo{
-    font-size:22px;
-    font-weight:800;
+
+font-size:22px;
+
+font-weight:800;
+
+color:#2da1ff;
+
 }
+
+
+
+header button{
+
+background:#087cff;
+
+color:white;
+
+border:0;
+
+padding:10px 15px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-weight:700;
+
+}
+
+
 
 .container{
-    max-width:1100px;
-    margin:auto;
-    padding:20px;
+
+max-width:1200px;
+
+margin:auto;
+
+padding:20px;
+
 }
 
-.hero{
-    padding:25px;
-    border-radius:25px;
-    background:
-        linear-gradient(135deg,#063b86,#06152e);
-    border:1px solid #174d88;
-    margin-bottom:20px;
+
+
+
+
+.profile-card{
+
+background:#061329;
+
+border:1px solid #12345e;
+
+border-radius:25px;
+
+padding:25px;
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
 }
 
-.hero h1{
-    font-size:28px;
-    margin-bottom:8px;
+
+
+.profile-card img{
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:3px solid #087cff;
+
 }
 
-.hero p{
-    color:#aac0df;
+
+
+.profile-card h2{
+
+font-size:25px;
+
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
+
+
+.profile-card p{
+
+color:#9cb3d0;
+
+margin-top:5px;
+
 }
 
-.box{
-    background:#061329;
-    border:1px solid #12345e;
-    border-radius:20px;
-    padding:20px;
+
+
+
+
+.cards{
+
+margin-top:25px;
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:18px;
+
 }
 
-.box small{
-    color:#8ea4c5;
+
+
+.card{
+
+background:#061329;
+
+border:1px solid #12345e;
+
+border-radius:20px;
+
+padding:25px;
+
 }
 
-.value{
-    display:block;
-    font-size:25px;
-    font-weight:800;
-    margin-top:8px;
+
+
+.card small{
+
+color:#8fa8c9;
+
 }
 
-.nav{
-    position:fixed;
-    bottom:15px;
-    left:50%;
-    transform:translateX(-50%);
-    width:calc(100% - 30px);
-    max-width:600px;
-    background:rgba(5,20,43,.95);
-    border:1px solid #194272;
-    border-radius:20px;
-    display:flex;
-    justify-content:space-around;
-    padding:10px;
-    backdrop-filter:blur(20px);
+
+
+.card strong{
+
+display:block;
+
+font-size:28px;
+
+margin-top:10px;
+
+color:#42a5ff;
+
 }
 
-.nav a{
-    color:#91a7c6;
-    text-decoration:none;
-    padding:10px;
-    font-size:12px;
+
+
+
+.actions{
+
+margin-top:30px;
+
+display:grid;
+
+grid-template-columns:
+repeat(4,1fr);
+
+gap:15px;
+
 }
 
-.nav a.active{
-    color:#45a0ff;
+
+
+.action{
+
+padding:20px;
+
+border-radius:18px;
+
+background:#071832;
+
+border:1px solid #173b66;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.2s;
+
 }
 
-@media(max-width:700px){
-    .grid{
-        grid-template-columns:1fr;
-    }
+
+
+.action:hover{
+
+transform:translateY(-5px);
+
+border-color:#087cff;
+
 }
+
+
+
+.action span{
+
+font-size:30px;
+
+display:block;
+
+margin-bottom:10px;
+
+}
+
+
+
+.action b{
+
+font-size:14px;
+
+}
+
+
+
+
+
+.section{
+
+margin-top:35px;
+
+}
+
+
+
+.section h2{
+
+margin-bottom:15px;
+
+}
+
+
+
+.table{
+
+background:#061329;
+
+border-radius:20px;
+
+border:1px solid #12345e;
+
+overflow:auto;
+
+}
+
+
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+min-width:700px;
+
+}
+
+
+
+th,td{
+
+padding:14px;
+
+border-bottom:1px solid #122c4d;
+
+text-align:left;
+
+font-size:13px;
+
+}
+
+
+
+th{
+
+color:#55aaff;
+
+background:#071832;
+
+}
+
+
+
+
+@media(max-width:900px){
+
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+
+.actions{
+
+grid-template-columns:
+1fr 1fr;
+
+}
+
+
+
+.profile-card{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+
+}
+
+
+
 </style>
+
 
 </head>
 
+
+
 <body>
 
+
+
+
 <header>
-    <div class="logo">DAVBOT Business</div>
+
+
+<div class="logo">
+
+🚀 JASON BUSINESS
+
+</div>
+
+
+<button id="logoutBtn">
+
+Déconnexion
+
+</button>
+
+
 </header>
+
+
+
+
+
 
 <main class="container">
 
-    <section class="hero">
 
-        <h1>
-            Bonjour <span id="userName">...</span> 👋
-        </h1>
 
-        <p>
-            Bienvenue dans ton espace business DAVBOT.
-        </p>
 
-    </section>
 
-    <section class="grid">
+<section class="profile-card">
 
-        <div class="box">
-            <small>Solde disponible</small>
-            <span class="value">
-                <span id="balance">0</span> FC
-            </span>
-        </div>
 
-        <div class="box">
-            <small>Points fidélité</small>
-            <span class="value" id="points">
-                0
-            </span>
-        </div>
 
-        <div class="box">
-            <small>Commandes</small>
-            <span class="value" id="orders">
-                0
-            </span>
-        </div>
+<img
 
-    </section>
+id="profilePhoto"
+
+src="https://via.placeholder.com/100"
+
+alt="photo">
+
+
+
+<div>
+
+
+<h2 id="userName">
+
+Chargement...
+
+</h2>
+
+
+<p id="userEmail">
+
+</p>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="cards">
+
+
+
+
+
+<div class="card">
+
+
+<small>
+💰 Solde disponible
+</small>
+
+
+<strong>
+
+<span id="balance">
+
+0
+
+</span>
+
+FC
+
+</strong>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<small>
+⭐ Points fidélité
+</small>
+
+
+<strong>
+
+<span id="points">
+
+0
+
+</span>
+
+</strong>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<small>
+🛒 Commandes
+</small>
+
+
+<strong>
+
+<span id="orders">
+
+0
+
+</span>
+
+</strong>
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<section class="actions">
+
+
+
+
+
+<div class="action"
+id="rechargeBtn">
+
+<span>
+💳
+</span>
+
+<b>
+Recharger
+</b>
+
+</div>
+
+
+
+
+
+
+
+<div class="action"
+id="withdrawBtn">
+
+
+<span>
+🏦
+</span>
+
+
+<b>
+Retirer
+</b>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="action"
+onclick="location.href='shop.html'">
+
+
+<span>
+🛍️
+</span>
+
+
+<b>
+Boutique
+</b>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="action"
+onclick="location.href='profil.html'">
+
+
+<span>
+👤
+</span>
+
+
+<b>
+Mon profil
+</b>
+
+
+</div>
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="section">
+
+
+<h2>
+
+📦 Mes commandes
+
+</h2>
+
+
+
+<div class="table">
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+<th>
+Produit
+</th>
+
+
+<th>
+Prix
+</th>
+
+
+<th>
+Statut
+</th>
+
+
+<th>
+Date
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody id="userOrders">
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="section">
+
+
+<h2>
+
+🎁 Parrainage
+
+</h2>
+
+
+
+<div class="card">
+
+
+<p>
+
+Votre code :
+
+</p>
+
+
+<h2 
+id="referralCode">
+
+---
+
+</h2>
+
+
+
+<button
+id="copyReferral">
+
+Copier mon code
+
+</button>
+
+
+
+<p style="margin-top:15px;color:#8fa8c9">
+
+
+Invitez des utilisateurs avec votre code et gagnez des points fidélité.
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
 
 </main>
 
-<nav class="nav">
 
-    <a class="active" href="dash.html">
-        Accueil
-    </a>
 
-    <a href="shop.html">
-        Boutique
-    </a>
 
-    <a href="profil.html">
-        Profil
-    </a>
 
-</nav>
 
-<script type="module" src="./app.js"></script>
+
+
+<script 
+type="module"
+src="./app.js">
+
+</script>
+
+
+
 
 </body>
+
+
 </html>

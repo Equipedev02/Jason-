@@ -67,22 +67,13 @@ from
 
 const firebaseConfig = {
 
+apiKey:"AIzaSyA24pBo8mBWiZssPtep--MMBd7c8_Lu4U",
 
-apiKey:
-"AIzaSyA24pBo8mBWiZssPtep--MMBd7c8_Lu4U",
+authDomain:"starlink-investit.firebaseapp.com",
 
+databaseURL:"https://starlink-investit-default-rtdb.firebaseio.com",
 
-authDomain:
-"starlink-investit.firebaseapp.com",
-
-
-databaseURL:
-"https://starlink-investit-default-rtdb.firebaseio.com",
-
-
-projectId:
-"starlink-investit"
-
+projectId:"starlink-investit"
 
 };
 

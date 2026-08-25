@@ -1,3324 +1,2945 @@
 // ============================================================
 // DAVBOT BUSINESS
-// APP.JS COMPLET
-// Firebase Auth + Realtime Database + Storage
+// APP.JS PARTIE 1/3
+// Firebase Auth + Users + Parrainage
 // ============================================================
 
 
-// ============================================================
-// FIREBASE
-// ============================================================
+// ================= FIREBASE =================
+
 
 import {
     initializeApp
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+}
+from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
 
 import {
+
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
     sendPasswordResetEmail
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+}
+from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
 
 import {
+
     getDatabase,
     ref,
-    get,
     set,
-    push,
+    get,
     update,
-    remove,
+    push,
     onValue,
-    runTransaction
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    runTransaction,
+    remove
+
+}
+from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+
 
 import {
+
     getStorage,
     ref as storageRef,
     uploadBytes,
     getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+}
+from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 
-// ============================================================
-// CONFIGURATION FIREBASE
-// ============================================================
+
+
+// ================= CONFIG =================
+
 
 const firebaseConfig = {
 
-    apiKey:
-        "AIzaSyA24pBo8mBWiZssPtep--MMBd7c8_Lu4U",
 
-    authDomain:
-        "starlink-investit.firebaseapp.com",
+apiKey:
+"AIzaSyA24pBo8mBWiZssPtep--MMBd7c8_Lu4U",
 
-    databaseURL:
-        "https://starlink-investit-default-rtdb.firebaseio.com",
 
-    projectId:
-        "starlink-investit"
+authDomain:
+"starlink-investit.firebaseapp.com",
+
+
+databaseURL:
+"https://starlink-investit-default-rtdb.firebaseio.com",
+
+
+projectId:
+"starlink-investit"
+
 
 };
 
 
-// ============================================================
-// INITIALISATION
-// ============================================================
+
+
 
 const app =
-    initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
+
+
 
 const auth =
-    getAuth(app);
+getAuth(app);
+
+
 
 const db =
-    getDatabase(app);
+getDatabase(app);
+
+
 
 const storage =
-    getStorage(app);
+getStorage(app);
 
 
-// ============================================================
-// CONFIGURATION BUSINESS
-// ============================================================
-
-// ⚠️ À MODIFIER
-
-const ADMIN_EMAIL =
-    "djesonaloma@gmail.com";
 
 
-// Numéro sur lequel l'utilisateur effectue
-// sa recharge.
-
-const RECHARGE_NUMBER =
-    "0847500590";
+// ================= CONFIG BUSINESS =================
 
 
-// Nombre de points accordés au parrain.
+const WHATSAPP_SUPPORT =
+"24390855444";
+
+
 
 const REFERRAL_POINTS =
-    100;
+100;
+
+
+
+const ADMIN_EMAIL =
+"admin@davbot.com";
+
+
+
 
 
 // ============================================================
 // OUTILS
 // ============================================================
 
-function getPage(){
-
-    return location.pathname
-        .split("/")
-        .pop()
-        .toLowerCase();
-
-}
 
 
 function $(id){
 
-    return document.getElementById(id);
+return document.getElementById(id);
 
 }
+
 
 
 function money(value){
 
-    return Number(
-        value || 0
-    ).toLocaleString(
-        "fr-FR"
-    );
+return Number(value || 0)
+.toLocaleString("fr-FR");
 
 }
 
 
-function dateFormat(timestamp){
 
-    if(!timestamp)
-        return "-";
+function notify(msg){
 
-    return new Date(timestamp)
-        .toLocaleString("fr-FR");
+alert(msg);
 
 }
 
 
-function escapeHTML(value){
 
-    return String(
-        value ?? ""
-    )
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+function createCode(){
+
+
+let chars =
+"ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+
+let code="";
+
+
+for(let i=0;i<8;i++){
+
+
+code +=
+chars[
+Math.floor(
+Math.random()*chars.length
+)
+];
+
 
 }
 
 
-function generateReferralCode(){
+return "DAVBOT-"+code;
 
-    const chars =
-        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-
-    let code = "";
-
-    for(
-        let i = 0;
-        i < 6;
-        i++
-    ){
-
-        code +=
-            chars[
-                Math.floor(
-                    Math.random() *
-                    chars.length
-                )
-            ];
-
-    }
-
-    return "DAVBOT-" + code;
 
 }
 
 
-function notify(message){
 
-    alert(message);
 
-}
 
 
 // ============================================================
-// AUTHENTIFICATION
-// ============================================================
-
-
-// -----------------------------
 // INSCRIPTION
-// -----------------------------
+// ============================================================
+
 
 const registerForm =
-    $("registerForm");
+$("registerForm");
+
+
 
 if(registerForm){
 
-    registerForm.addEventListener(
-        "submit",
-        async event => {
 
-            event.preventDefault();
+registerForm.addEventListener(
+"submit",
+async(e)=>{
 
-            const name =
-                $("registerName")?.value.trim();
 
-            const email =
-                $("registerEmail")?.value.trim();
+e.preventDefault();
 
-            const password =
-                $("registerPassword")?.value;
 
-            const confirmation =
-                $("registerConfirm")?.value;
 
-            const referral =
-                $("registerReferral")?.value
-                .trim()
-                .toUpperCase();
+const name =
+$("registerName").value;
 
-            const photoInput =
-                $("registerPhoto");
 
 
-            if(!name){
+const email =
+$("registerEmail").value;
 
-                notify(
-                    "Veuillez entrer votre nom."
-                );
 
-                return;
 
-            }
+const password =
+$("registerPassword").value;
 
 
-            if(!email){
 
-                notify(
-                    "Veuillez entrer votre adresse email."
-                );
+const confirm =
+$("registerConfirm").value;
 
-                return;
 
-            }
 
+const referral =
+$("registerReferral").value
+.trim();
 
-            if(password.length < 6){
 
-                notify(
-                    "Le mot de passe doit contenir au moins 6 caractères."
-                );
 
-                return;
 
-            }
+const photo =
+$("registerPhoto");
 
 
-            if(password !== confirmation){
 
-                notify(
-                    "Les mots de passe ne correspondent pas."
-                );
 
-                return;
+if(password !== confirm){
 
-            }
+notify(
+"Les mots de passe ne correspondent pas."
+);
 
-
-            try{
-
-                // Création du compte
-
-                const credential =
-                    await createUserWithEmailAndPassword(
-                        auth,
-                        email,
-                        password
-                    );
-
-                const user =
-                    credential.user;
-
-
-                // Photo
-
-                let photoURL = "";
-
-
-                if(
-                    photoInput &&
-                    photoInput.files &&
-                    photoInput.files[0]
-                ){
-
-                    const file =
-                        photoInput.files[0];
-
-                    const fileRef =
-                        storageRef(
-                            storage,
-                            `users/${user.uid}/profile.jpg`
-                        );
-
-                    await uploadBytes(
-                        fileRef,
-                        file
-                    );
-
-                    photoURL =
-                        await getDownloadURL(
-                            fileRef
-                        );
-
-                }
-
-
-                // Code parrain personnel
-
-                const myReferralCode =
-                    generateReferralCode();
-
-
-                // Vérification du parrain
-
-                let referredBy = "";
-
-
-                if(referral){
-
-                    referredBy =
-                        await findUserByReferralCode(
-                            referral
-                        );
-
-                }
-
-
-                // Profil
-
-                const userData = {
-
-                    uid:
-                        user.uid,
-
-                    name:
-                        name,
-
-                    email:
-                        email,
-
-                    photoURL:
-                        photoURL,
-
-                    referralCode:
-                        myReferralCode,
-
-                    referredBy:
-                        referredBy || "",
-
-                    balance:
-                        0,
-
-                    points:
-                        0,
-
-                    totalOrders:
-                        0,
-
-                    totalRecharges:
-                        0,
-
-                    totalWithdrawals:
-                        0,
-
-                    createdAt:
-                        Date.now()
-
-                };
-
-
-                await set(
-                    ref(
-                        db,
-                        `users/${user.uid}`
-                    ),
-                    userData
-                );
-
-
-                // Attribution des points
-                // au propriétaire du code
-
-                if(referredBy){
-
-                    await addReferralPoints(
-                        referredBy,
-                        user.uid,
-                        referral
-                    );
-
-                }
-
-
-                notify(
-                    "Compte créé avec succès."
-                );
-
-
-                location.href =
-                    "dash.html";
-
-
-            }catch(error){
-
-                console.error(error);
-
-                notify(
-                    firebaseError(error)
-                );
-
-            }
-
-        }
-    );
+return;
 
 }
 
 
-// -----------------------------
+
+try{
+
+
+// Création compte Firebase Auth
+
+
+const result =
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+
+
+const user =
+result.user;
+
+
+
+let photoURL="";
+
+
+
+// Upload photo
+
+
+if(
+photo.files.length > 0
+){
+
+
+const file =
+photo.files[0];
+
+
+const fileRef =
+storageRef(
+storage,
+"users/"+user.uid
+);
+
+
+await uploadBytes(
+fileRef,
+file
+);
+
+
+
+photoURL =
+await getDownloadURL(
+fileRef
+);
+
+
+}
+
+
+
+
+// Création code personnel
+
+
+const myCode =
+createCode();
+
+
+
+// Recherche parrain
+
+
+let inviter="";
+
+
+
+if(referral){
+
+
+const snap =
+await get(
+ref(
+db,
+"users"
+)
+);
+
+
+
+if(snap.exists()){
+
+
+const users =
+snap.val();
+
+
+
+for(
+let id in users
+){
+
+
+if(
+users[id].referralCode === referral
+){
+
+
+inviter=id;
+
+
+break;
+
+
+}
+
+
+}
+
+
+}
+
+
+
+}
+
+
+
+
+
+// Création profil
+
+
+await set(
+
+ref(
+db,
+"users/"+user.uid
+),
+
+{
+
+
+uid:user.uid,
+
+
+name:name,
+
+
+email:email,
+
+
+photoURL:photoURL,
+
+
+balance:0,
+
+
+points:0,
+
+
+referralCode:myCode,
+
+
+referredBy:inviter,
+
+
+totalOrders:0,
+
+
+totalRecharge:0,
+
+
+totalWithdraw:0,
+
+
+createdAt:
+Date.now()
+
+
+}
+
+
+);
+
+
+
+
+
+// Donner points au parrain
+
+
+if(inviter){
+
+
+await addPointsReferral(
+inviter,
+user.uid
+);
+
+
+}
+
+
+
+
+
+notify(
+"Compte créé avec succès."
+);
+
+
+
+location.href=
+"dash.html";
+
+
+
+}
+catch(error){
+
+
+console.log(error);
+
+
+notify(
+error.message
+);
+
+
+
+}
+
+
+
+}
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+// ============================================================
 // CONNEXION
-// -----------------------------
+// ============================================================
+
+
 
 const loginForm =
-    $("loginForm");
+$("loginForm");
+
+
 
 if(loginForm){
 
-    loginForm.addEventListener(
-        "submit",
-        async event => {
-
-            event.preventDefault();
-
-            const email =
-                $("loginEmail")?.value.trim();
-
-            const password =
-                $("loginPassword")?.value;
 
 
-            try{
+loginForm.addEventListener(
+"submit",
+async(e)=>{
 
-                await signInWithEmailAndPassword(
-                    auth,
-                    email,
-                    password
-                );
 
-                location.href =
-                    "dash.html";
+e.preventDefault();
 
-            }catch(error){
 
-                console.error(error);
 
-                notify(
-                    firebaseError(error)
-                );
+try{
 
-            }
 
-        }
-    );
+await signInWithEmailAndPassword(
+
+auth,
+
+$("loginEmail").value,
+
+$("loginPassword").value
+
+);
+
+
+
+location.href=
+"dash.html";
+
+
+
+}
+catch(error){
+
+
+notify(
+"Email ou mot de passe incorrect."
+);
+
+
 
 }
 
 
-// -----------------------------
-// DÉCONNEXION
-// -----------------------------
-
-const logoutBtn =
-    $("logoutBtn");
-
-if(logoutBtn){
-
-    logoutBtn.onclick =
-        async () => {
-
-            try{
-
-                await signOut(auth);
-
-                location.href =
-                    "index.html";
-
-            }catch(error){
-
-                console.error(error);
-
-            }
-
-        };
 
 }
+
+);
+
+
+
+}
+
+
+
+
+
 
 
 // ============================================================
-// MOT DE PASSE OUBLIÉ
+// DECONNEXION
 // ============================================================
 
-const forgotPassword =
-    $("forgotPassword");
 
-if(forgotPassword){
 
-    forgotPassword.onclick =
-        () => {
+const logout =
+$("logoutBtn");
 
-            const message =
-                encodeURIComponent(
-                    "Bonjour, j'ai oublié le mot de passe de mon compte. Merci de m'aider à le réinitialiser."
-                );
 
-            window.location.href =
-                "https://wa.me/243847500590?text=" +
-                message;
 
-        };
+if(logout){
+
+
+
+logout.onclick =
+async()=>{
+
+
+await signOut(auth);
+
+
+location.href=
+"index.html";
+
+
+
+};
+
 
 }
+
+
+
+
+
+
+// ============================================================
+// MOT DE PASSE OUBLIE
+// ============================================================
+
+
+
+const forgot =
+$("forgotPassword");
+
+
+
+if(forgot){
+
+
+forgot.onclick =
+()=>{
+
+
+let text =
+encodeURIComponent(
+
+"Bonjour, je veux réinitialiser mon mot de passe DAVBOT."
+
+);
+
+
+
+window.location.href =
+
+"https://wa.me/"
++
+WHATSAPP_SUPPORT
++
+"?text="
++
+text;
+
+
+
+};
+
+
+}
+
+
+
+
+
 
 
 // ============================================================
 // AUTH STATE
 // ============================================================
 
+
+
 onAuthStateChanged(
-    auth,
-    async user => {
-
-        const page =
-            getPage();
+auth,
+(user)=>{
 
 
-        const protectedPages = [
 
-            "dash.html",
-            "shop.html",
-            "profil.html",
-            "admin.html"
+if(!user){
 
-        ];
+return;
+
+}
 
 
-        if(!user){
-
-            if(
-                protectedPages.includes(page)
-            ){
-
-                location.href =
-                    "index.html";
-
-            }
-
-            return;
-
-        }
 
 
-        // Si connecté sur index
-
-        if(
-            page === "" ||
-            page === "index.html"
-        ){
-
-            location.href =
-                "dash.html";
-
-            return;
-
-        }
+let page =
+location.pathname;
 
 
-        // Dashboard
 
-        if(
-            page === "dash.html"
-        ){
+if(
+page.includes("dash")
+){
 
-            loadDashboard(user);
+loadDashboard(user.uid);
 
-        }
-
-
-        // Profil
-
-        if(
-            page === "profil.html"
-        ){
-
-            loadProfile(user);
-
-        }
+}
 
 
-        // Boutique
 
-        if(
-            page === "shop.html"
-        ){
+if(
+page.includes("profil")
+){
 
-            loadShop(user);
+loadProfile(user.uid);
 
-        }
-
-
-        // Admin
-
-        if(
-            page === "admin.html"
-        ){
-
-            if(
-                user.email !== ADMIN_EMAIL
-            ){
-
-                notify(
-                    "Accès administrateur refusé."
-                );
-
-                await signOut(auth);
-
-                location.href =
-                    "index.html";
-
-                return;
-
-            }
+}
 
 
-            loadAdmin();
 
-        }
+}
 
-    }
 );
 
 
-// ============================================================
-// RECHERCHE UTILISATEUR PAR CODE PARRAIN
-// ============================================================
-
-async function findUserByReferralCode(code){
-
-    const snapshot =
-        await get(
-            ref(db,"users")
-        );
-
-    if(!snapshot.exists())
-        return null;
 
 
-    const users =
-        snapshot.val();
 
-
-    for(
-        const uid in users
-    ){
-
-        if(
-            users[uid].referralCode === code
-        ){
-
-            return uid;
-
-        }
-
-    }
-
-
-    return null;
-
-}
 
 
 // ============================================================
-// PARRAINAGE
+// AJOUT POINTS PARRAINAGE
 // ============================================================
 
-async function addReferralPoints(
-    inviterId,
-    newUserId,
-    code
+
+
+async function addPointsReferral(
+userId,
+newUser
 ){
 
-    if(
-        !inviterId ||
-        !newUserId
-    ){
-
-        return;
-
-    }
 
 
-    // Transaction pour éviter
-    // les problèmes de concurrence.
+await runTransaction(
 
-    await runTransaction(
-        ref(
-            db,
-            `users/${inviterId}/points`
-        ),
-        current => {
+ref(
+db,
+"users/"+userId+"/points"
+),
 
-            return Number(
-                current || 0
-            ) + REFERRAL_POINTS;
-
-        }
-    );
+(points)=>{
 
 
-    // Historique
+return (
+Number(points || 0)
++
+REFERRAL_POINTS
+);
 
-    await push(
-        ref(
-            db,
-            `referrals/${inviterId}`
-        ),
-        {
 
-            referredUser:
-                newUserId,
+}
 
-            code:
-                code,
+);
 
-            points:
-                REFERRAL_POINTS,
 
-            createdAt:
-                Date.now()
 
-        }
-    );
+
+
+await push(
+
+ref(
+db,
+"referrals/"+userId
+),
+
+{
+
+
+newUser:newUser,
+
+
+points:REFERRAL_POINTS,
+
+
+date:
+Date.now()
+
+
+}
+
+);
+
+
 
 }
 
 
+
+
+
+
 // ============================================================
-// DASHBOARD
+// CHARGER DASHBOARD
 // ============================================================
 
-function loadDashboard(user){
-
-    const userRef =
-        ref(
-            db,
-            `users/${user.uid}`
-        );
 
 
-    onValue(
-        userRef,
-        snapshot => {
-
-            if(!snapshot.exists())
-                return;
+function loadDashboard(uid){
 
 
-            const data =
-                snapshot.val();
+
+onValue(
+
+ref(
+db,
+"users/"+uid
+),
+
+(snapshot)=>{
 
 
-            if($("userName"))
-                $("userName").textContent =
-                    data.name || "Utilisateur";
+if(!snapshot.exists())
+return;
 
 
-            if($("balance"))
-                $("balance").textContent =
-                    money(data.balance);
+
+const data =
+snapshot.val();
 
 
-            if($("points"))
-                $("points").textContent =
-                    money(data.points);
 
 
-            if($("orders"))
-                $("orders").textContent =
-                    money(data.totalOrders);
+if($("userName"))
 
-        }
-    );
+$("userName").innerText =
+data.name;
+
+
+
+if($("balance"))
+
+$("balance").innerText =
+money(data.balance);
+
+
+
+if($("points"))
+
+$("points").innerText =
+money(data.points);
+
+
+
+if($("orders"))
+
+$("orders").innerText =
+data.totalOrders || 0;
+
+
+
+if($("profilePhoto")
+&&
+data.photoURL)
+
+$("profilePhoto").src =
+data.photoURL;
+
+
+
+if($("referralCode"))
+
+$("referralCode").innerText =
+data.referralCode;
+
+
 
 }
 
 
-// ============================================================
-// PROFIL
-// ============================================================
 
-function loadProfile(user){
-
-    const userRef =
-        ref(
-            db,
-            `users/${user.uid}`
-        );
+);
 
 
-    onValue(
-        userRef,
-        snapshot => {
-
-            if(!snapshot.exists())
-                return;
-
-
-            const data =
-                snapshot.val();
-
-
-            if($("profileName"))
-                $("profileName").textContent =
-                    data.name || "";
-
-
-            if($("profileEmail"))
-                $("profileEmail").textContent =
-                    data.email || "";
-
-
-            if($("profileBalance"))
-                $("profileBalance").textContent =
-                    money(data.balance);
-
-
-            if($("profilePoints"))
-                $("profilePoints").textContent =
-                    money(data.points);
-
-
-            if($("referralCode"))
-                $("referralCode").textContent =
-                    data.referralCode || "";
-
-
-            if(
-                $("profilePhoto") &&
-                data.photoURL
-            ){
-
-                $("profilePhoto").src =
-                    data.photoURL;
-
-            }
-
-        }
-    );
 
 }
+
+
+
+
+
+
+
+
+// ============================================================
+// CHARGER PROFIL
+// ============================================================
+
+
+
+function loadProfile(uid){
+
+
+
+onValue(
+
+ref(
+db,
+"users/"+uid
+),
+
+(snapshot)=>{
+
+
+if(!snapshot.exists())
+return;
+
+
+
+const data =
+snapshot.val();
+
+
+
+if($("profileName"))
+
+$("profileName").innerText =
+data.name;
+
+
+
+if($("profileEmail"))
+
+$("profileEmail").innerText =
+data.email;
+
+
+
+if($("profileBalance"))
+
+$("profileBalance").innerText =
+money(data.balance);
+
+
+
+if($("profilePoints"))
+
+$("profilePoints").innerText =
+money(data.points);
+
+
+
+if($("referralCode"))
+
+$("referralCode").innerText =
+data.referralCode;
+
+
+
+if($("profilePhoto")
+&&
+data.photoURL)
+
+$("profilePhoto").src =
+data.photoURL;
+
+
+
+}
+
+);
+
+
+
+}
+
+
+
+
+// FIN PARTIE 1/3
+// ============================================================
+// DAVBOT BUSINESS
+// APP.JS PARTIE 2/3
+// SHOP + COMMANDES + RECHARGE + RETRAIT
+// ============================================================
+
+
+
+// ============================================================
+// SHOP PRODUITS
+// ============================================================
+
+
+const productsBox =
+$("products");
+
+
+
+if(productsBox){
+
+
+onValue(
+
+ref(
+db,
+"products"
+),
+
+(snapshot)=>{
+
+
+productsBox.innerHTML="";
+
+
+
+if(!snapshot.exists()){
+
+
+productsBox.innerHTML=
+"<p>Aucun service disponible</p>";
+
+return;
+
+}
+
+
+
+
+let products =
+snapshot.val();
+
+
+
+for(let id in products){
+
+
+let p =
+products[id];
+
+
+
+productsBox.innerHTML += `
+
+<div class="product">
+
+
+${p.image ?
+`
+<img src="${p.image}">
+`
+:
+""}
+
+
+
+<div class="product-content">
+
+
+<h3>
+${p.name}
+</h3>
+
+
+<p>
+${p.description}
+</p>
+
+
+<div class="price">
+
+${money(p.price)} FC
+
+</div>
+
+
+
+<button 
+class="buy"
+onclick="buyProduct('${id}')">
+
+Commander
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+}
+
+);
+
+
+
+}
+
+
+
+
+
+
+// ============================================================
+// COMMANDER PRODUIT
+// ============================================================
+
+
+window.buyProduct =
+async function(productId){
+
+
+
+let user =
+auth.currentUser;
+
+
+
+if(!user){
+
+notify(
+"Connectez-vous d'abord."
+);
+
+return;
+
+}
+
+
+
+const productSnap =
+await get(
+
+ref(
+db,
+"products/"+productId
+)
+
+);
+
+
+
+if(!productSnap.exists())
+return;
+
+
+
+let product =
+productSnap.val();
+
+
+
+
+const userSnap =
+await get(
+
+ref(
+db,
+"users/"+user.uid
+)
+
+);
+
+
+
+let data =
+userSnap.val();
+
+
+
+
+
+if(
+Number(data.balance)
+<
+Number(product.price)
+
+){
+
+
+notify(
+"Solde insuffisant."
+);
+
+
+return;
+
+}
+
+
+
+
+// création commande
+
+
+await push(
+
+ref(
+db,
+"orders"
+),
+
+{
+
+
+userId:user.uid,
+
+
+userName:data.name,
+
+
+productId:productId,
+
+
+product:product.name,
+
+
+price:product.price,
+
+
+status:"pending",
+
+
+date:Date.now()
+
+
+}
+
+);
+
+
+
+
+notify(
+"Commande envoyée à l'administration."
+);
+
+
+
+}
+
+
+
+
+
+// ============================================================
+// AFFICHER COMMANDES UTILISATEUR
+// ============================================================
+
+
+const ordersTable =
+$("userOrders");
+
+
+
+if(ordersTable){
+
+
+
+onValue(
+
+ref(
+db,
+"orders"
+),
+
+(snapshot)=>{
+
+
+ordersTable.innerHTML="";
+
+
+
+if(!snapshot.exists())
+return;
+
+
+
+
+let orders =
+snapshot.val();
+
+
+
+
+for(let id in orders){
+
+
+
+let o =
+orders[id];
+
+
+
+if(
+o.userId === auth.currentUser.uid
+){
+
+
+
+ordersTable.innerHTML += `
+
+<tr>
+
+<td>
+${o.product}
+</td>
+
+
+<td>
+${money(o.price)} FC
+</td>
+
+
+<td>
+${o.status}
+</td>
+
+
+<td>
+${new Date(o.date)
+.toLocaleDateString()}
+</td>
+
+
+</tr>
+
+`;
+
+
+
+}
+
+
+
+}
+
+
+
+}
+
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+// ============================================================
+// RECHARGE
+// ============================================================
+
+
+
+const rechargeBtn =
+$("rechargeBtn");
+
+
+
+if(rechargeBtn){
+
+
+
+rechargeBtn.onclick =
+()=>{
+
+
+let montant =
+prompt(
+"Montant de recharge FC :"
+);
+
+
+
+if(!montant)
+return;
+
+
+
+let transaction =
+prompt(
+"ID de transaction :"
+);
+
+
+
+if(!transaction)
+return;
+
+
+
+sendRecharge(
+montant,
+transaction
+);
+
+
+
+};
+
+
+
+}
+
+
+
+
+
+async function sendRecharge(
+amount,
+transaction
+){
+
+
+
+let user =
+auth.currentUser;
+
+
+
+let snap =
+await get(
+
+ref(
+db,
+"users/"+user.uid
+)
+
+);
+
+
+
+let data =
+snap.val();
+
+
+
+
+
+await push(
+
+ref(
+db,
+"recharges"
+),
+
+{
+
+
+userId:user.uid,
+
+
+userName:data.name,
+
+
+email:data.email,
+
+
+amount:Number(amount),
+
+
+transactionId:transaction,
+
+
+status:"pending",
+
+
+date:Date.now()
+
+
+}
+
+);
+
+
+
+notify(
+"Demande envoyée. Attente validation admin."
+);
+
+
+
+}
+
+
+
+
+
+
+
+// ============================================================
+// RETRAIT
+// ============================================================
+
+
+const withdrawBtn =
+$("withdrawBtn");
+
+
+
+if(withdrawBtn){
+
+
+
+withdrawBtn.onclick =
+()=>{
+
+
+let amount =
+prompt(
+"Montant retrait FC :"
+);
+
+
+
+if(!amount)
+return;
+
+
+
+let method =
+prompt(
+"Méthode paiement : Airtel, Orange, Mpesa..."
+);
+
+
+
+if(!method)
+return;
+
+
+
+sendWithdraw(
+amount,
+method
+);
+
+
+
+};
+
+
+
+}
+
+
+
+
+
+
+async function sendWithdraw(
+amount,
+method
+){
+
+
+
+let user =
+auth.currentUser;
+
+
+
+let snap =
+await get(
+
+ref(
+db,
+"users/"+user.uid
+)
+
+);
+
+
+
+let data =
+snap.val();
+
+
+
+if(
+Number(data.balance)
+<
+Number(amount)
+
+){
+
+
+notify(
+"Solde insuffisant."
+);
+
+return;
+
+}
+
+
+
+
+
+
+await push(
+
+ref(
+db,
+"withdrawals"
+),
+
+{
+
+
+userId:user.uid,
+
+
+userName:data.name,
+
+
+amount:Number(amount),
+
+
+method:method,
+
+
+status:"pending",
+
+
+date:Date.now()
+
+
+}
+
+);
+
+
+
+
+
+notify(
+"Demande de retrait envoyée."
+);
+
+
+
+}
+
+
+
+
 
 
 // ============================================================
 // COPIER CODE PARRAIN
 // ============================================================
 
+
 const copyReferral =
-    $("copyReferral");
+$("copyReferral");
+
+
 
 if(copyReferral){
 
-    copyReferral.onclick =
-        async () => {
-
-            const code =
-                $("referralCode")
-                ?.textContent
-                ?.trim();
 
 
-            if(!code)
-                return;
+copyReferral.onclick =
+()=>{
 
 
-            try{
-
-                await navigator
-                    .clipboard
-                    .writeText(code);
-
-                copyReferral.textContent =
-                    "Code copié ✓";
+let code =
+$("referralCode").innerText;
 
 
-                setTimeout(
-                    () => {
 
-                        copyReferral.textContent =
-                            "Copier mon code";
+navigator.clipboard.writeText(code);
 
-                    },
-                    1500
-                );
 
-            }catch{
 
-                notify(code);
+notify(
+"Code copié."
+);
 
-            }
 
-        };
+
+};
+
+
 
 }
 
 
+
+
+
+// FIN PARTIE 2/3
 // ============================================================
-// BOUTIQUE
+// DAVBOT BUSINESS
+// APP.JS PARTIE 3/3
+// ADMIN PANEL
 // ============================================================
 
-async function loadShop(user){
-
-    const container =
-        $("products");
 
 
-    if(!container)
-        return;
+// ============================================================
+// VERIFICATION ADMIN
+// ============================================================
 
 
-    onValue(
-        ref(db,"products"),
-        snapshot => {
+function checkAdmin(){
 
-            container.innerHTML = "";
-
-
-            if(!snapshot.exists()){
-
-                container.innerHTML =
-                    `
-                    <p>
-                        Aucun produit disponible.
-                    </p>
-                    `;
-
-                return;
-
-            }
+const user =
+auth.currentUser;
 
 
-            const products =
-                snapshot.val();
+if(!user)
+return false;
 
 
-            for(
-                const productId in products
-            ){
 
-                const product =
-                    products[productId];
+return user.email === ADMIN_EMAIL;
 
-
-                const article =
-                    document.createElement(
-                        "article"
-                    );
-
-
-                article.className =
-                    "product";
-
-
-                article.innerHTML = `
-
-                    <img
-                        src="${
-                            product.image ||
-                            "https://via.placeholder.com/500x300"
-                        }"
-                        alt=""
-                    >
-
-                    <div class="content">
-
-                        <h3>
-                            ${escapeHTML(
-                                product.name
-                            )}
-                        </h3>
-
-                        <p class="description">
-                            ${escapeHTML(
-                                product.description || ""
-                            )}
-                        </p>
-
-                        <div class="price">
-
-                            ${money(
-                                product.price
-                            )} FC
-
-                        </div>
-
-                        <button class="buy">
-
-                            Commander
-
-                        </button>
-
-                    </div>
-
-                `;
-
-
-                article
-                    .querySelector(".buy")
-                    .onclick =
-                    () => {
-
-                        createOrder(
-                            user.uid,
-                            productId,
-                            product
-                        );
-
-                    };
-
-
-                container.appendChild(
-                    article
-                );
-
-            }
-
-        }
-    );
 
 }
 
 
-// ============================================================
-// CRÉATION COMMANDE
-// ============================================================
 
-async function createOrder(
-    uid,
-    productId,
-    product
-){
 
-    try{
-
-        const userSnapshot =
-            await get(
-                ref(
-                    db,
-                    `users/${uid}`
-                )
-            );
-
-
-        if(!userSnapshot.exists()){
-
-            notify(
-                "Utilisateur introuvable."
-            );
-
-            return;
-
-        }
-
-
-        const user =
-            userSnapshot.val();
-
-
-        const price =
-            Number(
-                product.price || 0
-            );
-
-
-        const balance =
-            Number(
-                user.balance || 0
-            );
-
-
-        // On vérifie le solde avant
-        // d'envoyer la commande.
-
-        if(balance < price){
-
-            notify(
-                "Solde insuffisant."
-            );
-
-            return;
-
-        }
-
-
-        // IMPORTANT :
-        // Le solde n'est PAS diminué ici.
-        //
-        // L'admin doit d'abord accepter
-        // la commande.
-
-
-        const orderRef =
-            push(
-                ref(db,"orders")
-            );
-
-
-        await set(
-            orderRef,
-            {
-
-                userId:
-                    uid,
-
-                userName:
-                    user.name || "",
-
-                productId:
-                    productId,
-
-                productName:
-                    product.name,
-
-                price:
-                    price,
-
-                status:
-                    "pending",
-
-                createdAt:
-                    Date.now()
-
-            }
-        );
-
-
-        notify(
-            "Commande envoyée à l'administration."
-        );
-
-
-    }catch(error){
-
-        console.error(error);
-
-        notify(
-            "Erreur lors de l'envoi de la commande."
-        );
-
-    }
-
-}
-
-
-// ============================================================
-// FORMULAIRE DE RECHARGE
-// ============================================================
-
-const rechargeBtn =
-    $("rechargeBtn");
-
-
-if(rechargeBtn){
-
-    rechargeBtn.onclick =
-        () => {
-
-            openRechargeModal();
-
-        };
-
-}
-
-
-// ============================================================
-// MODAL RECHARGE
-// ============================================================
-
-function openRechargeModal(){
-
-    closeModal();
-
-
-    const modal =
-        document.createElement("div");
-
-
-    modal.id =
-        "davbotRechargeModal";
-
-
-    modal.innerHTML = `
-
-        <div class="davbot-modal-overlay">
-
-            <div class="davbot-modal">
-
-                <div class="davbot-modal-header">
-
-                    <h2>
-                        💰 Recharger mon compte
-                    </h2>
-
-                    <button
-                        id="closeRecharge"
-                        class="davbot-close"
-                    >
-                        ×
-                    </button>
-
-                </div>
-
-
-                <div class="davbot-number">
-
-                    <small>
-                        Numéro de recharge
-                    </small>
-
-                    <strong>
-                        ${escapeHTML(
-                            RECHARGE_NUMBER
-                        )}
-                    </strong>
-
-                </div>
-
-
-                <label>
-                    Montant
-                </label>
-
-                <input
-                    id="rechargeAmount"
-                    type="number"
-                    min="1"
-                    placeholder="Ex: 5000"
-                >
-
-
-                <label>
-                    ID de transaction
-                </label>
-
-                <input
-                    id="rechargeTransaction"
-                    type="text"
-                    placeholder="Ex: TXN123456"
-                >
-
-
-                <p class="davbot-help">
-
-                    Effectuez d'abord le paiement
-                    sur le numéro indiqué puis
-                    saisissez l'ID de transaction.
-
-                </p>
-
-
-                <button
-                    id="sendRecharge"
-                    class="davbot-submit"
-                >
-
-                    Envoyer la demande
-
-                </button>
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    document.body.appendChild(
-        modal
-    );
-
-
-    addModalStyle();
-
-
-    $("closeRecharge")
-        .onclick =
-        closeModal;
-
-
-    modal
-        .querySelector(
-            ".davbot-modal-overlay"
-        )
-        .onclick =
-        event => {
-
-            if(
-                event.target.classList
-                    .contains(
-                        "davbot-modal-overlay"
-                    )
-            ){
-
-                closeModal();
-
-            }
-
-        };
-
-
-    $("sendRecharge")
-        .onclick =
-        sendRechargeRequest;
-
-}
-
-
-// ============================================================
-// ENVOYER RECHARGE
-// ============================================================
-
-async function sendRechargeRequest(){
-
-    const amountInput =
-        $("rechargeAmount");
-
-    const transactionInput =
-        $("rechargeTransaction");
-
-
-    const amount =
-        Number(
-            amountInput?.value
-        );
-
-
-    const transactionId =
-        transactionInput
-            ?.value
-            ?.trim();
-
-
-    if(
-        !amount ||
-        amount <= 0
-    ){
-
-        notify(
-            "Entrez un montant valide."
-        );
-
-        return;
-
-    }
-
-
-    if(!transactionId){
-
-        notify(
-            "Entrez l'ID de transaction."
-        );
-
-        return;
-
-    }
-
-
-    const user =
-        auth.currentUser;
-
-
-    if(!user){
-
-        notify(
-            "Vous devez être connecté."
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        const requestRef =
-            push(
-                ref(db,"recharges")
-            );
-
-
-        await set(
-            requestRef,
-            {
-
-                userId:
-                    user.uid,
-
-                email:
-                    user.email || "",
-
-                amount:
-                    amount,
-
-                rechargeNumber:
-                    RECHARGE_NUMBER,
-
-                transactionId:
-                    transactionId,
-
-                status:
-                    "pending",
-
-                createdAt:
-                    Date.now()
-
-            }
-        );
-
-
-        closeModal();
-
-
-        notify(
-            "Votre demande de recharge a été envoyée à l'administration."
-        );
-
-
-    }catch(error){
-
-        console.error(error);
-
-        notify(
-            "Impossible d'envoyer la demande."
-        );
-
-    }
-
-}
-
-
-// ============================================================
-// MODAL
-// ============================================================
-
-function closeModal(){
-
-    const modal =
-        $("davbotRechargeModal");
-
-
-    if(modal){
-
-        modal.remove();
-
-    }
-
-}
-
-
-// ============================================================
-// STYLE MODAL
-// ============================================================
-
-function addModalStyle(){
-
-    if(
-        $("davbotModalStyle")
-    )
-        return;
-
-
-    const style =
-        document.createElement("style");
-
-
-    style.id =
-        "davbotModalStyle";
-
-
-    style.textContent = `
-
-        .davbot-modal-overlay{
-
-            position:fixed;
-            inset:0;
-            z-index:99999;
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            padding:20px;
-
-            background:
-                rgba(0,0,0,.72);
-
-            backdrop-filter:
-                blur(8px);
-
-        }
-
-
-        .davbot-modal{
-
-            width:100%;
-            max-width:460px;
-
-            background:#061329;
-
-            border:1px solid #1c4b7e;
-
-            border-radius:24px;
-
-            padding:24px;
-
-            color:white;
-
-            box-shadow:
-                0 30px 100px
-                rgba(0,0,0,.55);
-
-        }
-
-
-        .davbot-modal-header{
-
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-
-            margin-bottom:20px;
-
-        }
-
-
-        .davbot-modal-header h2{
-
-            font-size:20px;
-
-        }
-
-
-        .davbot-close{
-
-            width:38px;
-            height:38px;
-
-            border:0;
-
-            border-radius:10px;
-
-            background:#132743;
-
-            color:white;
-
-            font-size:25px;
-
-            cursor:pointer;
-
-        }
-
-
-        .davbot-number{
-
-            padding:16px;
-
-            border-radius:15px;
-
-            background:#071b37;
-
-            border:1px solid #194574;
-
-            margin-bottom:18px;
-
-        }
-
-
-        .davbot-number small{
-
-            display:block;
-
-            color:#8fa6c7;
-
-            margin-bottom:6px;
-
-        }
-
-
-        .davbot-number strong{
-
-            color:#42a1ff;
-
-            font-size:20px;
-
-        }
-
-
-        .davbot-modal label{
-
-            display:block;
-
-            margin:
-                14px 0 7px;
-
-            color:#a7bad5;
-
-            font-size:13px;
-
-        }
-
-
-        .davbot-modal input{
-
-            width:100%;
-
-            padding:14px;
-
-            border-radius:12px;
-
-            border:
-                1px solid #1a3b63;
-
-            background:#030d1e;
-
-            color:white;
-
-            outline:none;
-
-        }
-
-
-        .davbot-modal input:focus{
-
-            border-color:#087cff;
-
-        }
-
-
-        .davbot-help{
-
-            color:#8fa6c7;
-
-            font-size:12px;
-
-            line-height:1.6;
-
-            margin-top:15px;
-
-        }
-
-
-        .davbot-submit{
-
-            width:100%;
-
-            border:0;
-
-            padding:15px;
-
-            margin-top:18px;
-
-            border-radius:13px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #087cff,
-                    #0054ca
-                );
-
-            color:white;
-
-            font-weight:800;
-
-            cursor:pointer;
-
-        }
-
-    `;
-
-
-    document.head.appendChild(
-        style
-    );
-
-}
-
-
-// ============================================================
-// ADMIN
-// ============================================================
-
-async function checkAdmin(){
-
-    const user =
-        auth.currentUser;
-
-
-    if(!user)
-        return false;
-
-
-    return (
-        user.email ===
-        ADMIN_EMAIL
-    );
-
-}
 
 
 // ============================================================
 // CHARGEMENT ADMIN
 // ============================================================
 
-function loadAdmin(){
 
-    loadAdminUsers();
+if(
+location.pathname.includes("admin")
+){
 
-    loadAdminOrders();
 
-    loadAdminRecharges();
+onAuthStateChanged(
+auth,
+(user)=>{
 
-    loadAdminWithdrawals();
+
+if(!user){
+
+location.href="index.html";
+
+return;
 
 }
 
 
+
+loadAdmin();
+
+
+}
+
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+async function loadAdmin(){
+
+
+
+if(!checkAdmin()){
+
+
+notify(
+"Accès administrateur refusé."
+);
+
+
+location.href="dash.html";
+
+return;
+
+}
+
+
+
+// USERS
+
+loadAdminUsers();
+
+
+// COMMANDES
+
+loadAdminOrders();
+
+
+// RECHARGES
+
+loadAdminRecharges();
+
+
+// RETRAITS
+
+loadAdminWithdrawals();
+
+
+
+}
+
+
+
+
+
+
+
+
+
 // ============================================================
-// ADMIN USERS
+// USERS ADMIN
 // ============================================================
+
+
 
 function loadAdminUsers(){
 
-    onValue(
-        ref(db,"users"),
-        snapshot => {
-
-            const table =
-                $("usersTable");
 
 
-            if(!table)
-                return;
+const table =
+$("usersTable");
 
 
-            table.innerHTML = "";
+
+if(!table)
+return;
 
 
-            let total =
-                0;
+
+onValue(
+
+ref(
+db,
+"users"
+),
+
+(snapshot)=>{
 
 
-            if(!snapshot.exists()){
-
-                updateAdminCounter(
-                    "adminUsers",
-                    0
-                );
-
-                return;
-
-            }
+table.innerHTML="";
 
 
-            const users =
-                snapshot.val();
+let users =
+snapshot.val() || {};
 
 
-            for(
-                const uid in users
-            ){
 
-                total++;
+let count=0;
 
 
-                const user =
-                    users[uid];
+
+for(let id in users){
 
 
-                const row =
-                    document.createElement(
-                        "tr"
-                    );
+
+let u =
+users[id];
 
 
-                row.innerHTML = `
 
-                    <td>
-                        ${escapeHTML(
-                            user.name
-                        )}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            user.email
-                        )}
-                    </td>
-
-                    <td>
-                        ${money(
-                            user.balance
-                        )} FC
-                    </td>
-
-                    <td>
-                        ${money(
-                            user.points
-                        )}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            user.referralCode
-                        )}
-                    </td>
-
-                    <td>
-
-                        <button
-                            class="admin-reset-user"
-                        >
-                            Réinitialiser
-                        </button>
-
-                        <button
-                            class="admin-delete-user"
-                        >
-                            Supprimer
-                        </button>
-
-                    </td>
-
-                `;
+count++;
 
 
-                row
-                    .querySelector(
-                        ".admin-reset-user"
-                    )
-                    .onclick =
-                    () => {
 
-                        adminResetPassword(
-                            user.email
-                        );
-
-                    };
+table.innerHTML += `
 
 
-                row
-                    .querySelector(
-                        ".admin-delete-user"
-                    )
-                    .onclick =
-                    () => {
-
-                        adminDeleteUser(
-                            uid,
-                            user
-                        );
-
-                    };
+<tr>
 
 
-                table.appendChild(
-                    row
-                );
+<td>
 
-            }
+${u.name}
+
+</td>
 
 
-            updateAdminCounter(
-                "adminUsers",
-                total
-            );
 
-        }
-    );
+<td>
+
+${u.email}
+
+</td>
+
+
+
+<td>
+
+${money(u.balance)}
+FC
+
+</td>
+
+
+
+<td>
+
+${u.points || 0}
+
+</td>
+
+
+
+<td>
+
+${u.referralCode}
+
+</td>
+
+
+
+<td>
+
+
+<button 
+class="delete"
+onclick="deleteUser('${id}')">
+
+Supprimer
+
+</button>
+
+
+
+<button
+class="reset"
+onclick="resetUserPassword('${u.email}')">
+
+Reset MDP
+
+</button>
+
+
+</td>
+
+
+
+</tr>
+
+
+`;
+
+
 
 }
 
 
-// ============================================================
-// ADMIN COMMANDES
-// ============================================================
 
-function loadAdminOrders(){
+if($("adminUsers"))
 
-    onValue(
-        ref(db,"orders"),
-        snapshot => {
-
-            const table =
-                $("ordersTable");
+$("adminUsers").innerText=count;
 
 
-            if(!table)
-                return;
-
-
-            table.innerHTML = "";
-
-
-            let total =
-                0;
-
-
-            if(snapshot.exists()){
-
-                const orders =
-                    snapshot.val();
-
-
-                for(
-                    const id in orders
-                ){
-
-                    total++;
-
-
-                    const order =
-                        orders[id];
-
-
-                    const row =
-                        document.createElement(
-                            "tr"
-                        );
-
-
-                    row.innerHTML = `
-
-                        <td>
-                            ${escapeHTML(
-                                order.userName
-                            )}
-                        </td>
-
-                        <td>
-                            ${escapeHTML(
-                                order.productName
-                            )}
-                        </td>
-
-                        <td>
-                            ${money(
-                                order.price
-                            )} FC
-                        </td>
-
-                        <td>
-                            ${dateFormat(
-                                order.createdAt
-                            )}
-                        </td>
-
-                        <td>
-                            ${escapeHTML(
-                                order.status
-                            )}
-                        </td>
-
-                        <td>
-
-                            ${
-                                order.status ===
-                                "pending"
-
-                                ?
-
-                                `
-
-                                <button
-                                    class="admin-approve-order"
-                                >
-                                    Accepter
-                                </button>
-
-                                <button
-                                    class="admin-reject-order"
-                                >
-                                    Refuser
-                                </button>
-
-                                `
-
-                                :
-
-                                "-"
-
-                            }
-
-                        </td>
-
-                    `;
-
-
-                    const approve =
-                        row.querySelector(
-                            ".admin-approve-order"
-                        );
-
-
-                    const reject =
-                        row.querySelector(
-                            ".admin-reject-order"
-                        );
-
-
-                    if(approve){
-
-                        approve.onclick =
-                            () => {
-
-                                approveOrder(
-                                    id,
-                                    order
-                                );
-
-                            };
-
-                    }
-
-
-                    if(reject){
-
-                        reject.onclick =
-                            () => {
-
-                                rejectOrder(
-                                    id
-                                );
-
-                            };
-
-                    }
-
-
-                    table.appendChild(
-                        row
-                    );
-
-                }
-
-            }
-
-
-            updateAdminCounter(
-                "adminOrders",
-                total
-            );
-
-        }
-    );
 
 }
 
 
-// ============================================================
-// ACCEPTER COMMANDE
-// ============================================================
 
-async function approveOrder(
-    orderId,
-    order
-){
-
-    if(
-        !confirm(
-            "Accepter cette commande ?"
-        )
-    ){
-
-        return;
-
-    }
+);
 
 
-    try{
-
-        const userRef =
-            ref(
-                db,
-                `users/${order.userId}`
-            );
-
-
-        const result =
-            await runTransaction(
-                userRef,
-                current => {
-
-                    if(!current)
-                        return;
-
-
-                    const balance =
-                        Number(
-                            current.balance || 0
-                        );
-
-
-                    const price =
-                        Number(
-                            order.price || 0
-                        );
-
-
-                    // Solde insuffisant
-
-                    if(
-                        balance < price
-                    ){
-
-                        return;
-
-                    }
-
-
-                    current.balance =
-                        balance - price;
-
-
-                    current.totalOrders =
-                        Number(
-                            current.totalOrders || 0
-                        );
-
-
-                    return current;
-
-                }
-            );
-
-
-        if(!result.committed){
-
-            notify(
-                "Commande refusée : solde insuffisant ou utilisateur introuvable."
-            );
-
-            return;
-
-        }
-
-
-        // Commande acceptée
-
-        await update(
-            ref(
-                db,
-                `orders/${orderId}`
-            ),
-            {
-
-                status:
-                    "approved",
-
-                processedAt:
-                    Date.now(),
-
-                processedBy:
-                    auth.currentUser.uid
-
-            }
-        );
-
-
-        notify(
-            "Commande acceptée."
-        );
-
-
-    }catch(error){
-
-        console.error(error);
-
-        notify(
-            "Erreur lors de la validation."
-        );
-
-    }
 
 }
 
 
-// ============================================================
-// REFUSER COMMANDE
-// ============================================================
 
-async function rejectOrder(
-    orderId
-){
 
-    if(
-        !confirm(
-            "Refuser cette commande ?"
-        )
-    ){
 
-        return;
-
-    }
-
-
-    try{
-
-        await update(
-            ref(
-                db,
-                `orders/${orderId}`
-            ),
-            {
-
-                status:
-                    "rejected",
-
-                processedAt:
-                    Date.now(),
-
-                processedBy:
-                    auth.currentUser.uid
-
-            }
-        );
-
-
-        notify(
-            "Commande refusée."
-        );
-
-
-    }catch(error){
-
-        console.error(error);
-
-    }
-
-}
-
-
-// ============================================================
-// ADMIN RECHARGES
-// ============================================================
-
-function loadAdminRecharges(){
-
-    onValue(
-        ref(db,"recharges"),
-        snapshot => {
-
-            const table =
-                $("rechargesTable");
-
-
-            if(!table)
-                return;
-
-
-            table.innerHTML = "";
-
-
-            let total =
-                0;
-
-
-            if(!snapshot.exists()){
-
-                updateAdminCounter(
-                    "adminRecharges",
-                    0
-                );
-
-                return;
-
-            }
-
-
-            const requests =
-                snapshot.val();
-
-
-            for(
-                const id in requests
-            ){
-
-                total++;
-
-
-                const request =
-                    requests[id];
-
-
-                const row =
-                    document.createElement(
-                        "tr"
-                    );
-
-
-                row.innerHTML = `
-
-                    <td>
-                        ${escapeHTML(
-                            request.email || "-"
-                        )}
-                    </td>
-
-                    <td>
-                        ${money(
-                            request.amount
-                        )} FC
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            request.rechargeNumber
-                        )}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            request.transactionId
-                        )}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            request.status
-                        )}
-                    </td>
-
-                    <td>
-
-                        ${
-                            request.status ===
-                            "pending"
-
-                            ?
-
-                            `
-
-                            <button
-                                class="admin-approve-recharge"
-                            >
-                                Accepter
-                            </button>
-
-                            <button
-                                class="admin-reject-recharge"
-                            >
-                                Refuser
-                            </button>
-
-                            `
-
-                            :
-
-                            "-"
-
-                        }
-
-                    </td>
-
-                `;
-
-
-                const approve =
-                    row.querySelector(
-                        ".admin-approve-recharge"
-                    );
-
-
-                const reject =
-                    row.querySelector(
-                        ".admin-reject-recharge"
-                    );
-
-
-                if(approve){
-
-                    approve.onclick =
-                        () => {
-
-                            approveRecharge(
-                                id,
-                                request
-                            );
-
-                        };
-
-                }
-
-
-                if(reject){
-
-                    reject.onclick =
-                        () => {
-
-                            rejectRecharge(
-                                id
-                            );
-
-                        };
-
-                }
-
-
-                table.appendChild(
-                    row
-                );
-
-            }
-
-
-            updateAdminCounter(
-                "adminRecharges",
-                total
-            );
-
-        }
-    );
-
-}
-
-
-// ============================================================
-// ACCEPTER RECHARGE
-// ============================================================
-
-async function approveRecharge(
-    rechargeId,
-    request
-){
-
-    if(
-        !confirm(
-            `Ajouter ${money(request.amount)} FC au solde ?`
-        )
-    ){
-
-        return;
-
-    }
-
-
-    try{
-
-        const userRef =
-            ref(
-                db,
-                `users/${request.userId}`
-            );
-
-
-        // Transaction
-
-        const result =
-            await runTransaction(
-                userRef,
-                current => {
-
-                    if(!current)
-                        return;
-
-
-                    current.balance =
-                        Number(
-                            current.balance || 0
-                        ) +
-                        Number(
-                            request.amount || 0
-                        );
-
-
-                    current.totalRecharges =
-                        Number(
-                            current.totalRecharges || 0
-                        ) +
-                        Number(
-                            request.amount || 0
-                        );
-
-
-                    return current;
-
-                }
-            );
-
-
-        if(!result.committed){
-
-            notify(
-                "Utilisateur introuvable."
-            );
-
-            return;
-
-        }
-
-
-        // Important :
-        // On change le statut SEULEMENT
-        // après modification du solde.
-
-        await update(
-            ref(
-                db,
-                `recharges/${rechargeId}`
-            ),
-            {
-
-                status:
-                    "approved",
-
-                processedAt:
-                    Date.now(),
-
-                processedBy:
-                    auth.currentUser.uid
-
-            }
-        );
-
-
-        notify(
-            "Recharge acceptée. Solde augmenté."
-        );
-
-
-    }catch(error){
-
-        console.error(error);
-
-        notify(
-            "Erreur lors de la validation."
-        );
-
-    }
-
-}
-
-
-// ============================================================
-// REFUSER RECHARGE
-// ============================================================
-
-async function rejectRecharge(
-    rechargeId
-){
-
-    if(
-        !confirm(
-            "Refuser cette recharge ?"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    try{
-
-        // Aucun changement du solde.
-
-        await update(
-            ref(
-                db,
-                `recharges/${rechargeId}`
-            ),
-            {
-
-                status:
-                    "rejected",
-
-                processedAt:
-                    Date.now(),
-
-                processedBy:
-                    auth.currentUser.uid
-
-            }
-        );
-
-
-        notify(
-            "Recharge refusée. Aucun solde ajouté."
-        );
-
-
-    }catch(error){
-
-        console.error(error);
-
-    }
-
-}
-
-
-// ============================================================
-// ADMIN RETRAITS
-// ============================================================
-
-function loadAdminWithdrawals(){
-
-    onValue(
-        ref(db,"withdrawals"),
-        snapshot => {
-
-            const table =
-                $("withdrawalsTable");
-
-
-            if(!table)
-                return;
-
-
-            table.innerHTML = "";
-
-
-            let total =
-                0;
-
-
-            if(!snapshot.exists()){
-
-                updateAdminCounter(
-                    "adminWithdrawals",
-                    0
-                );
-
-                return;
-
-            }
-
-
-            const requests =
-                snapshot.val();
-
-
-            for(
-                const id in requests
-            ){
-
-                total++;
-
-
-                const request =
-                    requests[id];
-
-
-                const row =
-                    document.createElement(
-                        "tr"
-                    );
-
-
-                row.innerHTML = `
-
-                    <td>
-                        ${escapeHTML(
-                            request.userId
-                        )}
-                    </td>
-
-                    <td>
-                        ${money(
-                            request.amount
-                        )} FC
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            request.method
-                        )}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(
-                            request.status
-                        )}
-                    </td>
-
-                    <td>
-
-                        ${
-                            request.status ===
-                            "pending"
-
-                            ?
-
-                            `
-
-                            <button
-                                class="admin-approve-withdraw"
-                            >
-                                Accepter
-                            </button>
-
-                            <button
-                                class="admin-reject-withdraw"
-                            >
-                                Refuser
-                            </button>
-
-                            `
-
-                            :
-
-                            "-"
-
-                        }
-
-                    </td>
-
-                `;
-
-
-                const approve =
-                    row.querySelector(
-                        ".admin-approve-withdraw"
-                    );
-
-
-                const reject =
-                    row.querySelector(
-                        ".admin-reject-withdraw"
-                    );
-
-
-                if(approve){
-
-                    approve.onclick =
-                        () => {
-
-                            approveWithdrawal(
-                                id,
-                                request
-                            );
-
-                        };
-
-                }
-
-
-                if(reject){
-
-                    reject.onclick =
-                        () => {
-
-                            rejectWithdrawal(
-                                id
-                            );
-
-                        };
-
-                }
-
-
-                table.appendChild(
-                    row
-                );
-
-            }
-
-
-            updateAdminCounter(
-                "adminWithdrawals",
-                total
-            );
-
-        }
-    );
-
-}
-
-
-// ============================================================
-// ACCEPTER RETRAIT
-// ============================================================
-
-async function approveWithdrawal(
-    withdrawalId,
-    request
-){
-
-    if(
-        !confirm(
-            "Accepter ce retrait ?"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    try{
-
-        const userRef =
-            ref(
-                db,
-                `users/${request.userId}`
-            );
-
-
-        const result =
-            await runTransaction(
-                userRef,
-                current => {
-
-                    if(!current)
-                        return;
-
-
-                    const balance =
-                        Number(
-                            current.balance || 0
-                        );
-
-
-                    const amount =
-                        Number(
-                            request.amount || 0
-                        );
-
-
-                    if(
-                        balance < amount
-                    ){
-
-                        return;
-
-                    }
-
-
-                    current.balance =
-                        balance - amount;
-
-
-                    current.totalWithdrawals =
-                        Number(
-                            current.totalWithdrawals || 0
-                        ) + amount;
-
-
-                    return current;
-
-                }
-            );
-
-
-        if(!result.committed){
-
-            notify(
-                "Retrait impossible : solde insuffisant."
-            );
-
-            return;
-
-        }
-
-
-        await update(
-            ref(
-                db,
-                `withdrawals/${withdrawalId}`
-            ),
-            {
-
-                status:
-                    "approved",
-
-                processedAt:
-                    Date.now(),
-
-                processedBy:
-                    auth.currentUser.uid
-
-            }
-        );
-
-
-        notify(
-            "Retrait accepté."
-        );
-
-
-    }catch(error){
-
-        console.error(error);
-
-        notify(
-            "Erreur lors du retrait."
-        );
-
-    }
-
-}
-
-
-// ============================================================
-// REFUSER RETRAIT
-// ============================================================
-
-async function rejectWithdrawal(
-    withdrawalId
-){
-
-    if(
-        !confirm(
-            "Refuser ce retrait ?"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    await update(
-        ref(
-            db,
-            `withdrawals/${withdrawalId}`
-        ),
-        {
-
-            status:
-                "rejected",
-
-            processedAt:
-                Date.now(),
-
-            processedBy:
-                auth.currentUser.uid
-
-        }
-    );
-
-
-    notify(
-        "Retrait refusé."
-    );
-
-}
 
 
 // ============================================================
 // SUPPRIMER UTILISATEUR
 // ============================================================
 
-async function adminDeleteUser(
-    uid,
-    user
-){
 
-    if(
-        !confirm(
-            `Supprimer ${user.name || user.email} ?`
-        )
-    ){
-
-        return;
-
-    }
+window.deleteUser =
+async function(uid){
 
 
-    if(
-        uid ===
-        auth.currentUser.uid
-    ){
 
-        notify(
-            "Vous ne pouvez pas supprimer votre propre compte admin."
-        );
+if(!confirm(
+"Supprimer cet utilisateur ?"
+))
 
-        return;
-
-    }
+return;
 
 
-    try{
 
-        // Suppression du profil
-        // dans Realtime Database.
+await remove(
 
-        await remove(
-            ref(
-                db,
-                `users/${uid}`
-            )
-        );
+ref(
+db,
+"users/"+uid
+)
+
+);
 
 
-        // Suppression des données
-        // de parrainage.
 
-        await remove(
-            ref(
-                db,
-                `referrals/${uid}`
-            )
-        );
+notify(
+"Utilisateur supprimé."
+);
 
 
-        // IMPORTANT :
-        //
-        // Depuis le navigateur, un admin Firebase
-        // classique ne peut pas supprimer le compte
-        // Authentication d'un autre utilisateur avec
-        // deleteUser().
-        //
-        // Il faut Firebase Admin SDK / Cloud Functions
-        // pour supprimer réellement le compte Auth.
-        //
-        // Ici, le profil Database est supprimé.
-
-
-        notify(
-            "Profil utilisateur supprimé de la base."
-        );
-
-
-    }catch(error){
-
-        console.error(error);
-
-        notify(
-            "Impossible de supprimer l'utilisateur."
-        );
-
-    }
 
 }
 
 
+
+
+
+
+
+
+
 // ============================================================
-// RÉINITIALISER MOT DE PASSE UTILISATEUR
+// RESET MOT DE PASSE
 // ============================================================
 
-async function adminResetPassword(
-    email
-){
 
-    if(!email){
-
-        notify(
-            "Adresse email introuvable."
-        );
-
-        return;
-
-    }
+window.resetUserPassword =
+async function(email){
 
 
-    if(
-        !confirm(
-            `Envoyer un lien de réinitialisation à ${email} ?`
-        )
-    ){
 
-        return;
-
-    }
+try{
 
 
-    try{
-
-        await sendPasswordResetEmail(
-            auth,
-            email
-        );
+await sendPasswordResetEmail(
+auth,
+email
+);
 
 
-        notify(
-            "Le lien de réinitialisation a été envoyé à l'adresse email de l'utilisateur."
-        );
+
+notify(
+"Email de réinitialisation envoyé."
+);
 
 
-    }catch(error){
 
-        console.error(error);
+}
 
-        notify(
-            firebaseError(error)
-        );
+catch(e){
 
-    }
+
+notify(
+e.message
+);
+
 
 }
 
 
-// ============================================================
-// COMPTEUR ADMIN
-// ============================================================
-
-function updateAdminCounter(
-    id,
-    value
-){
-
-    if($(id)){
-
-        $(id).textContent =
-            money(value);
-
-    }
 
 }
 
 
+
+
+
+
+
+
 // ============================================================
-// CRÉER UNE DEMANDE DE RETRAIT
+// COMMANDES ADMIN
 // ============================================================
 
-const withdrawBtn =
-    $("withdrawBtn");
+
+function loadAdminOrders(){
 
 
-if(withdrawBtn){
 
-    withdrawBtn.onclick =
-        async () => {
-
-            const user =
-                auth.currentUser;
+const table =
+$("ordersTable");
 
 
-            if(!user){
 
-                notify(
-                    "Vous devez être connecté."
-                );
-
-                return;
-
-            }
+if(!table)
+return;
 
 
-            const amount =
-                Number(
-                    prompt(
-                        "Montant du retrait en FC :"
-                    )
-                );
+
+onValue(
+
+ref(
+db,
+"orders"
+),
+
+(snapshot)=>{
 
 
-            if(
-                !amount ||
-                amount <= 0
-            ){
-
-                return;
-
-            }
+table.innerHTML="";
 
 
-            const method =
-                prompt(
-                    "Méthode de paiement : Airtel Money, Orange Money, M-Pesa..."
-                );
+
+let orders =
+snapshot.val() || {};
 
 
-            if(!method)
-                return;
+
+let count=0;
 
 
-            const userSnapshot =
-                await get(
-                    ref(
-                        db,
-                        `users/${user.uid}`
-                    )
-                );
+
+for(let id in orders){
 
 
-            if(!userSnapshot.exists())
-                return;
+
+let o =
+orders[id];
+
+count++;
 
 
-            const data =
-                userSnapshot.val();
+
+table.innerHTML += `
 
 
-            if(
-                Number(
-                    data.balance || 0
-                ) < amount
-            ){
-
-                notify(
-                    "Solde insuffisant."
-                );
-
-                return;
-
-            }
+<tr>
 
 
-            await push(
-                ref(
-                    db,
-                    "withdrawals"
-                ),
-                {
+<td>
 
-                    userId:
-                        user.uid,
+${o.userName}
 
-                    email:
-                        user.email,
-
-                    amount:
-                        amount,
-
-                    method:
-                        method,
-
-                    status:
-                        "pending",
-
-                    createdAt:
-                        Date.now()
-
-                }
-            );
+</td>
 
 
-            notify(
-                "Demande de retrait envoyée à l'administration."
-            );
 
-        };
+<td>
+
+${o.product}
+
+</td>
+
+
+
+<td>
+
+${money(o.price)} FC
+
+</td>
+
+
+
+<td>
+
+${new Date(o.date)
+.toLocaleDateString()}
+
+</td>
+
+
+
+<td>
+
+${o.status}
+
+</td>
+
+
+
+<td>
+
+
+
+<button 
+class="approve"
+
+onclick="acceptOrder('${id}')">
+
+Accepter
+
+</button>
+
+
+
+<button
+
+class="reject"
+
+onclick="rejectOrder('${id}')">
+
+Refuser
+
+</button>
+
+
+
+</td>
+
+
+</tr>
+
+
+`;
+
+
 
 }
 
 
-// ============================================================
-// ERREURS FIREBASE
-// ============================================================
 
-function firebaseError(error){
+if($("adminOrders"))
 
-    const code =
-        error?.code || "";
+$("adminOrders").innerText=count;
 
 
-    const messages = {
-
-        "auth/email-already-in-use":
-            "Cette adresse email est déjà utilisée.",
-
-        "auth/invalid-email":
-            "Adresse email invalide.",
-
-        "auth/weak-password":
-            "Mot de passe trop faible.",
-
-        "auth/invalid-credential":
-            "Email ou mot de passe incorrect.",
-
-        "auth/user-not-found":
-            "Utilisateur introuvable.",
-
-        "auth/wrong-password":
-            "Mot de passe incorrect.",
-
-        "auth/network-request-failed":
-            "Problème de connexion Internet.",
-
-        "auth/too-many-requests":
-            "Trop de tentatives. Réessayez plus tard.",
-
-        "auth/user-disabled":
-            "Ce compte est désactivé."
-
-    };
-
-
-    return (
-        messages[code] ||
-        error?.message ||
-        "Une erreur est survenue."
-    );
 
 }
 
 
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+window.acceptOrder =
+async function(id){
+
+
+
+const snap =
+await get(
+
+ref(
+db,
+"orders/"+id
+)
+
+);
+
+
+
+let order =
+snap.val();
+
+
+
+if(order.status !== "pending")
+return;
+
+
+
+await update(
+
+ref(
+db,
+"orders/"+id
+),
+
+{
+
+status:"accepted"
+
+}
+
+);
+
+
+
+const userRef =
+ref(
+db,
+"users/"+order.userId
+);
+
+
+
+await runTransaction(
+
+userRef,
+
+(user)=>{
+
+
+if(user){
+
+
+user.balance =
+Number(user.balance)
+-
+Number(order.price);
+
+
+
+user.totalOrders =
+Number(user.totalOrders || 0)
++
+1;
+
+
+
+}
+
+
+
+return user;
+
+
+}
+
+);
+
+
+
+
+notify(
+"Commande validée."
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+window.rejectOrder =
+async function(id){
+
+
+
+await update(
+
+ref(
+db,
+"orders/"+id
+),
+
+{
+
+status:"rejected"
+
+}
+
+);
+
+
+
+notify(
+"Commande refusée."
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
 // ============================================================
-// FIN APP.JS
+// RECHARGES ADMIN
 // ============================================================
+
+
+function loadAdminRecharges(){
+
+
+
+const table =
+$("rechargesTable");
+
+
+
+if(!table)
+return;
+
+
+
+onValue(
+
+ref(
+db,
+"recharges"
+),
+
+(snapshot)=>{
+
+
+table.innerHTML="";
+
+
+
+let data =
+snapshot.val() || {};
+
+let count=0;
+
+
+
+for(let id in data){
+
+
+
+let r =
+data[id];
+
+count++;
+
+
+
+table.innerHTML += `
+
+
+<tr>
+
+
+<td>
+${r.userName}
+</td>
+
+
+
+<td>
+${money(r.amount)} FC
+</td>
+
+
+
+<td>
+${r.transactionId}
+</td>
+
+
+
+<td>
+${r.status}
+</td>
+
+
+
+<td>
+
+
+<button
+class="approve"
+
+onclick="acceptRecharge('${id}')">
+
+Valider
+
+</button>
+
+
+
+<button
+class="reject"
+
+onclick="rejectRecharge('${id}')">
+
+Refuser
+
+</button>
+
+
+
+</td>
+
+
+</tr>
+
+
+`;
+
+
+
+}
+
+
+
+if($("adminRecharges"))
+
+$("adminRecharges").innerText=count;
+
+
+
+}
+
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+window.acceptRecharge =
+async function(id){
+
+
+
+const snap =
+await get(
+
+ref(
+db,
+"recharges/"+id
+)
+
+);
+
+
+
+let r =
+snap.val();
+
+
+
+if(r.status !== "pending")
+return;
+
+
+
+
+
+await update(
+
+ref(
+db,
+"recharges/"+id
+),
+
+{
+
+status:"accepted"
+
+}
+
+);
+
+
+
+
+
+
+await runTransaction(
+
+ref(
+db,
+"users/"+r.userId+"/balance"
+),
+
+(balance)=>{
+
+
+return Number(balance || 0)
++
+Number(r.amount);
+
+
+
+}
+
+);
+
+
+
+
+
+
+await update(
+
+ref(
+db,
+"users/"+r.userId
+),
+
+{
+
+totalRecharge:
+Date.now()
+
+}
+
+);
+
+
+
+
+
+notify(
+"Recharge acceptée."
+);
+
+
+
+}
+
+
+
+
+
+
+
+window.rejectRecharge =
+async function(id){
+
+
+
+await update(
+
+ref(
+db,
+"recharges/"+id
+),
+
+{
+
+status:"rejected"
+
+}
+
+);
+
+
+
+notify(
+"Recharge refusée."
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ============================================================
+// RETRAITS ADMIN
+// ============================================================
+
+
+function loadAdminWithdrawals(){
+
+
+
+const table =
+$("withdrawalsTable");
+
+
+
+if(!table)
+return;
+
+
+
+onValue(
+
+ref(
+db,
+"withdrawals"
+),
+
+(snapshot)=>{
+
+
+table.innerHTML="";
+
+
+
+let data =
+snapshot.val() || {};
+
+
+
+let count=0;
+
+
+
+for(let id in data){
+
+
+
+let w =
+data[id];
+
+count++;
+
+
+
+table.innerHTML += `
+
+
+<tr>
+
+
+<td>
+
+${w.userName}
+
+</td>
+
+
+<td>
+
+${money(w.amount)} FC
+
+</td>
+
+
+<td>
+
+${w.method}
+
+</td>
+
+
+<td>
+
+${w.status}
+
+</td>
+
+
+
+<td>
+
+
+<button
+class="approve"
+
+onclick="acceptWithdraw('${id}')">
+
+Valider
+
+</button>
+
+
+
+<button
+class="reject"
+
+onclick="rejectWithdraw('${id}')">
+
+Refuser
+
+</button>
+
+
+</td>
+
+
+</tr>
+
+
+`;
+
+
+
+}
+
+
+
+if($("adminWithdrawals"))
+
+$("adminWithdrawals").innerText=count;
+
+
+
+}
+
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+window.acceptWithdraw =
+async function(id){
+
+
+
+const snap =
+await get(
+
+ref(
+db,
+"withdrawals/"+id
+)
+
+);
+
+
+
+let w =
+snap.val();
+
+
+
+
+await update(
+
+ref(
+db,
+"withdrawals/"+id
+),
+
+{
+
+status:"accepted"
+
+}
+
+);
+
+
+
+
+
+await runTransaction(
+
+ref(
+db,
+"users/"+w.userId+"/balance"
+),
+
+(balance)=>{
+
+
+return Number(balance || 0)
+-
+Number(w.amount);
+
+
+
+}
+
+);
+
+
+
+notify(
+"Retrait validé."
+);
+
+
+
+}
+
+
+
+
+
+
+
+window.rejectWithdraw =
+async function(id){
+
+
+
+await update(
+
+ref(
+db,
+"withdrawals/"+id
+),
+
+{
+
+status:"rejected"
+
+}
+
+);
+
+
+
+notify(
+"Retrait refusé."
+);
+
+
+
+}
+
+
+
+
+// =================================

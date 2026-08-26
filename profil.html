@@ -16,7 +16,7 @@
 <style>
 
 /* =========================================================
-   VARIABLES
+   JASON BUSINESS — PROFIL
 ========================================================= */
 
 :root{
@@ -34,14 +34,12 @@
 
     --orange:#ff9800;
 
+    --gold:#ffd700;
+
     --red:#ff4757;
 
 }
 
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     box-sizing:border-box;
@@ -76,10 +74,6 @@ body{
 
 }
 
-
-/* =========================================================
-   CONTAINER
-========================================================= */
 
 .container{
 
@@ -429,6 +423,8 @@ body{
 
     align-items:center;
 
+    gap:15px;
+
 }
 
 
@@ -481,6 +477,9 @@ body{
 
     border-radius:20px;
 
+    transition:
+        width .4s ease;
+
 }
 
 
@@ -496,12 +495,73 @@ body{
 
 
 /* =========================================================
-   CONVERSION POINTS
+   POINTS INFO
+========================================================= */
+
+.points-rules{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:10px;
+
+    margin-top:15px;
+
+}
+
+
+.points-rule{
+
+    background:
+        rgba(255,152,0,.07);
+
+    border:
+        1px solid
+        rgba(255,152,0,.15);
+
+    border-radius:13px;
+
+    padding:12px;
+
+    text-align:center;
+
+}
+
+
+.points-rule strong{
+
+    display:block;
+
+    color:var(--orange);
+
+    font-size:17px;
+
+}
+
+
+.points-rule span{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:10px;
+
+    opacity:.6;
+
+}
+
+
+/* =========================================================
+   CONVERSION
 ========================================================= */
 
 .convert-box{
 
-    margin-top:12px;
+    margin-top:15px;
 
     padding:15px;
 
@@ -523,7 +583,14 @@ body{
 
     opacity:.65;
 
-    line-height:1.5;
+    line-height:1.6;
+
+}
+
+
+.convert-info b{
+
+    color:var(--gold);
 
 }
 
@@ -534,13 +601,18 @@ body{
 
     margin-top:12px;
 
-    padding:12px;
+    padding:13px;
 
     border:none;
 
     border-radius:11px;
 
-    background:var(--orange);
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #ffc107
+        );
 
     color:#171000;
 
@@ -556,6 +628,37 @@ body{
     opacity:.4;
 
     cursor:not-allowed;
+
+}
+
+
+/* =========================================================
+   CONVERSION STATUS
+========================================================= */
+
+.convert-status{
+
+    text-align:center;
+
+    min-height:18px;
+
+    margin-top:9px;
+
+    font-size:11px;
+
+}
+
+
+.success{
+
+    color:var(--green);
+
+}
+
+
+.error{
+
+    color:var(--red);
 
 }
 
@@ -680,6 +783,8 @@ body{
 
     opacity:.4;
 
+    font-size:22px;
+
 }
 
 
@@ -796,7 +901,7 @@ body{
 
 
 /* =========================================================
-   MESSAGES
+   MESSAGE
 ========================================================= */
 
 .message{
@@ -956,7 +1061,7 @@ body{
 }
 
 
-#messageInput{
+#jbMessageInput{
 
     width:100%;
 
@@ -984,7 +1089,7 @@ body{
 }
 
 
-#messageInput:focus{
+#jbMessageInput:focus{
 
     border-color:var(--blue);
 
@@ -1173,6 +1278,17 @@ body{
 
 }
 
+
+@media(max-width:330px){
+
+    .points-rules{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
 </style>
 
 </head>
@@ -1190,15 +1306,19 @@ body{
 
 <header class="header">
 
+
     <div
         class="avatar"
-        id="avatar"
+        id="jbAvatar"
     >
         J
     </div>
 
 
-    <div class="name">
+    <div
+        class="name"
+        id="jbName"
+    >
 
         Mon compte
 
@@ -1207,8 +1327,9 @@ body{
 
     <div
         class="phone"
-        id="phone"
+        id="jbPhone"
     >
+
         Chargement...
 
     </div>
@@ -1216,9 +1337,11 @@ body{
 
     <div
         class="invite"
-        id="inviteCode"
+        id="jbInviteCode"
     >
+
         ID : STAR-0000
+
     </div>
 
 </header>
@@ -1234,6 +1357,7 @@ body{
 
 <div class="balance-card">
 
+
     <div class="balance-title">
 
         Solde disponible
@@ -1243,8 +1367,9 @@ body{
 
     <div
         class="total"
-        id="totalBalance"
+        id="jbTotalBalance"
     >
+
         0
 
     </div>
@@ -1304,7 +1429,7 @@ body{
 
         <div
             class="stat-value"
-            id="mainBalance"
+            id="jbMainBalance"
         >
 
             0 FC
@@ -1333,7 +1458,7 @@ body{
 
         <div
             class="stat-value"
-            id="gainBalance"
+            id="jbGainBalance"
         >
 
             0 FC
@@ -1362,7 +1487,7 @@ body{
 
         <div
             class="stat-value"
-            id="commissionBalance"
+            id="jbCommissionBalance"
         >
 
             0 FC
@@ -1404,7 +1529,7 @@ body{
 
             <div class="loyalty-info">
 
-                Accumulez des points grâce à vos activités.
+                Gagnez des points grâce à votre réseau.
 
             </div>
 
@@ -1413,13 +1538,12 @@ body{
 
         <div
             class="points"
-            id="loyaltyPoints"
+            id="jbLoyaltyPoints"
         >
 
             0
 
         </div>
-
 
     </div>
 
@@ -1429,7 +1553,7 @@ body{
 
         <div
             class="progress-bar"
-            id="loyaltyProgress"
+            id="jbLoyaltyProgress"
         >
         </div>
 
@@ -1439,7 +1563,7 @@ body{
 
     <div class="loyalty-info">
 
-        <span id="pointsText">
+        <span id="jbPointsText">
 
             0 / 1000 points
 
@@ -1449,31 +1573,83 @@ body{
 
 
 
-    <!-- CONVERSION -->
+    <!-- ==================================================
+         RÈGLES
+    ================================================== -->
+
+    <div class="points-rules">
+
+
+        <div class="points-rule">
+
+            <strong>
+                +5 points
+            </strong>
+
+            <span>
+                1 personne parrainée
+            </span>
+
+        </div>
+
+
+        <div class="points-rule">
+
+            <strong>
+                1 000 FC
+            </strong>
+
+            <span>
+                100 points convertis
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ==================================================
+         CONVERSION
+    ================================================== -->
 
     <div class="convert-box">
 
+
         <div class="convert-info">
 
-            ⭐ <b>100 points = 50 FC</b>
+            ⭐ <b>100 points = 1 000 FC</b>
 
             <br>
 
-            Vous pouvez convertir vos points
-            disponibles en solde principal.
+            👥 Chaque personne parrainée rapporte
+            <b>5 points</b>.
+
+            <br>
+
+            💰 Les points convertis sont ajoutés
+            à votre <b>solde principal</b>.
 
         </div>
 
 
         <button
             class="convert-button"
-            id="convertPoints"
+            id="jbConvertPoints"
             disabled
         >
 
-            💱 CONVERTIR MES POINTS
+            💱 MINIMUM 100 POINTS
 
         </button>
+
+
+        <div
+            class="convert-status"
+            id="jbConvertStatus"
+        >
+        </div>
 
     </div>
 
@@ -1504,34 +1680,26 @@ body{
         >
 
             <div class="menu-icon">
-
                 🛒
-
             </div>
 
 
             <div class="menu-text">
 
                 <div class="menu-name">
-
                     Boutique
-
                 </div>
 
 
                 <div class="menu-desc">
-
                     Acheter nos produits et services
-
                 </div>
 
             </div>
 
 
             <div class="arrow">
-
                 ›
-
             </div>
 
         </a>
@@ -1544,34 +1712,26 @@ body{
         >
 
             <div class="menu-icon">
-
                 📊
-
             </div>
 
 
             <div class="menu-text">
 
                 <div class="menu-name">
-
                     Transactions
-
                 </div>
 
 
                 <div class="menu-desc">
-
                     Voir mon historique financier
-
                 </div>
 
             </div>
 
 
             <div class="arrow">
-
                 ›
-
             </div>
 
         </a>
@@ -1584,34 +1744,26 @@ body{
         >
 
             <div class="menu-icon">
-
                 👥
-
             </div>
 
 
             <div class="menu-text">
 
                 <div class="menu-name">
-
                     Mon équipe
-
                 </div>
 
 
                 <div class="menu-desc">
-
                     Parrainage et commissions
-
                 </div>
 
             </div>
 
 
             <div class="arrow">
-
                 ›
-
             </div>
 
         </a>
@@ -1624,34 +1776,26 @@ body{
         >
 
             <div class="menu-icon">
-
                 💳
-
             </div>
 
 
             <div class="menu-text">
 
                 <div class="menu-name">
-
                     Recharger mon compte
-
                 </div>
 
 
                 <div class="menu-desc">
-
                     Ajouter de l'argent à mon solde
-
                 </div>
 
             </div>
 
 
             <div class="arrow">
-
                 ›
-
             </div>
 
         </a>
@@ -1664,34 +1808,26 @@ body{
         >
 
             <div class="menu-icon">
-
                 💸
-
             </div>
 
 
             <div class="menu-text">
 
                 <div class="menu-name">
-
                     Retrait
-
                 </div>
 
 
                 <div class="menu-desc">
-
                     Demander un paiement
-
                 </div>
 
             </div>
 
 
             <div class="arrow">
-
                 ›
-
             </div>
 
         </a>
@@ -1704,34 +1840,26 @@ body{
         >
 
             <div class="menu-icon">
-
                 🎧
-
             </div>
 
 
             <div class="menu-text">
 
                 <div class="menu-name">
-
                     Support
-
                 </div>
 
 
                 <div class="menu-desc">
-
                     Besoin d'aide ?
-
                 </div>
 
             </div>
 
 
             <div class="arrow">
-
                 ›
-
             </div>
 
         </a>
@@ -1777,7 +1905,6 @@ body{
 
         </div>
 
-
     </div>
 
 
@@ -1786,7 +1913,7 @@ body{
 
     <div
         class="chat-box"
-        id="chatBox"
+        id="jbChatBox"
     >
 
         <div class="empty-chat">
@@ -1799,27 +1926,26 @@ body{
 
 
 
-    <!-- UTILISATEUR : TEXTE SEULEMENT -->
+    <!-- MESSAGE UTILISATEUR -->
 
     <div class="message-area">
 
 
         <textarea
-            id="messageInput"
+            id="jbMessageInput"
             placeholder="Écrivez votre message à l'administration..."
             maxlength="1000"
         ></textarea>
 
 
         <button
-            id="sendMessage"
+            id="jbSendMessage"
             class="send-message"
         >
 
             📤 ENVOYER LE MESSAGE
 
         </button>
-
 
     </div>
 
@@ -1846,7 +1972,7 @@ body{
 
 <button
     class="logout"
-    id="logout"
+    id="jbLogout"
 >
 
     🚪 DÉCONNEXION
@@ -1856,7 +1982,7 @@ body{
 
 <div
     class="status"
-    id="status"
+    id="jbStatus"
 >
 </div>
 
@@ -1941,6 +2067,7 @@ import {
     initializeApp
 
 }
+
 from
 "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
@@ -1962,16 +2089,16 @@ import {
     runTransaction
 
 }
+
 from
 "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 
-
 /* =========================================================
-   CONFIGURATION
+   FIREBASE CONFIG
 ========================================================= */
 
-const firebaseConfig = {
+const jbFirebaseConfig = {
 
     apiKey:
     "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
@@ -1997,25 +2124,29 @@ const firebaseConfig = {
 };
 
 
+const jbApp =
+    initializeApp(
+        jbFirebaseConfig
+    );
 
-const app =
-    initializeApp(firebaseConfig);
 
-
-const db =
-    getDatabase(app);
-
+const jbDB =
+    getDatabase(
+        jbApp
+    );
 
 
 /* =========================================================
    SESSION
 ========================================================= */
 
-const userPhone =
-    localStorage.getItem("userPhone");
+const jbUserPhone =
+    localStorage.getItem(
+        "userPhone"
+    );
 
 
-if(!userPhone){
+if(!jbUserPhone){
 
     window.location.href =
         "login.html";
@@ -2024,28 +2155,63 @@ if(!userPhone){
 
 
 /* =========================================================
-   FORMAT FC
+   CONSTANTES JASON BUSINESS
 ========================================================= */
 
-function formatFC(value){
+/*
 
-    return Math.floor(
-        Number(value) || 0
-    ).toLocaleString("fr-FR");
+   1 personne = 5 points
 
-}
+   100 points = 1000 FC
+
+   Donc :
+
+   1 point = 10 FC
+
+*/
+
+const JB_POINTS_PERSONNE = 5;
+
+const JB_POINTS_CONVERSION = 100;
+
+const JB_FC_CONVERSION = 1000;
 
 
 /* =========================================================
    USER REF
 ========================================================= */
 
-const userRef =
+const jbUserRef =
     ref(
-        db,
-        "users/" + userPhone
+        jbDB,
+        "users/" +
+        jbUserPhone
     );
 
+
+/* =========================================================
+   FORMAT
+========================================================= */
+
+function jbFormatNumber(value){
+
+    return Math.floor(
+        Number(value) || 0
+    ).toLocaleString(
+        "fr-FR"
+    );
+
+}
+
+
+function jbFormatFC(value){
+
+    return (
+        jbFormatNumber(value) +
+        " FC"
+    );
+
+}
 
 
 /* =========================================================
@@ -2053,14 +2219,18 @@ const userRef =
 ========================================================= */
 
 onValue(
-    userRef,
+
+    jbUserRef,
+
     (snapshot)=>{
 
 
         if(!snapshot.exists()){
 
             document
-                .getElementById("status")
+                .getElementById(
+                    "jbStatus"
+                )
                 .innerText =
                 "⚠️ Compte introuvable.";
 
@@ -2073,43 +2243,76 @@ onValue(
             snapshot.val();
 
 
+        /* =================================================
+           NOM
+        ================================================= */
 
-        /* TELEPHONE */
+        const name =
+            data.nom ||
+            data.name ||
+            data.username ||
+            "Mon compte";
+
 
         document
-            .getElementById("phone")
+            .getElementById(
+                "jbName"
+            )
             .innerText =
-            userPhone;
+            name;
 
 
+        /* =================================================
+           TELEPHONE
+        ================================================= */
 
-        /* AVATAR */
+        document
+            .getElementById(
+                "jbPhone"
+            )
+            .innerText =
+            jbUserPhone;
+
+
+        /* =================================================
+           AVATAR
+        ================================================= */
+
+        const avatarSource =
+            String(name || jbUserPhone);
+
 
         const avatarText =
-            userPhone
+            avatarSource
                 .substring(0,2)
                 .toUpperCase();
 
 
         document
-            .getElementById("avatar")
+            .getElementById(
+                "jbAvatar"
+            )
             .innerText =
             avatarText;
 
 
+        /* =================================================
+           CODE PARRAINAGE
+        ================================================= */
 
-        /* CODE */
+        const inviteCode =
+            data.inviteCode ||
+            data.referralCode ||
+            "STAR-0000";
+
 
         document
-            .getElementById("inviteCode")
+            .getElementById(
+                "jbInviteCode"
+            )
             .innerText =
             "ID : " +
-            (
-                data.inviteCode ||
-                data.referralCode ||
-                "STAR-0000"
-            );
-
+            inviteCode;
 
 
         /* =================================================
@@ -2140,33 +2343,44 @@ onValue(
             commissions;
 
 
-
         document
-            .getElementById("totalBalance")
+            .getElementById(
+                "jbTotalBalance"
+            )
             .innerText =
-            formatFC(total);
-
-
-        document
-            .getElementById("mainBalance")
-            .innerText =
-            formatFC(principal) +
-            " FC";
+            jbFormatNumber(
+                total
+            );
 
 
         document
-            .getElementById("gainBalance")
+            .getElementById(
+                "jbMainBalance"
+            )
             .innerText =
-            formatFC(gains) +
-            " FC";
+            jbFormatFC(
+                principal
+            );
 
 
         document
-            .getElementById("commissionBalance")
+            .getElementById(
+                "jbGainBalance"
+            )
             .innerText =
-            formatFC(commissions) +
-            " FC";
+            jbFormatFC(
+                gains
+            );
 
+
+        document
+            .getElementById(
+                "jbCommissionBalance"
+            )
+            .innerText =
+            jbFormatFC(
+                commissions
+            );
 
 
         /* =================================================
@@ -2184,79 +2398,136 @@ onValue(
             );
 
 
-
         document
-            .getElementById("loyaltyPoints")
+            .getElementById(
+                "jbLoyaltyPoints"
+            )
             .innerText =
-            formatFC(points);
+            jbFormatNumber(
+                points
+            );
 
 
+        /* =================================================
+           PROGRESSION
+        ================================================= */
 
         const maxPoints =
             1000;
 
 
-
         const progress =
             Math.min(
-                (points / maxPoints) * 100,
+                (
+                    points /
+                    maxPoints
+                ) * 100,
                 100
             );
 
 
-
         document
-            .getElementById("loyaltyProgress")
+            .getElementById(
+                "jbLoyaltyProgress"
+            )
             .style.width =
-            progress + "%";
-
+            progress +
+            "%";
 
 
         document
-            .getElementById("pointsText")
+            .getElementById(
+                "jbPointsText"
+            )
             .innerText =
-            formatFC(points) +
-            " / " +
-            maxPoints +
-            " points";
 
+            jbFormatNumber(
+                points
+            )
+
+            +
+
+            " / "
+
+            +
+
+            jbFormatNumber(
+                maxPoints
+            )
+
+            +
+
+            " points";
 
 
         /* =================================================
            BOUTON CONVERSION
-           100 POINTS = 50 FC
         ================================================= */
 
         const convertButton =
             document.getElementById(
-                "convertPoints"
+                "jbConvertPoints"
             );
 
 
         const pointsConvertibles =
             Math.floor(
-                points / 100
-            ) * 100;
+                points /
+                JB_POINTS_CONVERSION
+            )
+            *
+            JB_POINTS_CONVERSION;
 
 
-        convertButton.disabled =
-            pointsConvertibles < 100;
-
-
-        if(pointsConvertibles >= 100){
+        if(
+            pointsConvertibles >=
+            JB_POINTS_CONVERSION
+        ){
 
             const fc =
-                (pointsConvertibles / 100) * 50;
+                (
+                    pointsConvertibles /
+                    JB_POINTS_CONVERSION
+                )
+                *
+                JB_FC_CONVERSION;
+
+
+            convertButton.disabled =
+                false;
 
 
             convertButton.innerText =
-                "💱 CONVERTIR " +
-                formatFC(pointsConvertibles) +
-                " POINTS → " +
-                formatFC(fc) +
+
+                "💱 CONVERTIR "
+
+                +
+
+                jbFormatNumber(
+                    pointsConvertibles
+                )
+
+                +
+
+                " POINTS → "
+
+                +
+
+                jbFormatNumber(
+                    fc
+                )
+
+                +
+
                 " FC";
 
-        }else{
+        }
+
+        else{
+
+            convertButton.disabled =
+                true;
+
 
             convertButton.innerText =
                 "💱 MINIMUM 100 POINTS";
@@ -2268,32 +2539,61 @@ onValue(
 );
 
 
-
 /* =========================================================
    CONVERSION POINTS
 ========================================================= */
 
 document
-    .getElementById("convertPoints")
+    .getElementById(
+        "jbConvertPoints"
+    )
     .addEventListener(
+
         "click",
+
         async()=>{
+
+
+            const button =
+                document.getElementById(
+                    "jbConvertPoints"
+                );
+
+
+            const status =
+                document.getElementById(
+                    "jbConvertStatus"
+                );
 
 
             try{
 
 
+                button.disabled =
+                    true;
+
+
+                status.className =
+                    "convert-status";
+
+
+                status.innerText =
+                    "⏳ Vérification des points...";
+
+
                 const snapshot =
-                    await get(userRef);
-
-
-                if(!snapshot.exists()){
-
-                    alert(
-                        "Compte introuvable."
+                    await get(
+                        jbUserRef
                     );
 
-                    return;
+
+                if(
+                    !snapshot.exists()
+                ){
+
+                    throw new Error(
+                        "ACCOUNT_NOT_FOUND"
+                    );
 
                 }
 
@@ -2315,129 +2615,250 @@ document
 
                 const pointsConvertibles =
                     Math.floor(
-                        points / 100
-                    ) * 100;
+                        points /
+                        JB_POINTS_CONVERSION
+                    )
+                    *
+                    JB_POINTS_CONVERSION;
 
 
                 if(
-                    pointsConvertibles < 100
+                    pointsConvertibles <
+                    JB_POINTS_CONVERSION
                 ){
 
-                    alert(
-                        "❌ Vous devez avoir au moins 100 points."
+                    throw new Error(
+                        "INSUFFICIENT_POINTS"
                     );
-
-                    return;
 
                 }
 
 
                 const fc =
-                    (pointsConvertibles / 100) * 50;
-
-
-                if(
-                    !confirm(
-
-                        "Convertir " +
-                        formatFC(pointsConvertibles) +
-                        " points en " +
-                        formatFC(fc) +
-                        " FC ?"
-
+                    (
+                        pointsConvertibles /
+                        JB_POINTS_CONVERSION
                     )
-                ){
+                    *
+                    JB_FC_CONVERSION;
+
+
+                const confirmation =
+                    confirm(
+
+                        "Convertir "
+
+                        +
+
+                        jbFormatNumber(
+                            pointsConvertibles
+                        )
+
+                        +
+
+                        " points en "
+
+                        +
+
+                        jbFormatFC(
+                            fc
+                        )
+
+                        +
+
+                        " ?"
+
+                    );
+
+
+                if(!confirmation){
+
+                    button.disabled =
+                        false;
 
                     return;
 
                 }
 
 
-                const pointsRestants =
-                    points -
-                    pointsConvertibles;
-
+                status.innerText =
+                    "⏳ Conversion en cours...";
 
 
                 /* =================================================
                    TRANSACTION ATOMIQUE
                 ================================================= */
 
-                await runTransaction(
-                    ref(
-                        db,
-                        "users/" +
-                        userPhone
-                    ),
-                    (current)=>{
+                const result =
+                    await runTransaction(
+
+                        jbUserRef,
+
+                        (current)=>{
 
 
-                        if(!current)
+                            if(
+                                current === null
+                            ){
+
+                                return;
+
+                            }
+
+
+                            const currentPoints =
+                                Number(
+
+                                    current.points_fidelite ??
+                                    current.points ??
+                                    current.loyaltyPoints ??
+                                    0
+
+                                );
+
+
+                            const convertibles =
+                                Math.floor(
+                                    currentPoints /
+                                    JB_POINTS_CONVERSION
+                                )
+                                *
+                                JB_POINTS_CONVERSION;
+
+
+                            if(
+                                convertibles <
+                                JB_POINTS_CONVERSION
+                            ){
+
+                                return;
+
+                            }
+
+
+                            const amount =
+                                (
+                                    convertibles /
+                                    JB_POINTS_CONVERSION
+                                )
+                                *
+                                JB_FC_CONVERSION;
+
+
+                            const currentBalance =
+                                Number(
+                                    current.solde_principal
+                                ) || 0;
+
+
+                            /* RETRAIT DES POINTS */
+
+                            current.points_fidelite =
+                                currentPoints -
+                                convertibles;
+
+
+                            /* AJOUT AU SOLDE */
+
+                            current.solde_principal =
+                                currentBalance +
+                                amount;
+
+
                             return current;
-
-
-                        const currentPoints =
-                            Number(
-
-                                current.points_fidelite ??
-                                current.points ??
-                                current.loyaltyPoints ??
-                                0
-
-                            );
-
-
-                        const convertibles =
-                            Math.floor(
-                                currentPoints / 100
-                            ) * 100;
-
-
-                        if(
-                            convertibles < 100
-                        ){
-
-                            return;
 
                         }
 
-
-                        const montant =
-                            (
-                                convertibles / 100
-                            ) * 50;
+                    );
 
 
-                        current.points_fidelite =
-                            currentPoints -
-                            convertibles;
+                if(
+                    !result.committed
+                ){
+
+                    throw new Error(
+                        "TRANSACTION_REFUSED"
+                    );
+
+                }
 
 
-                        current.solde_principal =
-                            (
-                                Number(
-                                    current.solde_principal
-                                ) || 0
-                            ) + montant;
+                status.className =
+                    "convert-status success";
 
 
-                        return current;
+                status.innerText =
 
-                    }
+                    "✅ Conversion réussie : +"
+
+                    +
+
+                    jbFormatFC(
+                        fc
+                    );
+
+
+            }
+
+            catch(error){
+
+
+                console.error(
+                    "JASON Business conversion :",
+                    error
                 );
 
 
-                alert(
-                    "✅ Conversion effectuée !"
-                );
+                status.className =
+                    "convert-status error";
 
 
-            }catch(error){
+                if(
+                    error.message ===
+                    "INSUFFICIENT_POINTS"
+                ){
 
-                console.error(error);
+                    status.innerText =
+                        "❌ Vous devez avoir au moins 100 points.";
 
-                alert(
-                    "❌ Erreur lors de la conversion."
+                }
+
+                else if(
+                    error.message ===
+                    "ACCOUNT_NOT_FOUND"
+                ){
+
+                    status.innerText =
+                        "❌ Compte introuvable.";
+
+                }
+
+                else{
+
+                    status.innerText =
+                        "⚠️ Impossible d'effectuer la conversion.";
+
+                }
+
+            }
+
+            finally{
+
+
+                /* Le onValue actualisera
+                   automatiquement le bouton */
+
+                setTimeout(
+
+                    ()=>{
+
+                        button.disabled =
+                            false;
+
+                    },
+
+                    500
+
                 );
 
             }
@@ -2447,39 +2868,45 @@ document
     );
 
 
-
 /* =========================================================
    CHAT ADMIN
 ========================================================= */
 
-const messagesRef =
+const jbMessagesRef =
     ref(
-        db,
+
+        jbDB,
+
         "messages_admin/" +
-        userPhone
+        jbUserPhone
+
     );
 
 
-
 /* =========================================================
-   CHARGER LES MESSAGES
+   CHARGER MESSAGES
 ========================================================= */
 
 onValue(
-    messagesRef,
+
+    jbMessagesRef,
+
     (snapshot)=>{
 
 
         const chatBox =
             document.getElementById(
-                "chatBox"
+                "jbChatBox"
             );
 
 
-        chatBox.innerHTML = "";
+        chatBox.innerHTML =
+            "";
 
 
-        if(!snapshot.exists()){
+        if(
+            !snapshot.exists()
+        ){
 
             chatBox.innerHTML = `
 
@@ -2501,45 +2928,58 @@ onValue(
 
 
         const list =
-            Object.entries(messages)
+            Object.entries(
+                messages
+            )
             .sort(
+
                 (a,b)=>{
 
                     return (
 
                         Number(
-                            a[1].timestamp || 0
+                            a[1].timestamp ||
+                            0
                         )
 
                         -
 
                         Number(
-                            b[1].timestamp || 0
+                            b[1].timestamp ||
+                            0
                         )
 
                     );
 
                 }
+
             );
 
 
         list.forEach(
+
             ([id,msg])=>{
 
-                afficherMessage(msg);
+                jbAfficherMessage(
+                    msg
+                );
 
             }
+
         );
 
 
         setTimeout(
+
             ()=>{
 
                 chatBox.scrollTop =
                     chatBox.scrollHeight;
 
             },
+
             50
+
         );
 
     }
@@ -2547,17 +2987,16 @@ onValue(
 );
 
 
-
 /* =========================================================
    AFFICHER MESSAGE
 ========================================================= */
 
-function afficherMessage(msg){
+function jbAfficherMessage(msg){
 
 
     const chatBox =
         document.getElementById(
-            "chatBox"
+            "jbChatBox"
         );
 
 
@@ -2573,15 +3012,18 @@ function afficherMessage(msg){
 
     div.className =
         "message " +
+
         (
+
             isUser
             ? "user"
             : "admin"
+
         );
 
 
-    let contenu = "";
-
+    let contenu =
+        "";
 
 
     /* =====================================================
@@ -2591,7 +3033,7 @@ function afficherMessage(msg){
     if(msg.text){
 
         const text =
-            escapeHTML(
+            jbEscapeHTML(
                 msg.text
             )
             .replace(
@@ -2613,27 +3055,31 @@ function afficherMessage(msg){
     }
 
 
-
     /* =====================================================
        FICHIER ADMIN
     ===================================================== */
 
     if(
+
         !isUser &&
         msg.fileData
+
     ){
 
 
         const fileName =
-            escapeHTML(
+            jbEscapeHTML(
+
                 msg.fileName ||
                 "Fichier"
+
             );
 
 
         const fileSize =
-            formatFileSize(
-                msg.fileSize || 0
+            jbFormatFileSize(
+                msg.fileSize ||
+                0
             );
 
 
@@ -2676,15 +3122,16 @@ function afficherMessage(msg){
     }
 
 
-
     div.innerHTML = `
 
         <div class="message-author">
 
             ${
+
                 isUser
                 ? "VOUS"
                 : "ADMINISTRATION"
+
             }
 
         </div>
@@ -2695,7 +3142,7 @@ function afficherMessage(msg){
 
         <div class="message-date">
 
-            ${formatDate(
+            ${jbFormatDate(
                 msg.timestamp
             )}
 
@@ -2704,32 +3151,37 @@ function afficherMessage(msg){
     `;
 
 
-    chatBox.appendChild(div);
+    chatBox.appendChild(
+        div
+    );
 
 }
 
 
-
 /* =========================================================
-   ENVOI MESSAGE UTILISATEUR
+   ENVOYER MESSAGE
 ========================================================= */
 
 document
-    .getElementById("sendMessage")
+    .getElementById(
+        "jbSendMessage"
+    )
     .addEventListener(
+
         "click",
+
         async()=>{
 
 
             const input =
                 document.getElementById(
-                    "messageInput"
+                    "jbMessageInput"
                 );
 
 
             const button =
                 document.getElementById(
-                    "sendMessage"
+                    "jbSendMessage"
                 );
 
 
@@ -2748,7 +3200,10 @@ document
             }
 
 
-            if(text.length > 1000){
+            if(
+                text.length >
+                1000
+            ){
 
                 alert(
                     "Message trop long."
@@ -2772,12 +3227,14 @@ document
 
                 const messageRef =
                     push(
-                        messagesRef
+                        jbMessagesRef
                     );
 
 
                 await set(
+
                     messageRef,
+
                     {
 
                         sender:
@@ -2793,10 +3250,12 @@ document
                             false
 
                     }
+
                 );
 
 
-                input.value = "";
+                input.value =
+                    "";
 
 
                 button.innerText =
@@ -2804,6 +3263,7 @@ document
 
 
                 setTimeout(
+
                     ()=>{
 
                         button.disabled =
@@ -2813,14 +3273,19 @@ document
                             "📤 ENVOYER LE MESSAGE";
 
                     },
+
                     1500
+
                 );
 
 
-            }catch(error){
+            }
+
+            catch(error){
 
 
                 console.error(
+                    "Erreur message :",
                     error
                 );
 
@@ -2844,12 +3309,11 @@ document
     );
 
 
-
 /* =========================================================
-   SÉCURITÉ TEXTE
+   SÉCURITÉ HTML
 ========================================================= */
 
-function escapeHTML(text){
+function jbEscapeHTML(text){
 
     return String(text)
 
@@ -2881,48 +3345,67 @@ function escapeHTML(text){
 }
 
 
-
 /* =========================================================
    DATE
 ========================================================= */
 
-function formatDate(timestamp){
+function jbFormatDate(timestamp){
 
-    if(!timestamp)
+    if(!timestamp){
+
         return "";
 
+    }
 
-    return new Date(timestamp)
-        .toLocaleString(
-            "fr-FR",
-            {
 
-                day:"2-digit",
+    return new Date(
+        Number(timestamp)
+    )
+    .toLocaleString(
 
-                month:"2-digit",
+        "fr-FR",
 
-                year:"numeric",
+        {
 
-                hour:"2-digit",
+            day:
+                "2-digit",
 
-                minute:"2-digit"
+            month:
+                "2-digit",
 
-            }
-        );
+            year:
+                "numeric",
+
+            hour:
+                "2-digit",
+
+            minute:
+                "2-digit"
+
+        }
+
+    );
 
 }
-
 
 
 /* =========================================================
    TAILLE FICHIER
 ========================================================= */
 
-function formatFileSize(bytes){
+function jbFormatFileSize(bytes){
 
-    if(!bytes)
+    bytes =
+        Number(bytes) || 0;
+
+
+    if(
+        bytes <= 0
+    ){
+
         return "";
 
+    }
 
 
     if(
@@ -2937,14 +3420,17 @@ function formatFileSize(bytes){
     }
 
 
-
     if(
-        bytes < 1024 * 1024
+        bytes <
+        1024 * 1024
     ){
 
         return (
 
-            (bytes / 1024)
+            (
+                bytes /
+                1024
+            )
             .toFixed(1)
 
             +
@@ -2954,7 +3440,6 @@ function formatFileSize(bytes){
         );
 
     }
-
 
 
     if(
@@ -2968,7 +3453,10 @@ function formatFileSize(bytes){
 
             (
                 bytes /
-                (1024 * 1024)
+                (
+                    1024 *
+                    1024
+                )
             )
             .toFixed(1)
 
@@ -2981,14 +3469,15 @@ function formatFileSize(bytes){
     }
 
 
-
     return (
 
         (
             bytes /
-            (1024 *
-             1024 *
-             1024)
+            (
+                1024 *
+                1024 *
+                1024
+            )
         )
         .toFixed(1)
 
@@ -3001,26 +3490,34 @@ function formatFileSize(bytes){
 }
 
 
-
 /* =========================================================
    DÉCONNEXION
 ========================================================= */
 
 document
-    .getElementById("logout")
+    .getElementById(
+        "jbLogout"
+    )
     .addEventListener(
+
         "click",
+
         ()=>{
 
 
             const confirmation =
                 confirm(
+
                     "Voulez-vous vraiment vous déconnecter ?"
+
                 );
 
 
-            if(!confirmation)
+            if(!confirmation){
+
                 return;
+
+            }
 
 
             localStorage.removeItem(
@@ -3032,8 +3529,8 @@ document
                 "login.html";
 
         }
-    );
 
+    );
 
 </script>
 

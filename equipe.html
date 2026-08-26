@@ -1,143 +1,1522 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jason- Mon Réseau</title>
-    <style>
-        :root { --blue: #00d2ff; --dark: #050a14; --gold: #ffd700; }
-        body { 
-            margin: 0; font-family: 'Segoe UI', sans-serif; 
-            background: var(--dark) url('IMG_0870.jpeg') no-repeat center center fixed;
-            background-size: cover; color: white; padding-bottom: 100px;
-        }
-        .overlay { background: rgba(5, 10, 20, 0.9); min-height: 100vh; padding: 20px; }
-        .invite-card { 
-            background: linear-gradient(145deg, rgba(0, 210, 255, 0.1), rgba(0, 0, 0, 0.5));
-            border-radius: 25px; padding: 25px; border: 1px solid var(--blue);
-            backdrop-filter: blur(15px); text-align: center; margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
-        }
-        .code-display { font-size: 32px; font-weight: 900; color: var(--blue); margin: 15px 0; letter-spacing: 5px; text-shadow: 0 0 10px var(--blue); }
-        .level-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 25px; }
-        .level-box { 
-            background: rgba(255, 255, 255, 0.05); padding: 15px 5px; border-radius: 15px; 
-            border: 1px solid rgba(255, 255, 255, 0.1); text-align: center;
-        }
-        .level-box b { font-size: 18px; color: var(--blue); display: block; }
-        .level-box small { font-size: 10px; opacity: 0.7; text-transform: uppercase; }
-        .level-tag { font-size: 10px; background: var(--blue); color: black; padding: 2px 6px; border-radius: 5px; font-weight: bold; }
-        .btn-share { 
-            background: var(--blue); color: black; border: none; padding: 18px; 
-            border-radius: 15px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px;
-            transition: 0.3s; box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
-        }
-        .global-stats { background: rgba(255,255,255,0.03); border-radius: 20px; padding: 20px; margin-top: 20px; border-left: 4px solid var(--blue); }
-        .stat-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
-        .stat-row span { color: var(--blue); font-weight: bold; }
-        .navbar { position: fixed; bottom: 0; left:0; width: 100%; background: rgba(5, 10, 20, 0.95); display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid rgba(0, 210, 255, 0.3); backdrop-filter: blur(15px); z-index: 1000; }
-        .nav-link { color: white; text-decoration: none; font-size: 11px; text-align: center; opacity: 0.4; }
-        .nav-link.active { opacity: 1; color: var(--blue); }
-    </style>
-</head>
-<body>
 
-<div class="overlay">
-    <h2 style="text-align: center; letter-spacing: 3px; color: white;">MON RÉSEAU <span style="color:var(--blue)">JASON BUSINESS</span></h2>
-    
-    <div class="invite-card">
-        <p style="margin:0; font-size: 12px; opacity: 0.8;">VOTRE LIEN DE PARRAINAGE</p>
-        <div class="code-display" id="myCode">...</div>
-        <button class="btn-share" id="btnCopy">COPIER LE LIEN D'INVITATION</button>
-        <p id="copyStatus" style="font-size: 12px; color: #4caf50; margin-top: 10px; display: none; font-weight: bold;">✅ Lien sécurisé copié !</p>
-    </div>
+<meta charset="UTF-8">
 
-    <div class="level-grid">
-        <div class="level-box">
-            <span class="level-tag">25%</span>
-            <small>Niveau 1</small>
-            <b id="lvl1Count">0</b>
-        </div>
-        <div class="level-box">
-            <span class="level-tag">3%</span>
-            <small>Niveau 2</small>
-            <b id="lvl2Count">0</b>
-        </div>
-        <div class="level-box">
-            <span class="level-tag">1%</span>
-            <small>Niveau 3</small>
-            <b id="lvl3Count">0</b>
-        </div>
-    </div>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
-    <div class="global-stats">
-        <div class="stat-row">Membres totaux : <span id="totalTeam">0</span></div>
-        <div class="stat-row">Commissions gagnées : <span id="totalGains">0 FC</span></div>
-        <div class="stat-row">Statut du réseau : <span style="color: #4caf50;">Actif 🛰️</span></div>
-    </div>
-</div>
+<title>JASON - Mon Réseau</title>
 
-<nav class="navbar">
-    <a href="dashboard.html" class="nav-link">📊<br>Dash</a>
-    <a href="shop.html" class="nav-link">📡<br>Shop</a>
-    <a href="equipe.html" class="nav-link active">👥<br>Equipe</a>
-    <a href="profil.html" class="nav-link">👤<br>Profil</a>
-</nav>
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+<style>
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
-        authDomain: "starlink-investit.firebaseapp.com",
-        databaseURL: "https://starlink-investit-default-rtdb.firebaseio.com",
-        projectId: "starlink-investit",
-        storageBucket: "starlink-investit.firebasestorage.app",
-        messagingSenderId: "807081599583",
-        appId: "1:807081599583:web:e00ec3959bc4acdae031ea"
-    };
+:root{
+    --blue:#00d2ff;
+    --dark:#050a14;
+    --gold:#ffd700;
+    --green:#00e676;
+    --red:#ff4757;
+}
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const userPhone = localStorage.getItem("userPhone");
 
-    if(!userPhone) {
-        window.location.href = "login.html";
-    } else {
-        const userRef = ref(db, 'users/' + userPhone);
-        onValue(userRef, (snap) => {
-            const data = snap.val();
-            if(data) {
-                document.getElementById("myCode").innerText = data.inviteCode || "JASON-0000";
-                const gains = data.solde_commissions || 0;
-                document.getElementById("totalGains").innerText = gains.toLocaleString() + " FC";
-                
-                const l1 = parseInt(data.count_lvl1 || 0);
-                const l2 = parseInt(data.count_lvl2 || 0);
-                const l3 = parseInt(data.count_lvl3 || 0);
-                
-                document.getElementById("lvl1Count").innerText = l1;
-                document.getElementById("lvl2Count").innerText = l2;
-                document.getElementById("lvl3Count").innerText = l3;
-                document.getElementById("totalTeam").innerText = (l1 + l2 + l3);
-            }
-        });
+*{
+    box-sizing:border-box;
+}
+
+
+body{
+
+    margin:0;
+
+    font-family:'Segoe UI',Arial,sans-serif;
+
+    background:
+        var(--dark)
+        url('IMG_0870.jpeg')
+        no-repeat
+        center center fixed;
+
+    background-size:cover;
+
+    color:white;
+
+    padding-bottom:100px;
+
+}
+
+
+.overlay{
+
+    background:rgba(5,10,20,.92);
+
+    min-height:100vh;
+
+    padding:20px;
+
+}
+
+
+.container{
+
+    width:100%;
+
+    max-width:650px;
+
+    margin:auto;
+
+}
+
+
+/* =========================
+   TITRE
+========================= */
+
+.page-title{
+
+    text-align:center;
+
+    letter-spacing:2px;
+
+    margin:10px 0 25px;
+
+    font-size:22px;
+
+}
+
+
+.page-title span{
+
+    color:var(--blue);
+
+}
+
+
+/* =========================
+   INVITATION
+========================= */
+
+.invite-card{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,210,255,.13),
+            rgba(0,0,0,.6)
+        );
+
+    border-radius:25px;
+
+    padding:25px;
+
+    border:1px solid var(--blue);
+
+    backdrop-filter:blur(15px);
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,210,255,.15);
+
+}
+
+
+.code-label{
+
+    margin:0;
+
+    font-size:12px;
+
+    opacity:.8;
+
+}
+
+
+.code-display{
+
+    font-size:30px;
+
+    font-weight:900;
+
+    color:var(--blue);
+
+    margin:15px 0;
+
+    letter-spacing:4px;
+
+    text-shadow:
+        0 0 10px
+        var(--blue);
+
+    word-break:break-all;
+
+}
+
+
+.btn-share{
+
+    background:var(--blue);
+
+    color:#001018;
+
+    border:none;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    width:100%;
+
+    font-size:15px;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,210,255,.3);
+
+}
+
+
+.copy-status{
+
+    font-size:12px;
+
+    color:var(--green);
+
+    margin-top:10px;
+
+    display:none;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================
+   NIVEAUX
+========================= */
+
+.level-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+
+.level-box{
+
+    background:
+        rgba(255,255,255,.05);
+
+    padding:15px 5px;
+
+    border-radius:15px;
+
+    border:1px solid
+        rgba(255,255,255,.1);
+
+    text-align:center;
+
+}
+
+
+.level-box b{
+
+    font-size:20px;
+
+    color:var(--blue);
+
+    display:block;
+
+    margin-top:7px;
+
+}
+
+
+.level-box small{
+
+    font-size:10px;
+
+    opacity:.7;
+
+    text-transform:uppercase;
+
+}
+
+
+.level-tag{
+
+    font-size:10px;
+
+    background:var(--blue);
+
+    color:#000;
+
+    padding:3px 7px;
+
+    border-radius:5px;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================
+   STATISTIQUES
+========================= */
+
+.global-stats{
+
+    background:
+        rgba(255,255,255,.04);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    margin-top:20px;
+
+    border-left:
+        4px solid var(--blue);
+
+}
+
+
+.stat-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+
+    font-size:14px;
+
+    gap:15px;
+
+}
+
+
+.stat-row:last-child{
+
+    margin-bottom:0;
+
+}
+
+
+.stat-row span{
+
+    color:var(--blue);
+
+    font-weight:bold;
+
+    text-align:right;
+
+}
+
+
+/* =========================
+   CONVERSION
+========================= */
+
+.convert-card{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,215,0,.09),
+            rgba(0,0,0,.55)
+        );
+
+    border:1px solid
+        rgba(255,215,0,.35);
+
+    border-radius:22px;
+
+    padding:22px;
+
+    margin-top:20px;
+
+}
+
+
+.convert-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+.convert-title{
+
+    font-size:17px;
+
+    font-weight:bold;
+
+}
+
+
+.convert-rate{
+
+    color:var(--gold);
+
+    font-size:12px;
+
+    font-weight:bold;
+
+}
+
+
+.points-balance{
+
+    margin-top:15px;
+
+    padding:15px;
+
+    background:
+        rgba(255,215,0,.07);
+
+    border-radius:14px;
+
+    text-align:center;
+
+    border:1px dashed
+        rgba(255,215,0,.3);
+
+}
+
+
+.points-balance strong{
+
+    color:var(--gold);
+
+    font-size:25px;
+
+}
+
+
+.convert-form{
+
+    margin-top:15px;
+
+}
+
+
+.convert-form label{
+
+    display:block;
+
+    font-size:12px;
+
+    opacity:.7;
+
+    margin-bottom:6px;
+
+}
+
+
+.convert-form input{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    border:1px solid #333;
+
+    background:#080808;
+
+    color:white;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+
+.convert-form input:focus{
+
+    border-color:var(--gold);
+
+}
+
+
+.conversion-result{
+
+    margin-top:10px;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    background:
+        rgba(0,210,255,.06);
+
+    font-size:13px;
+
+    text-align:center;
+
+}
+
+
+.conversion-result b{
+
+    color:var(--green);
+
+}
+
+
+.btn-convert{
+
+    width:100%;
+
+    margin-top:12px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd700,
+            #ffb300
+        );
+
+    color:#111;
+
+    font-weight:900;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+}
+
+
+.btn-convert:disabled{
+
+    background:#444;
+
+    color:#aaa;
+
+    cursor:not-allowed;
+
+}
+
+
+.convert-status{
+
+    text-align:center;
+
+    font-size:12px;
+
+    min-height:18px;
+
+    margin-top:10px;
+
+}
+
+
+.success{
+
+    color:var(--green);
+
+}
+
+
+.error{
+
+    color:var(--red);
+
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    background:
+        rgba(5,10,20,.97);
+
+    display:flex;
+
+    justify-content:space-around;
+
+    padding:15px 0;
+
+    border-top:
+        1px solid
+        rgba(0,210,255,.3);
+
+    backdrop-filter:blur(15px);
+
+    z-index:1000;
+
+}
+
+
+.nav-link{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    text-align:center;
+
+    opacity:.4;
+
+}
+
+
+.nav-link.active{
+
+    opacity:1;
+
+    color:var(--blue);
+
+}
+
+
+@media(max-width:380px){
+
+    .level-grid{
+
+        grid-template-columns:
+            1fr 1fr;
+
     }
 
-    document.getElementById("btnCopy").onclick = () => {
-        const code = document.getElementById("myCode").innerText;
-        // MISE À JOUR DU LIEN CI-DESSOUS
-        const link = "https://jason-v7.vercel.app/register.html?inviteCode=" + code;
-        
-        navigator.clipboard.writeText(link).then(() => {
-            const status = document.getElementById("copyStatus");
-            status.style.display = "block";
-            setTimeout(() => { status.style.display = "none"; }, 3000);
-        }).catch(() => {
-            alert("Lien : " + link);
-        });
-    };
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="overlay">
+
+<div class="container">
+
+
+<h2 class="page-title">
+
+    MON RÉSEAU
+    <span>JASON BUSINESS</span>
+
+</h2>
+
+
+<!-- =========================
+     PARRAINAGE
+========================= -->
+
+<div class="invite-card">
+
+    <p class="code-label">
+        VOTRE CODE DE PARRAINAGE
+    </p>
+
+
+    <div
+        class="code-display"
+        id="myCode">
+
+        ...
+
+    </div>
+
+
+    <button
+        class="btn-share"
+        id="btnCopy">
+
+        📋 COPIER LE LIEN D'INVITATION
+
+    </button>
+
+
+    <p
+        id="copyStatus"
+        class="copy-status">
+
+        ✅ Lien sécurisé copié !
+
+    </p>
+
+</div>
+
+
+<!-- =========================
+     NIVEAUX
+========================= -->
+
+<div class="level-grid">
+
+
+    <div class="level-box">
+
+        <span class="level-tag">
+            25%
+        </span>
+
+        <small>
+            Niveau 1
+        </small>
+
+        <b id="lvl1Count">
+            0
+        </b>
+
+    </div>
+
+
+    <div class="level-box">
+
+        <span class="level-tag">
+            3%
+        </span>
+
+        <small>
+            Niveau 2
+        </small>
+
+        <b id="lvl2Count">
+            0
+        </b>
+
+    </div>
+
+
+    <div class="level-box">
+
+        <span class="level-tag">
+            1%
+        </span>
+
+        <small>
+            Niveau 3
+        </small>
+
+        <b id="lvl3Count">
+            0
+        </b>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<div class="global-stats">
+
+
+    <div class="stat-row">
+
+        <div>
+            Membres totaux
+        </div>
+
+        <span id="totalTeam">
+            0
+        </span>
+
+    </div>
+
+
+    <div class="stat-row">
+
+        <div>
+            Commissions gagnées
+        </div>
+
+        <span id="totalGains">
+            0 FC
+        </span>
+
+    </div>
+
+
+    <div class="stat-row">
+
+        <div>
+            Solde principal
+        </div>
+
+        <span id="mainBalance">
+            0 FC
+        </span>
+
+    </div>
+
+
+    <div class="stat-row">
+
+        <div>
+            Statut du réseau
+        </div>
+
+        <span style="color:#4caf50;">
+            Actif 🛰️
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     FIDELITE
+========================= -->
+
+<div class="convert-card">
+
+
+    <div class="convert-header">
+
+        <div class="convert-title">
+            ⭐ Points de fidélité
+        </div>
+
+        <div class="convert-rate">
+            100 points = 50 FC
+        </div>
+
+    </div>
+
+
+    <div class="points-balance">
+
+        <div style="font-size:12px;opacity:.7;">
+            POINTS DISPONIBLES
+        </div>
+
+        <strong id="pointsDisplay">
+            0
+        </strong>
+
+        <div
+            style="font-size:11px;opacity:.6;margin-top:4px;">
+
+            Utilisez vos points pour obtenir
+            du solde FC.
+
+        </div>
+
+    </div>
+
+
+    <div class="convert-form">
+
+
+        <label for="pointsInput">
+
+            Nombre de points à convertir
+
+        </label>
+
+
+        <input
+            type="number"
+            id="pointsInput"
+            min="100"
+            step="100"
+            placeholder="Exemple : 100">
+
+
+        <div
+            class="conversion-result"
+            id="conversionResult">
+
+            100 points =
+            <b>50 FC</b>
+
+        </div>
+
+
+        <button
+            class="btn-convert"
+            id="btnConvert">
+
+            ⭐ CONVERTIR MES POINTS
+
+        </button>
+
+
+        <div
+            class="convert-status"
+            id="convertStatus">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+
+
+    <a
+        href="dashboard.html"
+        class="nav-link">
+
+        📊
+        <br>
+        Dash
+
+    </a>
+
+
+    <a
+        href="shop.html"
+        class="nav-link">
+
+        🛒
+        <br>
+        Shop
+
+    </a>
+
+
+    <a
+        href="equipe.html"
+        class="nav-link active">
+
+        👥
+        <br>
+        Équipe
+
+    </a>
+
+
+    <a
+        href="profil.html"
+        class="nav-link">
+
+        👤
+        <br>
+        Profil
+
+    </a>
+
+
+</nav>
+
+
+<script type="module">
+
+
+import {
+
+    initializeApp
+
+} from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+
+import {
+
+    getDatabase,
+    ref,
+    onValue,
+    runTransaction
+
+} from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+
+/* =========================
+   FIREBASE
+========================= */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
+
+    authDomain:
+    "starlink-investit.firebaseapp.com",
+
+    databaseURL:
+    "https://starlink-investit-default-rtdb.firebaseio.com",
+
+    projectId:
+    "starlink-investit",
+
+    storageBucket:
+    "starlink-investit.firebasestorage.app",
+
+    messagingSenderId:
+    "807081599583",
+
+    appId:
+    "1:807081599583:web:e00ec3959bc4acdae031ea"
+
+};
+
+
+const app =
+    initializeApp(firebaseConfig);
+
+
+const db =
+    getDatabase(app);
+
+
+/* =========================
+   SESSION
+========================= */
+
+const userPhone =
+    localStorage.getItem("userPhone");
+
+
+if(!userPhone){
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* =========================
+   REFERENCES
+========================= */
+
+const userRef =
+    ref(
+        db,
+        "users/" + userPhone
+    );
+
+
+/* =========================
+   FORMAT
+========================= */
+
+function formatNumber(value){
+
+    return Math.floor(
+        Number(value) || 0
+    ).toLocaleString("fr-FR");
+
+}
+
+
+/* =========================
+   DONNEES UTILISATEUR
+========================= */
+
+let currentPoints = 0;
+
+
+onValue(
+    userRef,
+    (snap)=>{
+
+        if(!snap.exists()){
+
+            return;
+
+        }
+
+
+        const data =
+            snap.val();
+
+
+        /* CODE */
+
+        document.getElementById(
+            "myCode"
+        ).innerText =
+            data.inviteCode ||
+            data.referralCode ||
+            "JASON-0000";
+
+
+        /* COMMISSIONS */
+
+        const commissions =
+            Number(
+                data.solde_commissions
+            ) || 0;
+
+
+        document.getElementById(
+            "totalGains"
+        ).innerText =
+            formatNumber(
+                commissions
+            ) + " FC";
+
+
+        /* SOLDE PRINCIPAL */
+
+        const principal =
+            Number(
+                data.solde_principal
+            ) || 0;
+
+
+        document.getElementById(
+            "mainBalance"
+        ).innerText =
+            formatNumber(
+                principal
+            ) + " FC";
+
+
+        /* NIVEAUX */
+
+        const l1 =
+            parseInt(
+                data.count_lvl1 || 0
+            );
+
+
+        const l2 =
+            parseInt(
+                data.count_lvl2 || 0
+            );
+
+
+        const l3 =
+            parseInt(
+                data.count_lvl3 || 0
+            );
+
+
+        document.getElementById(
+            "lvl1Count"
+        ).innerText = l1;
+
+
+        document.getElementById(
+            "lvl2Count"
+        ).innerText = l2;
+
+
+        document.getElementById(
+            "lvl3Count"
+        ).innerText = l3;
+
+
+        document.getElementById(
+            "totalTeam"
+        ).innerText =
+            l1 + l2 + l3;
+
+
+        /* POINTS */
+
+        currentPoints =
+            Number(
+                data.points_fidelite ??
+                data.points ??
+                data.loyaltyPoints ??
+                0
+            );
+
+
+        document.getElementById(
+            "pointsDisplay"
+        ).innerText =
+            formatNumber(
+                currentPoints
+            );
+
+    }
+);
+
+
+/* =========================
+   CALCUL CONVERSION
+========================= */
+
+const pointsInput =
+    document.getElementById(
+        "pointsInput"
+    );
+
+
+const conversionResult =
+    document.getElementById(
+        "conversionResult"
+    );
+
+
+pointsInput.addEventListener(
+    "input",
+    ()=>{
+
+        const points =
+            Number(
+                pointsInput.value
+            ) || 0;
+
+
+        const fc =
+            (points / 100) * 50;
+
+
+        if(points <= 0){
+
+            conversionResult.innerHTML =
+                "100 points = <b>50 FC</b>";
+
+            return;
+
+        }
+
+
+        conversionResult.innerHTML =
+            formatNumber(points) +
+            " points = <b>" +
+            formatNumber(fc) +
+            " FC</b>";
+
+    }
+);
+
+
+/* =========================
+   CONVERSION
+========================= */
+
+document.getElementById(
+    "btnConvert"
+).addEventListener(
+    "click",
+    async ()=>{
+
+        const status =
+            document.getElementById(
+                "convertStatus"
+            );
+
+
+        const button =
+            document.getElementById(
+                "btnConvert"
+            );
+
+
+        const points =
+            Number(
+                pointsInput.value
+            );
+
+
+        /* VALIDATION */
+
+        if(
+            !Number.isFinite(points) ||
+            points < 100
+        ){
+
+            status.className =
+                "convert-status error";
+
+            status.innerText =
+                "❌ Minimum : 100 points.";
+
+            return;
+
+        }
+
+
+        if(points % 100 !== 0){
+
+            status.className =
+                "convert-status error";
+
+            status.innerText =
+                "❌ Les points doivent être un multiple de 100.";
+
+            return;
+
+        }
+
+
+        button.disabled = true;
+
+        button.innerText =
+            "⏳ CONVERSION...";
+
+        status.className =
+            "convert-status";
+
+        status.innerText =
+            "Vérification de votre solde...";
+
+
+        try{
+
+            /*
+             * 100 points = 50 FC
+             *
+             * Donc :
+             * 1 point = 0.5 FC
+             */
+
+            const amountFC =
+                (points / 100) * 50;
+
+
+            /*
+             * Transaction Firebase :
+             *
+             * Les points sont vérifiés
+             * et retirés de façon atomique.
+             */
+
+            const result =
+                await runTransaction(
+                    userRef,
+                    (data)=>{
+
+                        if(data === null){
+
+                            return;
+
+                        }
+
+
+                        const availablePoints =
+                            Number(
+                                data.points_fidelite ??
+                                data.points ??
+                                data.loyaltyPoints ??
+                                0
+                            );
+
+
+                        if(
+                            availablePoints <
+                            points
+                        ){
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * On utilise
+                         * points_fidelite
+                         * comme champ principal.
+                         */
+
+                        const currentBalance =
+                            Number(
+                                data.solde_principal
+                            ) || 0;
+
+
+                        data.points_fidelite =
+                            availablePoints -
+                            points;
+
+
+                        data.solde_principal =
+                            currentBalance +
+                            amountFC;
+
+
+                        return data;
+
+                    }
+                );
+
+
+            if(
+                !result.committed
+            ){
+
+                throw new Error(
+                    "CONVERSION_REFUSED"
+                );
+
+            }
+
+
+            status.className =
+                "convert-status success";
+
+
+            status.innerText =
+                "✅ Conversion réussie : +" +
+                formatNumber(amountFC) +
+                " FC";
+
+
+            pointsInput.value = "";
+
+
+            conversionResult.innerHTML =
+                "Conversion effectuée avec succès.";
+
+
+        }
+
+        catch(error){
+
+            console.error(
+                "Erreur conversion :",
+                error
+            );
+
+
+            status.className =
+                "convert-status error";
+
+
+            if(
+                error.message ===
+                "CONVERSION_REFUSED"
+            ){
+
+                status.innerText =
+                    "❌ Points insuffisants.";
+
+            }
+            else{
+
+                status.innerText =
+                    "⚠️ Erreur lors de la conversion.";
+
+            }
+
+        }
+
+        finally{
+
+            button.disabled = false;
+
+            button.innerText =
+                "⭐ CONVERTIR MES POINTS";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   COPIER LIEN
+========================= */
+
+document.getElementById(
+    "btnCopy"
+).onclick = async ()=>{
+
+    const code =
+        document.getElementById(
+            "myCode"
+        ).innerText;
+
+
+    const link =
+        "https://jason-v7.vercel.app/register.html?inviteCode="
+        +
+        encodeURIComponent(code);
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            link
+        );
+
+
+        const status =
+            document.getElementById(
+                "copyStatus"
+            );
+
+
+        status.style.display =
+            "block";
+
+
+        setTimeout(
+            ()=>{
+                status.style.display =
+                    "none";
+            },
+            3000
+        );
+
+    }
+
+    catch(error){
+
+        alert(
+            "Votre lien d'invitation :\n\n" +
+            link
+        );
+
+    }
+
+};
+
 </script>
+
 </body>
+
 </html>

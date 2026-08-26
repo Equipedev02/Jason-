@@ -210,10 +210,6 @@ body{
     border-color:
         var(--blue);
 
-    box-shadow:
-        0 0 12px
-        rgba(0,210,255,.1);
-
 }
 
 .login-btn{
@@ -243,12 +239,6 @@ body{
 
 }
 
-.login-btn:active{
-
-    transform:scale(.98);
-
-}
-
 .login-error{
 
     color:var(--red);
@@ -265,9 +255,7 @@ body{
 ========================================================= */
 
 #adminPanel{
-
     display:none;
-
 }
 
 
@@ -396,8 +384,6 @@ body{
 
     font-weight:bold;
 
-    transition:.2s;
-
 }
 
 .menu-btn:hover,
@@ -424,15 +410,11 @@ body{
 }
 
 .page{
-
     display:none;
-
 }
 
 .page.active{
-
     display:block;
-
 }
 
 
@@ -542,7 +524,7 @@ body{
 
 
 /* =========================================================
-   SEARCH
+   SEARCH / INPUT
 ========================================================= */
 
 .search{
@@ -591,7 +573,7 @@ table{
 
     border-collapse:collapse;
 
-    min-width:800px;
+    min-width:850px;
 
 }
 
@@ -791,7 +773,7 @@ tr:hover td{
 
     width:100%;
 
-    max-width:520px;
+    max-width:560px;
 
     max-height:90vh;
 
@@ -910,6 +892,55 @@ tr:hover td{
 
 
 /* =========================================================
+   USER DETAIL
+========================================================= */
+
+.detail-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+
+    margin:
+        15px 0;
+
+}
+
+.detail-item{
+
+    background:#050c17;
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+    padding:12px;
+
+    border-radius:10px;
+
+}
+
+.detail-item small{
+
+    display:block;
+
+    color:var(--muted);
+
+    margin-bottom:5px;
+
+}
+
+.detail-item strong{
+
+    font-size:14px;
+
+}
+
+
+/* =========================================================
    EMPTY
 ========================================================= */
 
@@ -1018,6 +1049,12 @@ tr:hover td{
 
     }
 
+    .detail-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
 }
 
 </style>
@@ -1081,7 +1118,10 @@ tr:hover td{
 <header class="topbar">
 
     <div class="logo">
-        JASON BUSINESS <span>ADMIN</span>
+
+        JASON BUSINESS
+        <span>ADMIN</span>
+
     </div>
 
     <button
@@ -1092,6 +1132,7 @@ tr:hover td{
     </button>
 
 </header>
+
 
 
 <div class="layout">
@@ -1274,12 +1315,27 @@ tr:hover td{
 
         <p class="muted">
 
-            Depuis ce panneau tu peux gérer
-            les utilisateurs, les commandes,
-            les recharges, les retraits et
-            les messages.
+            Gestion complète des utilisateurs,
+            commandes, recharges, retraits et
+            messages.
 
         </p>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h3>
+            💰 Solde total
+        </h3>
+
+        <h2
+            id="totalBalance"
+            style="color:var(--green)"
+        >
+            0 FC
+        </h2>
 
     </div>
 
@@ -1320,40 +1376,27 @@ tr:hover td{
 
                     <tr>
 
-                        <th>
-                            Numéro
-                        </th>
+                        <th>Numéro</th>
 
-                        <th>
-                            Nom
-                        </th>
+                        <th>Nom</th>
 
-                        <th>
-                            Solde
-                        </th>
+                        <th>Solde</th>
 
-                        <th>
-                            Gains
-                        </th>
+                        <th>Gains</th>
 
-                        <th>
-                            Commissions
-                        </th>
+                        <th>Commissions</th>
 
-                        <th>
-                            Points
-                        </th>
+                        <th>Points</th>
 
-                        <th>
-                            Actions
-                        </th>
+                        <th>VIP</th>
+
+                        <th>Actions</th>
 
                     </tr>
 
                 </thead>
 
-                <tbody id="usersTable">
-                </tbody>
+                <tbody id="usersTable"></tbody>
 
             </table>
 
@@ -1408,8 +1451,7 @@ tr:hover td{
 
                 </thead>
 
-                <tbody id="commandsTable">
-                </tbody>
+                <tbody id="commandsTable"></tbody>
 
             </table>
 
@@ -1466,8 +1508,7 @@ tr:hover td{
 
                 </thead>
 
-                <tbody id="rechargesTable">
-                </tbody>
+                <tbody id="rechargesTable"></tbody>
 
             </table>
 
@@ -1524,8 +1565,7 @@ tr:hover td{
 
                 </thead>
 
-                <tbody id="withdrawalsTable">
-                </tbody>
+                <tbody id="withdrawalsTable"></tbody>
 
             </table>
 
@@ -1561,7 +1601,7 @@ tr:hover td{
 
 
 <!-- ======================================================
-     ENVOYER MESSAGE
+     ENVOYER
 ====================================================== -->
 
 <section
@@ -1600,7 +1640,7 @@ tr:hover td{
             class="btn btn-blue"
             id="sendMessageBtn"
         >
-            📤 ENVOYER LE MESSAGE
+            📤 ENVOYER
         </button>
 
         <div id="sendStatus"></div>
@@ -1619,7 +1659,7 @@ tr:hover td{
 
 
 <!-- ======================================================
-     MODAL USER
+     USER MODAL
 ====================================================== -->
 
 <div
@@ -1649,7 +1689,7 @@ tr:hover td{
 
 
 <!-- ======================================================
-     MODAL COMMANDE
+     COMMAND MODAL
 ====================================================== -->
 
 <div
@@ -1679,7 +1719,6 @@ tr:hover td{
 
 
 <script type="module">
-
 
 /* =========================================================
    FIREBASE
@@ -1749,7 +1788,6 @@ const ADMIN_PASSWORD = "123";
 
 const loginBox =
     document.getElementById("adminLogin");
-
 
 const adminPanel =
     document.getElementById("adminPanel");
@@ -1851,13 +1889,13 @@ document
 
 
 /* =========================================================
-   UTILITAIRES
+   UTILS
 ========================================================= */
 
 function money(value){
 
     return Math.floor(
-        Number(value) || 0
+        Number(value)||0
     ).toLocaleString("fr-FR");
 
 }
@@ -1868,7 +1906,6 @@ function escapeHTML(value){
     return String(
         value ?? ""
     )
-
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -1878,12 +1915,74 @@ function escapeHTML(value){
 }
 
 
-function statusText(status){
+function getPhone(data){
 
-    return String(
-        status ||
+    return (
+        data.telephone ||
+        data.userPhone ||
+        data.phone ||
+        data.numero ||
+        data.user ||
+        ""
+    );
+
+}
+
+
+function getName(data){
+
+    return (
+        data.nom ||
+        data.name ||
+        data.username ||
+        "Utilisateur"
+    );
+
+}
+
+
+function getBalance(data){
+
+    return Number(
+        data.solde_principal ??
+        data.solde ??
+        data.balance ??
+        0
+    ) || 0;
+
+}
+
+
+function getPoints(data){
+
+    return Number(
+        data.points_fidelite ??
+        data.points ??
+        data.loyaltyPoints ??
+        0
+    ) || 0;
+
+}
+
+
+function getStatus(data){
+
+    return (
+        data.statut ||
+        data.status ||
         "En attente"
     );
+
+}
+
+
+function isPending(status){
+
+    return String(
+        status || ""
+    )
+    .toLowerCase()
+    .includes("attente");
 
 }
 
@@ -1891,69 +1990,51 @@ function statusText(status){
 function statusBadge(status){
 
     const s =
-        statusText(status);
+        String(status || "En attente");
 
-
-    const lower =
+    const low =
         s.toLowerCase();
 
 
     if(
-        lower.includes("valid")
+        low.includes("valid")
         ||
-        lower.includes("pay")
+        low.includes("pay")
         ||
-        lower.includes("termin")
+        low.includes("termin")
         ||
-        lower.includes("accept")
+        low.includes("accept")
     ){
 
         return `
-        <span class="badge success">
-            ${escapeHTML(s)}
-        </span>
+            <span class="badge success">
+                ${escapeHTML(s)}
+            </span>
         `;
 
     }
 
 
     if(
-        lower.includes("refus")
+        low.includes("refus")
         ||
-        lower.includes("annul")
-        ||
-        lower.includes("rembours")
+        low.includes("annul")
     ){
 
         return `
-        <span class="badge danger">
-            ${escapeHTML(s)}
-        </span>
+            <span class="badge danger">
+                ${escapeHTML(s)}
+            </span>
         `;
 
     }
 
 
     return `
-    <span class="badge pending">
-        ${escapeHTML(s)}
-    </span>
+        <span class="badge pending">
+            ${escapeHTML(s)}
+        </span>
     `;
-
-}
-
-
-function isPending(status){
-
-    const s =
-        String(
-            status ||
-            "En attente"
-        ).toLowerCase();
-
-    return (
-        s.includes("attente")
-    );
 
 }
 
@@ -2019,35 +2100,36 @@ document
    CACHE
 ========================================================= */
 
-let usersCache = {};
+let usersCache={};
 
-let commandsCache = {};
+let commandsCache={};
 
-let rechargeCache = {};
+let rechargeCache={};
 
-let withdrawalCache = {};
+let withdrawalCache={};
 
 
 
 /* =========================================================
-   UTILISATEURS
+   USERS
 ========================================================= */
 
 onValue(
     ref(db,"users"),
     snapshot=>{
 
-        usersCache = {};
+        usersCache={};
 
         const tbody =
-            document
-            .getElementById(
+            document.getElementById(
                 "usersTable"
             );
 
         tbody.innerHTML="";
 
         let count=0;
+
+        let totalBalance=0;
 
 
         snapshot.forEach(child=>{
@@ -2064,42 +2146,41 @@ onValue(
             count++;
 
 
-            const principal =
-                Number(
-                    data.solde_principal
-                ) || 0;
+            const balance =
+                getBalance(data);
+
+            totalBalance += balance;
 
 
             const gains =
                 Number(
-                    data.solde_gains
+                    data.solde_gains ??
+                    data.gains ??
+                    0
                 ) || 0;
 
 
             const commissions =
                 Number(
-                    data.solde_commissions
+                    data.solde_commissions ??
+                    data.commissions ??
+                    0
                 ) || 0;
 
 
             const points =
-                Number(
-                    data.points_fidelite ??
-                    data.points ??
-                    data.loyaltyPoints ??
-                    0
-                );
+                getPoints(data);
 
 
-            const name =
-                data.nom ||
-                data.name ||
-                "Utilisateur";
+            const vip =
+                data.vipActif ??
+                data.vip ??
+                data.vip_active ??
+                false;
 
 
             const tr =
-                document
-                .createElement("tr");
+                document.createElement("tr");
 
 
             tr.innerHTML=`
@@ -2109,11 +2190,13 @@ onValue(
                 </td>
 
                 <td class="user-name">
-                    ${escapeHTML(name)}
+                    ${escapeHTML(
+                        getName(data)
+                    )}
                 </td>
 
                 <td>
-                    ${money(principal)} FC
+                    ${money(balance)} FC
                 </td>
 
                 <td>
@@ -2129,13 +2212,24 @@ onValue(
                 </td>
 
                 <td>
+                    ${
+                        vip
+                        ?
+                        `<span class="badge success">VIP</span>`
+                        :
+                        `<span class="badge pending">Normal</span>`
+                    }
+                </td>
+
+                <td>
 
                     <button
                         class="btn btn-blue"
                         onclick="
                         viewUser(
                             '${encodeURIComponent(phone)}'
-                        )"
+                        )
+                        "
                     >
                         Voir
                     </button>
@@ -2146,7 +2240,7 @@ onValue(
                         addMoney(
                             '${encodeURIComponent(phone)}'
                         )
-                    "
+                        "
                     >
                         +1000
                     </button>
@@ -2157,7 +2251,7 @@ onValue(
                         removeMoney(
                             '${encodeURIComponent(phone)}'
                         )
-                    "
+                        "
                     >
                         -1000
                     </button>
@@ -2168,7 +2262,7 @@ onValue(
                         deleteUser(
                             '${encodeURIComponent(phone)}'
                         )
-                    "
+                        "
                     >
                         Supprimer
                     </button>
@@ -2184,22 +2278,32 @@ onValue(
 
 
         document
-        .getElementById(
-            "statUsers"
-        )
+        .getElementById("statUsers")
         .textContent=count;
+
+
+        document
+        .getElementById("totalBalance")
+        .textContent =
+            money(totalBalance)+" FC";
 
 
         if(count===0){
 
             tbody.innerHTML=`
+
                 <tr>
-                    <td colspan="7">
+
+                    <td colspan="8">
+
                         <div class="empty">
                             Aucun utilisateur.
                         </div>
+
                     </td>
+
                 </tr>
+
             `;
 
         }
@@ -2210,7 +2314,7 @@ onValue(
 
 
 /* =========================================================
-   RECHERCHE USERS
+   USER SEARCH
 ========================================================= */
 
 document
@@ -2248,7 +2352,7 @@ document
 
 
 /* =========================================================
-   VOIR USER
+   VIEW USER
 ========================================================= */
 
 window.viewUser =
@@ -2264,131 +2368,225 @@ function(encodedPhone){
         usersCache[phone] || {};
 
 
-    const principal =
-        Number(
-            data.solde_principal
-        ) || 0;
+    const balance =
+        getBalance(data);
 
 
     const gains =
         Number(
-            data.solde_gains
+            data.solde_gains ??
+            data.gains ??
+            0
         ) || 0;
 
 
     const commissions =
         Number(
-            data.solde_commissions
+            data.solde_commissions ??
+            data.commissions ??
+            0
         ) || 0;
 
 
     const points =
-        Number(
-            data.points_fidelite ??
-            data.points ??
-            data.loyaltyPoints ??
-            0
-        );
+        getPoints(data);
+
+
+    const vip =
+        data.vipActif ??
+        data.vip ??
+        data.vip_active ??
+        false;
 
 
     document
-    .getElementById(
-        "userDetails"
-    )
+    .getElementById("userDetails")
     .innerHTML=`
 
-        <p>
-            <b>📱 Numéro :</b>
-            ${escapeHTML(phone)}
-        </p>
+        <div class="detail-grid">
 
-        <p>
-            <b>👤 Nom :</b>
-            ${escapeHTML(
-                data.nom ||
-                data.name ||
-                "—"
-            )}
-        </p>
+            <div class="detail-item">
+                <small>📱 Numéro</small>
+                <strong>
+                    ${escapeHTML(phone)}
+                </strong>
+            </div>
 
-        <p>
-            <b>💰 Solde :</b>
-            ${money(principal)} FC
-        </p>
+            <div class="detail-item">
+                <small>👤 Nom</small>
+                <strong>
+                    ${escapeHTML(
+                        getName(data)
+                    )}
+                </strong>
+            </div>
 
-        <p>
-            <b>📈 Gains :</b>
-            ${money(gains)} FC
-        </p>
+            <div class="detail-item">
+                <small>💰 Solde principal</small>
+                <strong>
+                    ${money(balance)} FC
+                </strong>
+            </div>
 
-        <p>
-            <b>👥 Commissions :</b>
-            ${money(commissions)} FC
-        </p>
+            <div class="detail-item">
+                <small>📈 Gains</small>
+                <strong>
+                    ${money(gains)} FC
+                </strong>
+            </div>
 
-        <p>
-            <b>⭐ Points :</b>
-            ${money(points)}
-        </p>
+            <div class="detail-item">
+                <small>👥 Commissions</small>
+                <strong>
+                    ${money(commissions)} FC
+                </strong>
+            </div>
 
-        <p>
-            <b>🎁 Parrain :</b>
-            ${escapeHTML(
-                data.referredBy ||
-                "DIRECT"
-            )}
-        </p>
+            <div class="detail-item">
+                <small>⭐ Points</small>
+                <strong>
+                    ${money(points)}
+                </strong>
+            </div>
 
-        <p>
-            <b>🔑 Code :</b>
-            ${escapeHTML(
-                data.inviteCode ||
-                data.referralCode ||
-                "—"
-            )}
-        </p>
+            <div class="detail-item">
+                <small>🎁 Parrain</small>
+                <strong>
+                    ${escapeHTML(
+                        data.referredBy ||
+                        data.parrain ||
+                        "DIRECT"
+                    )}
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <small>🔑 Code</small>
+                <strong>
+                    ${escapeHTML(
+                        data.inviteCode ||
+                        data.referralCode ||
+                        "—"
+                    )}
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <small>👑 VIP</small>
+                <strong>
+                    ${
+                        vip
+                        ?
+                        "ACTIF"
+                        :
+                        "NON"
+                    }
+                </strong>
+            </div>
+
+        </div>
+
 
         <hr>
+
 
         <button
             class="btn btn-green"
             onclick="
             addMoney(
                 '${encodeURIComponent(phone)}'
-            )"
+            )
+            "
         >
             +1000 FC
         </button>
+
 
         <button
             class="btn btn-orange"
             onclick="
             removeMoney(
                 '${encodeURIComponent(phone)}'
-            )"
+            )
+            "
         >
             -1000 FC
         </button>
+
+
+        <button
+            class="btn btn-blue"
+            onclick="
+            addPoints(
+                '${encodeURIComponent(phone)}'
+            )
+            "
+        >
+            +100 points
+        </button>
+
+
+        <button
+            class="btn btn-dark"
+            onclick="
+            editUser(
+                '${encodeURIComponent(phone)}'
+            )
+            "
+        >
+            ✏️ Modifier
+        </button>
+
 
         <button
             class="btn btn-blue"
             onclick="
             resetPassword(
                 '${encodeURIComponent(phone)}'
-            )"
+            )
+            "
         >
-            🔑 Réinitialiser
+            🔑 Mot de passe
         </button>
+
 
         <button
             class="btn btn-red"
             onclick="
             deleteUser(
                 '${encodeURIComponent(phone)}'
-            )"
+            )
+            "
         >
             🗑️ Supprimer
         </button>
+
+
+        <hr>
+
+
+        <details>
+
+            <summary>
+                📋 Données Firebase
+            </summary>
+
+            <pre
+                style="
+                white-space:pre-wrap;
+                font-size:11px;
+                opacity:.75;
+                margin-top:15px;
+                "
+            >${escapeHTML(
+                JSON.stringify(
+                    data,
+                    null,
+                    2
+                )
+            )}</pre>
+
+        </details>
 
     `;
 
@@ -2400,7 +2598,7 @@ function(encodedPhone){
 
 
 /* =========================================================
-   AJOUTER SOLDE
+   ADD MONEY
 ========================================================= */
 
 window.addMoney =
@@ -2425,18 +2623,14 @@ async function(encodedPhone){
 
             ref(
                 db,
-                "users/"
-                +phone+
+                "users/"+phone+
                 "/solde_principal"
             ),
 
-            current => {
-
-                return (
+            current =>
+                (
                     Number(current)||0
-                ) + 1000;
-
-            }
+                ) + 1000
 
         );
 
@@ -2461,7 +2655,7 @@ async function(encodedPhone){
 
 
 /* =========================================================
-   RETIRER SOLDE
+   REMOVE MONEY
 ========================================================= */
 
 window.removeMoney =
@@ -2487,8 +2681,7 @@ async function(encodedPhone){
 
                 ref(
                     db,
-                    "users/"
-                    +phone+
+                    "users/"+phone+
                     "/solde_principal"
                 ),
 
@@ -2498,9 +2691,7 @@ async function(encodedPhone){
                         Number(current)||0;
 
 
-                    if(
-                        value < 1000
-                    ){
+                    if(value<1000){
 
                         return;
 
@@ -2547,7 +2738,157 @@ async function(encodedPhone){
 
 
 /* =========================================================
-   SUPPRIMER USER
+   ADD POINTS
+========================================================= */
+
+window.addPoints =
+async function(encodedPhone){
+
+    const phone =
+        decodeURIComponent(
+            encodedPhone
+        );
+
+
+    const amount =
+        Number(
+            prompt(
+                "Combien de points ajouter ?",
+                "100"
+            )
+        );
+
+
+    if(
+        !Number.isFinite(amount)
+        ||
+        amount<=0
+    ){
+
+        return;
+
+    }
+
+
+    try{
+
+        await runTransaction(
+
+            ref(
+                db,
+                "users/"+phone+
+                "/points_fidelite"
+            ),
+
+            current =>
+                (
+                    Number(current)||0
+                ) + amount
+
+        );
+
+
+        alert(
+            "✅ Points ajoutés."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Impossible d'ajouter les points."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   EDIT USER
+========================================================= */
+
+window.editUser =
+async function(encodedPhone){
+
+    const phone =
+        decodeURIComponent(
+            encodedPhone
+        );
+
+
+    const data =
+        usersCache[phone] || {};
+
+
+    const name =
+        prompt(
+            "Nom de l'utilisateur :",
+            getName(data)
+        );
+
+
+    if(name===null) return;
+
+
+    const inviteCode =
+        prompt(
+            "Code de parrainage :",
+            data.inviteCode ||
+            data.referralCode ||
+            ""
+        );
+
+
+    if(inviteCode===null) return;
+
+
+    try{
+
+        await update(
+
+            ref(
+                db,
+                "users/"+phone
+            ),
+
+            {
+
+                nom:
+                    name.trim(),
+
+                inviteCode:
+                    inviteCode.trim()
+
+            }
+
+        );
+
+
+        alert(
+            "✅ Utilisateur modifié."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Modification impossible."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   DELETE USER
 ========================================================= */
 
 window.deleteUser =
@@ -2569,7 +2910,8 @@ async function(encodedPhone){
     if(
         !confirm(
             "⚠️ DERNIÈRE CONFIRMATION\n\n"+
-            "Cette opération supprimera le compte."
+            "Toutes les données sous users/"+phone+
+            " seront supprimées."
         )
     ) return;
 
@@ -2639,11 +2981,11 @@ async function(encodedPhone){
 
 
     if(
-        password.length < 4
+        password.length<4
     ){
 
         alert(
-            "❌ Le mot de passe doit contenir au moins 4 caractères."
+            "❌ Minimum 4 caractères."
         );
 
         return;
@@ -2654,19 +2996,24 @@ async function(encodedPhone){
     try{
 
         await update(
+
             ref(
                 db,
                 "users/"+phone
             ),
+
             {
+
                 password:
                     password.trim()
+
             }
+
         );
 
 
         alert(
-            "✅ Mot de passe réinitialisé."
+            "✅ Mot de passe modifié."
         );
 
 
@@ -2694,16 +3041,12 @@ onValue(
 
         commandsCache={};
 
-
         const tbody =
-            document
-            .getElementById(
+            document.getElementById(
                 "commandsTable"
             );
 
-
         tbody.innerHTML="";
-
 
         let count=0;
 
@@ -2713,54 +3056,51 @@ onValue(
             const id =
                 child.key;
 
-
             const data =
                 child.val() || {};
 
 
             commandsCache[id]=data;
 
-
             count++;
 
 
             const phone =
-                data.telephone ||
-                data.userPhone ||
-                data.phone ||
-                "—";
+                getPhone(data) || "—";
 
 
             const service =
                 data.service ||
                 data.nom ||
                 data.produit ||
+                data.serviceName ||
                 "Service";
 
 
-            const montant =
+            const amount =
                 Number(
                     data.montant ??
                     data.prix ??
+                    data.amount ??
                     0
-                );
+                ) || 0;
 
 
             const status =
-                data.statut ||
-                "En attente";
+                getStatus(data);
 
 
             const tr =
-                document
-                .createElement("tr");
+                document.createElement("tr");
 
 
             tr.innerHTML=`
 
                 <td>
                     ${escapeHTML(
-                        data.date || "—"
+                        data.date ||
+                        data.createdAt ||
+                        "—"
                     )}
                 </td>
 
@@ -2773,7 +3113,7 @@ onValue(
                 </td>
 
                 <td>
-                    ${money(montant)} FC
+                    ${money(amount)} FC
                 </td>
 
                 <td>
@@ -2787,15 +3127,19 @@ onValue(
                         onclick="
                         viewCommand(
                             '${encodeURIComponent(id)}'
-                        )"
+                        )
+                        "
                     >
                         Voir
                     </button>
 
+
                     ${
                         isPending(status)
                         ?
+
                         `
+
                         <button
                             class="btn btn-green"
                             onclick="
@@ -2817,13 +3161,15 @@ onValue(
                         >
                             Refuser
                         </button>
+
                         `
+
                         :
-                        `
-                        <span class="muted">
+
+                        `<span class="muted">
                             Traité
-                        </span>
-                        `
+                        </span>`
+
                     }
 
                 </td>
@@ -2846,13 +3192,19 @@ onValue(
         if(count===0){
 
             tbody.innerHTML=`
+
                 <tr>
+
                     <td colspan="6">
+
                         <div class="empty">
                             Aucune commande.
                         </div>
+
                     </td>
+
                 </tr>
+
             `;
 
         }
@@ -2863,7 +3215,7 @@ onValue(
 
 
 /* =========================================================
-   VOIR COMMANDE
+   VIEW COMMAND
 ========================================================= */
 
 window.viewCommand =
@@ -2888,10 +3240,7 @@ function(encodedId){
         <p>
             <b>📱 Client :</b>
             ${escapeHTML(
-                data.telephone ||
-                data.userPhone ||
-                data.phone ||
-                "—"
+                getPhone(data) || "—"
             )}
         </p>
 
@@ -2910,6 +3259,7 @@ function(encodedId){
             ${money(
                 data.montant ??
                 data.prix ??
+                data.amount ??
                 0
             )} FC
         </p>
@@ -2917,27 +3267,25 @@ function(encodedId){
         <p>
             <b>📅 Date :</b>
             ${escapeHTML(
-                data.date || "—"
+                data.date ||
+                data.createdAt ||
+                "—"
             )}
         </p>
 
         <p>
             <b>📌 Statut :</b>
             ${statusBadge(
-                data.statut
+                getStatus(data)
             )}
         </p>
 
         <hr>
 
-        <h3>
-            📋 Données complètes
-        </h3>
-
         <pre
             style="
             white-space:pre-wrap;
-            font-size:12px;
+            font-size:11px;
             opacity:.8;
             "
         >${escapeHTML(
@@ -2960,7 +3308,7 @@ function(encodedId){
 
 
 /* =========================================================
-   VALIDER COMMANDE
+   VALIDATE COMMAND
 ========================================================= */
 
 window.validateCommand =
@@ -2976,21 +3324,14 @@ async function(encodedId){
         commandsCache[id] || {};
 
 
-    const currentStatus =
-        String(
-            data.statut ||
-            "En attente"
-        ).toLowerCase();
+    const status =
+        getStatus(data);
 
 
-    if(
-        !currentStatus.includes(
-            "attente"
-        )
-    ){
+    if(!isPending(status)){
 
         alert(
-            "⚠️ Cette commande a déjà été traitée."
+            "⚠️ Commande déjà traitée."
         );
 
         return;
@@ -3007,22 +3348,61 @@ async function(encodedId){
 
     try{
 
-        await update(
+        const result =
+            await runTransaction(
 
-            ref(
-                db,
-                "demandes_commandes/"+id
-            ),
+                ref(
+                    db,
+                    "demandes_commandes/"+id
+                ),
 
-            {
-                statut:"Validée",
+                current=>{
 
-                dateValidation:
-                    new Date()
-                    .toISOString()
-            }
+                    if(!current){
 
-        );
+                        return;
+
+                    }
+
+
+                    if(
+                        !isPending(
+                            getStatus(current)
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:
+                            "Validée",
+
+                        dateValidation:
+                            new Date()
+                            .toISOString()
+
+                    };
+
+                }
+
+            );
+
+
+        if(!result.committed){
+
+            alert(
+                "⚠️ Commande déjà traitée."
+            );
+
+            return;
+
+        }
 
 
         alert(
@@ -3045,7 +3425,7 @@ async function(encodedId){
 
 
 /* =========================================================
-   REFUSER COMMANDE + REMBOURSEMENT
+   REFUSE COMMAND
 ========================================================= */
 
 window.refuseCommand =
@@ -3061,38 +3441,17 @@ async function(encodedId){
         commandsCache[id] || {};
 
 
-    const status =
-        String(
-            data.statut ||
-            ""
-        ).toLowerCase();
-
-
-    if(
-        !status.includes("attente")
-    ){
-
-        alert(
-            "⚠️ Cette commande a déjà été traitée."
-        );
-
-        return;
-
-    }
-
-
     const phone =
-        data.telephone ||
-        data.userPhone ||
-        data.phone;
+        getPhone(data);
 
 
     const amount =
         Number(
             data.montant ??
             data.prix ??
+            data.amount ??
             0
-        );
+        ) || 0;
 
 
     if(
@@ -3112,19 +3471,12 @@ async function(encodedId){
     if(
         !confirm(
             "Refuser la commande et rembourser "+
-            money(amount)+
-            " FC ?"
+            money(amount)+" FC ?"
         )
     ) return;
 
 
     try{
-
-        /*
-         * Transaction atomique
-         * pour éviter les problèmes
-         * de concurrence.
-         */
 
         const result =
             await runTransaction(
@@ -3136,25 +3488,16 @@ async function(encodedId){
 
                 current=>{
 
-                    if(
-                        !current
-                    ){
+                    if(!current){
 
                         return;
 
                     }
 
 
-                    const s =
-                        String(
-                            current.statut ||
-                            "En attente"
-                        ).toLowerCase();
-
-
                     if(
-                        !s.includes(
-                            "attente"
+                        !isPending(
+                            getStatus(current)
                         )
                     ){
 
@@ -3184,12 +3527,10 @@ async function(encodedId){
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             alert(
-                "⚠️ Cette commande a déjà été traitée."
+                "⚠️ Commande déjà traitée."
             );
 
             return;
@@ -3201,18 +3542,14 @@ async function(encodedId){
 
             ref(
                 db,
-                "users/"
-                +phone+
+                "users/"+phone+
                 "/solde_principal"
             ),
 
-            current => {
-
-                return (
+            current =>
+                (
                     Number(current)||0
-                ) + amount;
-
-            }
+                ) + amount
 
         );
 
@@ -3229,7 +3566,7 @@ async function(encodedId){
         console.error(error);
 
         alert(
-            "❌ Erreur pendant le remboursement."
+            "❌ Erreur de remboursement."
         );
 
     }
@@ -3248,18 +3585,16 @@ onValue(
 
         rechargeCache={};
 
-
         const tbody =
-            document
-            .getElementById(
+            document.getElementById(
                 "rechargesTable"
             );
 
-
         tbody.innerHTML="";
 
-
         let pending=0;
+
+        let count=0;
 
 
         snapshot.forEach(child=>{
@@ -3267,17 +3602,17 @@ onValue(
             const id =
                 child.key;
 
-
             const data =
                 child.val() || {};
 
 
             rechargeCache[id]=data;
 
+            count++;
+
 
             const status =
-                data.statut ||
-                "En attente";
+                getStatus(data);
 
 
             if(
@@ -3290,10 +3625,7 @@ onValue(
 
 
             const phone =
-                data.telephone ||
-                data.userPhone ||
-                data.phone ||
-                "—";
+                getPhone(data) || "—";
 
 
             const amount =
@@ -3301,19 +3633,34 @@ onValue(
                     data.montant ??
                     data.amount ??
                     0
-                );
+                ) || 0;
+
+
+            const method =
+                data.methode ||
+                data.method ||
+                data.modePaiement ||
+                "—";
+
+
+            const transaction =
+                data.transactionId ||
+                data.transaction ||
+                data.reference ||
+                "—";
 
 
             const tr =
-                document
-                .createElement("tr");
+                document.createElement("tr");
 
 
             tr.innerHTML=`
 
                 <td>
                     ${escapeHTML(
-                        data.date || "—"
+                        data.date ||
+                        data.createdAt ||
+                        "—"
                     )}
                 </td>
 
@@ -3326,19 +3673,11 @@ onValue(
                 </td>
 
                 <td>
-                    ${escapeHTML(
-                        data.methode ||
-                        data.method ||
-                        "—"
-                    )}
+                    ${escapeHTML(method)}
                 </td>
 
                 <td>
-                    ${escapeHTML(
-                        data.transactionId ||
-                        data.transaction ||
-                        "—"
-                    )}
+                    ${escapeHTML(transaction)}
                 </td>
 
                 <td>
@@ -3350,7 +3689,9 @@ onValue(
                     ${
                         isPending(status)
                         ?
+
                         `
+
                         <button
                             class="btn btn-green"
                             onclick="
@@ -3362,6 +3703,7 @@ onValue(
                             Valider
                         </button>
 
+
                         <button
                             class="btn btn-red"
                             onclick="
@@ -3372,13 +3714,15 @@ onValue(
                         >
                             Refuser
                         </button>
+
                         `
+
                         :
-                        `
-                        <span class="muted">
+
+                        `<span class="muted">
                             Traité
-                        </span>
-                        `
+                        </span>`
+
                     }
 
                 </td>
@@ -3398,18 +3742,22 @@ onValue(
         .textContent=pending;
 
 
-        if(
-            snapshot.size===0
-        ){
+        if(count===0){
 
             tbody.innerHTML=`
+
                 <tr>
+
                     <td colspan="7">
+
                         <div class="empty">
                             Aucune recharge.
                         </div>
+
                     </td>
+
                 </tr>
+
             `;
 
         }
@@ -3420,7 +3768,7 @@ onValue(
 
 
 /* =========================================================
-   VALIDER RECHARGE
+   VALIDATE RECHARGE
 ========================================================= */
 
 window.validateRecharge =
@@ -3436,32 +3784,8 @@ async function(encodedId){
         rechargeCache[id] || {};
 
 
-    const status =
-        String(
-            data.statut ||
-            "En attente"
-        ).toLowerCase();
-
-
-    if(
-        !status.includes(
-            "attente"
-        )
-    ){
-
-        alert(
-            "⚠️ Cette recharge a déjà été traitée."
-        );
-
-        return;
-
-    }
-
-
     const phone =
-        data.telephone ||
-        data.userPhone ||
-        data.phone;
+        getPhone(data);
 
 
     const amount =
@@ -3469,7 +3793,7 @@ async function(encodedId){
             data.montant ??
             data.amount ??
             0
-        );
+        ) || 0;
 
 
     if(
@@ -3488,11 +3812,9 @@ async function(encodedId){
 
     if(
         !confirm(
-            "Ajouter "+
+            "Créditer "+
             money(amount)+
-            " FC au compte de "+
-            phone+
-            " ?"
+            " FC à "+phone+" ?"
         )
     ) return;
 
@@ -3500,9 +3822,8 @@ async function(encodedId){
     try{
 
         /*
-         * On verrouille la demande avant
-         * de créditer pour empêcher
-         * plusieurs validations.
+         * Étape 1 :
+         * verrouillage de la demande
          */
 
         const result =
@@ -3522,16 +3843,9 @@ async function(encodedId){
                     }
 
 
-                    const s =
-                        String(
-                            current.statut ||
-                            "En attente"
-                        ).toLowerCase();
-
-
                     if(
-                        !s.includes(
-                            "attente"
+                        !isPending(
+                            getStatus(current)
                         )
                     ){
 
@@ -3544,11 +3858,15 @@ async function(encodedId){
 
                         ...current,
 
-                        statut:"Validée",
+                        statut:
+                            "Validée",
 
                         dateValidation:
                             new Date()
-                            .toISOString()
+                            .toISOString(),
+
+                        creditAmount:
+                            amount
 
                     };
 
@@ -3557,9 +3875,7 @@ async function(encodedId){
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             alert(
                 "⚠️ Recharge déjà traitée."
@@ -3570,12 +3886,16 @@ async function(encodedId){
         }
 
 
+        /*
+         * Étape 2 :
+         * crédit du compte
+         */
+
         await runTransaction(
 
             ref(
                 db,
-                "users/"
-                +phone+
+                "users/"+phone+
                 "/solde_principal"
             ),
 
@@ -3607,7 +3927,7 @@ async function(encodedId){
 
 
 /* =========================================================
-   REFUSER RECHARGE
+   REFUSE RECHARGE
 ========================================================= */
 
 window.refuseRecharge =
@@ -3617,32 +3937,6 @@ async function(encodedId){
         decodeURIComponent(
             encodedId
         );
-
-
-    const data =
-        rechargeCache[id] || {};
-
-
-    const status =
-        String(
-            data.statut ||
-            "En attente"
-        ).toLowerCase();
-
-
-    if(
-        !status.includes(
-            "attente"
-        )
-    ){
-
-        alert(
-            "⚠️ Recharge déjà traitée."
-        );
-
-        return;
-
-    }
 
 
     if(
@@ -3671,16 +3965,9 @@ async function(encodedId){
                     }
 
 
-                    const s =
-                        String(
-                            current.statut ||
-                            "En attente"
-                        ).toLowerCase();
-
-
                     if(
-                        !s.includes(
-                            "attente"
+                        !isPending(
+                            getStatus(current)
                         )
                     ){
 
@@ -3693,7 +3980,8 @@ async function(encodedId){
 
                         ...current,
 
-                        statut:"Refusée",
+                        statut:
+                            "Refusée",
 
                         dateRefus:
                             new Date()
@@ -3706,12 +3994,10 @@ async function(encodedId){
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             alert(
-                "⚠️ Cette recharge a déjà été traitée."
+                "⚠️ Recharge déjà traitée."
             );
 
             return;
@@ -3748,18 +4034,16 @@ onValue(
 
         withdrawalCache={};
 
-
         const tbody =
-            document
-            .getElementById(
+            document.getElementById(
                 "withdrawalsTable"
             );
 
-
         tbody.innerHTML="";
 
-
         let pending=0;
+
+        let count=0;
 
 
         snapshot.forEach(child=>{
@@ -3767,17 +4051,17 @@ onValue(
             const id =
                 child.key;
 
-
             const data =
                 child.val() || {};
 
 
             withdrawalCache[id]=data;
 
+            count++;
+
 
             const status =
-                data.statut ||
-                "En attente";
+                getStatus(data);
 
 
             if(
@@ -3790,28 +4074,42 @@ onValue(
 
 
             const phone =
-                data.telephone ||
-                data.userPhone ||
-                data.phone ||
-                "—";
+                getPhone(data) || "—";
 
 
             const amount =
                 Number(
-                    data.montant
+                    data.montant ??
+                    data.amount ??
+                    0
                 ) || 0;
 
 
+            const method =
+                data.methode ||
+                data.method ||
+                "—";
+
+
+            const receiver =
+                data.numero_reception ||
+                data.numeroReception ||
+                data.numero ||
+                data.receiver ||
+                "—";
+
+
             const tr =
-                document
-                .createElement("tr");
+                document.createElement("tr");
 
 
             tr.innerHTML=`
 
                 <td>
                     ${escapeHTML(
-                        data.date || "—"
+                        data.date ||
+                        data.createdAt ||
+                        "—"
                     )}
                 </td>
 
@@ -3824,16 +4122,11 @@ onValue(
                 </td>
 
                 <td>
-                    ${escapeHTML(
-                        data.methode || "—"
-                    )}
+                    ${escapeHTML(method)}
                 </td>
 
                 <td>
-                    ${escapeHTML(
-                        data.numero_reception ||
-                        "—"
-                    )}
+                    ${escapeHTML(receiver)}
                 </td>
 
                 <td>
@@ -3845,7 +4138,9 @@ onValue(
                     ${
                         isPending(status)
                         ?
+
                         `
+
                         <button
                             class="btn btn-green"
                             onclick="
@@ -3857,6 +4152,7 @@ onValue(
                             Paiement effectué
                         </button>
 
+
                         <button
                             class="btn btn-red"
                             onclick="
@@ -3867,13 +4163,15 @@ onValue(
                         >
                             Refuser
                         </button>
+
                         `
+
                         :
-                        `
-                        <span class="muted">
+
+                        `<span class="muted">
                             Traité
-                        </span>
-                        `
+                        </span>`
+
                     }
 
                 </td>
@@ -3893,18 +4191,22 @@ onValue(
         .textContent=pending;
 
 
-        if(
-            snapshot.size===0
-        ){
+        if(count===0){
 
             tbody.innerHTML=`
+
                 <tr>
+
                     <td colspan="7">
+
                         <div class="empty">
                             Aucun retrait.
                         </div>
+
                     </td>
+
                 </tr>
+
             `;
 
         }
@@ -3915,7 +4217,7 @@ onValue(
 
 
 /* =========================================================
-   VALIDER RETRAIT
+   VALIDATE WITHDRAWAL
 ========================================================= */
 
 window.validateWithdrawal =
@@ -3929,28 +4231,6 @@ async function(encodedId){
 
     const data =
         withdrawalCache[id] || {};
-
-
-    const status =
-        String(
-            data.statut ||
-            "En attente"
-        ).toLowerCase();
-
-
-    if(
-        !status.includes(
-            "attente"
-        )
-    ){
-
-        alert(
-            "⚠️ Ce retrait a déjà été traité."
-        );
-
-        return;
-
-    }
 
 
     if(
@@ -3979,16 +4259,9 @@ async function(encodedId){
                     }
 
 
-                    const s =
-                        String(
-                            current.statut ||
-                            "En attente"
-                        ).toLowerCase();
-
-
                     if(
-                        !s.includes(
-                            "attente"
+                        !isPending(
+                            getStatus(current)
                         )
                     ){
 
@@ -4001,7 +4274,8 @@ async function(encodedId){
 
                         ...current,
 
-                        statut:"Payé",
+                        statut:
+                            "Payé",
 
                         datePaiement:
                             new Date()
@@ -4014,9 +4288,7 @@ async function(encodedId){
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             alert(
                 "⚠️ Retrait déjà traité."
@@ -4047,7 +4319,7 @@ async function(encodedId){
 
 
 /* =========================================================
-   REFUSER RETRAIT + REMBOURSEMENT
+   REFUSE WITHDRAWAL
 ========================================================= */
 
 window.refuseWithdrawal =
@@ -4063,37 +4335,15 @@ async function(encodedId){
         withdrawalCache[id] || {};
 
 
-    const status =
-        String(
-            data.statut ||
-            "En attente"
-        ).toLowerCase();
-
-
-    if(
-        !status.includes(
-            "attente"
-        )
-    ){
-
-        alert(
-            "⚠️ Ce retrait a déjà été traité."
-        );
-
-        return;
-
-    }
-
-
     const phone =
-        data.telephone ||
-        data.userPhone ||
-        data.phone;
+        getPhone(data);
 
 
     const amount =
         Number(
-            data.montant
+            data.montant ??
+            data.amount ??
+            0
         ) || 0;
 
 
@@ -4139,16 +4389,9 @@ async function(encodedId){
                     }
 
 
-                    const s =
-                        String(
-                            current.statut ||
-                            "En attente"
-                        ).toLowerCase();
-
-
                     if(
-                        !s.includes(
-                            "attente"
+                        !isPending(
+                            getStatus(current)
                         )
                     ){
 
@@ -4178,9 +4421,7 @@ async function(encodedId){
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             alert(
                 "⚠️ Retrait déjà traité."
@@ -4195,8 +4436,7 @@ async function(encodedId){
 
             ref(
                 db,
-                "users/"
-                +phone+
+                "users/"+phone+
                 "/solde_principal"
             ),
 
@@ -4220,7 +4460,7 @@ async function(encodedId){
         console.error(error);
 
         alert(
-            "❌ Erreur pendant le remboursement."
+            "❌ Erreur de remboursement."
         );
 
     }
@@ -4238,8 +4478,7 @@ onValue(
     snapshot=>{
 
         const container =
-            document
-            .getElementById(
+            document.getElementById(
                 "messagesList"
             );
 
@@ -4285,17 +4524,13 @@ onValue(
             let fileHTML="";
 
 
-            if(
+            const file =
                 data.file ||
                 data.fichier ||
-                data.fileData
-            ){
+                data.fileData;
 
-                const file =
-                    data.file ||
-                    data.fichier ||
-                    data.fileData;
 
+            if(file){
 
                 fileHTML=`
 
@@ -4311,7 +4546,7 @@ onValue(
                             download
                             class="btn btn-blue"
                         >
-                            ⬇️ Ouvrir / télécharger
+                            ⬇️ Ouvrir
                         </a>
 
                     </div>
@@ -4322,8 +4557,7 @@ onValue(
 
 
             const card =
-                document
-                .createElement("div");
+                document.createElement("div");
 
 
             card.className=
@@ -4345,13 +4579,17 @@ onValue(
 
                 </div>
 
+
                 <div class="message-body">
                     ${escapeHTML(text)}
                 </div>
 
+
                 ${fileHTML}
 
+
                 <br>
+
 
                 <button
                     class="btn btn-blue"
@@ -4363,6 +4601,7 @@ onValue(
                 >
                     ↩️ Répondre
                 </button>
+
 
                 <button
                     class="btn btn-red"
@@ -4378,9 +4617,7 @@ onValue(
             `;
 
 
-            container.prepend(
-                card
-            );
+            container.prepend(card);
 
         });
 
@@ -4388,9 +4625,13 @@ onValue(
         if(count===0){
 
             container.innerHTML=`
+
                 <div class="panel empty">
+
                     💬 Aucun message reçu.
+
                 </div>
+
             `;
 
         }
@@ -4401,7 +4642,7 @@ onValue(
 
 
 /* =========================================================
-   RÉPONDRE
+   REPLY
 ========================================================= */
 
 window.replyUser =
@@ -4438,7 +4679,7 @@ function(encodedPhone){
 
 
 /* =========================================================
-   SUPPRIMER MESSAGE
+   DELETE MESSAGE
 ========================================================= */
 
 window.deleteMessage =
@@ -4487,7 +4728,7 @@ async function(encodedId){
 
 
 /* =========================================================
-   ENVOYER MESSAGE
+   SEND MESSAGE
 ========================================================= */
 
 document
@@ -4533,9 +4774,11 @@ async function(){
 
     if(!phone){
 
-        alert(
-            "⚠️ Indique le numéro du destinataire."
-        );
+        status.innerHTML=`
+            <p style="color:var(--red)">
+                ❌ Numéro obligatoire.
+            </p>
+        `;
 
         return;
 
@@ -4544,9 +4787,11 @@ async function(){
 
     if(!text){
 
-        alert(
-            "⚠️ Écris un message."
-        );
+        status.innerHTML=`
+            <p style="color:var(--red)">
+                ❌ Message obligatoire.
+            </p>
+        `;
 
         return;
 
@@ -4554,6 +4799,21 @@ async function(){
 
 
     try{
+
+        const now =
+            Date.now();
+
+
+        const date =
+            new Date()
+            .toLocaleString(
+                "fr-FR"
+            );
+
+
+        /*
+         * Message général
+         */
 
         const messageRef =
             push(
@@ -4564,49 +4824,40 @@ async function(){
             );
 
 
-        const messageData={
-
-            from:"ADMIN",
-
-            to:phone,
-
-            telephone:phone,
-
-            message:text,
-
-            date:
-                new Date()
-                .toLocaleString(
-                    "fr-FR"
-                ),
-
-            timestamp:
-                Date.now(),
-
-            lu:false,
-
-            type:"admin"
-
-        };
-
-
         await set(
             messageRef,
-            messageData
+            {
+
+                from:"ADMIN",
+
+                to:phone,
+
+                telephone:phone,
+
+                message:text,
+
+                date:date,
+
+                timestamp:now,
+
+                lu:false,
+
+                type:"admin"
+
+            }
         );
 
 
         /*
-         * Copie dans la boîte personnelle
-         * de l'utilisateur.
+         * Boîte de réception
+         * de l'utilisateur
          */
 
         const userMessageRef =
             push(
                 ref(
                     db,
-                    "users/"
-                    +phone+
+                    "users/"+phone+
                     "/messages"
                 )
             );
@@ -4622,14 +4873,9 @@ async function(){
 
                 message:text,
 
-                date:
-                    new Date()
-                    .toLocaleString(
-                        "fr-FR"
-                    ),
+                date:date,
 
-                timestamp:
-                    Date.now(),
+                timestamp:now,
 
                 lu:false,
 
@@ -4664,7 +4910,6 @@ async function(){
 
         console.error(error);
 
-
         status.innerHTML=`
 
             <p
@@ -4691,8 +4936,7 @@ window.openModal =
 function(id){
 
     const modal =
-        document
-        .getElementById(id);
+        document.getElementById(id);
 
 
     if(modal){
@@ -4710,8 +4954,7 @@ window.closeModal =
 function(id){
 
     const modal =
-        document
-        .getElementById(id);
+        document.getElementById(id);
 
 
     if(modal){
@@ -4734,8 +4977,7 @@ document
         e=>{
 
             if(
-                e.target ===
-                modal
+                e.target === modal
             ){
 
                 modal.classList.remove(
@@ -4750,15 +4992,11 @@ document
 });
 
 
-document
-.addEventListener(
+document.addEventListener(
     "keydown",
     e=>{
 
-        if(
-            e.key ===
-            "Escape"
-        ){
+        if(e.key==="Escape"){
 
             document
             .querySelectorAll(
@@ -4776,6 +5014,23 @@ document
     }
 );
 
+
+
+/* =========================================================
+   ERREUR FIREBASE
+========================================================= */
+
+window.addEventListener(
+    "error",
+    event=>{
+
+        console.error(
+            "Erreur Admin:",
+            event.error
+        );
+
+    }
+);
 
 </script>
 

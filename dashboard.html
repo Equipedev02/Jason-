@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,12 +10,12 @@
 <style>
 
 :root{
-    --blue:#00d2ff;
-    --dark:#050a14;
-    --green:#4caf50;
-    --gold:#ffd700;
-    --red:#f44336;
-    --glass:rgba(255,255,255,.06);
+    --jb-blue:#00d2ff;
+    --jb-dark:#050a14;
+    --jb-green:#4caf50;
+    --jb-gold:#ffd700;
+    --jb-red:#f44336;
+    --jb-glass:rgba(255,255,255,.06);
 }
 
 *{
@@ -25,7 +26,7 @@ body{
     margin:0;
     font-family:'Segoe UI',Arial,sans-serif;
     background:
-        var(--dark)
+        var(--jb-dark)
         url('IMG_0870.jpeg')
         no-repeat center center fixed;
     background-size:cover;
@@ -33,7 +34,7 @@ body{
     padding-bottom:100px;
 }
 
-.overlay{
+.jb-overlay{
     min-height:100vh;
     background:rgba(5,10,20,.90);
     padding-bottom:30px;
@@ -41,8 +42,7 @@ body{
 
 /* ================= HEADER ================= */
 
-.header{
-
+.jb-header{
     padding:25px 20px 20px;
 
     background:
@@ -57,25 +57,20 @@ body{
     backdrop-filter:blur(15px);
 }
 
-.top{
-
+.jb-top{
     display:flex;
     justify-content:space-between;
     align-items:center;
-
 }
 
-.brand{
-
+.jb-brand{
     font-size:20px;
     font-weight:900;
     letter-spacing:3px;
-    color:var(--blue);
-
+    color:var(--jb-blue);
 }
 
-.status{
-
+.jb-status{
     font-size:11px;
     color:#4caf50;
 
@@ -90,30 +85,23 @@ body{
 
 /* ================= USER ================= */
 
-.user-box{
-
+.jb-user-box{
     margin-top:20px;
-
 }
 
-.user-box small{
-
+.jb-user-box small{
     opacity:.6;
     font-size:11px;
-
 }
 
-.user-box h2{
-
+.jb-user-box h2{
     margin:5px 0;
-
     font-size:22px;
-
 }
 
 /* ================= BALANCE ================= */
 
-.balance-card{
+.jb-balance-card{
 
     margin:20px;
 
@@ -135,41 +123,34 @@ body{
         0 0 25px rgba(0,210,255,.08);
 
     backdrop-filter:blur(15px);
-
 }
 
-.balance-title{
-
+.jb-balance-title{
     font-size:12px;
     opacity:.65;
     text-transform:uppercase;
-
 }
 
-.balance{
-
+.jb-balance{
     font-size:36px;
     font-weight:900;
 
-    color:var(--blue);
+    color:var(--jb-blue);
 
     margin:8px 0;
 
     text-shadow:
         0 0 15px rgba(0,210,255,.5);
-
 }
 
-.currency{
-
+.jb-currency{
     font-size:14px;
     opacity:.7;
-
 }
 
 /* ================= BALANCE GRID ================= */
 
-.balance-grid{
+.jb-balance-grid{
 
     display:grid;
 
@@ -179,10 +160,9 @@ body{
     gap:10px;
 
     margin-top:20px;
-
 }
 
-.money-box{
+.jb-money-box{
 
     background:rgba(255,255,255,.05);
 
@@ -193,16 +173,13 @@ body{
     padding:14px 8px;
 
     text-align:center;
-
 }
 
-.money-box .icon{
-
+.jb-money-box .jb-icon{
     font-size:20px;
-
 }
 
-.money-box small{
+.jb-money-box small{
 
     display:block;
 
@@ -213,22 +190,20 @@ body{
     font-size:9px;
 
     text-transform:uppercase;
-
 }
 
-.money-box b{
+.jb-money-box b{
 
     display:block;
 
     margin-top:4px;
 
     font-size:13px;
-
 }
 
 /* ================= ACTIONS ================= */
 
-.actions{
+.jb-actions{
 
     display:grid;
 
@@ -237,10 +212,9 @@ body{
     gap:12px;
 
     margin:20px;
-
 }
 
-.action{
+.jb-action{
 
     padding:17px;
 
@@ -255,35 +229,31 @@ body{
     font-size:13px;
 
     transition:.2s;
-
 }
 
-.action:active{
-
+.jb-action:active{
     transform:scale(.96);
-
 }
 
-.recharge{
+.jb-recharge{
 
-    background:var(--blue);
+    background:var(--jb-blue);
+
     color:#000;
-
 }
 
-.withdraw{
+.jb-withdraw{
 
     background:rgba(244,67,54,.12);
 
     color:#ff6b61;
 
     border:1px solid rgba(244,67,54,.4);
-
 }
 
 /* ================= POINTS ================= */
 
-.points-card{
+.jb-points-card{
 
     margin:20px;
 
@@ -294,62 +264,87 @@ body{
     background:rgba(255,215,0,.07);
 
     border:1px solid rgba(255,215,0,.25);
-
 }
 
-.points-top{
+.jb-points-top{
 
     display:flex;
 
     justify-content:space-between;
 
     align-items:center;
-
 }
 
-.points-title{
+.jb-points-title{
 
-    color:var(--gold);
+    color:var(--jb-gold);
 
     font-weight:bold;
-
 }
 
-.points-number{
+.jb-points-number{
 
     font-size:25px;
 
     font-weight:900;
 
-    color:var(--gold);
-
+    color:var(--jb-gold);
 }
 
-.points-value{
+.jb-points-value{
 
     margin-top:8px;
 
     font-size:12px;
 
     opacity:.7;
-
 }
 
-.points-value b{
+.jb-points-value b{
+    color:var(--jb-gold);
+}
 
-    color:var(--gold);
+#jbConvertPoints{
 
+    width:100%;
+
+    margin-top:15px;
+
+    padding:13px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ffd700;
+
+    color:#000;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+#jbConvertPoints:active{
+    transform:scale(.97);
+}
+
+#jbConvertPoints:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
 }
 
 /* ================= SERVICES ================= */
 
-.section{
-
+.jb-section{
     padding:0 20px;
-
 }
 
-.section-title{
+.jb-section-title{
 
     display:flex;
 
@@ -358,30 +353,27 @@ body{
     align-items:center;
 
     margin:25px 0 15px;
-
 }
 
-.section-title h3{
+.jb-section-title h3{
 
     margin:0;
 
     font-size:17px;
-
 }
 
-.section-title a{
+.jb-section-title a{
 
-    color:var(--blue);
+    color:var(--jb-blue);
 
     font-size:11px;
 
     text-decoration:none;
-
 }
 
 /* ================= SERVICE CARD ================= */
 
-.service-card{
+.jb-service-card{
 
     display:flex;
 
@@ -389,7 +381,7 @@ body{
 
     gap:15px;
 
-    background:var(--glass);
+    background:var(--jb-glass);
 
     border:1px solid rgba(0,210,255,.12);
 
@@ -400,16 +392,18 @@ body{
     border-radius:17px;
 
     backdrop-filter:blur(10px);
-
 }
 
-.service-icon{
+.jb-service-icon{
 
     width:48px;
+
     height:48px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     background:rgba(0,210,255,.08);
@@ -419,36 +413,31 @@ body{
     border-radius:14px;
 
     font-size:23px;
-
 }
 
-.service-info{
-
+.jb-service-info{
     flex:1;
-
 }
 
-.service-name{
+.jb-service-name{
 
     font-weight:bold;
 
     font-size:13px;
-
 }
 
-.service-desc{
+.jb-service-desc{
 
     font-size:10px;
 
     opacity:.55;
 
     margin-top:4px;
-
 }
 
-.service-price{
+.jb-service-price{
 
-    color:var(--blue);
+    color:var(--jb-blue);
 
     font-weight:bold;
 
@@ -456,9 +445,9 @@ body{
 
 }
 
-/* ================= INVESTISSEMENTS ================= */
+/* ================= ACTIVITÉS ================= */
 
-.invest-card{
+.jb-invest-card{
 
     background:rgba(76,175,80,.06);
 
@@ -469,50 +458,45 @@ body{
     border-radius:16px;
 
     margin-bottom:10px;
-
 }
 
-.invest-row{
+.jb-invest-row{
 
     display:flex;
 
     justify-content:space-between;
 
     align-items:center;
-
 }
 
-.invest-name{
+.jb-invest-name{
 
     font-weight:bold;
 
     font-size:13px;
-
 }
 
-.invest-gain{
+.jb-invest-gain{
 
-    color:var(--green);
+    color:var(--jb-green);
 
     font-size:11px;
 
     font-weight:bold;
-
 }
 
-.invest-date{
+.jb-invest-date{
 
     opacity:.5;
 
     font-size:9px;
 
     margin-top:8px;
-
 }
 
 /* ================= EMPTY ================= */
 
-.empty{
+.jb-empty{
 
     text-align:center;
 
@@ -525,16 +509,16 @@ body{
     opacity:.6;
 
     font-size:12px;
-
 }
 
 /* ================= NAVBAR ================= */
 
-.navbar{
+.jb-navbar{
 
     position:fixed;
 
     bottom:0;
+
     left:0;
 
     width:100%;
@@ -552,10 +536,9 @@ body{
     backdrop-filter:blur(15px);
 
     z-index:1000;
-
 }
 
-.nav-link{
+.jb-nav-link{
 
     color:white;
 
@@ -568,47 +551,51 @@ body{
     opacity:.45;
 
     min-width:65px;
-
 }
 
-.nav-link.active{
+.jb-nav-link.active{
 
     opacity:1;
 
-    color:var(--blue);
+    color:var(--jb-blue);
 
     font-weight:bold;
-
 }
 
-.nav-icon{
+.jb-nav-icon{
 
     font-size:20px;
 
     margin-bottom:3px;
+}
 
+/* ================= STATUS ================= */
+
+#jbDashboardStatus{
+
+    text-align:center;
+
+    font-size:11px;
+
+    color:#ffeb3b;
+
+    padding:10px 20px;
 }
 
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:360px){
 
-    .balance{
-
+    .jb-balance{
         font-size:30px;
-
     }
 
-    .balance-grid{
-
+    .jb-balance-grid{
         gap:6px;
-
     }
 
-    .money-box{
-
+    .jb-money-box{
         padding:10px 4px;
-
     }
 
 }
@@ -618,29 +605,31 @@ body{
 
 <body>
 
-<div class="overlay">
+<div class="jb-overlay">
 
 <!-- ================= HEADER ================= -->
 
-<header class="header">
+<header class="jb-header">
 
-    <div class="top">
+    <div class="jb-top">
 
-        <div class="brand">
+        <div class="jb-brand">
             JASON BUSINESS
         </div>
 
-        <div class="status">
+        <div class="jb-status">
             ● EN LIGNE
         </div>
 
     </div>
 
-    <div class="user-box">
+    <div class="jb-user-box">
 
-        <small>BIENVENUE SUR VOTRE ESPACE</small>
+        <small>
+            BIENVENUE SUR VOTRE ESPACE
+        </small>
 
-        <h2 id="userPhone">
+        <h2 id="jbUserPhone">
             +243 ...
         </h2>
 
@@ -651,17 +640,21 @@ body{
 
 <!-- ================= BALANCE ================= -->
 
-<section class="balance-card">
+<section class="jb-balance-card">
 
-    <div class="balance-title">
+    <div class="jb-balance-title">
         Solde principal
     </div>
 
-    <div class="balance">
+    <div class="jb-balance">
 
-        <span id="mainBalance">0</span>
+        <span id="jbMainBalance">
+            0
+        </span>
 
-        <span class="currency">FC</span>
+        <span class="jb-currency">
+            FC
+        </span>
 
     </div>
 
@@ -670,41 +663,53 @@ body{
     </div>
 
 
-    <div class="balance-grid">
+    <div class="jb-balance-grid">
 
-        <div class="money-box">
+        <div class="jb-money-box">
 
-            <div class="icon">💰</div>
+            <div class="jb-icon">
+                💰
+            </div>
 
-            <small>Commissions</small>
+            <small>
+                Commissions
+            </small>
 
-            <b id="commissionBalance">
+            <b id="jbCommissionBalance">
                 0 FC
             </b>
 
         </div>
 
 
-        <div class="money-box">
+        <div class="jb-money-box">
 
-            <div class="icon">📈</div>
+            <div class="jb-icon">
+                📈
+            </div>
 
-            <small>Gains</small>
+            <small>
+                Gains
+            </small>
 
-            <b id="gainBalance">
+            <b id="jbGainBalance">
                 0 FC
             </b>
 
         </div>
 
 
-        <div class="money-box">
+        <div class="jb-money-box">
 
-            <div class="icon">💎</div>
+            <div class="jb-icon">
+                💎
+            </div>
 
-            <small>Total</small>
+            <small>
+                Total
+            </small>
 
-            <b id="totalBalance">
+            <b id="jbTotalBalance">
                 0 FC
             </b>
 
@@ -717,17 +722,20 @@ body{
 
 <!-- ================= ACTIONS ================= -->
 
-<div class="actions">
+<div class="jb-actions">
 
-    <a href="recharge.html"
-       class="action recharge">
+    <a
+        href="recharge.html"
+        class="jb-action jb-recharge">
 
         📥 RECHARGER
 
     </a>
 
-    <a href="retrait.html"
-       class="action withdraw">
+
+    <a
+        href="retrait.html"
+        class="jb-action jb-withdraw">
 
         📤 RETIRER
 
@@ -738,24 +746,28 @@ body{
 
 <!-- ================= POINTS ================= -->
 
-<section class="points-card">
+<section class="jb-points-card">
 
-    <div class="points-top">
+    <div class="jb-points-top">
 
         <div>
 
-            <div class="points-title">
+            <div class="jb-points-title">
                 ⭐ POINTS DE FIDÉLITÉ
             </div>
 
-            <div class="points-value">
-                100 points = <b>50 FC</b>
+            <div class="jb-points-value">
+
+                100 points =
+                <b>50 FC</b>
+
             </div>
 
         </div>
 
-        <div class="points-number"
-             id="loyaltyPoints">
+        <div
+            class="jb-points-number"
+            id="jbLoyaltyPoints">
 
             0
 
@@ -763,19 +775,8 @@ body{
 
     </div>
 
-    <button
-        id="convertPoints"
-        style="
-        width:100%;
-        margin-top:15px;
-        padding:13px;
-        border:none;
-        border-radius:12px;
-        background:#ffd700;
-        color:#000;
-        font-weight:bold;
-        cursor:pointer;
-        ">
+
+    <button id="jbConvertPoints">
 
         💱 CONVERTIR MES POINTS
 
@@ -786,9 +787,9 @@ body{
 
 <!-- ================= SERVICES ================= -->
 
-<section class="section">
+<section class="jb-section">
 
-    <div class="section-title">
+    <div class="jb-section-title">
 
         <h3>
             🛍️ Nos services
@@ -801,101 +802,126 @@ body{
     </div>
 
 
-    <div class="service-card">
+    <div class="jb-service-card">
 
-        <div class="service-icon">
+        <div class="jb-service-icon">
             📱
         </div>
 
-        <div class="service-info">
+        <div class="jb-service-info">
 
-            <div class="service-name">
+            <div class="jb-service-name">
                 Application
             </div>
 
-            <div class="service-desc">
+            <div class="jb-service-desc">
                 Création d'application mobile
             </div>
 
         </div>
 
-        <div class="service-price">
+        <div class="jb-service-price">
             10 000 FC
         </div>
 
     </div>
 
 
-    <div class="service-card">
+    <div class="jb-service-card">
 
-        <div class="service-icon">
+        <div class="jb-service-icon">
             🌐
         </div>
 
-        <div class="service-info">
+        <div class="jb-service-info">
 
-            <div class="service-name">
+            <div class="jb-service-name">
                 Site web
             </div>
 
-            <div class="service-desc">
+            <div class="jb-service-desc">
                 Site moderne et professionnel
             </div>
 
         </div>
 
-        <div class="service-price">
+        <div class="jb-service-price">
             15 000 FC
         </div>
 
     </div>
 
 
-    <div class="service-card">
+    <div class="jb-service-card">
 
-        <div class="service-icon">
-            🤖
+        <div class="jb-service-icon">
+            🎵
         </div>
 
-        <div class="service-info">
+        <div class="jb-service-info">
 
-            <div class="service-name">
-                Chatbot
+            <div class="jb-service-name">
+                Chanson
             </div>
 
-            <div class="service-desc">
-                Automatisation et assistant intelligent
+            <div class="jb-service-desc">
+                Création musicale personnalisée
             </div>
 
         </div>
 
-        <div class="service-price">
-            7 000 FC
+        <div class="jb-service-price">
+            5 000 FC
         </div>
 
     </div>
 
 
-    <div class="service-card">
+    <div class="jb-service-card">
 
-        <div class="service-icon">
+        <div class="jb-service-icon">
             🎨
         </div>
 
-        <div class="service-info">
+        <div class="jb-service-info">
 
-            <div class="service-name">
+            <div class="jb-service-name">
                 Logo
             </div>
 
-            <div class="service-desc">
-                Identité visuelle professionnelle
+            <div class="jb-service-desc">
+                Création de votre identité visuelle
             </div>
 
         </div>
 
-        <div class="service-price">
+        <div class="jb-service-price">
             3 000 FC
+        </div>
+
+    </div>
+
+
+    <div class="jb-service-card">
+
+        <div class="jb-service-icon">
+            🤖
+        </div>
+
+        <div class="jb-service-info">
+
+            <div class="jb-service-name">
+                Chatbot
+            </div>
+
+            <div class="jb-service-desc">
+                Assistant et automatisation intelligente
+            </div>
+
+        </div>
+
+        <div class="jb-service-price">
+            7 000 FC
         </div>
 
     </div>
@@ -903,11 +929,11 @@ body{
 </section>
 
 
-<!-- ================= INVESTISSEMENTS ================= -->
+<!-- ================= ACTIVITÉS ================= -->
 
-<section class="section">
+<section class="jb-section">
 
-    <div class="section-title">
+    <div class="jb-section-title">
 
         <h3>
             ⚡ Mes activités
@@ -919,9 +945,10 @@ body{
 
     </div>
 
-    <div id="investments">
 
-        <div class="empty">
+    <div id="jbInvestments">
+
+        <div class="jb-empty">
             Chargement...
         </div>
 
@@ -929,17 +956,21 @@ body{
 
 </section>
 
+
+<div id="jbDashboardStatus"></div>
+
 </div>
 
 
 <!-- ================= NAVIGATION ================= -->
 
-<nav class="navbar">
+<nav class="jb-navbar">
 
-    <a href="dashboard.html"
-       class="nav-link active">
+    <a
+        href="dashboard.html"
+        class="jb-nav-link active">
 
-        <div class="nav-icon">
+        <div class="jb-nav-icon">
             📊
         </div>
 
@@ -948,10 +979,11 @@ body{
     </a>
 
 
-    <a href="shop.html"
-       class="nav-link">
+    <a
+        href="shop.html"
+        class="jb-nav-link">
 
-        <div class="nav-icon">
+        <div class="jb-nav-icon">
             🛍️
         </div>
 
@@ -960,10 +992,11 @@ body{
     </a>
 
 
-    <a href="equipe.html"
-       class="nav-link">
+    <a
+        href="equipe.html"
+        class="jb-nav-link">
 
-        <div class="nav-icon">
+        <div class="jb-nav-icon">
             👥
         </div>
 
@@ -972,10 +1005,11 @@ body{
     </a>
 
 
-    <a href="profil.html"
-       class="nav-link">
+    <a
+        href="profil.html"
+        class="jb-nav-link">
 
-        <div class="nav-icon">
+        <div class="jb-nav-icon">
             👤
         </div>
 
@@ -1007,9 +1041,11 @@ from
 "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 
-/* ================= CONFIG ================= */
+/* =====================================================
+   CONFIGURATION FIREBASE
+===================================================== */
 
-const firebaseConfig = {
+const jbFirebaseConfig = {
 
     apiKey:
     "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
@@ -1035,22 +1071,26 @@ const firebaseConfig = {
 };
 
 
-/* ================= INIT ================= */
+/* =====================================================
+   INITIALISATION
+===================================================== */
 
-const app =
-initializeApp(firebaseConfig);
+const jbApp =
+initializeApp(jbFirebaseConfig);
 
-const db =
-getDatabase(app);
+const jbDatabase =
+getDatabase(jbApp);
 
 
-/* ================= SESSION ================= */
+/* =====================================================
+   SESSION JASON BUSINESS
+===================================================== */
 
-const userPhone =
+const jbCurrentUser =
 localStorage.getItem("userPhone");
 
 
-if(!userPhone){
+if(!jbCurrentUser){
 
     window.location.href =
     "login.html";
@@ -1058,15 +1098,22 @@ if(!userPhone){
 }
 
 
-/* ================= USER ================= */
+/* =====================================================
+   RÉFÉRENCE UTILISATEUR
+===================================================== */
 
-const userRef =
-ref(db, "users/" + userPhone);
+const jbUserReference =
+ref(
+    jbDatabase,
+    "users/" + jbCurrentUser
+);
 
 
-/* ================= FORMAT ================= */
+/* =====================================================
+   FORMAT FC
+===================================================== */
 
-function formatFC(value){
+function jbFormatFC(value){
 
     return Math.floor(
         Number(value) || 0
@@ -1075,133 +1122,192 @@ function formatFC(value){
 }
 
 
-/* ================= REALTIME ================= */
+/* =====================================================
+   CHARGEMENT TEMPS RÉEL
+===================================================== */
 
-onValue(userRef, (snapshot) => {
+onValue(
+    jbUserReference,
+    (jbSnapshot)=>{
 
-    if(!snapshot.exists()){
+        if(!jbSnapshot.exists()){
 
-        localStorage.removeItem(
-            "userPhone"
+            localStorage.removeItem(
+                "userPhone"
+            );
+
+            window.location.href =
+            "login.html";
+
+            return;
+
+        }
+
+
+        const jbUserData =
+        jbSnapshot.val();
+
+
+        /* =========================
+           UTILISATEUR
+        ========================= */
+
+        document.getElementById(
+            "jbUserPhone"
+        ).innerText =
+        jbCurrentUser;
+
+
+        /* =========================
+           SOLDES
+        ========================= */
+
+        const jbPrincipal =
+        Number(
+            jbUserData.solde_principal || 0
         );
 
-        window.location.href =
-        "login.html";
 
-        return;
+        const jbCommissions =
+        Number(
+            jbUserData.solde_commissions || 0
+        );
+
+
+        const jbGains =
+        Number(
+            jbUserData.solde_gains || 0
+        );
+
+
+        const jbTotal =
+        jbPrincipal +
+        jbCommissions +
+        jbGains;
+
+
+        document.getElementById(
+            "jbMainBalance"
+        ).innerText =
+        jbFormatFC(jbPrincipal);
+
+
+        document.getElementById(
+            "jbCommissionBalance"
+        ).innerText =
+        jbFormatFC(jbCommissions) +
+        " FC";
+
+
+        document.getElementById(
+            "jbGainBalance"
+        ).innerText =
+        jbFormatFC(jbGains) +
+        " FC";
+
+
+        document.getElementById(
+            "jbTotalBalance"
+        ).innerText =
+        jbFormatFC(jbTotal) +
+        " FC";
+
+
+        /* =========================
+           POINTS
+        ========================= */
+
+        const jbPoints =
+        Number(
+            jbUserData.points_fidelite ??
+            jbUserData.points ??
+            jbUserData.loyaltyPoints ??
+            0
+        );
+
+
+        document.getElementById(
+            "jbLoyaltyPoints"
+        ).innerText =
+        jbFormatFC(jbPoints);
+
+
+        /* =========================
+           BOUTON CONVERSION
+        ========================= */
+
+        const jbConvertButton =
+        document.getElementById(
+            "jbConvertPoints"
+        );
+
+
+        if(jbPoints < 100){
+
+            jbConvertButton.disabled =
+            true;
+
+        }else{
+
+            jbConvertButton.disabled =
+            false;
+
+        }
+
+
+        /* =========================
+           ACTIVITÉS
+        ========================= */
+
+        jbRenderInvestments(
+            jbUserData.mes_investissements
+        );
+
+    },
+
+    (jbError)=>{
+
+        console.error(
+            "JASON BUSINESS Firebase:",
+            jbError
+        );
+
+        document.getElementById(
+            "jbDashboardStatus"
+        ).innerText =
+        "⚠️ Erreur de connexion.";
 
     }
 
-
-    const data =
-    snapshot.val();
+);
 
 
-    /* PHONE */
+/* =====================================================
+   AFFICHER LES ACTIVITÉS
+===================================================== */
 
+function jbRenderInvestments(
+    jbInvestments
+){
+
+    const jbContainer =
     document.getElementById(
-        "userPhone"
-    ).innerText =
-    userPhone;
-
-
-    /* BALANCES */
-
-    const principal =
-    Number(
-        data.solde_principal || 0
-    );
-
-    const commissions =
-    Number(
-        data.solde_commissions || 0
-    );
-
-    const gains =
-    Number(
-        data.solde_gains || 0
+        "jbInvestments"
     );
 
 
-    const total =
-    principal +
-    commissions +
-    gains;
-
-
-    document.getElementById(
-        "mainBalance"
-    ).innerText =
-    formatFC(principal);
-
-
-    document.getElementById(
-        "commissionBalance"
-    ).innerText =
-    formatFC(commissions) +
-    " FC";
-
-
-    document.getElementById(
-        "gainBalance"
-    ).innerText =
-    formatFC(gains) +
-    " FC";
-
-
-    document.getElementById(
-        "totalBalance"
-    ).innerText =
-    formatFC(total) +
-    " FC";
-
-
-    /* POINTS */
-
-    const points =
-    Number(
-        data.points_fidelite ||
-        data.points ||
-        0
-    );
-
-
-    document.getElementById(
-        "loyaltyPoints"
-    ).innerText =
-    formatFC(points);
-
-
-    /* INVESTISSEMENTS */
-
-    renderInvestments(
-        data.mes_investissements
-    );
-
-});
-
-
-/* ================= INVESTMENTS ================= */
-
-function renderInvestments(investments){
-
-    const container =
-    document.getElementById(
-        "investments"
-    );
-
-
-    container.innerHTML = "";
+    jbContainer.innerHTML =
+    "";
 
 
     if(
-        !investments ||
-        Object.keys(investments).length === 0
+        !jbInvestments ||
+        Object.keys(jbInvestments).length === 0
     ){
 
-        container.innerHTML = `
+        jbContainer.innerHTML = `
 
-            <div class="empty">
+            <div class="jb-empty">
 
                 📦 Aucune activité pour le moment.
 
@@ -1220,74 +1326,93 @@ function renderInvestments(investments){
 
 
     Object.entries(
-        investments
+        jbInvestments
     ).forEach(
-        ([id,item]) => {
+        ([jbId,jbItem])=>{
 
-
-            const card =
+            const jbCard =
             document.createElement(
                 "div"
             );
 
 
-            card.className =
-            "invest-card";
+            jbCard.className =
+            "jb-invest-card";
 
 
-            const nom =
-            item.nom ||
+            const jbName =
+            jbItem.nom ||
+            jbItem.service ||
             "Service";
 
 
-            const gain =
+            const jbGain =
             Number(
-                item.gainJournalier ||
-                item.gain ||
+                jbItem.gainJournalier ||
+                jbItem.gain ||
                 0
             );
 
 
-            const date =
-            item.dateAchat ?
-            new Date(
-                item.dateAchat
-            ).toLocaleDateString(
-                "fr-FR"
-            ) :
+            let jbDate =
             "Date inconnue";
 
 
-            card.innerHTML = `
+            if(jbItem.dateAchat){
 
-                <div class="invest-row">
+                const jbParsedDate =
+                new Date(
+                    jbItem.dateAchat
+                );
 
-                    <div class="invest-name">
 
-                        ⚡ ${nom}
+                if(
+                    !isNaN(
+                        jbParsedDate.getTime()
+                    )
+                ){
+
+                    jbDate =
+                    jbParsedDate.toLocaleDateString(
+                        "fr-FR"
+                    );
+
+                }
+
+            }
+
+
+            jbCard.innerHTML = `
+
+                <div class="jb-invest-row">
+
+                    <div class="jb-invest-name">
+
+                        ⚡
+                        ${jbEscapeHTML(jbName)}
 
                     </div>
 
-                    <div class="invest-gain">
+                    <div class="jb-invest-gain">
 
-                        ${formatFC(gain)}
+                        ${jbFormatFC(jbGain)}
                         FC
 
                     </div>
 
                 </div>
 
-                <div class="invest-date">
+                <div class="jb-invest-date">
 
-                    Activé le ${date}
+                    Activé le ${jbDate}
 
                 </div>
 
             `;
 
 
-            container.appendChild(
-                card
+            jbContainer.appendChild(
+                jbCard
             );
 
         }
@@ -1296,171 +1421,267 @@ function renderInvestments(investments){
 }
 
 
-/* ================= CONVERSION POINTS ================= */
+/* =====================================================
+   PROTECTION AFFICHAGE HTML
+===================================================== */
+
+function jbEscapeHTML(
+    jbValue
+){
+
+    return String(
+        jbValue
+    )
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =====================================================
+   CONVERSION FIDÉLITÉ
+=====================================================
+
+   100 points = 50 FC
+
+   200 points = 100 FC
+
+   500 points = 250 FC
+
+===================================================== */
 
 document.getElementById(
-    "convertPoints"
-).onclick = async () => {
+    "jbConvertPoints"
+).addEventListener(
+    "click",
+    async()=>{
 
-    try{
-
-        const snapshot =
-        await new Promise(
-            (resolve,reject) => {
-
-                onValue(
-                    userRef,
-                    resolve,
-                    {
-                        onlyOnce:true
-                    }
-                );
-
-            }
+        const jbButton =
+        document.getElementById(
+            "jbConvertPoints"
         );
 
 
-        if(!snapshot.exists()){
-
-            alert(
-                "Compte introuvable."
-            );
-
-            return;
-
-        }
+        jbButton.disabled =
+        true;
 
 
-        const data =
-        snapshot.val();
+        try{
 
+            const jbSnapshot =
+            await new Promise(
+                (jbResolve,jbReject)=>{
 
-        const points =
-        Number(
-            data.points_fidelite ||
-            data.points ||
-            0
-        );
-
-
-        if(points < 100){
-
-            alert(
-                "❌ Il faut au minimum 100 points."
-            );
-
-            return;
-
-        }
-
-
-        /*
-            100 points = 50 FC
-
-            Exemple :
-
-            100  → 50 FC
-            200  → 100 FC
-            500  → 250 FC
-
-            Seuls les multiples
-            de 100 sont convertis.
-        */
-
-        const pointsConvertibles =
-        Math.floor(
-            points / 100
-        ) * 100;
-
-
-        const montant =
-        (pointsConvertibles / 100)
-        * 50;
-
-
-        const confirmation =
-        confirm(
-            "Convertir " +
-            pointsConvertibles +
-            " points en " +
-            formatFC(montant) +
-            " FC ?"
-        );
-
-
-        if(!confirmation)
-            return;
-
-
-        await runTransaction(
-            userRef,
-            (currentData) => {
-
-                if(!currentData)
-                    return currentData;
-
-
-                const currentPoints =
-                Number(
-                    currentData.points_fidelite ||
-                    currentData.points ||
-                    0
-                );
-
-
-                if(
-                    currentPoints <
-                    pointsConvertibles
-                ){
-
-                    return;
+                    onValue(
+                        jbUserReference,
+                        jbResolve,
+                        {
+                            onlyOnce:true
+                        }
+                    );
 
                 }
+            );
 
 
-                const currentBalance =
-                Number(
-                    currentData.solde_principal ||
-                    0
+            if(!jbSnapshot.exists()){
+
+                alert(
+                    "❌ Compte introuvable."
                 );
 
+                jbButton.disabled =
+                false;
 
-                currentData.points_fidelite =
-                currentPoints -
-                pointsConvertibles;
-
-
-                currentData.solde_principal =
-                currentBalance +
-                montant;
-
-
-                return currentData;
+                return;
 
             }
-        );
 
 
-        alert(
-            "✅ Conversion réussie !\n\n" +
-            pointsConvertibles +
-            " points → " +
-            formatFC(montant) +
-            " FC"
-        );
+            const jbData =
+            jbSnapshot.val();
 
 
-    }catch(error){
+            const jbCurrentPoints =
+            Number(
+                jbData.points_fidelite ??
+                jbData.points ??
+                jbData.loyaltyPoints ??
+                0
+            );
 
-        console.error(error);
 
-        alert(
-            "⚠️ Impossible de convertir les points."
-        );
+            if(jbCurrentPoints < 100){
+
+                alert(
+                    "❌ Il faut au minimum 100 points."
+                );
+
+                jbButton.disabled =
+                false;
+
+                return;
+
+            }
+
+
+            const jbConvertiblePoints =
+            Math.floor(
+                jbCurrentPoints / 100
+            ) * 100;
+
+
+            const jbAmount =
+                (
+                    jbConvertiblePoints /
+                    100
+                ) * 50;
+
+
+            const jbConfirmation =
+            confirm(
+
+                "Convertir " +
+
+                jbFormatFC(
+                    jbConvertiblePoints
+                ) +
+
+                " points en " +
+
+                jbFormatFC(
+                    jbAmount
+                ) +
+
+                " FC ?"
+
+            );
+
+
+            if(!jbConfirmation){
+
+                jbButton.disabled =
+                false;
+
+                return;
+
+            }
+
+
+            const jbTransactionResult =
+            await runTransaction(
+                jbUserReference,
+                (jbCurrentData)=>{
+
+                    if(!jbCurrentData)
+                        return;
+
+
+                    const jbFreshPoints =
+                    Number(
+                        jbCurrentData.points_fidelite ??
+                        jbCurrentData.points ??
+                        jbCurrentData.loyaltyPoints ??
+                        0
+                    );
+
+
+                    if(
+                        jbFreshPoints <
+                        jbConvertiblePoints
+                    ){
+
+                        return;
+
+                    }
+
+
+                    const jbFreshBalance =
+                    Number(
+                        jbCurrentData.solde_principal ||
+                        0
+                    );
+
+
+                    /*
+                     * On utilise toujours
+                     * points_fidelite comme
+                     * champ principal.
+                     */
+
+                    jbCurrentData.points_fidelite =
+                    jbFreshPoints -
+                    jbConvertiblePoints;
+
+
+                    jbCurrentData.solde_principal =
+                    jbFreshBalance +
+                    jbAmount;
+
+
+                    return jbCurrentData;
+
+                }
+            );
+
+
+            if(
+                !jbTransactionResult.committed
+            ){
+
+                alert(
+                    "❌ La conversion n'a pas été effectuée."
+                );
+
+                jbButton.disabled =
+                false;
+
+                return;
+
+            }
+
+
+            alert(
+
+                "✅ Conversion réussie !\n\n" +
+
+                jbFormatFC(
+                    jbConvertiblePoints
+                ) +
+
+                " points → " +
+
+                jbFormatFC(
+                    jbAmount
+                ) +
+
+                " FC"
+
+            );
+
+
+        }catch(jbError){
+
+            console.error(
+                "Conversion points:",
+                jbError
+            );
+
+            alert(
+                "⚠️ Impossible de convertir les points."
+            );
+
+        }
+
+
+        jbButton.disabled =
+        false;
 
     }
-
-};
+);
 
 </script>
 

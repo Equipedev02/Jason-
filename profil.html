@@ -10,13 +10,17 @@
     content="width=device-width,initial-scale=1.0"
 >
 
-<title>JASON Business — Mon Profil</title>
+<meta
+    name="theme-color"
+    content="#030812"
+>
 
+<title>JASON BUSINESS — ADMIN</title>
 
 <style>
 
 /* =========================================================
-   JASON BUSINESS — PROFIL
+   VARIABLES
 ========================================================= */
 
 :root{
@@ -24,108 +28,120 @@
     --blue:#00d2ff;
     --blue2:#0077ff;
 
-    --dark:#050a14;
+    --dark:#030812;
+    --dark2:#050d19;
 
-    --card:rgba(8,15,28,.88);
+    --card:#0a1424;
+    --card2:#0d192b;
 
-    --border:rgba(0,210,255,.25);
+    --border:rgba(0,210,255,.2);
 
     --green:#00e676;
-
-    --orange:#ff9800;
-
-    --gold:#ffd700;
-
     --red:#ff4757;
+    --orange:#ff9800;
+    --yellow:#ffd740;
+
+    --white:#ffffff;
+    --muted:rgba(255,255,255,.55);
 
 }
 
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
 
 body{
 
     margin:0;
 
     font-family:
-        "Segoe UI",
+        Segoe UI,
         Arial,
         sans-serif;
 
     background:
-
         linear-gradient(
-            rgba(3,8,18,.82),
-            rgba(3,8,18,.94)
+            rgba(3,8,18,.94),
+            rgba(3,8,18,.98)
         ),
-
         url("IMG_0870.jpeg")
-        center/cover
-        fixed;
+        center/cover fixed;
 
     color:white;
 
     min-height:100vh;
 
-    padding-bottom:100px;
-
-}
-
-
-.container{
-
-    width:100%;
-
-    max-width:650px;
-
-    margin:auto;
-
 }
 
 
 /* =========================================================
-   HEADER
+   LOGIN
 ========================================================= */
 
-.header{
+#adminLogin{
 
-    padding:
-        28px
-        20px
-        25px;
-
-    text-align:center;
-
-    background:
-        rgba(0,0,0,.55);
-
-    border-bottom:
-        1px solid var(--border);
-
-    backdrop-filter:
-        blur(18px);
-
-}
-
-
-.avatar{
-
-    width:82px;
-
-    height:82px;
-
-    border-radius:50%;
-
-    margin:auto;
+    min-height:100vh;
 
     display:flex;
 
+    align-items:center;
+
     justify-content:center;
 
+    padding:20px;
+
+}
+
+.login-card{
+
+    width:100%;
+
+    max-width:390px;
+
+    background:
+        rgba(5,12,25,.95);
+
+    border:
+        1px solid var(--blue);
+
+    border-radius:25px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:
+        0 0 50px
+        rgba(0,210,255,.15);
+
+    backdrop-filter:
+        blur(20px);
+
+}
+
+.login-logo{
+
+    width:85px;
+    height:85px;
+
+    margin:auto;
+
+    border-radius:25px;
+
+    display:flex;
+
     align-items:center;
+
+    justify-content:center;
 
     background:
         linear-gradient(
@@ -136,194 +152,289 @@ body{
 
     color:#001018;
 
-    font-size:28px;
+    font-size:38px;
 
     font-weight:900;
 
     box-shadow:
         0 0 30px
-        rgba(0,210,255,.45);
+        rgba(0,210,255,.25);
 
 }
 
-
-.name{
-
-    margin:
-        12px
-        0
-        4px;
-
-    font-size:20px;
-
-    letter-spacing:1px;
-
-}
-
-
-.phone{
-
-    font-size:13px;
-
-    opacity:.65;
-
-}
-
-
-.invite{
-
-    display:inline-block;
-
-    margin-top:10px;
-
-    padding:
-        7px
-        14px;
-
-    border-radius:20px;
+.login-card h1{
 
     color:var(--blue);
 
-    background:
-        rgba(0,210,255,.08);
-
-    border:
-        1px solid var(--border);
-
-    font-size:12px;
-
-    font-weight:bold;
-
-}
-
-
-/* =========================================================
-   SECTION
-========================================================= */
-
-.section{
-
-    padding:18px;
-
-}
-
-
-/* =========================================================
-   SOLDE
-========================================================= */
-
-.balance-card{
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(0,210,255,.18),
-            rgba(0,50,100,.25)
-        );
-
-    border:
-        1px solid var(--border);
-
-    border-radius:22px;
-
-    padding:22px;
-
-    box-shadow:
-        0 10px 35px
-        rgba(0,0,0,.3);
-
-}
-
-
-.balance-title{
-
-    font-size:12px;
-
-    opacity:.65;
-
-    text-transform:uppercase;
-
-    letter-spacing:1px;
-
-}
-
-
-.total{
+    letter-spacing:3px;
 
     margin:
-        7px
-        0;
-
-    font-size:32px;
-
-    font-weight:900;
-
-    color:var(--blue);
+        18px 0 5px;
 
 }
 
+.login-card p{
 
-.fc{
+    color:var(--muted);
 
     font-size:13px;
 
-    opacity:.7;
-
 }
 
+.login-card input{
 
-.balance-actions{
+    width:100%;
 
-    display:grid;
+    padding:16px;
 
-    grid-template-columns:
-        1fr
-        1fr;
+    margin:
+        10px 0;
 
-    gap:10px;
+    border-radius:13px;
 
-    margin-top:18px;
+    border:
+        1px solid #263247;
 
-}
-
-
-.action{
-
-    text-decoration:none;
-
-    text-align:center;
-
-    padding:12px;
-
-    border-radius:12px;
-
-    font-size:13px;
-
-    font-weight:bold;
-
-}
-
-
-.recharge{
-
-    background:var(--blue);
-
-    color:#001018;
-
-}
-
-
-.withdraw{
-
-    background:
-        rgba(255,255,255,.07);
+    background:#07101d;
 
     color:white;
 
+    outline:none;
+
+    font-size:14px;
+
+}
+
+.login-card input:focus{
+
+    border-color:
+        var(--blue);
+
+}
+
+.login-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--blue2)
+        );
+
+    color:#001018;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    margin-top:8px;
+
+}
+
+.login-error{
+
+    color:var(--red);
+
+    font-size:12px;
+
+    margin-top:12px;
+
+}
+
+
+/* =========================================================
+   ADMIN PANEL
+========================================================= */
+
+#adminPanel{
+    display:none;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    min-height:65px;
+
+    padding:
+        12px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    background:
+        rgba(3,8,18,.97);
+
+    border-bottom:
+        1px solid var(--border);
+
+    backdrop-filter:
+        blur(20px);
+
+}
+
+.logo{
+
+    color:var(--blue);
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+}
+
+.logo span{
+
+    color:white;
+
+    opacity:.5;
+
+}
+
+.logout{
+
+    background:
+        rgba(255,71,87,.12);
+
     border:
         1px solid
-        rgba(255,255,255,.12);
+        rgba(255,71,87,.4);
+
+    color:var(--red);
+
+    padding:
+        9px 13px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.layout{
+
+    display:flex;
+
+    min-height:
+        calc(100vh - 65px);
+
+}
+
+.sidebar{
+
+    width:240px;
+
+    padding:15px;
+
+    background:
+        rgba(3,9,19,.95);
+
+    border-right:
+        1px solid var(--border);
+
+}
+
+.menu-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:8px;
+
+    border:
+        1px solid transparent;
+
+    border-radius:12px;
+
+    background:transparent;
+
+    color:white;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.menu-btn:hover,
+.menu-btn.active{
+
+    background:
+        rgba(0,210,255,.1);
+
+    border-color:
+        var(--border);
+
+    color:var(--blue);
+
+}
+
+.main{
+
+    flex:1;
+
+    padding:20px;
+
+    overflow:hidden;
+
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+
+/* =========================================================
+   TITRES
+========================================================= */
+
+.page-title{
+
+    margin-top:0;
+
+    letter-spacing:1px;
+
+}
+
+.page-subtitle{
+
+    color:var(--muted);
+
+    font-size:13px;
 
 }
 
@@ -337,326 +448,220 @@ body{
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(4,1fr);
 
-    gap:10px;
+    gap:12px;
 
-    margin-top:12px;
-
-}
-
-
-.stat{
-
-    background:var(--card);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    border-radius:16px;
-
-    padding:
-        15px
-        8px;
-
-    text-align:center;
+    margin:
+        20px 0;
 
 }
 
-
-.stat-icon{
-
-    font-size:20px;
-
-}
-
-
-.stat-value{
-
-    margin-top:7px;
-
-    font-size:15px;
-
-    font-weight:bold;
-
-}
-
-
-.stat-label{
-
-    margin-top:3px;
-
-    font-size:10px;
-
-    opacity:.55;
-
-}
-
-
-/* =========================================================
-   FIDELITE
-========================================================= */
-
-.loyalty{
-
-    margin-top:12px;
-
-    background:var(--card);
-
-    border:
-        1px solid
-        rgba(255,152,0,.25);
-
-    border-radius:20px;
+.stat-card{
 
     padding:20px;
 
+    border-radius:17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10,20,36,.95),
+            rgba(7,15,28,.95)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+}
+
+.stat-card .icon{
+
+    font-size:25px;
+
+}
+
+.stat-card .value{
+
+    font-size:24px;
+
+    font-weight:900;
+
+    color:var(--blue);
+
+    margin-top:8px;
+
+}
+
+.stat-card small{
+
+    color:var(--muted);
+
 }
 
 
-.loyalty-head{
+/* =========================================================
+   PANEL
+========================================================= */
 
-    display:flex;
+.panel{
 
-    justify-content:space-between;
+    background:
+        rgba(8,15,28,.92);
 
-    align-items:center;
+    border:
+        1px solid
+        rgba(255,255,255,.07);
 
-    gap:15px;
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-bottom:18px;
 
 }
 
 
-.loyalty-title{
+/* =========================================================
+   SEARCH / INPUT
+========================================================= */
+
+.search{
+
+    width:100%;
+
+    padding:14px;
+
+    background:#07101d;
+
+    color:white;
+
+    border:
+        1px solid #263247;
+
+    border-radius:11px;
+
+    margin-bottom:15px;
+
+    outline:none;
+
+}
+
+.search:focus{
+
+    border-color:var(--blue);
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-wrap{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:850px;
+
+}
+
+th,
+td{
+
+    padding:
+        12px 10px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
+
+    text-align:left;
+
+    font-size:12px;
+
+}
+
+th{
+
+    color:var(--blue);
+
+    font-size:11px;
+
+}
+
+tr:hover td{
+
+    background:
+        rgba(0,210,255,.025);
+
+}
+
+.user-name{
 
     font-weight:bold;
 
 }
 
+.muted{
 
-.points{
-
-    color:var(--orange);
-
-    font-size:22px;
-
-    font-weight:900;
-
-}
-
-
-.progress{
-
-    height:8px;
-
-    background:
-        rgba(255,255,255,.08);
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    margin-top:15px;
-
-}
-
-
-.progress-bar{
-
-    height:100%;
-
-    width:0%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff9800,
-            #ffc107
-        );
-
-    border-radius:20px;
-
-    transition:
-        width .4s ease;
-
-}
-
-
-.loyalty-info{
-
-    margin-top:9px;
-
-    font-size:11px;
-
-    opacity:.6;
+    opacity:.5;
 
 }
 
 
 /* =========================================================
-   POINTS INFO
+   BADGES
 ========================================================= */
 
-.points-rules{
+.badge{
 
-    display:grid;
+    display:inline-block;
 
-    grid-template-columns:
-        1fr
-        1fr;
+    padding:
+        5px 8px;
 
-    gap:10px;
-
-    margin-top:15px;
-
-}
-
-
-.points-rule{
-
-    background:
-        rgba(255,152,0,.07);
-
-    border:
-        1px solid
-        rgba(255,152,0,.15);
-
-    border-radius:13px;
-
-    padding:12px;
-
-    text-align:center;
-
-}
-
-
-.points-rule strong{
-
-    display:block;
-
-    color:var(--orange);
-
-    font-size:17px;
-
-}
-
-
-.points-rule span{
-
-    display:block;
-
-    margin-top:4px;
+    border-radius:8px;
 
     font-size:10px;
 
-    opacity:.6;
+    font-weight:bold;
 
 }
 
-
-/* =========================================================
-   CONVERSION
-========================================================= */
-
-.convert-box{
-
-    margin-top:15px;
-
-    padding:15px;
-
-    border-radius:15px;
+.pending{
 
     background:
-        rgba(255,152,0,.07);
+        rgba(255,215,64,.1);
 
-    border:
-        1px solid
-        rgba(255,152,0,.18);
+    color:var(--yellow);
 
 }
-
-
-.convert-info{
-
-    font-size:11px;
-
-    opacity:.65;
-
-    line-height:1.6;
-
-}
-
-
-.convert-info b{
-
-    color:var(--gold);
-
-}
-
-
-.convert-button{
-
-    width:100%;
-
-    margin-top:12px;
-
-    padding:13px;
-
-    border:none;
-
-    border-radius:11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff9800,
-            #ffc107
-        );
-
-    color:#171000;
-
-    font-weight:900;
-
-    cursor:pointer;
-
-}
-
-
-.convert-button:disabled{
-
-    opacity:.4;
-
-    cursor:not-allowed;
-
-}
-
-
-/* =========================================================
-   CONVERSION STATUS
-========================================================= */
-
-.convert-status{
-
-    text-align:center;
-
-    min-height:18px;
-
-    margin-top:9px;
-
-    font-size:11px;
-
-}
-
 
 .success{
+
+    background:
+        rgba(0,230,118,.1);
 
     color:var(--green);
 
 }
 
+.danger{
 
-.error{
+    background:
+        rgba(255,71,87,.1);
 
     color:var(--red);
 
@@ -664,238 +669,167 @@ body{
 
 
 /* =========================================================
-   MENU
+   BUTTONS
 ========================================================= */
 
-.menu-title{
+.btn{
 
-    font-size:13px;
+    border:0;
 
-    opacity:.55;
+    padding:
+        8px 11px;
 
-    margin:
-        5px
-        3px
-        12px;
+    border-radius:9px;
 
-    text-transform:uppercase;
+    cursor:pointer;
 
-    letter-spacing:1px;
+    font-weight:bold;
 
-}
+    font-size:11px;
 
-
-.menu{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
+    margin:2px;
 
 }
 
+.btn-blue{
 
-.menu-item{
+    background:var(--blue);
 
-    display:flex;
+    color:#001018;
 
-    align-items:center;
+}
 
-    text-decoration:none;
+.btn-green{
+
+    background:var(--green);
+
+    color:#001508;
+
+}
+
+.btn-red{
+
+    background:var(--red);
 
     color:white;
 
-    padding:17px;
+}
 
-    background:var(--card);
+.btn-orange{
 
-    border:
-        1px solid
-        rgba(255,255,255,.07);
+    background:var(--orange);
 
-    border-radius:17px;
+    color:#160b00;
 
-    transition:.2s;
+}
+
+.btn-dark{
+
+    background:#172235;
+
+    color:white;
+
+}
+
+.btn:active{
+
+    transform:scale(.97);
 
 }
 
 
-.menu-item:active{
+/* =========================================================
+   MODAL
+========================================================= */
 
-    transform:scale(.98);
+.modal{
 
-}
+    display:none;
 
+    position:fixed;
 
-.menu-icon{
+    inset:0;
 
-    width:40px;
+    z-index:500;
 
-    height:40px;
-
-    border-radius:12px;
-
-    display:flex;
-
-    justify-content:center;
+    background:
+        rgba(0,0,0,.78);
 
     align-items:center;
 
-    background:
-        rgba(0,210,255,.09);
+    justify-content:center;
 
-    margin-right:14px;
+    padding:20px;
+
+}
+
+.modal.show{
+
+    display:flex;
+
+}
+
+.modal-box{
+
+    width:100%;
+
+    max-width:560px;
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:#081322;
+
+    border:
+        1px solid var(--blue);
+
+    border-radius:20px;
+
+    padding:22px;
+
+    box-shadow:
+        0 0 40px
+        rgba(0,210,255,.15);
+
+}
+
+.modal-box h2{
+
+    color:var(--blue);
+
+}
+
+.modal-close{
+
+    float:right;
+
+    cursor:pointer;
 
     font-size:20px;
 
 }
 
+.modal-box input,
+.modal-box textarea,
+.modal-box select{
 
-.menu-text{
+    width:100%;
 
-    flex:1;
+    padding:13px;
 
-}
+    margin:7px 0;
 
+    border-radius:10px;
 
-.menu-name{
-
-    font-weight:bold;
-
-    font-size:14px;
-
-}
-
-
-.menu-desc{
-
-    font-size:11px;
-
-    opacity:.5;
-
-    margin-top:3px;
-
-}
-
-
-.arrow{
-
-    opacity:.4;
-
-    font-size:22px;
-
-}
-
-
-/* =========================================================
-   CONTACT ADMIN
-========================================================= */
-
-.admin-contact{
-
-    margin-top:25px;
-
-    background:var(--card);
+    background:#050c17;
 
     border:
-        1px solid
-        rgba(0,210,255,.2);
+        1px solid #263247;
 
-    border-radius:22px;
+    color:white;
 
-    padding:18px;
-
-}
-
-
-.admin-contact-header{
-
-    display:flex;
-
-    align-items:center;
-
-    margin-bottom:15px;
-
-}
-
-
-.admin-contact-icon{
-
-    width:45px;
-
-    height:45px;
-
-    border-radius:14px;
-
-    background:
-        rgba(0,210,255,.1);
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:22px;
-
-    margin-right:12px;
-
-}
-
-
-.admin-contact-title{
-
-    font-size:15px;
-
-    font-weight:bold;
-
-}
-
-
-.admin-contact-desc{
-
-    font-size:11px;
-
-    opacity:.5;
-
-    margin-top:3px;
-
-}
-
-
-/* =========================================================
-   CHAT
-========================================================= */
-
-.chat-box{
-
-    max-height:430px;
-
-    overflow-y:auto;
-
-    padding:
-        8px
-        2px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
-
-}
-
-
-.empty-chat{
-
-    text-align:center;
-
-    padding:25px 10px;
-
-    font-size:12px;
-
-    opacity:.45;
+    outline:none;
 
 }
 
@@ -904,360 +838,119 @@ body{
    MESSAGE
 ========================================================= */
 
-.message{
-
-    max-width:85%;
-
-    padding:
-        12px
-        14px;
-
-    border-radius:15px;
-
-    font-size:13px;
-
-    line-height:1.45;
-
-    word-break:break-word;
-
-}
-
-
-.message.user{
-
-    align-self:flex-end;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--blue2)
-        );
-
-    color:#001018;
-
-    border-bottom-right-radius:4px;
-
-}
-
-
-.message.admin{
-
-    align-self:flex-start;
-
-    background:
-        rgba(255,255,255,.07);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    border-bottom-left-radius:4px;
-
-}
-
-
-.message-author{
-
-    font-size:9px;
-
-    font-weight:bold;
-
-    opacity:.55;
-
-    margin-bottom:4px;
-
-}
-
-
-.message-date{
-
-    font-size:9px;
-
-    opacity:.45;
-
-    margin-top:6px;
-
-}
-
-
-/* =========================================================
-   FICHIERS ADMIN
-========================================================= */
-
-.admin-file{
-
-    margin-top:10px;
-
-    padding:12px;
-
-    border-radius:12px;
-
-    background:
-        rgba(0,210,255,.07);
-
-    border:
-        1px solid
-        rgba(0,210,255,.15);
-
-}
-
-
-.file-name{
-
-    font-size:12px;
-
-    font-weight:bold;
-
-    word-break:break-all;
-
-}
-
-
-.file-size{
-
-    font-size:10px;
-
-    opacity:.5;
-
-    margin-top:3px;
-
-}
-
-
-.download-file{
-
-    display:block;
-
-    margin-top:9px;
-
-    padding:9px;
-
-    border-radius:9px;
-
-    text-align:center;
-
-    text-decoration:none;
-
-    background:var(--blue);
-
-    color:#001018;
-
-    font-size:11px;
-
-    font-weight:bold;
-
-}
-
-
-/* =========================================================
-   MESSAGE INPUT
-========================================================= */
-
-.message-area{
-
-    margin-top:12px;
-
-}
-
-
-#jbMessageInput{
-
-    width:100%;
-
-    min-height:90px;
-
-    resize:none;
-
-    padding:13px;
-
-    border-radius:14px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    background:
-        rgba(0,0,0,.35);
-
-    color:white;
-
-    outline:none;
-
-    font-family:inherit;
-
-}
-
-
-#jbMessageInput:focus{
-
-    border-color:var(--blue);
-
-}
-
-
-.send-message{
-
-    width:100%;
-
-    margin-top:9px;
-
-    padding:14px;
-
-    border:none;
-
-    border-radius:13px;
-
-    background:var(--blue);
-
-    color:#001018;
-
-    font-weight:900;
-
-    cursor:pointer;
-
-}
-
-
-.send-message:disabled{
-
-    opacity:.5;
-
-    cursor:not-allowed;
-
-}
-
-
-.chat-info{
-
-    margin-top:10px;
-
-    font-size:10px;
-
-    line-height:1.6;
-
-    opacity:.45;
-
-}
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-.logout{
-
-    width:100%;
-
-    margin-top:18px;
+.message-card{
 
     padding:15px;
 
-    border-radius:15px;
-
-    background:
-        rgba(255,71,87,.1);
-
-    color:var(--red);
+    background:#081322;
 
     border:
         1px solid
-        rgba(255,71,87,.4);
+        rgba(255,255,255,.07);
 
-    font-weight:bold;
+    border-radius:14px;
 
-    cursor:pointer;
-
-}
-
-
-/* =========================================================
-   STATUS
-========================================================= */
-
-.status{
-
-    text-align:center;
-
-    font-size:12px;
-
-    color:#ffeb3b;
-
-    padding:10px;
+    margin-bottom:10px;
 
 }
 
-
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-.navbar{
-
-    position:fixed;
-
-    left:0;
-
-    right:0;
-
-    bottom:0;
-
-    z-index:20;
-
-    height:72px;
+.message-head{
 
     display:flex;
 
-    justify-content:space-around;
+    justify-content:space-between;
 
-    align-items:center;
+    gap:10px;
+
+}
+
+.message-body{
+
+    margin-top:10px;
+
+    white-space:pre-wrap;
+
+    font-size:13px;
+
+}
+
+.file-box{
+
+    margin-top:10px;
+
+    padding:10px;
+
+    border-radius:10px;
 
     background:
-        rgba(4,10,20,.97);
+        rgba(0,210,255,.06);
 
-    border-top:
+    border:
+        1px solid var(--border);
+
+}
+
+
+/* =========================================================
+   USER DETAIL
+========================================================= */
+
+.detail-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+
+    margin:
+        15px 0;
+
+}
+
+.detail-item{
+
+    background:#050c17;
+
+    border:
         1px solid
-        var(--border);
+        rgba(255,255,255,.06);
 
-    backdrop-filter:
-        blur(18px);
+    padding:12px;
 
-}
-
-
-.nav{
-
-    text-decoration:none;
-
-    color:white;
-
-    opacity:.5;
-
-    text-align:center;
-
-    font-size:11px;
+    border-radius:10px;
 
 }
 
-
-.nav span{
+.detail-item small{
 
     display:block;
 
-    font-size:21px;
+    color:var(--muted);
 
-    margin-bottom:3px;
+    margin-bottom:5px;
+
+}
+
+.detail-item strong{
+
+    font-size:14px;
 
 }
 
 
-.nav.active{
+/* =========================================================
+   EMPTY
+========================================================= */
 
-    color:var(--blue);
+.empty{
 
-    opacity:1;
+    text-align:center;
 
-    font-weight:bold;
+    padding:30px;
+
+    color:var(--muted);
 
 }
 
@@ -1266,22 +959,97 @@ body{
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:380px){
+@media(max-width:900px){
 
     .stats{
 
         grid-template-columns:
-            1fr
-            1fr;
+            1fr 1fr;
 
     }
 
 }
 
+@media(max-width:800px){
 
-@media(max-width:330px){
+    .layout{
 
-    .points-rules{
+        display:block;
+
+    }
+
+    .sidebar{
+
+        width:100%;
+
+        display:flex;
+
+        overflow-x:auto;
+
+        border-right:0;
+
+        border-bottom:
+            1px solid var(--border);
+
+        padding:10px;
+
+    }
+
+    .menu-btn{
+
+        min-width:135px;
+
+        margin-right:6px;
+
+        margin-bottom:0;
+
+        text-align:center;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .topbar{
+
+        padding:
+            12px;
+
+    }
+
+    .logo{
+
+        font-size:12px;
+
+    }
+
+    .main{
+
+        padding:12px;
+
+    }
+
+    .stats{
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+    .stat-card{
+
+        padding:14px;
+
+    }
+
+    .stat-card .value{
+
+        font-size:20px;
+
+    }
+
+    .detail-grid{
 
         grid-template-columns:1fr;
 
@@ -1297,808 +1065,687 @@ body{
 <body>
 
 
-<div class="container">
+<!-- ======================================================
+     LOGIN
+====================================================== -->
+
+<section id="adminLogin">
+
+    <div class="login-card">
+
+        <div class="login-logo">
+            J
+        </div>
+
+        <h1>ADMIN</h1>
+
+        <p>
+            JASON BUSINESS — Administration
+        </p>
+
+        <input
+            type="password"
+            id="adminPassword"
+            placeholder="Mot de passe administrateur"
+            autocomplete="current-password"
+        >
+
+        <button
+            class="login-btn"
+            id="loginAdmin"
+        >
+            🔐 ACCÉDER AU PANNEAU
+        </button>
+
+        <div
+            class="login-error"
+            id="loginError"
+        ></div>
+
+    </div>
+
+</section>
+
 
 
 <!-- ======================================================
-     HEADER
+     ADMIN PANEL
 ====================================================== -->
 
-<header class="header">
+<section id="adminPanel">
 
 
-    <div
-        class="avatar"
-        id="jbAvatar"
-    >
-        J
-    </div>
+<header class="topbar">
 
+    <div class="logo">
 
-    <div
-        class="name"
-        id="jbName"
-    >
-
-        Mon compte
+        JASON BUSINESS
+        <span>ADMIN</span>
 
     </div>
 
-
-    <div
-        class="phone"
-        id="jbPhone"
+    <button
+        class="logout"
+        id="adminLogout"
     >
-
-        Chargement...
-
-    </div>
-
-
-    <div
-        class="invite"
-        id="jbInviteCode"
-    >
-
-        ID : STAR-0000
-
-    </div>
+        🚪 Déconnexion
+    </button>
 
 </header>
 
 
 
-<main class="section">
+<div class="layout">
 
 
 <!-- ======================================================
-     SOLDE
+     SIDEBAR
 ====================================================== -->
 
-<div class="balance-card">
+<aside class="sidebar">
 
-
-    <div class="balance-title">
-
-        Solde disponible
-
-    </div>
-
-
-    <div
-        class="total"
-        id="jbTotalBalance"
+    <button
+        class="menu-btn active"
+        data-page="dashboard"
     >
+        📊 Dashboard
+    </button>
 
-        0
+    <button
+        class="menu-btn"
+        data-page="users"
+    >
+        👥 Utilisateurs
+    </button>
 
-    </div>
+    <button
+        class="menu-btn"
+        data-page="commands"
+    >
+        🛒 Commandes
+    </button>
 
+    <button
+        class="menu-btn"
+        data-page="recharges"
+    >
+        💳 Recharges
+    </button>
 
-    <span class="fc">
+    <button
+        class="menu-btn"
+        data-page="withdrawals"
+    >
+        💸 Retraits
+    </button>
 
-        FC
+    <button
+        class="menu-btn"
+        data-page="messages"
+    >
+        💬 Messages
+    </button>
 
-    </span>
+    <button
+        class="menu-btn"
+        data-page="send"
+    >
+        📤 Envoyer
+    </button>
 
-
-    <div class="balance-actions">
-
-
-        <a
-            href="recharge.html"
-            class="action recharge"
-        >
-
-            ➕ Recharger
-
-        </a>
-
-
-        <a
-            href="retrait.html"
-            class="action withdraw"
-        >
-
-            💸 Retirer
-
-        </a>
-
-
-    </div>
-
-</div>
+</aside>
 
 
 
 <!-- ======================================================
-     STATISTIQUES
+     MAIN
 ====================================================== -->
 
-<div class="stats">
-
-
-    <div class="stat">
-
-        <div class="stat-icon">
-
-            💰
-
-        </div>
-
-
-        <div
-            class="stat-value"
-            id="jbMainBalance"
-        >
-
-            0 FC
-
-        </div>
-
-
-        <div class="stat-label">
-
-            Solde principal
-
-        </div>
-
-    </div>
-
-
-
-    <div class="stat">
-
-        <div class="stat-icon">
-
-            📈
-
-        </div>
-
-
-        <div
-            class="stat-value"
-            id="jbGainBalance"
-        >
-
-            0 FC
-
-        </div>
-
-
-        <div class="stat-label">
-
-            Gains
-
-        </div>
-
-    </div>
-
-
-
-    <div class="stat">
-
-        <div class="stat-icon">
-
-            👥
-
-        </div>
-
-
-        <div
-            class="stat-value"
-            id="jbCommissionBalance"
-        >
-
-            0 FC
-
-        </div>
-
-
-        <div class="stat-label">
-
-            Commissions
-
-        </div>
-
-    </div>
-
-
-</div>
-
+<main class="main">
 
 
 <!-- ======================================================
-     FIDELITE
+     DASHBOARD
 ====================================================== -->
 
-<div class="loyalty">
+<section
+    class="page active"
+    id="page-dashboard"
+>
 
+    <h1 class="page-title">
+        📊 Dashboard
+    </h1>
 
-    <div class="loyalty-head">
+    <p class="page-subtitle">
+        Vue générale de JASON BUSINESS
+    </p>
 
 
-        <div>
+    <div class="stats">
 
-            <div class="loyalty-title">
 
-                ⭐ Programme fidélité
+        <div class="stat-card">
 
-            </div>
-
-
-            <div class="loyalty-info">
-
-                Gagnez des points grâce à votre réseau.
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="points"
-            id="jbLoyaltyPoints"
-        >
-
-            0
-
-        </div>
-
-    </div>
-
-
-
-    <div class="progress">
-
-        <div
-            class="progress-bar"
-            id="jbLoyaltyProgress"
-        >
-        </div>
-
-    </div>
-
-
-
-    <div class="loyalty-info">
-
-        <span id="jbPointsText">
-
-            0 / 1000 points
-
-        </span>
-
-    </div>
-
-
-
-    <!-- ==================================================
-         RÈGLES
-    ================================================== -->
-
-    <div class="points-rules">
-
-
-        <div class="points-rule">
-
-            <strong>
-                +5 points
-            </strong>
-
-            <span>
-                1 personne parrainée
-            </span>
-
-        </div>
-
-
-        <div class="points-rule">
-
-            <strong>
-                1 000 FC
-            </strong>
-
-            <span>
-                100 points convertis
-            </span>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- ==================================================
-         CONVERSION
-    ================================================== -->
-
-    <div class="convert-box">
-
-
-        <div class="convert-info">
-
-            ⭐ <b>100 points = 1 000 FC</b>
-
-            <br>
-
-            👥 Chaque personne parrainée rapporte
-            <b>5 points</b>.
-
-            <br>
-
-            💰 Les points convertis sont ajoutés
-            à votre <b>solde principal</b>.
-
-        </div>
-
-
-        <button
-            class="convert-button"
-            id="jbConvertPoints"
-            disabled
-        >
-
-            💱 MINIMUM 100 POINTS
-
-        </button>
-
-
-        <div
-            class="convert-status"
-            id="jbConvertStatus"
-        >
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- ======================================================
-     MENU
-====================================================== -->
-
-<div style="margin-top:25px;">
-
-
-    <div class="menu-title">
-
-        Mon espace
-
-    </div>
-
-
-    <div class="menu">
-
-
-        <a
-            href="shop.html"
-            class="menu-item"
-        >
-
-            <div class="menu-icon">
-                🛒
-            </div>
-
-
-            <div class="menu-text">
-
-                <div class="menu-name">
-                    Boutique
-                </div>
-
-
-                <div class="menu-desc">
-                    Acheter nos produits et services
-                </div>
-
-            </div>
-
-
-            <div class="arrow">
-                ›
-            </div>
-
-        </a>
-
-
-
-        <a
-            href="transactions.html"
-            class="menu-item"
-        >
-
-            <div class="menu-icon">
-                📊
-            </div>
-
-
-            <div class="menu-text">
-
-                <div class="menu-name">
-                    Transactions
-                </div>
-
-
-                <div class="menu-desc">
-                    Voir mon historique financier
-                </div>
-
-            </div>
-
-
-            <div class="arrow">
-                ›
-            </div>
-
-        </a>
-
-
-
-        <a
-            href="equipe.html"
-            class="menu-item"
-        >
-
-            <div class="menu-icon">
+            <div class="icon">
                 👥
             </div>
 
-
-            <div class="menu-text">
-
-                <div class="menu-name">
-                    Mon équipe
-                </div>
-
-
-                <div class="menu-desc">
-                    Parrainage et commissions
-                </div>
-
+            <div
+                class="value"
+                id="statUsers"
+            >
+                0
             </div>
 
+            <small>
+                Utilisateurs
+            </small>
 
-            <div class="arrow">
-                ›
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="icon">
+                🛒
             </div>
 
-        </a>
+            <div
+                class="value"
+                id="statCommands"
+            >
+                0
+            </div>
+
+            <small>
+                Commandes
+            </small>
+
+        </div>
 
 
+        <div class="stat-card">
 
-        <a
-            href="recharge.html"
-            class="menu-item"
-        >
-
-            <div class="menu-icon">
+            <div class="icon">
                 💳
             </div>
 
-
-            <div class="menu-text">
-
-                <div class="menu-name">
-                    Recharger mon compte
-                </div>
-
-
-                <div class="menu-desc">
-                    Ajouter de l'argent à mon solde
-                </div>
-
+            <div
+                class="value"
+                id="statRecharges"
+            >
+                0
             </div>
 
+            <small>
+                Recharges en attente
+            </small>
 
-            <div class="arrow">
-                ›
-            </div>
-
-        </a>
-
+        </div>
 
 
-        <a
-            href="retrait.html"
-            class="menu-item"
-        >
+        <div class="stat-card">
 
-            <div class="menu-icon">
+            <div class="icon">
                 💸
             </div>
 
-
-            <div class="menu-text">
-
-                <div class="menu-name">
-                    Retrait
-                </div>
-
-
-                <div class="menu-desc">
-                    Demander un paiement
-                </div>
-
+            <div
+                class="value"
+                id="statWithdrawals"
+            >
+                0
             </div>
 
+            <small>
+                Retraits en attente
+            </small>
 
-            <div class="arrow">
-                ›
-            </div>
-
-        </a>
-
-
-
-        <a
-            href="support.html"
-            class="menu-item"
-        >
-
-            <div class="menu-icon">
-                🎧
-            </div>
-
-
-            <div class="menu-text">
-
-                <div class="menu-name">
-                    Support
-                </div>
-
-
-                <div class="menu-desc">
-                    Besoin d'aide ?
-                </div>
-
-            </div>
-
-
-            <div class="arrow">
-                ›
-            </div>
-
-        </a>
-
+        </div>
 
     </div>
 
-</div>
+
+    <div class="panel">
+
+        <h3>
+            ⚡ Centre d'administration
+        </h3>
+
+        <p class="muted">
+
+            Gestion complète des utilisateurs,
+            commandes, recharges, retraits et
+            messages.
+
+        </p>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h3>
+            💰 Solde total
+        </h3>
+
+        <h2
+            id="totalBalance"
+            style="color:var(--green)"
+        >
+            0 FC
+        </h2>
+
+    </div>
+
+</section>
 
 
 
 <!-- ======================================================
-     CONTACT ADMIN
+     USERS
 ====================================================== -->
 
-<div class="admin-contact">
+<section
+    class="page"
+    id="page-users"
+>
 
+    <h1 class="page-title">
+        👥 Utilisateurs
+    </h1>
 
-    <div class="admin-contact-header">
+    <p class="page-subtitle">
+        Gestion des comptes clients
+    </p>
 
-
-        <div class="admin-contact-icon">
-
-            💬
-
-        </div>
-
-
-        <div>
-
-            <div class="admin-contact-title">
-
-                Contacter l'administration
-
-            </div>
-
-
-            <div class="admin-contact-desc">
-
-                Assistance et réception de fichiers
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- MESSAGES -->
-
-    <div
-        class="chat-box"
-        id="jbChatBox"
+    <input
+        class="search"
+        id="userSearch"
+        placeholder="🔎 Rechercher par numéro ou nom..."
     >
 
-        <div class="empty-chat">
+    <div class="panel">
 
-            💬 Aucun message pour le moment
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Numéro</th>
+
+                        <th>Nom</th>
+
+                        <th>Solde</th>
+
+                        <th>Gains</th>
+
+                        <th>Commissions</th>
+
+                        <th>Points</th>
+
+                        <th>VIP</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="usersTable"></tbody>
+
+            </table>
 
         </div>
 
     </div>
 
-
-
-    <!-- MESSAGE UTILISATEUR -->
-
-    <div class="message-area">
-
-
-        <textarea
-            id="jbMessageInput"
-            placeholder="Écrivez votre message à l'administration..."
-            maxlength="1000"
-        ></textarea>
-
-
-        <button
-            id="jbSendMessage"
-            class="send-message"
-        >
-
-            📤 ENVOYER LE MESSAGE
-
-        </button>
-
-    </div>
-
-
-    <div class="chat-info">
-
-        🔒 Vous pouvez envoyer uniquement des messages texte.
-
-        <br>
-
-        📥 Les photos, vidéos, musiques, APK et documents
-        sont envoyés uniquement par l'administration.
-
-    </div>
-
-
-</div>
+</section>
 
 
 
 <!-- ======================================================
-     LOGOUT
+     COMMANDES
 ====================================================== -->
 
-<button
-    class="logout"
-    id="jbLogout"
+<section
+    class="page"
+    id="page-commands"
 >
 
-    🚪 DÉCONNEXION
+    <h1 class="page-title">
+        🛒 Commandes
+    </h1>
 
-</button>
+    <p class="page-subtitle">
+        Gestion des commandes clients
+    </p>
+
+    <div class="panel">
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+
+                        <th>Client</th>
+
+                        <th>Service</th>
+
+                        <th>Montant</th>
+
+                        <th>Statut</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="commandsTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-<div
-    class="status"
-    id="jbStatus"
+
+<!-- ======================================================
+     RECHARGES
+====================================================== -->
+
+<section
+    class="page"
+    id="page-recharges"
 >
-</div>
+
+    <h1 class="page-title">
+        💳 Recharges
+    </h1>
+
+    <p class="page-subtitle">
+        Validation des demandes de recharge
+    </p>
+
+    <div class="panel">
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+
+                        <th>Client</th>
+
+                        <th>Montant</th>
+
+                        <th>Méthode</th>
+
+                        <th>Transaction</th>
+
+                        <th>Statut</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="rechargesTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     RETRAITS
+====================================================== -->
+
+<section
+    class="page"
+    id="page-withdrawals"
+>
+
+    <h1 class="page-title">
+        💸 Retraits
+    </h1>
+
+    <p class="page-subtitle">
+        Gestion des demandes de retrait
+    </p>
+
+    <div class="panel">
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+
+                        <th>Client</th>
+
+                        <th>Montant</th>
+
+                        <th>Méthode</th>
+
+                        <th>Numéro</th>
+
+                        <th>Statut</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="withdrawalsTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     MESSAGES
+====================================================== -->
+
+<section
+    class="page"
+    id="page-messages"
+>
+
+    <h1 class="page-title">
+        💬 Messages utilisateurs
+    </h1>
+
+    <p class="page-subtitle">
+        Messages reçus depuis la plateforme
+    </p>
+
+    <div id="messagesList"></div>
+
+</section>
+
+
+
+<!-- ======================================================
+     ENVOYER
+====================================================== -->
+
+<section
+    class="page"
+    id="page-send"
+>
+
+    <h1 class="page-title">
+        📤 Envoyer un message
+    </h1>
+
+    <div class="panel">
+
+        <label>
+            📱 Numéro du destinataire
+        </label>
+
+        <input
+            class="search"
+            id="messageTo"
+            placeholder="Ex : 243XXXXXXXXX"
+        >
+
+        <label>
+            💬 Message
+        </label>
+
+        <textarea
+            id="messageText"
+            rows="7"
+            class="search"
+            placeholder="Écrire le message..."
+        ></textarea>
+
+        <button
+            class="btn btn-blue"
+            id="sendMessageBtn"
+        >
+            📤 ENVOYER
+        </button>
+
+        <div id="sendStatus"></div>
+
+    </div>
+
+</section>
 
 
 </main>
 
 </div>
 
-
-
-<!-- ======================================================
-     NAVIGATION
-====================================================== -->
-
-<nav class="navbar">
-
-
-    <a
-        href="dashboard.html"
-        class="nav"
-    >
-
-        <span>📊</span>
-
-        Dash
-
-    </a>
-
-
-
-    <a
-        href="shop.html"
-        class="nav"
-    >
-
-        <span>🛒</span>
-
-        Boutique
-
-    </a>
-
-
-
-    <a
-        href="equipe.html"
-        class="nav"
-    >
-
-        <span>👥</span>
-
-        Équipe
-
-    </a>
-
-
-
-    <a
-        href="profil.html"
-        class="nav active"
-    >
-
-        <span>👤</span>
-
-        Profil
-
-    </a>
-
-
-</nav>
+</section>
 
 
 
 <!-- ======================================================
-     FIREBASE
+     USER MODAL
 ====================================================== -->
+
+<div
+    class="modal"
+    id="userModal"
+>
+
+    <div class="modal-box">
+
+        <span
+            class="modal-close"
+            onclick="closeModal('userModal')"
+        >
+            ✕
+        </span>
+
+        <h2>
+            👤 Gestion utilisateur
+        </h2>
+
+        <div id="userDetails"></div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================================
+     COMMAND MODAL
+====================================================== -->
+
+<div
+    class="modal"
+    id="commandModal"
+>
+
+    <div class="modal-box">
+
+        <span
+            class="modal-close"
+            onclick="closeModal('commandModal')"
+        >
+            ✕
+        </span>
+
+        <h2>
+            🛒 Détails commande
+        </h2>
+
+        <div id="commandDetails"></div>
+
+    </div>
+
+</div>
+
+
 
 <script type="module">
 
+/* =========================================================
+   FIREBASE
+========================================================= */
 
 import {
-
     initializeApp
-
 }
-
 from
 "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
 
 import {
-
     getDatabase,
-
     ref,
-
     onValue,
-
-    get,
-
+    update,
+    remove,
     push,
-
     set,
-
     runTransaction
-
 }
-
 from
 "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 
-/* =========================================================
-   FIREBASE CONFIG
-========================================================= */
-
-const jbFirebaseConfig = {
+const firebaseConfig = {
 
     apiKey:
     "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
@@ -2124,1416 +1771,3268 @@ const jbFirebaseConfig = {
 };
 
 
-const jbApp =
-    initializeApp(
-        jbFirebaseConfig
-    );
+const app =
+    initializeApp(firebaseConfig);
 
+const db =
+    getDatabase(app);
 
-const jbDB =
-    getDatabase(
-        jbApp
-    );
 
 
 /* =========================================================
-   SESSION
+   ADMIN LOGIN
 ========================================================= */
 
-const jbUserPhone =
-    localStorage.getItem(
-        "userPhone"
-    );
+const ADMIN_PASSWORD = "123";
 
 
-if(!jbUserPhone){
+const loginBox =
+    document.getElementById("adminLogin");
 
-    window.location.href =
-        "login.html";
+const adminPanel =
+    document.getElementById("adminPanel");
+
+
+function showAdmin(){
+
+    loginBox.style.display="none";
+
+    adminPanel.style.display="block";
 
 }
 
 
+if(
+    localStorage.getItem("adminAccess")
+    ===
+    "true"
+){
+
+    showAdmin();
+
+}
+
+
+document
+.getElementById("loginAdmin")
+.addEventListener(
+    "click",
+    loginAdmin
+);
+
+
+function loginAdmin(){
+
+    const password =
+        document
+        .getElementById("adminPassword")
+        .value;
+
+
+    if(
+        password ===
+        ADMIN_PASSWORD
+    ){
+
+        localStorage.setItem(
+            "adminAccess",
+            "true"
+        );
+
+        showAdmin();
+
+    }
+
+    else{
+
+        document
+        .getElementById("loginError")
+        .textContent =
+        "❌ Mot de passe incorrect.";
+
+    }
+
+}
+
+
+document
+.getElementById("adminPassword")
+.addEventListener(
+    "keydown",
+    e=>{
+
+        if(e.key==="Enter"){
+
+            loginAdmin();
+
+        }
+
+    }
+);
+
+
+document
+.getElementById("adminLogout")
+.addEventListener(
+    "click",
+    ()=>{
+
+        localStorage.removeItem(
+            "adminAccess"
+        );
+
+        location.reload();
+
+    }
+);
+
+
+
 /* =========================================================
-   CONSTANTES JASON BUSINESS
+   UTILS
 ========================================================= */
 
-/*
-
-   1 personne = 5 points
-
-   100 points = 1000 FC
-
-   Donc :
-
-   1 point = 10 FC
-
-*/
-
-const JB_POINTS_PERSONNE = 5;
-
-const JB_POINTS_CONVERSION = 100;
-
-const JB_FC_CONVERSION = 1000;
-
-
-/* =========================================================
-   USER REF
-========================================================= */
-
-const jbUserRef =
-    ref(
-        jbDB,
-        "users/" +
-        jbUserPhone
-    );
-
-
-/* =========================================================
-   FORMAT
-========================================================= */
-
-function jbFormatNumber(value){
+function money(value){
 
     return Math.floor(
-        Number(value) || 0
-    ).toLocaleString(
-        "fr-FR"
-    );
+        Number(value)||0
+    ).toLocaleString("fr-FR");
 
 }
 
 
-function jbFormatFC(value){
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function getPhone(data){
 
     return (
-        jbFormatNumber(value) +
-        " FC"
+        data.telephone ||
+        data.userPhone ||
+        data.phone ||
+        data.numero ||
+        data.user ||
+        ""
     );
 
 }
+
+
+function getName(data){
+
+    return (
+        data.nom ||
+        data.name ||
+        data.username ||
+        "Utilisateur"
+    );
+
+}
+
+
+function getBalance(data){
+
+    return Number(
+        data.solde_principal ??
+        data.solde ??
+        data.balance ??
+        0
+    ) || 0;
+
+}
+
+
+function getPoints(data){
+
+    return Number(
+        data.points_fidelite ??
+        data.points ??
+        data.loyaltyPoints ??
+        0
+    ) || 0;
+
+}
+
+
+function getStatus(data){
+
+    return (
+        data.statut ||
+        data.status ||
+        "En attente"
+    );
+
+}
+
+
+function isPending(status){
+
+    return String(
+        status || ""
+    )
+    .toLowerCase()
+    .includes("attente");
+
+}
+
+
+function statusBadge(status){
+
+    const s =
+        String(status || "En attente");
+
+    const low =
+        s.toLowerCase();
+
+
+    if(
+        low.includes("valid")
+        ||
+        low.includes("pay")
+        ||
+        low.includes("termin")
+        ||
+        low.includes("accept")
+    ){
+
+        return `
+            <span class="badge success">
+                ${escapeHTML(s)}
+            </span>
+        `;
+
+    }
+
+
+    if(
+        low.includes("refus")
+        ||
+        low.includes("annul")
+    ){
+
+        return `
+            <span class="badge danger">
+                ${escapeHTML(s)}
+            </span>
+        `;
+
+    }
+
+
+    return `
+        <span class="badge pending">
+            ${escapeHTML(s)}
+        </span>
+    `;
+
+}
+
 
 
 /* =========================================================
-   CHARGEMENT UTILISATEUR
+   NAVIGATION
+========================================================= */
+
+document
+.querySelectorAll(".menu-btn")
+.forEach(button=>{
+
+    button.addEventListener(
+        "click",
+        ()=>{
+
+            const page =
+                button.dataset.page;
+
+
+            document
+            .querySelectorAll(".menu-btn")
+            .forEach(
+                b =>
+                b.classList.remove(
+                    "active"
+                )
+            );
+
+
+            button.classList.add(
+                "active"
+            );
+
+
+            document
+            .querySelectorAll(".page")
+            .forEach(
+                p =>
+                p.classList.remove(
+                    "active"
+                )
+            );
+
+
+            document
+            .getElementById(
+                "page-"+page
+            )
+            .classList.add(
+                "active"
+            );
+
+        }
+    );
+
+});
+
+
+
+/* =========================================================
+   CACHE
+========================================================= */
+
+let usersCache={};
+
+let commandsCache={};
+
+let rechargeCache={};
+
+let withdrawalCache={};
+
+
+
+/* =========================================================
+   USERS
 ========================================================= */
 
 onValue(
+    ref(db,"users"),
+    snapshot=>{
 
-    jbUserRef,
+        usersCache={};
 
-    (snapshot)=>{
+        const tbody =
+            document.getElementById(
+                "usersTable"
+            );
+
+        tbody.innerHTML="";
+
+        let count=0;
+
+        let totalBalance=0;
 
 
-        if(!snapshot.exists()){
+        snapshot.forEach(child=>{
 
-            document
-                .getElementById(
-                    "jbStatus"
+            const phone =
+                child.key;
+
+            const data =
+                child.val() || {};
+
+
+            usersCache[phone]=data;
+
+            count++;
+
+
+            const balance =
+                getBalance(data);
+
+            totalBalance += balance;
+
+
+            const gains =
+                Number(
+                    data.solde_gains ??
+                    data.gains ??
+                    0
+                ) || 0;
+
+
+            const commissions =
+                Number(
+                    data.solde_commissions ??
+                    data.commissions ??
+                    0
+                ) || 0;
+
+
+            const points =
+                getPoints(data);
+
+
+            const vip =
+                data.vipActif ??
+                data.vip ??
+                data.vip_active ??
+                false;
+
+
+            const tr =
+                document.createElement("tr");
+
+
+            tr.innerHTML=`
+
+                <td>
+                    ${escapeHTML(phone)}
+                </td>
+
+                <td class="user-name">
+                    ${escapeHTML(
+                        getName(data)
+                    )}
+                </td>
+
+                <td>
+                    ${money(balance)} FC
+                </td>
+
+                <td>
+                    ${money(gains)} FC
+                </td>
+
+                <td>
+                    ${money(commissions)} FC
+                </td>
+
+                <td>
+                    ⭐ ${money(points)}
+                </td>
+
+                <td>
+                    ${
+                        vip
+                        ?
+                        `<span class="badge success">VIP</span>`
+                        :
+                        `<span class="badge pending">Normal</span>`
+                    }
+                </td>
+
+                <td>
+
+                    <button
+                        class="btn btn-blue"
+                        onclick="
+                        viewUser(
+                            '${encodeURIComponent(phone)}'
+                        )
+                        "
+                    >
+                        Voir
+                    </button>
+
+                    <button
+                        class="btn btn-green"
+                        onclick="
+                        addMoney(
+                            '${encodeURIComponent(phone)}'
+                        )
+                        "
+                    >
+                        +1000
+                    </button>
+
+                    <button
+                        class="btn btn-orange"
+                        onclick="
+                        removeMoney(
+                            '${encodeURIComponent(phone)}'
+                        )
+                        "
+                    >
+                        -1000
+                    </button>
+
+                    <button
+                        class="btn btn-red"
+                        onclick="
+                        deleteUser(
+                            '${encodeURIComponent(phone)}'
+                        )
+                        "
+                    >
+                        Supprimer
+                    </button>
+
+                </td>
+
+            `;
+
+
+            tbody.appendChild(tr);
+
+        });
+
+
+        document
+        .getElementById("statUsers")
+        .textContent=count;
+
+
+        document
+        .getElementById("totalBalance")
+        .textContent =
+            money(totalBalance)+" FC";
+
+
+        if(count===0){
+
+            tbody.innerHTML=`
+
+                <tr>
+
+                    <td colspan="8">
+
+                        <div class="empty">
+                            Aucun utilisateur.
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   USER SEARCH
+========================================================= */
+
+document
+.getElementById("userSearch")
+.addEventListener(
+    "input",
+    e=>{
+
+        const value =
+            e.target.value
+            .toLowerCase()
+            .trim();
+
+
+        document
+        .querySelectorAll(
+            "#usersTable tr"
+        )
+        .forEach(row=>{
+
+            row.style.display =
+                row.innerText
+                .toLowerCase()
+                .includes(value)
+                ?
+                ""
+                :
+                "none";
+
+        });
+
+    }
+);
+
+
+
+/* =========================================================
+   VIEW USER
+========================================================= */
+
+window.viewUser =
+function(encodedPhone){
+
+    const phone =
+        decodeURIComponent(
+            encodedPhone
+        );
+
+
+    const data =
+        usersCache[phone] || {};
+
+
+    const balance =
+        getBalance(data);
+
+
+    const gains =
+        Number(
+            data.solde_gains ??
+            data.gains ??
+            0
+        ) || 0;
+
+
+    const commissions =
+        Number(
+            data.solde_commissions ??
+            data.commissions ??
+            0
+        ) || 0;
+
+
+    const points =
+        getPoints(data);
+
+
+    const vip =
+        data.vipActif ??
+        data.vip ??
+        data.vip_active ??
+        false;
+
+
+    document
+    .getElementById("userDetails")
+    .innerHTML=`
+
+        <div class="detail-grid">
+
+            <div class="detail-item">
+                <small>📱 Numéro</small>
+                <strong>
+                    ${escapeHTML(phone)}
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <small>👤 Nom</small>
+                <strong>
+                    ${escapeHTML(
+                        getName(data)
+                    )}
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <small>💰 Solde principal</small>
+                <strong>
+                    ${money(balance)} FC
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <small>📈 Gains</small>
+                <strong>
+                    ${money(gains)} FC
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <small>👥 Commissions</small>
+                <strong>
+                    ${money(commissions)} FC
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <small>⭐ Points</small>
+                <strong>
+                    ${money(points)}
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <small>🎁 Parrain</small>
+                <strong>
+                    ${escapeHTML(
+                        data.referredBy ||
+                        data.parrain ||
+                        "DIRECT"
+                    )}
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <small>🔑 Code</small>
+                <strong>
+                    ${escapeHTML(
+                        data.inviteCode ||
+                        data.referralCode ||
+                        "—"
+                    )}
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <small>👑 VIP</small>
+                <strong>
+                    ${
+                        vip
+                        ?
+                        "ACTIF"
+                        :
+                        "NON"
+                    }
+                </strong>
+            </div>
+
+        </div>
+
+
+        <hr>
+
+
+        <button
+            class="btn btn-green"
+            onclick="
+            addMoney(
+                '${encodeURIComponent(phone)}'
+            )
+            "
+        >
+            +1000 FC
+        </button>
+
+
+        <button
+            class="btn btn-orange"
+            onclick="
+            removeMoney(
+                '${encodeURIComponent(phone)}'
+            )
+            "
+        >
+            -1000 FC
+        </button>
+
+
+        <button
+            class="btn btn-blue"
+            onclick="
+            addPoints(
+                '${encodeURIComponent(phone)}'
+            )
+            "
+        >
+            +100 points
+        </button>
+
+
+        <button
+            class="btn btn-dark"
+            onclick="
+            editUser(
+                '${encodeURIComponent(phone)}'
+            )
+            "
+        >
+            ✏️ Modifier
+        </button>
+
+
+        <button
+            class="btn btn-blue"
+            onclick="
+            resetPassword(
+                '${encodeURIComponent(phone)}'
+            )
+            "
+        >
+            🔑 Mot de passe
+        </button>
+
+
+        <button
+            class="btn btn-red"
+            onclick="
+            deleteUser(
+                '${encodeURIComponent(phone)}'
+            )
+            "
+        >
+            🗑️ Supprimer
+        </button>
+
+
+        <hr>
+
+
+        <details>
+
+            <summary>
+                📋 Données Firebase
+            </summary>
+
+            <pre
+                style="
+                white-space:pre-wrap;
+                font-size:11px;
+                opacity:.75;
+                margin-top:15px;
+                "
+            >${escapeHTML(
+                JSON.stringify(
+                    data,
+                    null,
+                    2
                 )
-                .innerText =
-                "⚠️ Compte introuvable.";
+            )}</pre>
+
+        </details>
+
+    `;
+
+
+    openModal("userModal");
+
+};
+
+
+
+/* =========================================================
+   ADD MONEY
+========================================================= */
+
+window.addMoney =
+async function(encodedPhone){
+
+    const phone =
+        decodeURIComponent(
+            encodedPhone
+        );
+
+
+    if(
+        !confirm(
+            "Ajouter 1000 FC à "+phone+" ?"
+        )
+    ) return;
+
+
+    try{
+
+        await runTransaction(
+
+            ref(
+                db,
+                "users/"+phone+
+                "/solde_principal"
+            ),
+
+            current =>
+                (
+                    Number(current)||0
+                ) + 1000
+
+        );
+
+
+        alert(
+            "✅ 1000 FC ajouté."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Impossible d'ajouter le solde."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   REMOVE MONEY
+========================================================= */
+
+window.removeMoney =
+async function(encodedPhone){
+
+    const phone =
+        decodeURIComponent(
+            encodedPhone
+        );
+
+
+    if(
+        !confirm(
+            "Retirer 1000 FC de "+phone+" ?"
+        )
+    ) return;
+
+
+    try{
+
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "users/"+phone+
+                    "/solde_principal"
+                ),
+
+                current=>{
+
+                    const value =
+                        Number(current)||0;
+
+
+                    if(value<1000){
+
+                        return;
+
+                    }
+
+
+                    return value-1000;
+
+                }
+
+            );
+
+
+        if(
+            !result.committed
+        ){
+
+            alert(
+                "❌ Solde insuffisant."
+            );
 
             return;
 
         }
 
 
-        const data =
-            snapshot.val();
+        alert(
+            "✅ 1000 FC retiré."
+        );
 
 
-        /* =================================================
-           NOM
-        ================================================= */
+    }catch(error){
 
-        const name =
-            data.nom ||
-            data.name ||
-            data.username ||
-            "Mon compte";
+        console.error(error);
+
+        alert(
+            "❌ Erreur."
+        );
+
+    }
+
+};
 
 
-        document
-            .getElementById(
-                "jbName"
+
+/* =========================================================
+   ADD POINTS
+========================================================= */
+
+window.addPoints =
+async function(encodedPhone){
+
+    const phone =
+        decodeURIComponent(
+            encodedPhone
+        );
+
+
+    const amount =
+        Number(
+            prompt(
+                "Combien de points ajouter ?",
+                "100"
             )
-            .innerText =
-            name;
+        );
 
 
-        /* =================================================
-           TELEPHONE
-        ================================================= */
+    if(
+        !Number.isFinite(amount)
+        ||
+        amount<=0
+    ){
 
-        document
-            .getElementById(
-                "jbPhone"
-            )
-            .innerText =
-            jbUserPhone;
+        return;
 
-
-        /* =================================================
-           AVATAR
-        ================================================= */
-
-        const avatarSource =
-            String(name || jbUserPhone);
+    }
 
 
-        const avatarText =
-            avatarSource
-                .substring(0,2)
-                .toUpperCase();
+    try{
+
+        await runTransaction(
+
+            ref(
+                db,
+                "users/"+phone+
+                "/points_fidelite"
+            ),
+
+            current =>
+                (
+                    Number(current)||0
+                ) + amount
+
+        );
 
 
-        document
-            .getElementById(
-                "jbAvatar"
-            )
-            .innerText =
-            avatarText;
+        alert(
+            "✅ Points ajoutés."
+        );
 
 
-        /* =================================================
-           CODE PARRAINAGE
-        ================================================= */
+    }catch(error){
 
-        const inviteCode =
+        console.error(error);
+
+        alert(
+            "❌ Impossible d'ajouter les points."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   EDIT USER
+========================================================= */
+
+window.editUser =
+async function(encodedPhone){
+
+    const phone =
+        decodeURIComponent(
+            encodedPhone
+        );
+
+
+    const data =
+        usersCache[phone] || {};
+
+
+    const name =
+        prompt(
+            "Nom de l'utilisateur :",
+            getName(data)
+        );
+
+
+    if(name===null) return;
+
+
+    const inviteCode =
+        prompt(
+            "Code de parrainage :",
             data.inviteCode ||
             data.referralCode ||
-            "STAR-0000";
+            ""
+        );
 
 
-        document
-            .getElementById(
-                "jbInviteCode"
+    if(inviteCode===null) return;
+
+
+    try{
+
+        await update(
+
+            ref(
+                db,
+                "users/"+phone
+            ),
+
+            {
+
+                nom:
+                    name.trim(),
+
+                inviteCode:
+                    inviteCode.trim()
+
+            }
+
+        );
+
+
+        alert(
+            "✅ Utilisateur modifié."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Modification impossible."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   DELETE USER
+========================================================= */
+
+window.deleteUser =
+async function(encodedPhone){
+
+    const phone =
+        decodeURIComponent(
+            encodedPhone
+        );
+
+
+    if(
+        !confirm(
+            "⚠️ Supprimer "+phone+" ?"
+        )
+    ) return;
+
+
+    if(
+        !confirm(
+            "⚠️ DERNIÈRE CONFIRMATION\n\n"+
+            "Toutes les données sous users/"+phone+
+            " seront supprimées."
+        )
+    ) return;
+
+
+    try{
+
+        await remove(
+            ref(
+                db,
+                "users/"+phone
             )
-            .innerText =
-            "ID : " +
-            inviteCode;
+        );
 
 
-        /* =================================================
-           SOLDES
-        ================================================= */
-
-        const principal =
-            Number(
-                data.solde_principal
-            ) || 0;
+        alert(
+            "✅ Utilisateur supprimé."
+        );
 
 
-        const gains =
-            Number(
-                data.solde_gains
-            ) || 0;
+        closeModal(
+            "userModal"
+        );
 
 
-        const commissions =
-            Number(
-                data.solde_commissions
-            ) || 0;
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Suppression impossible."
+        );
+
+    }
+
+};
 
 
-        const total =
-            principal +
-            gains +
-            commissions;
+
+/* =========================================================
+   RESET PASSWORD
+========================================================= */
+
+window.resetPassword =
+async function(encodedPhone){
+
+    const phone =
+        decodeURIComponent(
+            encodedPhone
+        );
 
 
-        document
-            .getElementById(
-                "jbTotalBalance"
-            )
-            .innerText =
-            jbFormatNumber(
-                total
-            );
+    const password =
+        prompt(
+            "Nouveau mot de passe pour "+phone+":"
+        );
 
 
-        document
-            .getElementById(
-                "jbMainBalance"
-            )
-            .innerText =
-            jbFormatFC(
-                principal
-            );
+    if(
+        password===null
+        ||
+        password.trim()===""
+    ){
+
+        return;
+
+    }
 
 
-        document
-            .getElementById(
-                "jbGainBalance"
-            )
-            .innerText =
-            jbFormatFC(
-                gains
-            );
+    if(
+        password.length<4
+    ){
+
+        alert(
+            "❌ Minimum 4 caractères."
+        );
+
+        return;
+
+    }
 
 
-        document
-            .getElementById(
-                "jbCommissionBalance"
-            )
-            .innerText =
-            jbFormatFC(
-                commissions
-            );
+    try{
+
+        await update(
+
+            ref(
+                db,
+                "users/"+phone
+            ),
+
+            {
+
+                password:
+                    password.trim()
+
+            }
+
+        );
 
 
-        /* =================================================
-           POINTS
-        ================================================= */
-
-        const points =
-            Number(
-
-                data.points_fidelite ??
-                data.points ??
-                data.loyaltyPoints ??
-                0
-
-            );
+        alert(
+            "✅ Mot de passe modifié."
+        );
 
 
-        document
-            .getElementById(
-                "jbLoyaltyPoints"
-            )
-            .innerText =
-            jbFormatNumber(
-                points
-            );
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Erreur."
+        );
+
+    }
+
+};
 
 
-        /* =================================================
-           PROGRESSION
-        ================================================= */
 
-        const maxPoints =
-            1000;
+/* =========================================================
+   COMMANDES
+========================================================= */
 
+onValue(
+    ref(db,"demandes_commandes"),
+    snapshot=>{
 
-        const progress =
-            Math.min(
-                (
-                    points /
-                    maxPoints
-                ) * 100,
-                100
-            );
+        commandsCache={};
 
-
-        document
-            .getElementById(
-                "jbLoyaltyProgress"
-            )
-            .style.width =
-            progress +
-            "%";
-
-
-        document
-            .getElementById(
-                "jbPointsText"
-            )
-            .innerText =
-
-            jbFormatNumber(
-                points
-            )
-
-            +
-
-            " / "
-
-            +
-
-            jbFormatNumber(
-                maxPoints
-            )
-
-            +
-
-            " points";
-
-
-        /* =================================================
-           BOUTON CONVERSION
-        ================================================= */
-
-        const convertButton =
+        const tbody =
             document.getElementById(
-                "jbConvertPoints"
+                "commandsTable"
             );
 
+        tbody.innerHTML="";
 
-        const pointsConvertibles =
-            Math.floor(
-                points /
-                JB_POINTS_CONVERSION
-            )
-            *
-            JB_POINTS_CONVERSION;
+        let count=0;
 
 
-        if(
-            pointsConvertibles >=
-            JB_POINTS_CONVERSION
-        ){
+        snapshot.forEach(child=>{
 
-            const fc =
-                (
-                    pointsConvertibles /
-                    JB_POINTS_CONVERSION
-                )
-                *
-                JB_FC_CONVERSION;
+            const id =
+                child.key;
+
+            const data =
+                child.val() || {};
 
 
-            convertButton.disabled =
-                false;
+            commandsCache[id]=data;
+
+            count++;
 
 
-            convertButton.innerText =
-
-                "💱 CONVERTIR "
-
-                +
-
-                jbFormatNumber(
-                    pointsConvertibles
-                )
-
-                +
-
-                " POINTS → "
-
-                +
-
-                jbFormatNumber(
-                    fc
-                )
-
-                +
-
-                " FC";
-
-        }
-
-        else{
-
-            convertButton.disabled =
-                true;
+            const phone =
+                getPhone(data) || "—";
 
 
-            convertButton.innerText =
-                "💱 MINIMUM 100 POINTS";
+            const service =
+                data.service ||
+                data.nom ||
+                data.produit ||
+                data.serviceName ||
+                "Service";
+
+
+            const amount =
+                Number(
+                    data.montant ??
+                    data.prix ??
+                    data.amount ??
+                    0
+                ) || 0;
+
+
+            const status =
+                getStatus(data);
+
+
+            const tr =
+                document.createElement("tr");
+
+
+            tr.innerHTML=`
+
+                <td>
+                    ${escapeHTML(
+                        data.date ||
+                        data.createdAt ||
+                        "—"
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(phone)}
+                </td>
+
+                <td>
+                    ${escapeHTML(service)}
+                </td>
+
+                <td>
+                    ${money(amount)} FC
+                </td>
+
+                <td>
+                    ${statusBadge(status)}
+                </td>
+
+                <td>
+
+                    <button
+                        class="btn btn-blue"
+                        onclick="
+                        viewCommand(
+                            '${encodeURIComponent(id)}'
+                        )
+                        "
+                    >
+                        Voir
+                    </button>
+
+
+                    ${
+                        isPending(status)
+                        ?
+
+                        `
+
+                        <button
+                            class="btn btn-green"
+                            onclick="
+                            validateCommand(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Valider
+                        </button>
+
+                        <button
+                            class="btn btn-red"
+                            onclick="
+                            refuseCommand(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Refuser
+                        </button>
+
+                        `
+
+                        :
+
+                        `<span class="muted">
+                            Traité
+                        </span>`
+
+                    }
+
+                </td>
+
+            `;
+
+
+            tbody.appendChild(tr);
+
+        });
+
+
+        document
+        .getElementById(
+            "statCommands"
+        )
+        .textContent=count;
+
+
+        if(count===0){
+
+            tbody.innerHTML=`
+
+                <tr>
+
+                    <td colspan="6">
+
+                        <div class="empty">
+                            Aucune commande.
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `;
 
         }
 
     }
-
 );
 
 
+
 /* =========================================================
-   CONVERSION POINTS
+   VIEW COMMAND
 ========================================================= */
 
-document
+window.viewCommand =
+function(encodedId){
+
+    const id =
+        decodeURIComponent(
+            encodedId
+        );
+
+
+    const data =
+        commandsCache[id] || {};
+
+
+    document
     .getElementById(
-        "jbConvertPoints"
+        "commandDetails"
     )
-    .addEventListener(
-
-        "click",
-
-        async()=>{
-
-
-            const button =
-                document.getElementById(
-                    "jbConvertPoints"
-                );
-
-
-            const status =
-                document.getElementById(
-                    "jbConvertStatus"
-                );
-
-
-            try{
-
-
-                button.disabled =
-                    true;
-
-
-                status.className =
-                    "convert-status";
-
-
-                status.innerText =
-                    "⏳ Vérification des points...";
-
-
-                const snapshot =
-                    await get(
-                        jbUserRef
-                    );
-
-
-                if(
-                    !snapshot.exists()
-                ){
-
-                    throw new Error(
-                        "ACCOUNT_NOT_FOUND"
-                    );
-
-                }
-
-
-                const data =
-                    snapshot.val();
-
-
-                const points =
-                    Number(
-
-                        data.points_fidelite ??
-                        data.points ??
-                        data.loyaltyPoints ??
-                        0
-
-                    );
-
-
-                const pointsConvertibles =
-                    Math.floor(
-                        points /
-                        JB_POINTS_CONVERSION
-                    )
-                    *
-                    JB_POINTS_CONVERSION;
-
-
-                if(
-                    pointsConvertibles <
-                    JB_POINTS_CONVERSION
-                ){
-
-                    throw new Error(
-                        "INSUFFICIENT_POINTS"
-                    );
-
-                }
-
-
-                const fc =
-                    (
-                        pointsConvertibles /
-                        JB_POINTS_CONVERSION
-                    )
-                    *
-                    JB_FC_CONVERSION;
-
-
-                const confirmation =
-                    confirm(
-
-                        "Convertir "
-
-                        +
-
-                        jbFormatNumber(
-                            pointsConvertibles
-                        )
-
-                        +
-
-                        " points en "
-
-                        +
-
-                        jbFormatFC(
-                            fc
-                        )
-
-                        +
-
-                        " ?"
-
-                    );
-
-
-                if(!confirmation){
-
-                    button.disabled =
-                        false;
-
-                    return;
-
-                }
-
-
-                status.innerText =
-                    "⏳ Conversion en cours...";
-
-
-                /* =================================================
-                   TRANSACTION ATOMIQUE
-                ================================================= */
-
-                const result =
-                    await runTransaction(
-
-                        jbUserRef,
-
-                        (current)=>{
-
-
-                            if(
-                                current === null
-                            ){
-
-                                return;
-
-                            }
-
-
-                            const currentPoints =
-                                Number(
-
-                                    current.points_fidelite ??
-                                    current.points ??
-                                    current.loyaltyPoints ??
-                                    0
-
-                                );
-
-
-                            const convertibles =
-                                Math.floor(
-                                    currentPoints /
-                                    JB_POINTS_CONVERSION
-                                )
-                                *
-                                JB_POINTS_CONVERSION;
-
-
-                            if(
-                                convertibles <
-                                JB_POINTS_CONVERSION
-                            ){
-
-                                return;
-
-                            }
-
-
-                            const amount =
-                                (
-                                    convertibles /
-                                    JB_POINTS_CONVERSION
-                                )
-                                *
-                                JB_FC_CONVERSION;
-
-
-                            const currentBalance =
-                                Number(
-                                    current.solde_principal
-                                ) || 0;
-
-
-                            /* RETRAIT DES POINTS */
-
-                            current.points_fidelite =
-                                currentPoints -
-                                convertibles;
-
-
-                            /* AJOUT AU SOLDE */
-
-                            current.solde_principal =
-                                currentBalance +
-                                amount;
-
-
-                            return current;
-
-                        }
-
-                    );
-
-
-                if(
-                    !result.committed
-                ){
-
-                    throw new Error(
-                        "TRANSACTION_REFUSED"
-                    );
-
-                }
-
-
-                status.className =
-                    "convert-status success";
-
-
-                status.innerText =
-
-                    "✅ Conversion réussie : +"
-
-                    +
-
-                    jbFormatFC(
-                        fc
-                    );
-
-
-            }
-
-            catch(error){
-
-
-                console.error(
-                    "JASON Business conversion :",
-                    error
-                );
-
-
-                status.className =
-                    "convert-status error";
-
-
-                if(
-                    error.message ===
-                    "INSUFFICIENT_POINTS"
-                ){
-
-                    status.innerText =
-                        "❌ Vous devez avoir au moins 100 points.";
-
-                }
-
-                else if(
-                    error.message ===
-                    "ACCOUNT_NOT_FOUND"
-                ){
-
-                    status.innerText =
-                        "❌ Compte introuvable.";
-
-                }
-
-                else{
-
-                    status.innerText =
-                        "⚠️ Impossible d'effectuer la conversion.";
-
-                }
-
-            }
-
-            finally{
-
-
-                /* Le onValue actualisera
-                   automatiquement le bouton */
-
-                setTimeout(
-
-                    ()=>{
-
-                        button.disabled =
-                            false;
-
-                    },
-
-                    500
-
-                );
-
-            }
-
-        }
-
+    .innerHTML=`
+
+        <p>
+            <b>📱 Client :</b>
+            ${escapeHTML(
+                getPhone(data) || "—"
+            )}
+        </p>
+
+        <p>
+            <b>🛒 Service :</b>
+            ${escapeHTML(
+                data.service ||
+                data.nom ||
+                data.produit ||
+                "—"
+            )}
+        </p>
+
+        <p>
+            <b>💰 Montant :</b>
+            ${money(
+                data.montant ??
+                data.prix ??
+                data.amount ??
+                0
+            )} FC
+        </p>
+
+        <p>
+            <b>📅 Date :</b>
+            ${escapeHTML(
+                data.date ||
+                data.createdAt ||
+                "—"
+            )}
+        </p>
+
+        <p>
+            <b>📌 Statut :</b>
+            ${statusBadge(
+                getStatus(data)
+            )}
+        </p>
+
+        <hr>
+
+        <pre
+            style="
+            white-space:pre-wrap;
+            font-size:11px;
+            opacity:.8;
+            "
+        >${escapeHTML(
+            JSON.stringify(
+                data,
+                null,
+                2
+            )
+        )}</pre>
+
+    `;
+
+
+    openModal(
+        "commandModal"
     );
+
+};
+
 
 
 /* =========================================================
-   CHAT ADMIN
+   VALIDATE COMMAND
 ========================================================= */
 
-const jbMessagesRef =
-    ref(
+window.validateCommand =
+async function(encodedId){
 
-        jbDB,
-
-        "messages_admin/" +
-        jbUserPhone
-
-    );
+    const id =
+        decodeURIComponent(
+            encodedId
+        );
 
 
-/* =========================================================
-   CHARGER MESSAGES
-========================================================= */
-
-onValue(
-
-    jbMessagesRef,
-
-    (snapshot)=>{
+    const data =
+        commandsCache[id] || {};
 
 
-        const chatBox =
-            document.getElementById(
-                "jbChatBox"
+    const status =
+        getStatus(data);
+
+
+    if(!isPending(status)){
+
+        alert(
+            "⚠️ Commande déjà traitée."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !confirm(
+            "Valider cette commande ?"
+        )
+    ) return;
+
+
+    try{
+
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "demandes_commandes/"+id
+                ),
+
+                current=>{
+
+                    if(!current){
+
+                        return;
+
+                    }
+
+
+                    if(
+                        !isPending(
+                            getStatus(current)
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:
+                            "Validée",
+
+                        dateValidation:
+                            new Date()
+                            .toISOString()
+
+                    };
+
+                }
+
             );
 
 
-        chatBox.innerHTML =
-            "";
+        if(!result.committed){
+
+            alert(
+                "⚠️ Commande déjà traitée."
+            );
+
+            return;
+
+        }
 
 
-        if(
-            !snapshot.exists()
-        ){
+        alert(
+            "✅ Commande validée."
+        );
 
-            chatBox.innerHTML = `
 
-                <div class="empty-chat">
+    }catch(error){
 
-                    💬 Aucun message pour le moment
+        console.error(error);
+
+        alert(
+            "❌ Erreur."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   REFUSE COMMAND
+========================================================= */
+
+window.refuseCommand =
+async function(encodedId){
+
+    const id =
+        decodeURIComponent(
+            encodedId
+        );
+
+
+    const data =
+        commandsCache[id] || {};
+
+
+    const phone =
+        getPhone(data);
+
+
+    const amount =
+        Number(
+            data.montant ??
+            data.prix ??
+            data.amount ??
+            0
+        ) || 0;
+
+
+    if(
+        !phone ||
+        amount<=0
+    ){
+
+        alert(
+            "❌ Données de remboursement invalides."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !confirm(
+            "Refuser la commande et rembourser "+
+            money(amount)+" FC ?"
+        )
+    ) return;
+
+
+    try{
+
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "demandes_commandes/"+id
+                ),
+
+                current=>{
+
+                    if(!current){
+
+                        return;
+
+                    }
+
+
+                    if(
+                        !isPending(
+                            getStatus(current)
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:
+                            "Refusée — Remboursée",
+
+                        dateRefus:
+                            new Date()
+                            .toISOString(),
+
+                        remboursement:
+                            amount
+
+                    };
+
+                }
+
+            );
+
+
+        if(!result.committed){
+
+            alert(
+                "⚠️ Commande déjà traitée."
+            );
+
+            return;
+
+        }
+
+
+        await runTransaction(
+
+            ref(
+                db,
+                "users/"+phone+
+                "/solde_principal"
+            ),
+
+            current =>
+                (
+                    Number(current)||0
+                ) + amount
+
+        );
+
+
+        alert(
+            "✅ Commande refusée.\n"+
+            "💰 "+money(amount)+
+            " FC remboursés."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Erreur de remboursement."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   RECHARGES
+========================================================= */
+
+onValue(
+    ref(db,"demandes_recharges"),
+    snapshot=>{
+
+        rechargeCache={};
+
+        const tbody =
+            document.getElementById(
+                "rechargesTable"
+            );
+
+        tbody.innerHTML="";
+
+        let pending=0;
+
+        let count=0;
+
+
+        snapshot.forEach(child=>{
+
+            const id =
+                child.key;
+
+            const data =
+                child.val() || {};
+
+
+            rechargeCache[id]=data;
+
+            count++;
+
+
+            const status =
+                getStatus(data);
+
+
+            if(
+                isPending(status)
+            ){
+
+                pending++;
+
+            }
+
+
+            const phone =
+                getPhone(data) || "—";
+
+
+            const amount =
+                Number(
+                    data.montant ??
+                    data.amount ??
+                    0
+                ) || 0;
+
+
+            const method =
+                data.methode ||
+                data.method ||
+                data.modePaiement ||
+                "—";
+
+
+            const transaction =
+                data.transactionId ||
+                data.transaction ||
+                data.reference ||
+                "—";
+
+
+            const tr =
+                document.createElement("tr");
+
+
+            tr.innerHTML=`
+
+                <td>
+                    ${escapeHTML(
+                        data.date ||
+                        data.createdAt ||
+                        "—"
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(phone)}
+                </td>
+
+                <td>
+                    ${money(amount)} FC
+                </td>
+
+                <td>
+                    ${escapeHTML(method)}
+                </td>
+
+                <td>
+                    ${escapeHTML(transaction)}
+                </td>
+
+                <td>
+                    ${statusBadge(status)}
+                </td>
+
+                <td>
+
+                    ${
+                        isPending(status)
+                        ?
+
+                        `
+
+                        <button
+                            class="btn btn-green"
+                            onclick="
+                            validateRecharge(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Valider
+                        </button>
+
+
+                        <button
+                            class="btn btn-red"
+                            onclick="
+                            refuseRecharge(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Refuser
+                        </button>
+
+                        `
+
+                        :
+
+                        `<span class="muted">
+                            Traité
+                        </span>`
+
+                    }
+
+                </td>
+
+            `;
+
+
+            tbody.appendChild(tr);
+
+        });
+
+
+        document
+        .getElementById(
+            "statRecharges"
+        )
+        .textContent=pending;
+
+
+        if(count===0){
+
+            tbody.innerHTML=`
+
+                <tr>
+
+                    <td colspan="7">
+
+                        <div class="empty">
+                            Aucune recharge.
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   VALIDATE RECHARGE
+========================================================= */
+
+window.validateRecharge =
+async function(encodedId){
+
+    const id =
+        decodeURIComponent(
+            encodedId
+        );
+
+
+    const data =
+        rechargeCache[id] || {};
+
+
+    const phone =
+        getPhone(data);
+
+
+    const amount =
+        Number(
+            data.montant ??
+            data.amount ??
+            0
+        ) || 0;
+
+
+    if(
+        !phone ||
+        amount<=0
+    ){
+
+        alert(
+            "❌ Recharge invalide."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !confirm(
+            "Créditer "+
+            money(amount)+
+            " FC à "+phone+" ?"
+        )
+    ) return;
+
+
+    try{
+
+        /*
+         * Étape 1 :
+         * verrouillage de la demande
+         */
+
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "demandes_recharges/"+id
+                ),
+
+                current=>{
+
+                    if(!current){
+
+                        return;
+
+                    }
+
+
+                    if(
+                        !isPending(
+                            getStatus(current)
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:
+                            "Validée",
+
+                        dateValidation:
+                            new Date()
+                            .toISOString(),
+
+                        creditAmount:
+                            amount
+
+                    };
+
+                }
+
+            );
+
+
+        if(!result.committed){
+
+            alert(
+                "⚠️ Recharge déjà traitée."
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * Étape 2 :
+         * crédit du compte
+         */
+
+        await runTransaction(
+
+            ref(
+                db,
+                "users/"+phone+
+                "/solde_principal"
+            ),
+
+            current =>
+                (
+                    Number(current)||0
+                ) + amount
+
+        );
+
+
+        alert(
+            "✅ Recharge validée."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Erreur de validation."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   REFUSE RECHARGE
+========================================================= */
+
+window.refuseRecharge =
+async function(encodedId){
+
+    const id =
+        decodeURIComponent(
+            encodedId
+        );
+
+
+    if(
+        !confirm(
+            "Refuser cette recharge ?"
+        )
+    ) return;
+
+
+    try{
+
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "demandes_recharges/"+id
+                ),
+
+                current=>{
+
+                    if(!current){
+
+                        return;
+
+                    }
+
+
+                    if(
+                        !isPending(
+                            getStatus(current)
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:
+                            "Refusée",
+
+                        dateRefus:
+                            new Date()
+                            .toISOString()
+
+                    };
+
+                }
+
+            );
+
+
+        if(!result.committed){
+
+            alert(
+                "⚠️ Recharge déjà traitée."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "✅ Recharge refusée."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Erreur."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   RETRAITS
+========================================================= */
+
+onValue(
+    ref(db,"demandes_retraits"),
+    snapshot=>{
+
+        withdrawalCache={};
+
+        const tbody =
+            document.getElementById(
+                "withdrawalsTable"
+            );
+
+        tbody.innerHTML="";
+
+        let pending=0;
+
+        let count=0;
+
+
+        snapshot.forEach(child=>{
+
+            const id =
+                child.key;
+
+            const data =
+                child.val() || {};
+
+
+            withdrawalCache[id]=data;
+
+            count++;
+
+
+            const status =
+                getStatus(data);
+
+
+            if(
+                isPending(status)
+            ){
+
+                pending++;
+
+            }
+
+
+            const phone =
+                getPhone(data) || "—";
+
+
+            const amount =
+                Number(
+                    data.montant ??
+                    data.amount ??
+                    0
+                ) || 0;
+
+
+            const method =
+                data.methode ||
+                data.method ||
+                "—";
+
+
+            const receiver =
+                data.numero_reception ||
+                data.numeroReception ||
+                data.numero ||
+                data.receiver ||
+                "—";
+
+
+            const tr =
+                document.createElement("tr");
+
+
+            tr.innerHTML=`
+
+                <td>
+                    ${escapeHTML(
+                        data.date ||
+                        data.createdAt ||
+                        "—"
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(phone)}
+                </td>
+
+                <td>
+                    ${money(amount)} FC
+                </td>
+
+                <td>
+                    ${escapeHTML(method)}
+                </td>
+
+                <td>
+                    ${escapeHTML(receiver)}
+                </td>
+
+                <td>
+                    ${statusBadge(status)}
+                </td>
+
+                <td>
+
+                    ${
+                        isPending(status)
+                        ?
+
+                        `
+
+                        <button
+                            class="btn btn-green"
+                            onclick="
+                            validateWithdrawal(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Paiement effectué
+                        </button>
+
+
+                        <button
+                            class="btn btn-red"
+                            onclick="
+                            refuseWithdrawal(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Refuser
+                        </button>
+
+                        `
+
+                        :
+
+                        `<span class="muted">
+                            Traité
+                        </span>`
+
+                    }
+
+                </td>
+
+            `;
+
+
+            tbody.appendChild(tr);
+
+        });
+
+
+        document
+        .getElementById(
+            "statWithdrawals"
+        )
+        .textContent=pending;
+
+
+        if(count===0){
+
+            tbody.innerHTML=`
+
+                <tr>
+
+                    <td colspan="7">
+
+                        <div class="empty">
+                            Aucun retrait.
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   VALIDATE WITHDRAWAL
+========================================================= */
+
+window.validateWithdrawal =
+async function(encodedId){
+
+    const id =
+        decodeURIComponent(
+            encodedId
+        );
+
+
+    const data =
+        withdrawalCache[id] || {};
+
+
+    if(
+        !confirm(
+            "Confirmer que le paiement a été effectué ?"
+        )
+    ) return;
+
+
+    try{
+
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "demandes_retraits/"+id
+                ),
+
+                current=>{
+
+                    if(!current){
+
+                        return;
+
+                    }
+
+
+                    if(
+                        !isPending(
+                            getStatus(current)
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:
+                            "Payé",
+
+                        datePaiement:
+                            new Date()
+                            .toISOString()
+
+                    };
+
+                }
+
+            );
+
+
+        if(!result.committed){
+
+            alert(
+                "⚠️ Retrait déjà traité."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "✅ Retrait marqué comme payé."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Erreur."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   REFUSE WITHDRAWAL
+========================================================= */
+
+window.refuseWithdrawal =
+async function(encodedId){
+
+    const id =
+        decodeURIComponent(
+            encodedId
+        );
+
+
+    const data =
+        withdrawalCache[id] || {};
+
+
+    const phone =
+        getPhone(data);
+
+
+    const amount =
+        Number(
+            data.montant ??
+            data.amount ??
+            0
+        ) || 0;
+
+
+    if(
+        !phone ||
+        amount<=0
+    ){
+
+        alert(
+            "❌ Informations invalides."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !confirm(
+            "Refuser le retrait et rembourser "+
+            money(amount)+
+            " FC ?"
+        )
+    ) return;
+
+
+    try{
+
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "demandes_retraits/"+id
+                ),
+
+                current=>{
+
+                    if(!current){
+
+                        return;
+
+                    }
+
+
+                    if(
+                        !isPending(
+                            getStatus(current)
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:
+                            "Refusé — Remboursé",
+
+                        dateRefus:
+                            new Date()
+                            .toISOString(),
+
+                        remboursement:
+                            amount
+
+                    };
+
+                }
+
+            );
+
+
+        if(!result.committed){
+
+            alert(
+                "⚠️ Retrait déjà traité."
+            );
+
+            return;
+
+        }
+
+
+        await runTransaction(
+
+            ref(
+                db,
+                "users/"+phone+
+                "/solde_principal"
+            ),
+
+            current =>
+                (
+                    Number(current)||0
+                ) + amount
+
+        );
+
+
+        alert(
+            "✅ Retrait refusé.\n"+
+            "💰 "+money(amount)+
+            " FC remboursés."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Erreur de remboursement."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+onValue(
+    ref(db,"messages"),
+    snapshot=>{
+
+        const container =
+            document.getElementById(
+                "messagesList"
+            );
+
+
+        container.innerHTML="";
+
+
+        let count=0;
+
+
+        snapshot.forEach(child=>{
+
+            count++;
+
+
+            const id =
+                child.key;
+
+
+            const data =
+                child.val() || {};
+
+
+            const phone =
+                data.from ||
+                data.telephone ||
+                data.userPhone ||
+                "Utilisateur";
+
+
+            const text =
+                data.message ||
+                data.text ||
+                "";
+
+
+            const date =
+                data.date ||
+                data.timestamp ||
+                "—";
+
+
+            let fileHTML="";
+
+
+            const file =
+                data.file ||
+                data.fichier ||
+                data.fileData;
+
+
+            if(file){
+
+                fileHTML=`
+
+                    <div class="file-box">
+
+                        📎 Fichier reçu
+
+                        <br><br>
+
+                        <a
+                            href="${escapeHTML(file)}"
+                            target="_blank"
+                            download
+                            class="btn btn-blue"
+                        >
+                            ⬇️ Ouvrir
+                        </a>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            const card =
+                document.createElement("div");
+
+
+            card.className=
+                "message-card";
+
+
+            card.innerHTML=`
+
+                <div class="message-head">
+
+                    <b>
+                        📱
+                        ${escapeHTML(phone)}
+                    </b>
+
+                    <small class="muted">
+                        ${escapeHTML(date)}
+                    </small>
+
+                </div>
+
+
+                <div class="message-body">
+                    ${escapeHTML(text)}
+                </div>
+
+
+                ${fileHTML}
+
+
+                <br>
+
+
+                <button
+                    class="btn btn-blue"
+                    onclick="
+                    replyUser(
+                        '${encodeURIComponent(phone)}'
+                    )
+                    "
+                >
+                    ↩️ Répondre
+                </button>
+
+
+                <button
+                    class="btn btn-red"
+                    onclick="
+                    deleteMessage(
+                        '${encodeURIComponent(id)}'
+                    )
+                    "
+                >
+                    🗑️ Supprimer
+                </button>
+
+            `;
+
+
+            container.prepend(card);
+
+        });
+
+
+        if(count===0){
+
+            container.innerHTML=`
+
+                <div class="panel empty">
+
+                    💬 Aucun message reçu.
 
                 </div>
 
             `;
 
-            return;
-
         }
 
-
-        const messages =
-            snapshot.val();
-
-
-        const list =
-            Object.entries(
-                messages
-            )
-            .sort(
-
-                (a,b)=>{
-
-                    return (
-
-                        Number(
-                            a[1].timestamp ||
-                            0
-                        )
-
-                        -
-
-                        Number(
-                            b[1].timestamp ||
-                            0
-                        )
-
-                    );
-
-                }
-
-            );
-
-
-        list.forEach(
-
-            ([id,msg])=>{
-
-                jbAfficherMessage(
-                    msg
-                );
-
-            }
-
-        );
-
-
-        setTimeout(
-
-            ()=>{
-
-                chatBox.scrollTop =
-                    chatBox.scrollHeight;
-
-            },
-
-            50
-
-        );
-
     }
-
 );
 
 
+
 /* =========================================================
-   AFFICHER MESSAGE
+   REPLY
 ========================================================= */
 
-function jbAfficherMessage(msg){
+window.replyUser =
+function(encodedPhone){
 
-
-    const chatBox =
-        document.getElementById(
-            "jbChatBox"
+    const phone =
+        decodeURIComponent(
+            encodedPhone
         );
 
 
-    const div =
-        document.createElement(
-            "div"
-        );
+    document
+    .getElementById(
+        "messageTo"
+    )
+    .value=phone;
 
 
-    const isUser =
-        msg.sender === "user";
+    document
+    .querySelector(
+        '[data-page="send"]'
+    )
+    .click();
 
 
-    div.className =
-        "message " +
+    document
+    .getElementById(
+        "messageText"
+    )
+    .focus();
 
-        (
+};
 
-            isUser
-            ? "user"
-            : "admin"
-
-        );
-
-
-    let contenu =
-        "";
-
-
-    /* =====================================================
-       TEXTE
-    ===================================================== */
-
-    if(msg.text){
-
-        const text =
-            jbEscapeHTML(
-                msg.text
-            )
-            .replace(
-                /\n/g,
-                "<br>"
-            );
-
-
-        contenu += `
-
-            <div>
-
-                ${text}
-
-            </div>
-
-        `;
-
-    }
-
-
-    /* =====================================================
-       FICHIER ADMIN
-    ===================================================== */
-
-    if(
-
-        !isUser &&
-        msg.fileData
-
-    ){
-
-
-        const fileName =
-            jbEscapeHTML(
-
-                msg.fileName ||
-                "Fichier"
-
-            );
-
-
-        const fileSize =
-            jbFormatFileSize(
-                msg.fileSize ||
-                0
-            );
-
-
-        contenu += `
-
-            <div class="admin-file">
-
-                <div class="file-name">
-
-                    📎 ${fileName}
-
-                </div>
-
-
-                <div class="file-size">
-
-                    ${fileSize}
-
-                </div>
-
-
-                <a
-
-                    class="download-file"
-
-                    href="${msg.fileData}"
-
-                    download="${fileName}"
-
-                >
-
-                    📥 TÉLÉCHARGER
-
-                </a>
-
-            </div>
-
-        `;
-
-    }
-
-
-    div.innerHTML = `
-
-        <div class="message-author">
-
-            ${
-
-                isUser
-                ? "VOUS"
-                : "ADMINISTRATION"
-
-            }
-
-        </div>
-
-
-        ${contenu}
-
-
-        <div class="message-date">
-
-            ${jbFormatDate(
-                msg.timestamp
-            )}
-
-        </div>
-
-    `;
-
-
-    chatBox.appendChild(
-        div
-    );
-
-}
 
 
 /* =========================================================
-   ENVOYER MESSAGE
+   DELETE MESSAGE
+========================================================= */
+
+window.deleteMessage =
+async function(encodedId){
+
+    const id =
+        decodeURIComponent(
+            encodedId
+        );
+
+
+    if(
+        !confirm(
+            "Supprimer ce message ?"
+        )
+    ) return;
+
+
+    try{
+
+        await remove(
+            ref(
+                db,
+                "messages/"+id
+            )
+        );
+
+
+        alert(
+            "✅ Message supprimé."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "❌ Impossible de supprimer."
+        );
+
+    }
+
+};
+
+
+
+/* =========================================================
+   SEND MESSAGE
 ========================================================= */
 
 document
-    .getElementById(
-        "jbSendMessage"
-    )
-    .addEventListener(
-
-        "click",
-
-        async()=>{
-
-
-            const input =
-                document.getElementById(
-                    "jbMessageInput"
-                );
+.getElementById(
+    "sendMessageBtn"
+)
+.addEventListener(
+    "click",
+    sendAdminMessage
+);
 
 
-            const button =
-                document.getElementById(
-                    "jbSendMessage"
-                );
+window.sendAdminMessage =
+async function(){
+
+    const phone =
+        document
+        .getElementById(
+            "messageTo"
+        )
+        .value
+        .trim();
 
 
-            const text =
-                input.value.trim();
+    const text =
+        document
+        .getElementById(
+            "messageText"
+        )
+        .value
+        .trim();
 
 
-            if(!text){
+    const status =
+        document
+        .getElementById(
+            "sendStatus"
+        );
 
-                alert(
-                    "Écrivez votre message."
-                );
 
-                return;
+    status.innerHTML="";
+
+
+    if(!phone){
+
+        status.innerHTML=`
+            <p style="color:var(--red)">
+                ❌ Numéro obligatoire.
+            </p>
+        `;
+
+        return;
+
+    }
+
+
+    if(!text){
+
+        status.innerHTML=`
+            <p style="color:var(--red)">
+                ❌ Message obligatoire.
+            </p>
+        `;
+
+        return;
+
+    }
+
+
+    try{
+
+        const now =
+            Date.now();
+
+
+        const date =
+            new Date()
+            .toLocaleString(
+                "fr-FR"
+            );
+
+
+        /*
+         * Message général
+         */
+
+        const messageRef =
+            push(
+                ref(
+                    db,
+                    "messages"
+                )
+            );
+
+
+        await set(
+            messageRef,
+            {
+
+                from:"ADMIN",
+
+                to:phone,
+
+                telephone:phone,
+
+                message:text,
+
+                date:date,
+
+                timestamp:now,
+
+                lu:false,
+
+                type:"admin"
 
             }
+        );
 
+
+        /*
+         * Boîte de réception
+         * de l'utilisateur
+         */
+
+        const userMessageRef =
+            push(
+                ref(
+                    db,
+                    "users/"+phone+
+                    "/messages"
+                )
+            );
+
+
+        await set(
+            userMessageRef,
+            {
+
+                from:"ADMIN",
+
+                to:phone,
+
+                message:text,
+
+                date:date,
+
+                timestamp:now,
+
+                lu:false,
+
+                type:"admin"
+
+            }
+        );
+
+
+        document
+        .getElementById(
+            "messageText"
+        )
+        .value="";
+
+
+        status.innerHTML=`
+
+            <p
+                style="
+                color:var(--green);
+                "
+            >
+                ✅ Message envoyé à
+                ${escapeHTML(phone)}
+            </p>
+
+        `;
+
+
+    }catch(error){
+
+        console.error(error);
+
+        status.innerHTML=`
+
+            <p
+                style="
+                color:var(--red);
+                "
+            >
+                ❌ Erreur lors de l'envoi.
+            </p>
+
+        `;
+
+    }
+
+};
+
+
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+window.openModal =
+function(id){
+
+    const modal =
+        document.getElementById(id);
+
+
+    if(modal){
+
+        modal.classList.add(
+            "show"
+        );
+
+    }
+
+};
+
+
+window.closeModal =
+function(id){
+
+    const modal =
+        document.getElementById(id);
+
+
+    if(modal){
+
+        modal.classList.remove(
+            "show"
+        );
+
+    }
+
+};
+
+
+document
+.querySelectorAll(".modal")
+.forEach(modal=>{
+
+    modal.addEventListener(
+        "click",
+        e=>{
 
             if(
-                text.length >
-                1000
+                e.target === modal
             ){
 
-                alert(
-                    "Message trop long."
+                modal.classList.remove(
+                    "show"
                 );
-
-                return;
-
-            }
-
-
-            try{
-
-
-                button.disabled =
-                    true;
-
-
-                button.innerText =
-                    "📤 ENVOI...";
-
-
-                const messageRef =
-                    push(
-                        jbMessagesRef
-                    );
-
-
-                await set(
-
-                    messageRef,
-
-                    {
-
-                        sender:
-                            "user",
-
-                        text:
-                            text,
-
-                        timestamp:
-                            Date.now(),
-
-                        read:
-                            false
-
-                    }
-
-                );
-
-
-                input.value =
-                    "";
-
-
-                button.innerText =
-                    "✅ MESSAGE ENVOYÉ";
-
-
-                setTimeout(
-
-                    ()=>{
-
-                        button.disabled =
-                            false;
-
-                        button.innerText =
-                            "📤 ENVOYER LE MESSAGE";
-
-                    },
-
-                    1500
-
-                );
-
-
-            }
-
-            catch(error){
-
-
-                console.error(
-                    "Erreur message :",
-                    error
-                );
-
-
-                alert(
-                    "❌ Impossible d'envoyer le message."
-                );
-
-
-                button.disabled =
-                    false;
-
-
-                button.innerText =
-                    "📤 ENVOYER LE MESSAGE";
 
             }
 
         }
-
     );
 
-
-/* =========================================================
-   SÉCURITÉ HTML
-========================================================= */
-
-function jbEscapeHTML(text){
-
-    return String(text)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
+});
 
 
-/* =========================================================
-   DATE
-========================================================= */
+document.addEventListener(
+    "keydown",
+    e=>{
 
-function jbFormatDate(timestamp){
+        if(e.key==="Escape"){
 
-    if(!timestamp){
-
-        return "";
-
-    }
-
-
-    return new Date(
-        Number(timestamp)
-    )
-    .toLocaleString(
-
-        "fr-FR",
-
-        {
-
-            day:
-                "2-digit",
-
-            month:
-                "2-digit",
-
-            year:
-                "numeric",
-
-            hour:
-                "2-digit",
-
-            minute:
-                "2-digit"
-
-        }
-
-    );
-
-}
-
-
-/* =========================================================
-   TAILLE FICHIER
-========================================================= */
-
-function jbFormatFileSize(bytes){
-
-    bytes =
-        Number(bytes) || 0;
-
-
-    if(
-        bytes <= 0
-    ){
-
-        return "";
-
-    }
-
-
-    if(
-        bytes < 1024
-    ){
-
-        return (
-            bytes +
-            " octets"
-        );
-
-    }
-
-
-    if(
-        bytes <
-        1024 * 1024
-    ){
-
-        return (
-
-            (
-                bytes /
-                1024
+            document
+            .querySelectorAll(
+                ".modal.show"
             )
-            .toFixed(1)
-
-            +
-
-            " Ko"
-
-        );
-
-    }
-
-
-    if(
-        bytes <
-        1024 *
-        1024 *
-        1024
-    ){
-
-        return (
-
-            (
-                bytes /
-                (
-                    1024 *
-                    1024
+            .forEach(
+                modal =>
+                modal.classList.remove(
+                    "show"
                 )
-            )
-            .toFixed(1)
-
-            +
-
-            " Mo"
-
-        );
-
-    }
-
-
-    return (
-
-        (
-            bytes /
-            (
-                1024 *
-                1024 *
-                1024
-            )
-        )
-        .toFixed(1)
-
-        +
-
-        " Go"
-
-    );
-
-}
-
-
-/* =========================================================
-   DÉCONNEXION
-========================================================= */
-
-document
-    .getElementById(
-        "jbLogout"
-    )
-    .addEventListener(
-
-        "click",
-
-        ()=>{
-
-
-            const confirmation =
-                confirm(
-
-                    "Voulez-vous vraiment vous déconnecter ?"
-
-                );
-
-
-            if(!confirmation){
-
-                return;
-
-            }
-
-
-            localStorage.removeItem(
-                "userPhone"
             );
 
-
-            window.location.href =
-                "login.html";
-
         }
 
-    );
+    }
+);
+
+
+
+/* =========================================================
+   ERREUR FIREBASE
+========================================================= */
+
+window.addEventListener(
+    "error",
+    event=>{
+
+        console.error(
+            "Erreur Admin:",
+            event.error
+        );
+
+    }
+);
 
 </script>
-
 
 </body>
 

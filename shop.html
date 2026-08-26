@@ -9,6 +9,10 @@
     name="viewport"
     content="width=device-width,initial-scale=1.0">
 
+<meta
+    name="theme-color"
+    content="#050a14">
+
 <title>JASON Business — Nos Services</title>
 
 <style>
@@ -17,13 +21,15 @@
     --blue:#00d2ff;
     --blue2:#0077ff;
     --dark:#050a14;
-    --card:rgba(8,15,28,.90);
+    --card:rgba(8,15,28,.92);
     --green:#00e676;
     --red:#ff4757;
+    --yellow:#ffd32a;
 }
 
 *{
     box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
 body{
@@ -33,8 +39,8 @@ body{
 
     background:
         linear-gradient(
-            rgba(3,8,18,.82),
-            rgba(3,8,18,.95)
+            rgba(3,8,18,.84),
+            rgba(3,8,18,.96)
         ),
         url("IMG_0870.jpeg")
         center/cover fixed;
@@ -50,18 +56,22 @@ body{
 
 .header{
 
-    padding:25px 18px;
+    padding:24px 18px;
 
     text-align:center;
 
     background:
-        rgba(0,0,0,.55);
+        rgba(0,0,0,.58);
 
     border-bottom:
         1px solid
         rgba(0,210,255,.35);
 
     backdrop-filter:blur(18px);
+
+    position:sticky;
+    top:0;
+    z-index:100;
 
 }
 
@@ -125,15 +135,15 @@ body{
 
     margin:auto;
 
-    padding:20px;
+    padding:20px 14px;
 
 }
 
 .section-title{
 
-    font-size:17px;
+    font-size:18px;
 
-    margin:5px 0 16px;
+    margin:5px 0 17px;
 
     letter-spacing:1px;
 
@@ -162,11 +172,11 @@ body{
 
     border:
         1px solid
-        rgba(0,210,255,.12);
+        rgba(0,210,255,.14);
 
     border-radius:19px;
 
-    padding:17px;
+    padding:16px;
 
     box-shadow:
         0 8px 25px
@@ -229,7 +239,7 @@ body{
 
     line-height:1.45;
 
-    min-height:32px;
+    min-height:34px;
 
     margin-top:5px;
 
@@ -257,9 +267,14 @@ body{
 
     border-radius:10px;
 
-    background:var(--blue);
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--blue2)
+        );
 
-    color:#001018;
+    color:white;
 
     font-weight:900;
 
@@ -287,7 +302,7 @@ body{
     inset:0;
 
     background:
-        rgba(0,0,0,.78);
+        rgba(0,0,0,.82);
 
     z-index:2000;
 
@@ -313,8 +328,7 @@ body{
 
     max-width:500px;
 
-    max-height:
-        92vh;
+    max-height:92vh;
 
     overflow-y:auto;
 
@@ -445,7 +459,7 @@ body{
 
 
 /* =========================
-   FORM INFO
+   SUMMARY
 ========================= */
 
 .order-summary{
@@ -473,7 +487,7 @@ body{
 
     font-size:13px;
 
-    margin:5px 0;
+    margin:7px 0;
 
 }
 
@@ -482,6 +496,17 @@ body{
     color:var(--blue);
 
 }
+
+.insufficient{
+
+    color:var(--red)!important;
+
+}
+
+
+/* =========================
+   SUBMIT
+========================= */
 
 .submit-order{
 
@@ -516,6 +541,8 @@ body{
 
     color:#aaa;
 
+    cursor:not-allowed;
+
 }
 
 
@@ -525,7 +552,7 @@ body{
 
 .status{
 
-    min-height:18px;
+    min-height:20px;
 
     text-align:center;
 
@@ -544,6 +571,29 @@ body{
 .error{
 
     color:var(--red);
+
+}
+
+.warning{
+
+    color:var(--yellow);
+
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    padding:35px 10px;
+
+    opacity:.7;
 
 }
 
@@ -631,13 +681,19 @@ body{
 
     .container{
 
-        padding:14px;
+        padding:14px 10px;
 
     }
 
     .service-card{
 
         padding:14px;
+
+    }
+
+    .service-price{
+
+        font-size:15px;
 
     }
 
@@ -691,6 +747,11 @@ body{
     <div
         class="services"
         id="servicesContainer">
+
+        <div class="loading">
+            ⏳ Chargement des services...
+        </div>
+
     </div>
 
 </main>
@@ -706,7 +767,6 @@ body{
 
     <div class="modal-box">
 
-
         <div class="modal-header">
 
             <div
@@ -719,7 +779,8 @@ body{
 
             <button
                 class="close"
-                id="closeModal">
+                id="closeModal"
+                type="button">
 
                 ×
 
@@ -728,8 +789,9 @@ body{
         </div>
 
 
-        <div
-            class="order-summary">
+        <!-- SUMMARY -->
+
+        <div class="order-summary">
 
             <div class="summary-row">
 
@@ -751,10 +813,13 @@ body{
                 </span>
 
                 <strong>
+
                     <span id="summaryPrice">
                         0
                     </span>
+
                     FC
+
                 </strong>
 
             </div>
@@ -766,17 +831,16 @@ body{
                     Votre solde
                 </span>
 
-                <strong>
-                    <span id="summaryBalance">
-                        0
-                    </span>
-                    FC
+                <strong id="summaryBalance">
+                    0 FC
                 </strong>
 
             </div>
 
         </div>
 
+
+        <!-- FORM -->
 
         <form id="orderForm">
 
@@ -877,11 +941,16 @@ import {
     onValue,
     runTransaction,
     push,
-    set
+    set,
+    get
 
 } from
 "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
+
+/* ==========================================
+   CONFIGURATION FIREBASE
+========================================== */
 
 const firebaseConfig = {
 
@@ -929,11 +998,15 @@ if(!userPhone){
     window.location.href =
         "login.html";
 
+    throw new Error(
+        "Utilisateur non connecté"
+    );
+
 }
 
 
 /* ==========================================
-   USER
+   REFERENCE UTILISATEUR
 ========================================== */
 
 const userRef =
@@ -967,25 +1040,29 @@ const services = [
         "Création d'une application mobile adaptée à votre projet.",
 
         fields:[
+
             {
                 name:"nomProjet",
                 label:"Nom de l'application",
                 type:"text",
-                placeholder:
-                "Ex : DAVBOT Shop",
+                placeholder:"Ex : DAVBOT Shop",
                 required:true
             },
+
             {
                 name:"typeApplication",
                 label:"Type d'application",
                 type:"select",
+
                 options:[
                     "Android",
                     "iPhone / iOS",
                     "Android + iOS"
                 ],
+
                 required:true
             },
+
             {
                 name:"objectif",
                 label:"But de l'application",
@@ -994,6 +1071,7 @@ const services = [
                 "Expliquez ce que doit faire votre application...",
                 required:true
             },
+
             {
                 name:"fonctionnalites",
                 label:"Fonctionnalités souhaitées",
@@ -1002,6 +1080,7 @@ const services = [
                 "Connexion, paiement, boutique, chat, notifications...",
                 required:true
             },
+
             {
                 name:"couleurs",
                 label:"Couleurs / style",
@@ -1010,6 +1089,7 @@ const services = [
                 "Ex : noir et bleu",
                 required:false
             },
+
             {
                 name:"contact",
                 label:"Contact pour le projet",
@@ -1037,6 +1117,7 @@ const services = [
         "Création d'un site web moderne pour votre activité.",
 
         fields:[
+
             {
                 name:"nomSite",
                 label:"Nom du site",
@@ -1045,10 +1126,12 @@ const services = [
                 "Ex : Jason Business",
                 required:true
             },
+
             {
                 name:"typeSite",
                 label:"Type de site",
                 type:"select",
+
                 options:[
                     "Site vitrine",
                     "Boutique en ligne",
@@ -1057,8 +1140,10 @@ const services = [
                     "Plateforme web",
                     "Autre"
                 ],
+
                 required:true
             },
+
             {
                 name:"objectif",
                 label:"Objectif du site",
@@ -1067,6 +1152,7 @@ const services = [
                 "Présentez votre activité et le but du site...",
                 required:true
             },
+
             {
                 name:"pages",
                 label:"Pages souhaitées",
@@ -1075,6 +1161,7 @@ const services = [
                 "Accueil, Services, Boutique, Contact...",
                 required:true
             },
+
             {
                 name:"fonctionnalites",
                 label:"Fonctionnalités",
@@ -1083,6 +1170,7 @@ const services = [
                 "Paiement, connexion, formulaire, Firebase...",
                 required:false
             },
+
             {
                 name:"contact",
                 label:"Votre contact",
@@ -1110,6 +1198,7 @@ const services = [
         "Création d'une chanson personnalisée selon votre idée.",
 
         fields:[
+
             {
                 name:"titre",
                 label:"Titre de la chanson",
@@ -1118,6 +1207,7 @@ const services = [
                 "Ex : Mon histoire",
                 required:true
             },
+
             {
                 name:"artiste",
                 label:"Nom / artiste",
@@ -1126,10 +1216,12 @@ const services = [
                 "Nom à utiliser",
                 required:true
             },
+
             {
                 name:"style",
                 label:"Style musical",
                 type:"select",
+
                 options:[
                     "Afrobeat",
                     "Rap",
@@ -1140,8 +1232,10 @@ const services = [
                     "Romantique",
                     "Autre"
                 ],
+
                 required:true
             },
+
             {
                 name:"theme",
                 label:"Thème",
@@ -1150,6 +1244,7 @@ const services = [
                 "Sujet et histoire de la chanson...",
                 required:true
             },
+
             {
                 name:"paroles",
                 label:"Paroles / idées",
@@ -1158,6 +1253,7 @@ const services = [
                 "Ajoutez vos paroles ou quelques phrases...",
                 required:false
             },
+
             {
                 name:"contact",
                 label:"Contact",
@@ -1185,6 +1281,7 @@ const services = [
         "Création d'un logo professionnel pour votre marque.",
 
         fields:[
+
             {
                 name:"nomMarque",
                 label:"Nom de la marque",
@@ -1193,6 +1290,7 @@ const services = [
                 "Ex : JASON BUSINESS",
                 required:true
             },
+
             {
                 name:"slogan",
                 label:"Slogan",
@@ -1201,10 +1299,12 @@ const services = [
                 "Ex : Innovation digitale",
                 required:false
             },
+
             {
                 name:"style",
                 label:"Style du logo",
                 type:"select",
+
                 options:[
                     "Moderne",
                     "Minimaliste",
@@ -1214,8 +1314,10 @@ const services = [
                     "Business",
                     "Autre"
                 ],
+
                 required:true
             },
+
             {
                 name:"couleurs",
                 label:"Couleurs souhaitées",
@@ -1224,6 +1326,7 @@ const services = [
                 "Ex : bleu, noir et blanc",
                 required:true
             },
+
             {
                 name:"description",
                 label:"Description / idée",
@@ -1232,6 +1335,7 @@ const services = [
                 "Décrivez le logo que vous souhaitez...",
                 required:true
             },
+
             {
                 name:"contact",
                 label:"Contact",
@@ -1259,6 +1363,7 @@ const services = [
         "Création d'affiches publicitaires et visuels professionnels.",
 
         fields:[
+
             {
                 name:"titre",
                 label:"Titre de l'affiche",
@@ -1267,6 +1372,7 @@ const services = [
                 "Ex : Grande promotion",
                 required:true
             },
+
             {
                 name:"texte",
                 label:"Texte à afficher",
@@ -1275,10 +1381,12 @@ const services = [
                 "Toutes les informations à mettre sur l'affiche...",
                 required:true
             },
+
             {
                 name:"format",
                 label:"Format",
                 type:"select",
+
                 options:[
                     "WhatsApp / Instagram",
                     "Facebook",
@@ -1287,8 +1395,10 @@ const services = [
                     "Affiche imprimable",
                     "Autre"
                 ],
+
                 required:true
             },
+
             {
                 name:"couleurs",
                 label:"Couleurs",
@@ -1297,6 +1407,7 @@ const services = [
                 "Ex : rouge et blanc",
                 required:false
             },
+
             {
                 name:"contact",
                 label:"Contact à afficher",
@@ -1324,6 +1435,7 @@ const services = [
         "Montage et création de vidéos pour votre communication.",
 
         fields:[
+
             {
                 name:"titre",
                 label:"Titre / nom du projet",
@@ -1332,10 +1444,12 @@ const services = [
                 "Ex : Publicité JASON",
                 required:true
             },
+
             {
                 name:"typeVideo",
                 label:"Type de vidéo",
                 type:"select",
+
                 options:[
                     "Publicité",
                     "TikTok / Reel",
@@ -1344,8 +1458,10 @@ const services = [
                     "Clip musical",
                     "Autre"
                 ],
+
                 required:true
             },
+
             {
                 name:"objectif",
                 label:"Objectif",
@@ -1354,6 +1470,7 @@ const services = [
                 "Que doit présenter la vidéo ?",
                 required:true
             },
+
             {
                 name:"duree",
                 label:"Durée souhaitée",
@@ -1362,6 +1479,7 @@ const services = [
                 "Ex : 30 secondes",
                 required:true
             },
+
             {
                 name:"contenu",
                 label:"Contenu disponible",
@@ -1370,6 +1488,7 @@ const services = [
                 "Photos, vidéos, textes, logo, musique...",
                 required:true
             },
+
             {
                 name:"contact",
                 label:"Contact",
@@ -1397,6 +1516,7 @@ const services = [
         "Création d'un chatbot intelligent pour votre activité.",
 
         fields:[
+
             {
                 name:"nomBot",
                 label:"Nom du chatbot",
@@ -1405,10 +1525,12 @@ const services = [
                 "Ex : DAVBOT AI",
                 required:true
             },
+
             {
                 name:"plateforme",
                 label:"Plateforme",
                 type:"select",
+
                 options:[
                     "Site web",
                     "WhatsApp",
@@ -1417,8 +1539,10 @@ const services = [
                     "Application",
                     "Autre"
                 ],
+
                 required:true
             },
+
             {
                 name:"role",
                 label:"Rôle du chatbot",
@@ -1427,6 +1551,7 @@ const services = [
                 "Que doit faire votre chatbot ?",
                 required:true
             },
+
             {
                 name:"fonctions",
                 label:"Fonctionnalités",
@@ -1435,6 +1560,7 @@ const services = [
                 "Réponses automatiques, commandes, IA, support...",
                 required:true
             },
+
             {
                 name:"api",
                 label:"API / service utilisé",
@@ -1443,6 +1569,7 @@ const services = [
                 "Facultatif",
                 required:false
             },
+
             {
                 name:"contact",
                 label:"Contact",
@@ -1470,6 +1597,7 @@ const services = [
         "Création ou intégration d'une API personnalisée.",
 
         fields:[
+
             {
                 name:"nomApi",
                 label:"Nom de l'API",
@@ -1478,6 +1606,7 @@ const services = [
                 "Ex : Jason API",
                 required:true
             },
+
             {
                 name:"objectif",
                 label:"But de l'API",
@@ -1486,6 +1615,7 @@ const services = [
                 "Expliquez précisément ce que l'API doit faire...",
                 required:true
             },
+
             {
                 name:"endpoints",
                 label:"Endpoints souhaités",
@@ -1494,10 +1624,12 @@ const services = [
                 "Ex : /users, /login, /products...",
                 required:false
             },
+
             {
                 name:"technologie",
                 label:"Technologie souhaitée",
                 type:"select",
+
                 options:[
                     "Node.js",
                     "PHP",
@@ -1506,8 +1638,10 @@ const services = [
                     "Firebase",
                     "Autre"
                 ],
+
                 required:true
             },
+
             {
                 name:"hebergement",
                 label:"Hébergement",
@@ -1516,6 +1650,7 @@ const services = [
                 "Vercel, Render, serveur, autre...",
                 required:false
             },
+
             {
                 name:"contact",
                 label:"Contact",
@@ -1543,6 +1678,7 @@ const services = [
         "Création d'un CV professionnel et moderne.",
 
         fields:[
+
             {
                 name:"nom",
                 label:"Nom complet",
@@ -1551,6 +1687,7 @@ const services = [
                 "Votre nom complet",
                 required:true
             },
+
             {
                 name:"poste",
                 label:"Poste recherché",
@@ -1559,6 +1696,7 @@ const services = [
                 "Ex : Développeur web",
                 required:true
             },
+
             {
                 name:"experience",
                 label:"Expériences",
@@ -1567,6 +1705,7 @@ const services = [
                 "Vos expériences professionnelles...",
                 required:true
             },
+
             {
                 name:"formation",
                 label:"Formation",
@@ -1575,6 +1714,7 @@ const services = [
                 "Études, diplômes, formations...",
                 required:true
             },
+
             {
                 name:"competences",
                 label:"Compétences",
@@ -1583,6 +1723,7 @@ const services = [
                 "Vos compétences...",
                 required:true
             },
+
             {
                 name:"contact",
                 label:"Contact",
@@ -1610,10 +1751,12 @@ const services = [
         "Rédaction de textes professionnels et personnalisés.",
 
         fields:[
+
             {
                 name:"typeTexte",
                 label:"Type de texte",
                 type:"select",
+
                 options:[
                     "Article",
                     "Publicité",
@@ -1623,8 +1766,10 @@ const services = [
                     "Publication réseaux sociaux",
                     "Autre"
                 ],
+
                 required:true
             },
+
             {
                 name:"sujet",
                 label:"Sujet",
@@ -1633,6 +1778,7 @@ const services = [
                 "Sujet du texte",
                 required:true
             },
+
             {
                 name:"objectif",
                 label:"Objectif",
@@ -1641,6 +1787,7 @@ const services = [
                 "But du texte et public ciblé...",
                 required:true
             },
+
             {
                 name:"instructions",
                 label:"Instructions",
@@ -1649,6 +1796,7 @@ const services = [
                 "Ton, longueur, informations importantes...",
                 required:true
             },
+
             {
                 name:"contact",
                 label:"Contact",
@@ -1676,6 +1824,7 @@ const services = [
         "Traduction professionnelle de vos textes.",
 
         fields:[
+
             {
                 name:"langueSource",
                 label:"Langue source",
@@ -1684,6 +1833,7 @@ const services = [
                 "Ex : Français",
                 required:true
             },
+
             {
                 name:"langueCible",
                 label:"Langue cible",
@@ -1692,6 +1842,7 @@ const services = [
                 "Ex : Anglais",
                 required:true
             },
+
             {
                 name:"texte",
                 label:"Texte à traduire",
@@ -1700,6 +1851,7 @@ const services = [
                 "Collez votre texte ici...",
                 required:true
             },
+
             {
                 name:"contexte",
                 label:"Contexte / précision",
@@ -1708,6 +1860,7 @@ const services = [
                 "Contexte professionnel, scolaire, commercial...",
                 required:false
             },
+
             {
                 name:"contact",
                 label:"Contact",
@@ -1735,10 +1888,12 @@ const services = [
         "Correction et amélioration de vos documents et textes.",
 
         fields:[
+
             {
                 name:"typeDocument",
                 label:"Type de document",
                 type:"select",
+
                 options:[
                     "Texte",
                     "CV",
@@ -1748,8 +1903,10 @@ const services = [
                     "Publication",
                     "Autre"
                 ],
+
                 required:true
             },
+
             {
                 name:"objectif",
                 label:"Objectif de la correction",
@@ -1758,6 +1915,7 @@ const services = [
                 "Orthographe, grammaire, style, reformulation...",
                 required:true
             },
+
             {
                 name:"texte",
                 label:"Texte à corriger",
@@ -1766,6 +1924,7 @@ const services = [
                 "Collez votre texte ici...",
                 required:true
             },
+
             {
                 name:"instructions",
                 label:"Instructions supplémentaires",
@@ -1774,6 +1933,7 @@ const services = [
                 "Précisions particulières...",
                 required:false
             },
+
             {
                 name:"contact",
                 label:"Contact",
@@ -1791,7 +1951,7 @@ const services = [
 
 
 /* ==========================================
-   FORMAT
+   FORMAT FC
 ========================================== */
 
 function formatFC(value){
@@ -1804,7 +1964,7 @@ function formatFC(value){
 
 
 /* ==========================================
-   AFFICHAGE SOLDE
+   AFFICHER SOLDE
 ========================================== */
 
 onValue(
@@ -1813,8 +1973,17 @@ onValue(
 
     snapshot=>{
 
-        if(!snapshot.exists())
+        if(!snapshot.exists()){
+
+            currentBalance = 0;
+
+            document.getElementById(
+                "balance"
+            ).innerText = "0";
+
             return;
+
+        }
 
 
         const data =
@@ -1834,13 +2003,25 @@ onValue(
                 currentBalance
             );
 
+
+        /*
+         * Si le formulaire est ouvert,
+         * mettre aussi le résumé à jour.
+         */
+
+        if(selectedService){
+
+            updateSummary();
+
+        }
+
     }
 
 );
 
 
 /* ==========================================
-   AFFICHER SERVICES
+   AFFICHER LES SERVICES
 ========================================== */
 
 const servicesContainer =
@@ -1849,10 +2030,15 @@ const servicesContainer =
     );
 
 
+servicesContainer.innerHTML = "";
+
+
 services.forEach(service=>{
 
     const card =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     card.className =
@@ -1879,6 +2065,7 @@ services.forEach(service=>{
 
         <button
             class="buy-btn"
+            type="button"
             data-id="${service.id}">
 
             COMMANDER
@@ -1888,18 +2075,21 @@ services.forEach(service=>{
     `;
 
 
-    servicesContainer.appendChild(card);
+    servicesContainer.appendChild(
+        card
+    );
 
 });
 
 
 /* ==========================================
-   OUVRIR FORMULAIRE
+   CLIC COMMANDER
 ========================================== */
 
-servicesContainer
-.addEventListener(
+servicesContainer.addEventListener(
+
     "click",
+
     event=>{
 
         const button =
@@ -1928,14 +2118,17 @@ servicesContainer
             service;
 
 
-        openOrderForm(service);
+        openOrderForm(
+            service
+        );
 
     }
+
 );
 
 
 /* ==========================================
-   CREATION DU FORMULAIRE
+   OUVRIR FORMULAIRE
 ========================================== */
 
 function openOrderForm(service){
@@ -1956,13 +2149,9 @@ function openOrderForm(service){
     document.getElementById(
         "summaryPrice"
     ).innerText =
-        formatFC(service.price);
-
-
-    document.getElementById(
-        "summaryBalance"
-    ).innerText =
-        formatFC(currentBalance);
+        formatFC(
+            service.price
+        );
 
 
     const fields =
@@ -1974,95 +2163,123 @@ function openOrderForm(service){
     fields.innerHTML = "";
 
 
-    service.fields.forEach(field=>{
+    service.fields.forEach(
+        field=>{
 
-        const group =
-            document.createElement(
-                "div"
+            const group =
+                document.createElement(
+                    "div"
+                );
+
+
+            group.className =
+                "form-group";
+
+
+            let inputHTML = "";
+
+
+            /* TEXTAREA */
+
+            if(
+                field.type ===
+                "textarea"
+            ){
+
+                inputHTML = `
+
+                    <textarea
+                        name="${field.name}"
+                        placeholder="${escapeHTML(field.placeholder || "")}"
+                        ${field.required ? "required" : ""}
+                    ></textarea>
+
+                `;
+
+            }
+
+
+            /* SELECT */
+
+            else if(
+                field.type ===
+                "select"
+            ){
+
+                inputHTML = `
+
+                    <select
+                        name="${field.name}"
+                        ${field.required ? "required" : ""}
+                    >
+
+                        <option value="">
+                            Sélectionner
+                        </option>
+
+                        ${
+                            field.options
+                            .map(
+                                option=>`
+
+                                <option
+                                    value="${escapeHTML(option)}">
+
+                                    ${escapeHTML(option)}
+
+                                </option>
+
+                                `
+                            )
+                            .join("")
+                        }
+
+                    </select>
+
+                `;
+
+            }
+
+
+            /* INPUT */
+
+            else{
+
+                inputHTML = `
+
+                    <input
+                        type="${field.type}"
+                        name="${field.name}"
+                        placeholder="${escapeHTML(field.placeholder || "")}"
+                        ${field.required ? "required" : ""}
+                    >
+
+                `;
+
+            }
+
+
+            group.innerHTML = `
+
+                <label>
+
+                    ${escapeHTML(field.label)}
+
+                    ${field.required ? "*" : ""}
+
+                </label>
+
+                ${inputHTML}
+
+            `;
+
+
+            fields.appendChild(
+                group
             );
 
-
-        group.className =
-            "form-group";
-
-
-        let inputHTML = "";
-
-
-        if(field.type === "textarea"){
-
-            inputHTML = `
-
-                <textarea
-                    name="${field.name}"
-                    placeholder="${field.placeholder || ""}"
-                    ${field.required ? "required" : ""}
-                ></textarea>
-
-            `;
-
         }
-
-        else if(field.type === "select"){
-
-            inputHTML = `
-
-                <select
-                    name="${field.name}"
-                    ${field.required ? "required" : ""}
-                >
-
-                    <option value="">
-                        Sélectionner
-                    </option>
-
-                    ${
-                        field.options
-                        .map(option=>`
-                            <option value="${option}">
-                                ${option}
-                            </option>
-                        `)
-                        .join("")
-                    }
-
-                </select>
-
-            `;
-
-        }
-
-        else{
-
-            inputHTML = `
-
-                <input
-                    type="${field.type}"
-                    name="${field.name}"
-                    placeholder="${field.placeholder || ""}"
-                    ${field.required ? "required" : ""}
-                >
-
-            `;
-
-        }
-
-
-        group.innerHTML = `
-
-            <label>
-                ${field.label}
-                ${field.required ? "*" : ""}
-            </label>
-
-            ${inputHTML}
-
-        `;
-
-
-        fields.appendChild(group);
-
-    });
+    );
 
 
     document.getElementById(
@@ -2071,21 +2288,126 @@ function openOrderForm(service){
 
 
     document.getElementById(
+        "orderStatus"
+    ).className =
+        "status";
+
+
+    document.getElementById(
+        "submitOrder"
+    ).disabled = false;
+
+
+    document.getElementById(
+        "submitOrder"
+    ).innerText =
+        "🛒 CONFIRMER LA COMMANDE";
+
+
+    updateSummary();
+
+
+    document.getElementById(
         "orderModal"
-    ).classList.add("show");
+    ).classList.add(
+        "show"
+    );
 
 }
 
 
 /* ==========================================
-   FERMER
+   SECURISER HTML
+========================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* ==========================================
+   UPDATE SUMMARY
+========================================== */
+
+function updateSummary(){
+
+    if(!selectedService)
+        return;
+
+
+    const balanceElement =
+        document.getElementById(
+            "summaryBalance"
+        );
+
+
+    balanceElement.innerText =
+        formatFC(
+            currentBalance
+        ) +
+        " FC";
+
+
+    if(
+        currentBalance <
+        selectedService.price
+    ){
+
+        balanceElement.classList.add(
+            "insufficient"
+        );
+
+    }
+    else{
+
+        balanceElement.classList.remove(
+            "insufficient"
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   FERMER MODAL
 ========================================== */
 
 function closeModal(){
 
     document.getElementById(
         "orderModal"
-    ).classList.remove("show");
+    ).classList.remove(
+        "show"
+    );
+
 
     selectedService =
         null;
@@ -2095,8 +2417,10 @@ function closeModal(){
 
 document.getElementById(
     "closeModal"
-).onclick =
-    closeModal;
+).addEventListener(
+    "click",
+    closeModal
+);
 
 
 document.getElementById(
@@ -2125,14 +2449,23 @@ document.getElementById(
 document.getElementById(
     "orderForm"
 ).addEventListener(
+
     "submit",
+
     async event=>{
 
         event.preventDefault();
 
 
-        if(!selectedService)
+        if(!selectedService){
+
             return;
+
+        }
+
+
+        const service =
+            selectedService;
 
 
         const status =
@@ -2147,9 +2480,32 @@ document.getElementById(
             );
 
 
+        /*
+         * Vérification immédiate
+         */
+
+        if(
+            currentBalance <
+            service.price
+        ){
+
+            status.className =
+                "status error";
+
+            status.innerText =
+                "❌ Solde insuffisant. Rechargez votre compte.";
+
+            return;
+
+        }
+
+
+        /*
+         * Désactiver le bouton
+         */
+
         button.disabled =
             true;
-
 
         button.innerText =
             "⏳ TRAITEMENT...";
@@ -2158,82 +2514,24 @@ document.getElementById(
         status.className =
             "status";
 
-
         status.innerText =
             "Vérification du solde...";
 
 
         try{
 
-            /*
-             * ==========================
-             * TRANSACTION SOLDE
-             * ==========================
-             *
-             * Le prix est retiré
-             * de manière atomique.
-             */
+            /* ==================================
+               RÉCUPÉRER LE FORMULAIRE
+            ================================== */
 
-            const transactionResult =
-                await runTransaction(
-                    userRef,
-                    data=>{
-
-                        if(data === null){
-
-                            return;
-
-                        }
-
-
-                        const balance =
-                            Number(
-                                data.solde_principal
-                            ) || 0;
-
-
-                        if(
-                            balance <
-                            selectedService.price
-                        ){
-
-                            return;
-
-                        }
-
-
-                        data.solde_principal =
-                            balance -
-                            selectedService.price;
-
-
-                        return data;
-
-                    }
+            const form =
+                document.getElementById(
+                    "orderForm"
                 );
 
-
-            if(
-                !transactionResult.committed
-            ){
-
-                throw new Error(
-                    "SOLDE_INSUFFISANT"
-                );
-
-            }
-
-
-            /* ==========================
-               RECUPERATION FORMULAIRE
-            ========================== */
 
             const formData =
-                new FormData(
-                    document.getElementById(
-                        "orderForm"
-                    )
-                );
+                new FormData(form);
 
 
             const details = {};
@@ -2250,9 +2548,52 @@ document.getElementById(
             }
 
 
-            /* ==========================
-               CREATION COMMANDE
-            ========================== */
+            /* ==================================
+               REVALIDATION DU SOLDE
+            ================================== */
+
+            const userSnapshot =
+                await get(
+                    userRef
+                );
+
+
+            if(
+                !userSnapshot.exists()
+            ){
+
+                throw new Error(
+                    "USER_NOT_FOUND"
+                );
+
+            }
+
+
+            const userData =
+                userSnapshot.val();
+
+
+            const balance =
+                Number(
+                    userData.solde_principal
+                ) || 0;
+
+
+            if(
+                balance <
+                service.price
+            ){
+
+                throw new Error(
+                    "SOLDE_INSUFFISANT"
+                );
+
+            }
+
+
+            /* ==================================
+               CRÉER ID COMMANDE
+            ================================== */
 
             const ordersRef =
                 ref(
@@ -2267,66 +2608,209 @@ document.getElementById(
                 );
 
 
-            await set(
-                newOrder,
-                {
+            const orderId =
+                newOrder.key;
 
-                    id:
-                        newOrder.key,
 
-                    telephone:
-                        userPhone,
+            /* ==================================
+               DÉBITER LE SOLDE
+            ================================== */
 
-                    serviceId:
-                        selectedService.id,
+            const transactionResult =
+                await runTransaction(
 
-                    service:
-                        selectedService.name,
+                    userRef,
 
-                    prix:
-                        selectedService.price,
+                    data=>{
 
-                    details:
-                        details,
+                        if(
+                            data === null
+                        ){
 
-                    statut:
-                        "En attente",
+                            return;
 
-                    date:
-                        new Date().toISOString(),
+                        }
 
-                    remboursementEffectue:
-                        false
 
-                }
-            );
+                        const solde =
+                            Number(
+                                data.solde_principal
+                            ) || 0;
 
+
+                        if(
+                            solde <
+                            service.price
+                        ){
+
+                            return;
+
+                        }
+
+
+                        data.solde_principal =
+                            solde -
+                            service.price;
+
+
+                        return data;
+
+                    }
+
+                );
+
+
+            if(
+                !transactionResult.committed
+            ){
+
+                throw new Error(
+                    "SOLDE_INSUFFISANT"
+                );
+
+            }
+
+
+            /* ==================================
+               ENREGISTRER LA COMMANDE
+            ================================== */
+
+            try{
+
+                await set(
+
+                    newOrder,
+
+                    {
+
+                        id:
+                            orderId,
+
+                        telephone:
+                            userPhone,
+
+                        serviceId:
+                            service.id,
+
+                        service:
+                            service.name,
+
+                        prix:
+                            service.price,
+
+                        details:
+                            details,
+
+                        statut:
+                            "En attente",
+
+                        date:
+                            new Date()
+                            .toISOString(),
+
+                        timestamp:
+                            Date.now(),
+
+                        remboursementEffectue:
+                            false
+
+                    }
+
+                );
+
+            }
+
+            catch(
+                orderError
+            ){
+
+                /*
+                 * La commande n'a pas pu être
+                 * enregistrée : restauration
+                 * du solde.
+                 */
+
+                await runTransaction(
+
+                    userRef,
+
+                    data=>{
+
+                        if(
+                            data === null
+                        ){
+
+                            return;
+
+                        }
+
+
+                        const actual =
+                            Number(
+                                data.solde_principal
+                            ) || 0;
+
+
+                        data.solde_principal =
+                            actual +
+                            service.price;
+
+
+                        return data;
+
+                    }
+
+                );
+
+
+                throw orderError;
+
+            }
+
+
+            /* ==================================
+               SUCCÈS
+            ================================== */
 
             status.className =
                 "status success";
 
 
             status.innerText =
-                "✅ Commande envoyée à l'administration.";
+                "✅ Commande envoyée avec succès !";
 
 
             button.innerText =
-                "COMMANDE ENVOYÉE";
+                "✅ COMMANDE ENVOYÉE";
+
+
+            currentBalance -=
+                service.price;
+
+
+            document.getElementById(
+                "balance"
+            ).innerText =
+                formatFC(
+                    currentBalance
+                );
 
 
             /*
-             * Petite pause pour laisser
-             * le message apparaître.
+             * Redirection
              */
 
             setTimeout(
+
                 ()=>{
 
                     window.location.href =
                         "dashboard.html";
 
                 },
-                1400
+
+                1500
+
             );
 
 
@@ -2340,54 +2824,6 @@ document.getElementById(
             );
 
 
-            /*
-             * Si la commande Firebase
-             * n'a pas pu être créée après
-             * le débit, il faut prévoir
-             * une restauration du solde.
-             *
-             * On restaure ici le montant
-             * pour éviter de débiter
-             * l'utilisateur sans commande.
-             */
-
-            try{
-
-                await runTransaction(
-                    userRef,
-                    data=>{
-
-                        if(data === null)
-                            return;
-
-
-                        const balance =
-                            Number(
-                                data.solde_principal
-                            ) || 0;
-
-
-                        data.solde_principal =
-                            balance +
-                            selectedService.price;
-
-
-                        return data;
-
-                    }
-                );
-
-            }
-            catch(refundError){
-
-                console.error(
-                    "Erreur remboursement :",
-                    refundError
-                );
-
-            }
-
-
             status.className =
                 "status error";
 
@@ -2398,13 +2834,24 @@ document.getElementById(
             ){
 
                 status.innerText =
-                    "❌ Solde insuffisant. Rechargez votre compte.";
+                    "❌ Solde insuffisant.";
 
             }
+
+            else if(
+                error.message ===
+                "USER_NOT_FOUND"
+            ){
+
+                status.innerText =
+                    "❌ Compte utilisateur introuvable.";
+
+            }
+
             else{
 
                 status.innerText =
-                    "⚠️ Impossible d'envoyer la commande.";
+                    "⚠️ Impossible d'envoyer la commande. Réessayez.";
 
             }
 
@@ -2419,6 +2866,7 @@ document.getElementById(
         }
 
     }
+
 );
 
 </script>

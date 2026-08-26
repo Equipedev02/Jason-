@@ -1,131 +1,957 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jason - Mon Profil</title>
-    <style>
-        :root { --blue: #00d2ff; --dark: #050a14; --glass: rgba(255, 255, 255, 0.05); }
-        body { 
-            margin: 0; font-family: 'Segoe UI', sans-serif; 
-            background: var(--dark) url('IMG_0870.jpeg') no-repeat center center fixed;
-            background-size: cover; color: white; padding-bottom: 100px;
-        }
-        .overlay-profil { min-height: 100vh; background: rgba(5, 10, 20, 0.85); }
-        
-        .header-profil { 
-            padding: 40px 20px; text-align: center; 
-            background: rgba(0,0,0,0.6); border-bottom: 1px solid var(--blue); 
-            backdrop-filter: blur(15px); 
-        }
-        .avatar { 
-            width: 80px; height: 80px; background: linear-gradient(135deg, var(--blue), #fff); 
-            border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; 
-            justify-content: center; font-size: 30px; color: black; font-weight: bold; 
-            box-shadow: 0 0 20px var(--blue); 
-        }
-        
-        .menu-container { padding: 20px; }
-        .menu-item { 
-            background: rgba(255, 255, 255, 0.07); margin-bottom: 12px; padding: 18px; 
-            border-radius: 18px; display: flex; align-items: center; text-decoration: none; 
-            color: white; border: 1px solid rgba(0, 210, 255, 0.1); backdrop-filter: blur(10px);
-            transition: 0.3s;
-        }
-        .menu-item:active { background: rgba(0, 210, 255, 0.2); transform: scale(0.98); }
-        .menu-icon { margin-right: 15px; font-size: 22px; width: 30px; text-align: center; }
-        
-        .btn-logout { 
-            background: rgba(244, 67, 54, 0.15); color: #f44336; border: 1px solid #f44336; 
-            width: 100%; padding: 15px; border-radius: 15px; font-weight: bold; 
-            margin-top: 20px; cursor: pointer; backdrop-filter: blur(10px);
-        }
-        
-        .navbar { 
-            position: fixed; bottom: 0; width: 100%; background: rgba(5, 10, 20, 0.98); 
-            display: flex; justify-content: space-around; padding: 15px 0; 
-            border-top: 1px solid var(--blue); backdrop-filter: blur(15px); 
-        }
-        .nav-link { color: white; text-decoration: none; font-size: 12px; text-align: center; opacity: 0.5; }
-        .nav-link.active { opacity: 1; color: var(--blue); font-weight: bold; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>JASON Business — Mon Profil</title>
+
+<style>
+
+:root{
+    --blue:#00d2ff;
+    --blue2:#0077ff;
+    --dark:#050a14;
+    --card:rgba(8,15,28,.88);
+    --border:rgba(0,210,255,.25);
+    --green:#00e676;
+    --orange:#ff9800;
+    --red:#ff4757;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:
+        linear-gradient(rgba(3,8,18,.82),rgba(3,8,18,.94)),
+        url("IMG_0870.jpeg") center/cover fixed;
+    color:white;
+    min-height:100vh;
+    padding-bottom:90px;
+}
+
+.container{
+    width:100%;
+    max-width:650px;
+    margin:auto;
+}
+
+/* HEADER */
+
+.header{
+    padding:28px 20px 25px;
+    text-align:center;
+    background:rgba(0,0,0,.55);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:blur(18px);
+}
+
+.avatar{
+    width:82px;
+    height:82px;
+    border-radius:50%;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,var(--blue),var(--blue2));
+    color:#001018;
+    font-size:28px;
+    font-weight:900;
+    box-shadow:0 0 30px rgba(0,210,255,.45);
+}
+
+.name{
+    margin:12px 0 4px;
+    font-size:20px;
+    letter-spacing:1px;
+}
+
+.phone{
+    font-size:13px;
+    opacity:.65;
+}
+
+.invite{
+    display:inline-block;
+    margin-top:10px;
+    padding:7px 14px;
+    border-radius:20px;
+    color:var(--blue);
+    background:rgba(0,210,255,.08);
+    border:1px solid var(--border);
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* SOLDE */
+
+.section{
+    padding:18px;
+}
+
+.balance-card{
+    background:linear-gradient(
+        145deg,
+        rgba(0,210,255,.18),
+        rgba(0,50,100,.25)
+    );
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:22px;
+    box-shadow:0 10px 35px rgba(0,0,0,.3);
+}
+
+.balance-title{
+    font-size:12px;
+    opacity:.65;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.total{
+    margin:7px 0;
+    font-size:32px;
+    font-weight:900;
+    color:var(--blue);
+}
+
+.fc{
+    font-size:13px;
+    opacity:.7;
+}
+
+.balance-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:18px;
+}
+
+.action{
+    text-decoration:none;
+    text-align:center;
+    padding:12px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.recharge{
+    background:var(--blue);
+    color:#001018;
+}
+
+.withdraw{
+    background:rgba(255,255,255,.07);
+    color:white;
+    border:1px solid rgba(255,255,255,.12);
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:12px;
+}
+
+.stat{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    padding:15px 8px;
+    text-align:center;
+}
+
+.stat-icon{
+    font-size:20px;
+}
+
+.stat-value{
+    margin-top:7px;
+    font-size:15px;
+    font-weight:bold;
+}
+
+.stat-label{
+    margin-top:3px;
+    font-size:10px;
+    opacity:.55;
+}
+
+/* FIDELITE */
+
+.loyalty{
+    margin-top:12px;
+    background:var(--card);
+    border:1px solid rgba(255,152,0,.25);
+    border-radius:20px;
+    padding:20px;
+}
+
+.loyalty-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.loyalty-title{
+    font-weight:bold;
+}
+
+.points{
+    color:var(--orange);
+    font-size:22px;
+    font-weight:900;
+}
+
+.progress{
+    height:8px;
+    background:rgba(255,255,255,.08);
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:15px;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#ff9800,#ffc107);
+    border-radius:20px;
+}
+
+.loyalty-info{
+    margin-top:9px;
+    font-size:11px;
+    opacity:.6;
+}
+
+/* MENU */
+
+.menu-title{
+    font-size:13px;
+    opacity:.55;
+    margin:5px 3px 12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+    padding:17px;
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:17px;
+    transition:.2s;
+}
+
+.menu-item:active{
+    transform:scale(.98);
+}
+
+.menu-icon{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,210,255,.09);
+    margin-right:14px;
+    font-size:20px;
+}
+
+.menu-text{
+    flex:1;
+}
+
+.menu-name{
+    font-weight:bold;
+    font-size:14px;
+}
+
+.menu-desc{
+    font-size:11px;
+    opacity:.5;
+    margin-top:3px;
+}
+
+.arrow{
+    opacity:.4;
+}
+
+/* LOGOUT */
+
+.logout{
+    width:100%;
+    margin-top:18px;
+    padding:15px;
+    border-radius:15px;
+    background:rgba(255,71,87,.1);
+    color:var(--red);
+    border:1px solid rgba(255,71,87,.4);
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* NAVBAR */
+
+.navbar{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:20;
+    height:72px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    background:rgba(4,10,20,.97);
+    border-top:1px solid var(--border);
+    backdrop-filter:blur(18px);
+}
+
+.nav{
+    text-decoration:none;
+    color:white;
+    opacity:.5;
+    text-align:center;
+    font-size:11px;
+}
+
+.nav span{
+    display:block;
+    font-size:21px;
+    margin-bottom:3px;
+}
+
+.nav.active{
+    color:var(--blue);
+    opacity:1;
+    font-weight:bold;
+}
+
+.status{
+    text-align:center;
+    font-size:12px;
+    color:#ffeb3b;
+    padding:10px;
+}
+
+@media(max-width:380px){
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+</style>
 </head>
+
 <body>
 
-<div class="overlay-profil">
-    <div class="header-profil">
-        <div class="avatar" id="initiale">S</div>
-        <h3 id="userPhoneDisplay" style="margin:5px 0; letter-spacing: 1px;">+243 ...</h3>
-        <small id="userInviteCode" style="color:var(--blue); font-weight: bold; text-transform: uppercase;">ID: STAR-0000</small>
-    </div>
+<div class="container">
 
-    <div class="menu-container">
-        <a href="recharge.html" class="menu-item">
-            <span class="menu-icon">📥</span>
-            <span>Recharger le compte</span>
-        </a>
-        <a href="retrait.html" class="menu-item">
-            <span class="menu-icon">📤</span>
-            <span>Retirer mes gains</span>
-        </a>
-        
-        <a href="00" target="_blank" class="menu-item" style="border-color: #229ED9; background: rgba(34, 158, 217, 0.05);">
-            <span class="menu-icon">✈️</span>
-            <span style="color: #229ED9; font-weight: bold;">Canal Officiel Telegram</span>
-        </a>
+    <!-- HEADER -->
 
-        <a href="transactions.html" class="menu-item">
-            <span class="menu-icon">📊</span>
-            <span>Historique financier</span>
-        </a>
+    <header class="header">
 
-        <button class="btn-logout" id="btnLogout">DÉCONNEXION DU TERMINAL</button>
-    </div>
+        <div class="avatar" id="avatar">
+            J
+        </div>
+
+        <div class="name">
+            Mon compte
+        </div>
+
+        <div class="phone" id="phone">
+            Chargement...
+        </div>
+
+        <div class="invite" id="inviteCode">
+            ID : STAR-0000
+        </div>
+
+    </header>
+
+
+    <main class="section">
+
+        <!-- SOLDE PRINCIPAL -->
+
+        <div class="balance-card">
+
+            <div class="balance-title">
+                Solde disponible
+            </div>
+
+            <div class="total" id="totalBalance">
+                0
+            </div>
+
+            <span class="fc">
+                FC
+            </span>
+
+            <div class="balance-actions">
+
+                <a href="recharge.html"
+                   class="action recharge">
+                    ➕ Recharger
+                </a>
+
+                <a href="retrait.html"
+                   class="action withdraw">
+                    💸 Retirer
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATISTIQUES -->
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    💰
+                </div>
+
+                <div class="stat-value" id="mainBalance">
+                    0 FC
+                </div>
+
+                <div class="stat-label">
+                    Solde principal
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    📈
+                </div>
+
+                <div class="stat-value" id="gainBalance">
+                    0 FC
+                </div>
+
+                <div class="stat-label">
+                    Gains
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div class="stat-value" id="commissionBalance">
+                    0 FC
+                </div>
+
+                <div class="stat-label">
+                    Commissions
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FIDELITE -->
+
+        <div class="loyalty">
+
+            <div class="loyalty-head">
+
+                <div>
+                    <div class="loyalty-title">
+                        ⭐ Programme fidélité
+                    </div>
+
+                    <div class="loyalty-info">
+                        Accumulez des points grâce à vos activités.
+                    </div>
+                </div>
+
+                <div class="points" id="loyaltyPoints">
+                    0
+                </div>
+
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar"
+                     id="loyaltyProgress">
+                </div>
+            </div>
+
+            <div class="loyalty-info">
+                <span id="pointsText">
+                    0 / 1000 points
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- MENU -->
+
+        <div style="margin-top:25px;">
+
+            <div class="menu-title">
+                Mon espace
+            </div>
+
+            <div class="menu">
+
+                <a href="shop.html" class="menu-item">
+
+                    <div class="menu-icon">
+                        🛒
+                    </div>
+
+                    <div class="menu-text">
+
+                        <div class="menu-name">
+                            Boutique
+                        </div>
+
+                        <div class="menu-desc">
+                            Acheter nos produits et services
+                        </div>
+
+                    </div>
+
+                    <div class="arrow">
+                        ›
+                    </div>
+
+                </a>
+
+
+                <a href="transactions.html" class="menu-item">
+
+                    <div class="menu-icon">
+                        📊
+                    </div>
+
+                    <div class="menu-text">
+
+                        <div class="menu-name">
+                            Transactions
+                        </div>
+
+                        <div class="menu-desc">
+                            Voir mon historique financier
+                        </div>
+
+                    </div>
+
+                    <div class="arrow">
+                        ›
+                    </div>
+
+                </a>
+
+
+                <a href="equipe.html" class="menu-item">
+
+                    <div class="menu-icon">
+                        👥
+                    </div>
+
+                    <div class="menu-text">
+
+                        <div class="menu-name">
+                            Mon équipe
+                        </div>
+
+                        <div class="menu-desc">
+                            Parrainage et commissions
+                        </div>
+
+                    </div>
+
+                    <div class="arrow">
+                        ›
+                    </div>
+
+                </a>
+
+
+                <a href="recharge.html" class="menu-item">
+
+                    <div class="menu-icon">
+                        💳
+                    </div>
+
+                    <div class="menu-text">
+
+                        <div class="menu-name">
+                            Recharger mon compte
+                        </div>
+
+                        <div class="menu-desc">
+                            Ajouter de l'argent à mon solde
+                        </div>
+
+                    </div>
+
+                    <div class="arrow">
+                        ›
+                    </div>
+
+                </a>
+
+
+                <a href="retrait.html" class="menu-item">
+
+                    <div class="menu-icon">
+                        💸
+                    </div>
+
+                    <div class="menu-text">
+
+                        <div class="menu-name">
+                            Retrait
+                        </div>
+
+                        <div class="menu-desc">
+                            Demander un paiement
+                        </div>
+
+                    </div>
+
+                    <div class="arrow">
+                        ›
+                    </div>
+
+                </a>
+
+
+                <a href="support.html" class="menu-item">
+
+                    <div class="menu-icon">
+                        🎧
+                    </div>
+
+                    <div class="menu-text">
+
+                        <div class="menu-name">
+                            Support
+                        </div>
+
+                        <div class="menu-desc">
+                            Besoin d'aide ?
+                        </div>
+
+                    </div>
+
+                    <div class="arrow">
+                        ›
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <button class="logout" id="logout">
+            🚪 DÉCONNEXION
+        </button>
+
+        <div class="status" id="status">
+        </div>
+
+    </main>
+
 </div>
 
+
+<!-- NAVIGATION -->
+
 <nav class="navbar">
-    <a href="dashboard.html" class="nav-link">📊<br>Dash</a>
-    <a href="shop.html" class="nav-link">📡<br>Shop</a>
-    <a href="equipe.html" class="nav-link">👥<br>Equipe</a>
-    <a href="profil.html" class="nav-link active">👤<br>Profil</a>
+
+    <a href="dashboard.html" class="nav">
+        <span>📊</span>
+        Dash
+    </a>
+
+    <a href="shop.html" class="nav">
+        <span>🛒</span>
+        Boutique
+    </a>
+
+    <a href="equipe.html" class="nav">
+        <span>👥</span>
+        Équipe
+    </a>
+
+    <a href="profil.html" class="nav active">
+        <span>👤</span>
+        Profil
+    </a>
+
 </nav>
 
+
 <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    // NOUVELLE CONFIGURATION STARLINK INVESTIT
-    const firebaseConfig = {
-        apiKey: "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
-        authDomain: "starlink-investit.firebaseapp.com",
-        databaseURL: "https://starlink-investit-default-rtdb.firebaseio.com",
-        projectId: "starlink-investit",
-        storageBucket: "starlink-investit.firebasestorage.app",
-        messagingSenderId: "807081599583",
-        appId: "1:807081599583:web:e00ec3959bc4acdae031ea"
-    };
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const userPhone = localStorage.getItem("userPhone");
+import {
+    getDatabase,
+    ref,
+    onValue
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    if(!userPhone) window.location.href = "login.html";
 
-    onValue(ref(db, 'users/' + userPhone), (snap) => {
-        const data = snap.val();
-        if(data) {
-            document.getElementById("userPhoneDisplay").innerText = userPhone;
-            document.getElementById("userInviteCode").innerText = "ID: " + (data.inviteCode || "STAR-0000");
-            document.getElementById("initiale").innerText = userPhone.substring(0, 2);
-        }
-    });
+/* ==========================================
+   FIREBASE
+========================================== */
 
-    document.getElementById("btnLogout").onclick = () => {
-        if(confirm("Déconnexion du terminal Starlink ?")) {
-            localStorage.clear();
-            window.location.href = "login.html";
-        }
-    };
+const firebaseConfig = {
+
+    apiKey:"AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
+
+    authDomain:"starlink-investit.firebaseapp.com",
+
+    databaseURL:
+    "https://starlink-investit-default-rtdb.firebaseio.com",
+
+    projectId:"starlink-investit",
+
+    storageBucket:
+    "starlink-investit.firebasestorage.app",
+
+    messagingSenderId:"807081599583",
+
+    appId:
+    "1:807081599583:web:e00ec3959bc4acdae031ea"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getDatabase(app);
+
+
+/* ==========================================
+   SESSION
+========================================== */
+
+const userPhone =
+    localStorage.getItem("userPhone");
+
+
+if(!userPhone){
+
+    window.location.href =
+    "login.html";
+
+}
+
+
+/* ==========================================
+   FORMAT
+========================================== */
+
+function formatFC(value){
+
+    return Math.floor(
+        Number(value) || 0
+    ).toLocaleString("fr-FR");
+
+}
+
+
+/* ==========================================
+   USER DATA
+========================================== */
+
+const userRef =
+    ref(db,"users/"+userPhone);
+
+
+onValue(userRef,(snapshot)=>{
+
+    if(!snapshot.exists()){
+
+        document.getElementById("status")
+            .innerText =
+            "⚠️ Compte introuvable.";
+
+        return;
+
+    }
+
+
+    const data =
+        snapshot.val();
+
+
+    /* TELEPHONE */
+
+    document.getElementById("phone")
+        .innerText =
+        userPhone;
+
+
+    /* AVATAR */
+
+    document.getElementById("avatar")
+        .innerText =
+        userPhone.substring(0,2);
+
+
+    /* CODE INVITATION */
+
+    document.getElementById("inviteCode")
+        .innerText =
+        "ID : "+
+        (
+            data.inviteCode ||
+            data.referralCode ||
+            "STAR-0000"
+        );
+
+
+    /* SOLDES */
+
+    const principal =
+        Number(data.solde_principal) || 0;
+
+    const gains =
+        Number(data.solde_gains) || 0;
+
+    const commissions =
+        Number(data.solde_commissions) || 0;
+
+
+    const total =
+        principal +
+        gains +
+        commissions;
+
+
+    document.getElementById("totalBalance")
+        .innerText =
+        formatFC(total);
+
+
+    document.getElementById("mainBalance")
+        .innerText =
+        formatFC(principal)+" FC";
+
+
+    document.getElementById("gainBalance")
+        .innerText =
+        formatFC(gains)+" FC";
+
+
+    document.getElementById("commissionBalance")
+        .innerText =
+        formatFC(commissions)+" FC";
+
+
+    /* ======================================
+       POINTS FIDELITE
+    ====================================== */
+
+    const points =
+        Number(
+            data.points_fidelite ??
+            data.points ??
+            data.loyaltyPoints ??
+            0
+        );
+
+
+    document.getElementById("loyaltyPoints")
+        .innerText =
+        formatFC(points);
+
+
+    const maxPoints = 1000;
+
+    const progress =
+        Math.min(
+            (points/maxPoints)*100,
+            100
+        );
+
+
+    document.getElementById("loyaltyProgress")
+        .style.width =
+        progress+"%";
+
+
+    document.getElementById("pointsText")
+        .innerText =
+        formatFC(points)+
+        " / "+
+        maxPoints+
+        " points";
+
+});
+
+
+/* ==========================================
+   LOGOUT
+========================================== */
+
+document.getElementById("logout")
+.addEventListener("click",()=>{
+
+    const confirmLogout =
+        confirm(
+            "Voulez-vous vraiment vous déconnecter ?"
+        );
+
+
+    if(!confirmLogout)
+        return;
+
+
+    localStorage.removeItem("userPhone");
+
+    window.location.href =
+        "login.html";
+
+});
+
 </script>
+
 </body>
 </html>

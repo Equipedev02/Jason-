@@ -1,158 +1,2428 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starlink - Stations de Connexion</title>
-    <style>
-        :root { --blue: #00d2ff; --dark: #050a14; --glass: rgba(255, 255, 255, 0.05); }
-        body { 
-            margin: 0; font-family: 'Segoe UI', sans-serif; 
-            background: var(--dark) url('IMG_0870.jpeg') no-repeat center center fixed;
-            background-size: cover; color: white; padding-bottom: 90px;
-        }
-        .header { padding: 30px 20px; text-align: center; backdrop-filter: blur(10px); background: rgba(0,0,0,0.5); border-bottom: 1px solid var(--blue); }
-        .balance-info { color: var(--blue); font-size: 14px; margin-top: 10px; font-weight: bold; }
-        .container { padding: 20px; }
-        .product-card { 
-            background: var(--glass); border-radius: 20px; border: 1px solid rgba(0, 210, 255, 0.2);
-            padding: 15px; margin-bottom: 20px; display: flex; align-items: center;
-            backdrop-filter: blur(10px); box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        .product-img { width: 70px; height: 70px; border-radius: 15px; background: rgba(0,210,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 30px; border: 1px solid var(--blue); }
-        .product-info { flex: 1; margin-left: 15px; }
-        .p-name { font-size: 14px; font-weight: bold; color: var(--blue); text-transform: uppercase; }
-        .p-price { font-size: 18px; font-weight: 900; margin: 3px 0; }
-        .p-gain { font-size: 11px; color: #4caf50; font-weight: bold; }
-        .btn-buy { 
-            background: var(--blue); color: black; border: none; padding: 12px 10px; 
-            border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s;
-            min-width: 90px; font-size: 12px;
-        }
-        .btn-buy.locked { background: #444; color: #888; cursor: not-allowed; }
-        .navbar { position: fixed; bottom: 0; width: 100%; background: rgba(5, 10, 20, 0.95); display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid var(--blue); backdrop-filter: blur(10px); z-index: 100; }
-        .nav-link { color: white; text-decoration: none; font-size: 12px; text-align: center; opacity: 0.6; }
-        .nav-link.active { opacity: 1; color: var(--blue); }
-    </style>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0">
+
+<title>JASON Business — Nos Services</title>
+
+<style>
+
+:root{
+    --blue:#00d2ff;
+    --blue2:#0077ff;
+    --dark:#050a14;
+    --card:rgba(8,15,28,.90);
+    --green:#00e676;
+    --red:#ff4757;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    color:white;
+
+    background:
+        linear-gradient(
+            rgba(3,8,18,.82),
+            rgba(3,8,18,.95)
+        ),
+        url("IMG_0870.jpeg")
+        center/cover fixed;
+
+    min-height:100vh;
+    padding-bottom:90px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+    padding:25px 18px;
+
+    text-align:center;
+
+    background:
+        rgba(0,0,0,.55);
+
+    border-bottom:
+        1px solid
+        rgba(0,210,255,.35);
+
+    backdrop-filter:blur(18px);
+
+}
+
+.logo{
+
+    color:var(--blue);
+
+    font-size:23px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+
+}
+
+.subtitle{
+
+    margin-top:6px;
+
+    font-size:12px;
+
+    opacity:.65;
+
+}
+
+.balance{
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    padding:9px 18px;
+
+    border-radius:20px;
+
+    background:
+        rgba(0,210,255,.08);
+
+    border:
+        1px solid
+        rgba(0,210,255,.3);
+
+    color:var(--blue);
+
+    font-size:13px;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+
+    width:100%;
+
+    max-width:700px;
+
+    margin:auto;
+
+    padding:20px;
+
+}
+
+.section-title{
+
+    font-size:17px;
+
+    margin:5px 0 16px;
+
+    letter-spacing:1px;
+
+}
+
+
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:12px;
+
+}
+
+.service-card{
+
+    background:
+        var(--card);
+
+    border:
+        1px solid
+        rgba(0,210,255,.12);
+
+    border-radius:19px;
+
+    padding:17px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.25);
+
+    backdrop-filter:blur(12px);
+
+    transition:.2s;
+
+}
+
+.service-card:active{
+
+    transform:scale(.97);
+
+}
+
+.service-icon{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:14px;
+
+    background:
+        rgba(0,210,255,.10);
+
+    border:
+        1px solid
+        rgba(0,210,255,.2);
+
+    font-size:25px;
+
+    margin-bottom:12px;
+
+}
+
+.service-name{
+
+    color:var(--blue);
+
+    font-weight:900;
+
+    font-size:15px;
+
+}
+
+.service-desc{
+
+    font-size:11px;
+
+    opacity:.62;
+
+    line-height:1.45;
+
+    min-height:32px;
+
+    margin-top:5px;
+
+}
+
+.service-price{
+
+    margin-top:12px;
+
+    font-size:17px;
+
+    font-weight:900;
+
+}
+
+.buy-btn{
+
+    width:100%;
+
+    margin-top:12px;
+
+    padding:11px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:var(--blue);
+
+    color:#001018;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    font-size:12px;
+
+}
+
+.buy-btn:active{
+
+    transform:scale(.96);
+
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        rgba(0,0,0,.78);
+
+    z-index:2000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px;
+
+}
+
+.modal.show{
+
+    display:flex;
+
+}
+
+.modal-box{
+
+    width:100%;
+
+    max-width:500px;
+
+    max-height:
+        92vh;
+
+    overflow-y:auto;
+
+    background:
+        #07101e;
+
+    border:
+        1px solid
+        var(--blue);
+
+    border-radius:23px;
+
+    padding:22px;
+
+    box-shadow:
+        0 0 35px
+        rgba(0,210,255,.25);
+
+}
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.modal-title{
+
+    color:var(--blue);
+
+    font-size:19px;
+
+    font-weight:900;
+
+}
+
+.close{
+
+    width:35px;
+
+    height:35px;
+
+    border-radius:50%;
+
+    border:1px solid #444;
+
+    background:#111;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-group{
+
+    margin-bottom:13px;
+
+}
+
+.form-group label{
+
+    display:block;
+
+    font-size:12px;
+
+    opacity:.75;
+
+    margin-bottom:6px;
+
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+
+    width:100%;
+
+    padding:13px;
+
+    border-radius:11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:#03070d;
+
+    color:white;
+
+    outline:none;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+}
+
+.form-group textarea{
+
+    min-height:100px;
+
+    resize:vertical;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+
+    border-color:
+        var(--blue);
+
+}
+
+
+/* =========================
+   FORM INFO
+========================= */
+
+.order-summary{
+
+    background:
+        rgba(0,210,255,.06);
+
+    border:
+        1px dashed
+        rgba(0,210,255,.3);
+
+    border-radius:13px;
+
+    padding:14px;
+
+    margin-bottom:17px;
+
+}
+
+.summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:13px;
+
+    margin:5px 0;
+
+}
+
+.summary-row strong{
+
+    color:var(--blue);
+
+}
+
+.submit-order{
+
+    width:100%;
+
+    padding:15px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--blue2)
+        );
+
+    color:white;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+}
+
+.submit-order:disabled{
+
+    background:#444;
+
+    color:#aaa;
+
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status{
+
+    min-height:18px;
+
+    text-align:center;
+
+    font-size:12px;
+
+    margin-top:10px;
+
+}
+
+.success{
+
+    color:var(--green);
+
+}
+
+.error{
+
+    color:var(--red);
+
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    height:72px;
+
+    z-index:1000;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    background:
+        rgba(5,10,20,.97);
+
+    border-top:
+        1px solid
+        rgba(0,210,255,.3);
+
+    backdrop-filter:blur(18px);
+
+}
+
+.nav-link{
+
+    color:white;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    font-size:11px;
+
+    opacity:.5;
+
+}
+
+.nav-link span{
+
+    display:block;
+
+    font-size:21px;
+
+    margin-bottom:3px;
+
+}
+
+.nav-link.active{
+
+    color:var(--blue);
+
+    opacity:1;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:430px){
+
+    .services{
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+    .container{
+
+        padding:14px;
+
+    }
+
+    .service-card{
+
+        padding:14px;
+
+    }
+
+}
+
+</style>
+
 </head>
+
+
 <body>
 
-<div class="header">
-    <h1 style="margin:0; letter-spacing:3px; font-size: 20px;">STATIONS SATELLITES</h1>
-    <div class="balance-info">SOLDE: <span id="currentBalance">0</span> FC</div>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="logo">
+        JASON BUSINESS
+    </div>
+
+    <div class="subtitle">
+        WEB • DESIGN • DIGITAL • IA
+    </div>
+
+    <div class="balance">
+
+        💰 Solde :
+        <span id="balance">
+            0
+        </span>
+        FC
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<main class="container">
+
+    <h2 class="section-title">
+        🛍️ Nos services
+    </h2>
+
+    <div
+        class="services"
+        id="servicesContainer">
+    </div>
+
+</main>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="orderModal">
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <div
+                class="modal-title"
+                id="modalTitle">
+
+                Commander
+
+            </div>
+
+            <button
+                class="close"
+                id="closeModal">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="order-summary">
+
+            <div class="summary-row">
+
+                <span>
+                    Service
+                </span>
+
+                <strong id="summaryService">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Prix
+                </span>
+
+                <strong>
+                    <span id="summaryPrice">
+                        0
+                    </span>
+                    FC
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Votre solde
+                </span>
+
+                <strong>
+                    <span id="summaryBalance">
+                        0
+                    </span>
+                    FC
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <form id="orderForm">
+
+            <div id="dynamicFields">
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-order"
+                id="submitOrder">
+
+                🛒 CONFIRMER LA COMMANDE
+
+            </button>
+
+
+            <div
+                class="status"
+                id="orderStatus">
+
+            </div>
+
+        </form>
+
+    </div>
+
 </div>
 
-<div class="container" id="shop-container"></div>
+
+<!-- =========================
+     NAVBAR
+========================= -->
 
 <nav class="navbar">
-    <a href="dashboard.html" class="nav-link">📊<br>Dash</a>
-    <a href="shop.html" class="nav-link active">📡<br>Shop</a>
-    <a href="equipe.html" class="nav-link">👥<br>Equipe</a>
-    <a href="profil.html" class="nav-link">👤<br>Profil</a>
+
+    <a
+        href="dashboard.html"
+        class="nav-link">
+
+        <span>📊</span>
+        Dash
+
+    </a>
+
+
+    <a
+        href="shop.html"
+        class="nav-link active">
+
+        <span>🛒</span>
+        Boutique
+
+    </a>
+
+
+    <a
+        href="equipe.html"
+        class="nav-link">
+
+        <span>👥</span>
+        Equipe
+
+    </a>
+
+
+    <a
+        href="profil.html"
+        class="nav-link">
+
+        <span>👤</span>
+        Profil
+
+    </a>
+
 </nav>
 
+
 <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase, ref, get, update, push, set, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    // NOUVELLE CONFIGURATION STARLINK INVESTIT
-    const firebaseConfig = {
-        apiKey: "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
-        authDomain: "starlink-investit.firebaseapp.com",
-        databaseURL: "https://starlink-investit-default-rtdb.firebaseio.com",
-        projectId: "starlink-investit",
-        storageBucket: "starlink-investit.firebasestorage.app",
-        messagingSenderId: "807081599583",
-        appId: "1:807081599583:web:e00ec3959bc4acdae031ea"
-    };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const userPhone = localStorage.getItem("userPhone");
+/* ==========================================
+   FIREBASE
+========================================== */
 
-    if(!userPhone) window.location.href = "login.html";
+import {
 
-    const mesProduits = [
-        { id: "p1", nom: "START", prix: 5000, gain: 2000, icon: "📡" },
-        { id: "p2", nom: "MINI", prix: 18000, gain: 4600, icon: "🛰️" },
-        { id: "p3", nom: "PRO", prix: 65000, gain: 12000, icon: "🚀" },
-        { id: "p4", nom: "ENTERPRISE", prix: 260000, gain: 42000, icon: "🌌" },
-        { id: "p5", nom: "STATION V3", prix: 470000, gain: 120000, icon: "🛸" },
-        { id: "p6", nom: "ELITE X", prix: 1000000, gain: 350000, icon: "☄️" },
-        { id: "p7", nom: "GALAXY MAX", prix: 2500000, gain: 480000, icon: "💎" }
-    ];
+    initializeApp
 
-    onValue(ref(db, 'users/' + userPhone), (snap) => {
-        const data = snap.val();
-        if(data) {
-            const solde = data.solde_principal || 0;
-            document.getElementById("currentBalance").innerText = solde.toLocaleString();
-            renderShop(solde);
-        }
-    });
+} from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
-    function renderShop(userSolde) {
-        const container = document.getElementById("shop-container");
-        container.innerHTML = "";
-        mesProduits.forEach(p => {
-            const card = document.createElement("div");
-            card.className = "product-card";
-            const canAfford = userSolde >= p.prix;
-            card.innerHTML = `
-                <div class="product-img">${p.icon}</div>
-                <div class="product-info">
-                    <div class="p-name">STARLINK ${p.nom}</div>
-                    <div class="p-price">${p.prix.toLocaleString()} FC</div>
-                    <div class="p-gain">+${p.gain.toLocaleString()} FC / J</div>
-                </div>
-                <button class="btn-buy ${canAfford ? '' : 'locked'}" id="btn-${p.id}">
-                    ${canAfford ? 'ACTIVER' : 'RECHARGER'}
-                </button>
-            `;
-            container.appendChild(card);
-            document.getElementById(`btn-${p.id}`).onclick = () => {
-                if(!canAfford) { alert("❌ Solde insuffisant !"); }
-                else { tenterAchat(p); }
-            };
-        });
-    }
 
-    async function tenterAchat(produit) {
-        if (!confirm("Activer " + produit.nom + " ?")) return;
-        
-        const userRef = ref(db, 'users/' + userPhone);
-        const snap = await get(userRef);
-        const userData = snap.val();
+import {
 
-        try {
-            // 1. Déduire le prix du solde
-            await update(userRef, { solde_principal: userData.solde_principal - produit.prix });
+    getDatabase,
+    ref,
+    onValue,
+    runTransaction,
+    push,
+    set
 
-            // 2. Ajouter la machine
-            const investRef = push(ref(db, `users/${userPhone}/mes_investissements`));
-            await set(investRef, {
-                nom: produit.nom,
-                gainJournalier: produit.gain,
-                dateAchat: new Date().toISOString(),
-                dernierCollecte: new Date().toISOString()
-            });
+} from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-            // 3. BONUS PARRAINAGE (25% du prix au parrain)
-            if (userData.referredBy && userData.referredBy !== "DIRECT") {
-                const parrainPhone = userData.referredBy;
-                const bonus = produit.prix * 0.25;
-                const parrainCommRef = ref(db, `users/${parrainPhone}/solde_commissions`);
-                
-                // Utilisation de transaction pour ajouter le bonus sans erreur
-                await runTransaction(parrainCommRef, (current) => {
-                    return (current || 0) + bonus;
-                });
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
+
+    authDomain:
+    "starlink-investit.firebaseapp.com",
+
+    databaseURL:
+    "https://starlink-investit-default-rtdb.firebaseio.com",
+
+    projectId:
+    "starlink-investit",
+
+    storageBucket:
+    "starlink-investit.firebasestorage.app",
+
+    messagingSenderId:
+    "807081599583",
+
+    appId:
+    "1:807081599583:web:e00ec3959bc4acdae031ea"
+
+};
+
+
+const app =
+    initializeApp(firebaseConfig);
+
+const db =
+    getDatabase(app);
+
+
+/* ==========================================
+   SESSION
+========================================== */
+
+const userPhone =
+    localStorage.getItem("userPhone");
+
+
+if(!userPhone){
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* ==========================================
+   USER
+========================================== */
+
+const userRef =
+    ref(
+        db,
+        "users/" + userPhone
+    );
+
+
+let currentBalance = 0;
+
+let selectedService = null;
+
+
+/* ==========================================
+   SERVICES
+========================================== */
+
+const services = [
+
+    {
+        id:"application",
+
+        icon:"📱",
+
+        name:"Application",
+
+        price:10000,
+
+        description:
+        "Création d'une application mobile adaptée à votre projet.",
+
+        fields:[
+            {
+                name:"nomProjet",
+                label:"Nom de l'application",
+                type:"text",
+                placeholder:
+                "Ex : DAVBOT Shop",
+                required:true
+            },
+            {
+                name:"typeApplication",
+                label:"Type d'application",
+                type:"select",
+                options:[
+                    "Android",
+                    "iPhone / iOS",
+                    "Android + iOS"
+                ],
+                required:true
+            },
+            {
+                name:"objectif",
+                label:"But de l'application",
+                type:"textarea",
+                placeholder:
+                "Expliquez ce que doit faire votre application...",
+                required:true
+            },
+            {
+                name:"fonctionnalites",
+                label:"Fonctionnalités souhaitées",
+                type:"textarea",
+                placeholder:
+                "Connexion, paiement, boutique, chat, notifications...",
+                required:true
+            },
+            {
+                name:"couleurs",
+                label:"Couleurs / style",
+                type:"text",
+                placeholder:
+                "Ex : noir et bleu",
+                required:false
+            },
+            {
+                name:"contact",
+                label:"Contact pour le projet",
+                type:"text",
+                placeholder:
+                "WhatsApp, téléphone ou email",
+                required:true
             }
 
-            alert("🚀 Satellite activé !");
-            window.location.href = "dashboard.html";
-        } catch (e) { alert("Erreur satellite."); }
+        ]
+
+    },
+
+
+    {
+        id:"site",
+
+        icon:"🌐",
+
+        name:"Site web",
+
+        price:15000,
+
+        description:
+        "Création d'un site web moderne pour votre activité.",
+
+        fields:[
+            {
+                name:"nomSite",
+                label:"Nom du site",
+                type:"text",
+                placeholder:
+                "Ex : Jason Business",
+                required:true
+            },
+            {
+                name:"typeSite",
+                label:"Type de site",
+                type:"select",
+                options:[
+                    "Site vitrine",
+                    "Boutique en ligne",
+                    "Portfolio",
+                    "Blog",
+                    "Plateforme web",
+                    "Autre"
+                ],
+                required:true
+            },
+            {
+                name:"objectif",
+                label:"Objectif du site",
+                type:"textarea",
+                placeholder:
+                "Présentez votre activité et le but du site...",
+                required:true
+            },
+            {
+                name:"pages",
+                label:"Pages souhaitées",
+                type:"textarea",
+                placeholder:
+                "Accueil, Services, Boutique, Contact...",
+                required:true
+            },
+            {
+                name:"fonctionnalites",
+                label:"Fonctionnalités",
+                type:"textarea",
+                placeholder:
+                "Paiement, connexion, formulaire, Firebase...",
+                required:false
+            },
+            {
+                name:"contact",
+                label:"Votre contact",
+                type:"text",
+                placeholder:
+                "WhatsApp / téléphone / email",
+                required:true
+            }
+
+        ]
+
+    },
+
+
+    {
+        id:"chanson",
+
+        icon:"🎵",
+
+        name:"Chanson",
+
+        price:5000,
+
+        description:
+        "Création d'une chanson personnalisée selon votre idée.",
+
+        fields:[
+            {
+                name:"titre",
+                label:"Titre de la chanson",
+                type:"text",
+                placeholder:
+                "Ex : Mon histoire",
+                required:true
+            },
+            {
+                name:"artiste",
+                label:"Nom / artiste",
+                type:"text",
+                placeholder:
+                "Nom à utiliser",
+                required:true
+            },
+            {
+                name:"style",
+                label:"Style musical",
+                type:"select",
+                options:[
+                    "Afrobeat",
+                    "Rap",
+                    "Drill",
+                    "R&B",
+                    "Gospel",
+                    "Amapiano",
+                    "Romantique",
+                    "Autre"
+                ],
+                required:true
+            },
+            {
+                name:"theme",
+                label:"Thème",
+                type:"textarea",
+                placeholder:
+                "Sujet et histoire de la chanson...",
+                required:true
+            },
+            {
+                name:"paroles",
+                label:"Paroles / idées",
+                type:"textarea",
+                placeholder:
+                "Ajoutez vos paroles ou quelques phrases...",
+                required:false
+            },
+            {
+                name:"contact",
+                label:"Contact",
+                type:"text",
+                placeholder:
+                "WhatsApp / téléphone",
+                required:true
+            }
+
+        ]
+
+    },
+
+
+    {
+        id:"logo",
+
+        icon:"🎨",
+
+        name:"Logo",
+
+        price:3000,
+
+        description:
+        "Création d'un logo professionnel pour votre marque.",
+
+        fields:[
+            {
+                name:"nomMarque",
+                label:"Nom de la marque",
+                type:"text",
+                placeholder:
+                "Ex : JASON BUSINESS",
+                required:true
+            },
+            {
+                name:"slogan",
+                label:"Slogan",
+                type:"text",
+                placeholder:
+                "Ex : Innovation digitale",
+                required:false
+            },
+            {
+                name:"style",
+                label:"Style du logo",
+                type:"select",
+                options:[
+                    "Moderne",
+                    "Minimaliste",
+                    "Premium",
+                    "Technologique",
+                    "Gaming",
+                    "Business",
+                    "Autre"
+                ],
+                required:true
+            },
+            {
+                name:"couleurs",
+                label:"Couleurs souhaitées",
+                type:"text",
+                placeholder:
+                "Ex : bleu, noir et blanc",
+                required:true
+            },
+            {
+                name:"description",
+                label:"Description / idée",
+                type:"textarea",
+                placeholder:
+                "Décrivez le logo que vous souhaitez...",
+                required:true
+            },
+            {
+                name:"contact",
+                label:"Contact",
+                type:"text",
+                placeholder:
+                "WhatsApp / téléphone",
+                required:true
+            }
+
+        ]
+
+    },
+
+
+    {
+        id:"affiche",
+
+        icon:"🖼️",
+
+        name:"Affiche",
+
+        price:3000,
+
+        description:
+        "Création d'affiches publicitaires et visuels professionnels.",
+
+        fields:[
+            {
+                name:"titre",
+                label:"Titre de l'affiche",
+                type:"text",
+                placeholder:
+                "Ex : Grande promotion",
+                required:true
+            },
+            {
+                name:"texte",
+                label:"Texte à afficher",
+                type:"textarea",
+                placeholder:
+                "Toutes les informations à mettre sur l'affiche...",
+                required:true
+            },
+            {
+                name:"format",
+                label:"Format",
+                type:"select",
+                options:[
+                    "WhatsApp / Instagram",
+                    "Facebook",
+                    "Story",
+                    "Flyer",
+                    "Affiche imprimable",
+                    "Autre"
+                ],
+                required:true
+            },
+            {
+                name:"couleurs",
+                label:"Couleurs",
+                type:"text",
+                placeholder:
+                "Ex : rouge et blanc",
+                required:false
+            },
+            {
+                name:"contact",
+                label:"Contact à afficher",
+                type:"text",
+                placeholder:
+                "Téléphone / WhatsApp / adresse",
+                required:true
+            }
+
+        ]
+
+    },
+
+
+    {
+        id:"video",
+
+        icon:"🎬",
+
+        name:"Vidéo",
+
+        price:8000,
+
+        description:
+        "Montage et création de vidéos pour votre communication.",
+
+        fields:[
+            {
+                name:"titre",
+                label:"Titre / nom du projet",
+                type:"text",
+                placeholder:
+                "Ex : Publicité JASON",
+                required:true
+            },
+            {
+                name:"typeVideo",
+                label:"Type de vidéo",
+                type:"select",
+                options:[
+                    "Publicité",
+                    "TikTok / Reel",
+                    "YouTube",
+                    "Présentation",
+                    "Clip musical",
+                    "Autre"
+                ],
+                required:true
+            },
+            {
+                name:"objectif",
+                label:"Objectif",
+                type:"textarea",
+                placeholder:
+                "Que doit présenter la vidéo ?",
+                required:true
+            },
+            {
+                name:"duree",
+                label:"Durée souhaitée",
+                type:"text",
+                placeholder:
+                "Ex : 30 secondes",
+                required:true
+            },
+            {
+                name:"contenu",
+                label:"Contenu disponible",
+                type:"textarea",
+                placeholder:
+                "Photos, vidéos, textes, logo, musique...",
+                required:true
+            },
+            {
+                name:"contact",
+                label:"Contact",
+                type:"text",
+                placeholder:
+                "WhatsApp / téléphone",
+                required:true
+            }
+
+        ]
+
+    },
+
+
+    {
+        id:"chatbot",
+
+        icon:"🤖",
+
+        name:"Chatbot",
+
+        price:7000,
+
+        description:
+        "Création d'un chatbot intelligent pour votre activité.",
+
+        fields:[
+            {
+                name:"nomBot",
+                label:"Nom du chatbot",
+                type:"text",
+                placeholder:
+                "Ex : DAVBOT AI",
+                required:true
+            },
+            {
+                name:"plateforme",
+                label:"Plateforme",
+                type:"select",
+                options:[
+                    "Site web",
+                    "WhatsApp",
+                    "Telegram",
+                    "Facebook",
+                    "Application",
+                    "Autre"
+                ],
+                required:true
+            },
+            {
+                name:"role",
+                label:"Rôle du chatbot",
+                type:"textarea",
+                placeholder:
+                "Que doit faire votre chatbot ?",
+                required:true
+            },
+            {
+                name:"fonctions",
+                label:"Fonctionnalités",
+                type:"textarea",
+                placeholder:
+                "Réponses automatiques, commandes, IA, support...",
+                required:true
+            },
+            {
+                name:"api",
+                label:"API / service utilisé",
+                type:"text",
+                placeholder:
+                "Facultatif",
+                required:false
+            },
+            {
+                name:"contact",
+                label:"Contact",
+                type:"text",
+                placeholder:
+                "WhatsApp / téléphone / email",
+                required:true
+            }
+
+        ]
+
+    },
+
+
+    {
+        id:"api",
+
+        icon:"🔌",
+
+        name:"API",
+
+        price:10000,
+
+        description:
+        "Création ou intégration d'une API personnalisée.",
+
+        fields:[
+            {
+                name:"nomApi",
+                label:"Nom de l'API",
+                type:"text",
+                placeholder:
+                "Ex : Jason API",
+                required:true
+            },
+            {
+                name:"objectif",
+                label:"But de l'API",
+                type:"textarea",
+                placeholder:
+                "Expliquez précisément ce que l'API doit faire...",
+                required:true
+            },
+            {
+                name:"endpoints",
+                label:"Endpoints souhaités",
+                type:"textarea",
+                placeholder:
+                "Ex : /users, /login, /products...",
+                required:false
+            },
+            {
+                name:"technologie",
+                label:"Technologie souhaitée",
+                type:"select",
+                options:[
+                    "Node.js",
+                    "PHP",
+                    "Python",
+                    "JavaScript",
+                    "Firebase",
+                    "Autre"
+                ],
+                required:true
+            },
+            {
+                name:"hebergement",
+                label:"Hébergement",
+                type:"text",
+                placeholder:
+                "Vercel, Render, serveur, autre...",
+                required:false
+            },
+            {
+                name:"contact",
+                label:"Contact",
+                type:"text",
+                placeholder:
+                "WhatsApp / téléphone / email",
+                required:true
+            }
+
+        ]
+
+    },
+
+
+    {
+        id:"cv",
+
+        icon:"📄",
+
+        name:"CV",
+
+        price:3000,
+
+        description:
+        "Création d'un CV professionnel et moderne.",
+
+        fields:[
+            {
+                name:"nom",
+                label:"Nom complet",
+                type:"text",
+                placeholder:
+                "Votre nom complet",
+                required:true
+            },
+            {
+                name:"poste",
+                label:"Poste recherché",
+                type:"text",
+                placeholder:
+                "Ex : Développeur web",
+                required:true
+            },
+            {
+                name:"experience",
+                label:"Expériences",
+                type:"textarea",
+                placeholder:
+                "Vos expériences professionnelles...",
+                required:true
+            },
+            {
+                name:"formation",
+                label:"Formation",
+                type:"textarea",
+                placeholder:
+                "Études, diplômes, formations...",
+                required:true
+            },
+            {
+                name:"competences",
+                label:"Compétences",
+                type:"textarea",
+                placeholder:
+                "Vos compétences...",
+                required:true
+            },
+            {
+                name:"contact",
+                label:"Contact",
+                type:"text",
+                placeholder:
+                "Téléphone / email",
+                required:true
+            }
+
+        ]
+
+    },
+
+
+    {
+        id:"redaction",
+
+        icon:"✍️",
+
+        name:"Rédaction",
+
+        price:2000,
+
+        description:
+        "Rédaction de textes professionnels et personnalisés.",
+
+        fields:[
+            {
+                name:"typeTexte",
+                label:"Type de texte",
+                type:"select",
+                options:[
+                    "Article",
+                    "Publicité",
+                    "Description produit",
+                    "Lettre",
+                    "Présentation",
+                    "Publication réseaux sociaux",
+                    "Autre"
+                ],
+                required:true
+            },
+            {
+                name:"sujet",
+                label:"Sujet",
+                type:"text",
+                placeholder:
+                "Sujet du texte",
+                required:true
+            },
+            {
+                name:"objectif",
+                label:"Objectif",
+                type:"textarea",
+                placeholder:
+                "But du texte et public ciblé...",
+                required:true
+            },
+            {
+                name:"instructions",
+                label:"Instructions",
+                type:"textarea",
+                placeholder:
+                "Ton, longueur, informations importantes...",
+                required:true
+            },
+            {
+                name:"contact",
+                label:"Contact",
+                type:"text",
+                placeholder:
+                "WhatsApp / email",
+                required:true
+            }
+
+        ]
+
+    },
+
+
+    {
+        id:"traduction",
+
+        icon:"🌍",
+
+        name:"Traduction",
+
+        price:2000,
+
+        description:
+        "Traduction professionnelle de vos textes.",
+
+        fields:[
+            {
+                name:"langueSource",
+                label:"Langue source",
+                type:"text",
+                placeholder:
+                "Ex : Français",
+                required:true
+            },
+            {
+                name:"langueCible",
+                label:"Langue cible",
+                type:"text",
+                placeholder:
+                "Ex : Anglais",
+                required:true
+            },
+            {
+                name:"texte",
+                label:"Texte à traduire",
+                type:"textarea",
+                placeholder:
+                "Collez votre texte ici...",
+                required:true
+            },
+            {
+                name:"contexte",
+                label:"Contexte / précision",
+                type:"textarea",
+                placeholder:
+                "Contexte professionnel, scolaire, commercial...",
+                required:false
+            },
+            {
+                name:"contact",
+                label:"Contact",
+                type:"text",
+                placeholder:
+                "WhatsApp / email",
+                required:true
+            }
+
+        ]
+
+    },
+
+
+    {
+        id:"correction",
+
+        icon:"🛠️",
+
+        name:"Correction",
+
+        price:5000,
+
+        description:
+        "Correction et amélioration de vos documents et textes.",
+
+        fields:[
+            {
+                name:"typeDocument",
+                label:"Type de document",
+                type:"select",
+                options:[
+                    "Texte",
+                    "CV",
+                    "Article",
+                    "Rapport",
+                    "Mémoire",
+                    "Publication",
+                    "Autre"
+                ],
+                required:true
+            },
+            {
+                name:"objectif",
+                label:"Objectif de la correction",
+                type:"textarea",
+                placeholder:
+                "Orthographe, grammaire, style, reformulation...",
+                required:true
+            },
+            {
+                name:"texte",
+                label:"Texte à corriger",
+                type:"textarea",
+                placeholder:
+                "Collez votre texte ici...",
+                required:true
+            },
+            {
+                name:"instructions",
+                label:"Instructions supplémentaires",
+                type:"textarea",
+                placeholder:
+                "Précisions particulières...",
+                required:false
+            },
+            {
+                name:"contact",
+                label:"Contact",
+                type:"text",
+                placeholder:
+                "WhatsApp / email",
+                required:true
+            }
+
+        ]
+
     }
+
+];
+
+
+/* ==========================================
+   FORMAT
+========================================== */
+
+function formatFC(value){
+
+    return Math.floor(
+        Number(value) || 0
+    ).toLocaleString("fr-FR");
+
+}
+
+
+/* ==========================================
+   AFFICHAGE SOLDE
+========================================== */
+
+onValue(
+
+    userRef,
+
+    snapshot=>{
+
+        if(!snapshot.exists())
+            return;
+
+
+        const data =
+            snapshot.val();
+
+
+        currentBalance =
+            Number(
+                data.solde_principal
+            ) || 0;
+
+
+        document.getElementById(
+            "balance"
+        ).innerText =
+            formatFC(
+                currentBalance
+            );
+
+    }
+
+);
+
+
+/* ==========================================
+   AFFICHER SERVICES
+========================================== */
+
+const servicesContainer =
+    document.getElementById(
+        "servicesContainer"
+    );
+
+
+services.forEach(service=>{
+
+    const card =
+        document.createElement("div");
+
+
+    card.className =
+        "service-card";
+
+
+    card.innerHTML = `
+
+        <div class="service-icon">
+            ${service.icon}
+        </div>
+
+        <div class="service-name">
+            ${service.name}
+        </div>
+
+        <div class="service-desc">
+            ${service.description}
+        </div>
+
+        <div class="service-price">
+            ${formatFC(service.price)} FC
+        </div>
+
+        <button
+            class="buy-btn"
+            data-id="${service.id}">
+
+            COMMANDER
+
+        </button>
+
+    `;
+
+
+    servicesContainer.appendChild(card);
+
+});
+
+
+/* ==========================================
+   OUVRIR FORMULAIRE
+========================================== */
+
+servicesContainer
+.addEventListener(
+    "click",
+    event=>{
+
+        const button =
+            event.target.closest(
+                ".buy-btn"
+            );
+
+
+        if(!button)
+            return;
+
+
+        const service =
+            services.find(
+                item =>
+                item.id ===
+                button.dataset.id
+            );
+
+
+        if(!service)
+            return;
+
+
+        selectedService =
+            service;
+
+
+        openOrderForm(service);
+
+    }
+);
+
+
+/* ==========================================
+   CREATION DU FORMULAIRE
+========================================== */
+
+function openOrderForm(service){
+
+    document.getElementById(
+        "modalTitle"
+    ).innerText =
+        "Commander — " +
+        service.name;
+
+
+    document.getElementById(
+        "summaryService"
+    ).innerText =
+        service.name;
+
+
+    document.getElementById(
+        "summaryPrice"
+    ).innerText =
+        formatFC(service.price);
+
+
+    document.getElementById(
+        "summaryBalance"
+    ).innerText =
+        formatFC(currentBalance);
+
+
+    const fields =
+        document.getElementById(
+            "dynamicFields"
+        );
+
+
+    fields.innerHTML = "";
+
+
+    service.fields.forEach(field=>{
+
+        const group =
+            document.createElement(
+                "div"
+            );
+
+
+        group.className =
+            "form-group";
+
+
+        let inputHTML = "";
+
+
+        if(field.type === "textarea"){
+
+            inputHTML = `
+
+                <textarea
+                    name="${field.name}"
+                    placeholder="${field.placeholder || ""}"
+                    ${field.required ? "required" : ""}
+                ></textarea>
+
+            `;
+
+        }
+
+        else if(field.type === "select"){
+
+            inputHTML = `
+
+                <select
+                    name="${field.name}"
+                    ${field.required ? "required" : ""}
+                >
+
+                    <option value="">
+                        Sélectionner
+                    </option>
+
+                    ${
+                        field.options
+                        .map(option=>`
+                            <option value="${option}">
+                                ${option}
+                            </option>
+                        `)
+                        .join("")
+                    }
+
+                </select>
+
+            `;
+
+        }
+
+        else{
+
+            inputHTML = `
+
+                <input
+                    type="${field.type}"
+                    name="${field.name}"
+                    placeholder="${field.placeholder || ""}"
+                    ${field.required ? "required" : ""}
+                >
+
+            `;
+
+        }
+
+
+        group.innerHTML = `
+
+            <label>
+                ${field.label}
+                ${field.required ? "*" : ""}
+            </label>
+
+            ${inputHTML}
+
+        `;
+
+
+        fields.appendChild(group);
+
+    });
+
+
+    document.getElementById(
+        "orderStatus"
+    ).innerText = "";
+
+
+    document.getElementById(
+        "orderModal"
+    ).classList.add("show");
+
+}
+
+
+/* ==========================================
+   FERMER
+========================================== */
+
+function closeModal(){
+
+    document.getElementById(
+        "orderModal"
+    ).classList.remove("show");
+
+    selectedService =
+        null;
+
+}
+
+
+document.getElementById(
+    "closeModal"
+).onclick =
+    closeModal;
+
+
+document.getElementById(
+    "orderModal"
+).addEventListener(
+    "click",
+    event=>{
+
+        if(
+            event.target.id ===
+            "orderModal"
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* ==========================================
+   ENVOYER COMMANDE
+========================================== */
+
+document.getElementById(
+    "orderForm"
+).addEventListener(
+    "submit",
+    async event=>{
+
+        event.preventDefault();
+
+
+        if(!selectedService)
+            return;
+
+
+        const status =
+            document.getElementById(
+                "orderStatus"
+            );
+
+
+        const button =
+            document.getElementById(
+                "submitOrder"
+            );
+
+
+        button.disabled =
+            true;
+
+
+        button.innerText =
+            "⏳ TRAITEMENT...";
+
+
+        status.className =
+            "status";
+
+
+        status.innerText =
+            "Vérification du solde...";
+
+
+        try{
+
+            /*
+             * ==========================
+             * TRANSACTION SOLDE
+             * ==========================
+             *
+             * Le prix est retiré
+             * de manière atomique.
+             */
+
+            const transactionResult =
+                await runTransaction(
+                    userRef,
+                    data=>{
+
+                        if(data === null){
+
+                            return;
+
+                        }
+
+
+                        const balance =
+                            Number(
+                                data.solde_principal
+                            ) || 0;
+
+
+                        if(
+                            balance <
+                            selectedService.price
+                        ){
+
+                            return;
+
+                        }
+
+
+                        data.solde_principal =
+                            balance -
+                            selectedService.price;
+
+
+                        return data;
+
+                    }
+                );
+
+
+            if(
+                !transactionResult.committed
+            ){
+
+                throw new Error(
+                    "SOLDE_INSUFFISANT"
+                );
+
+            }
+
+
+            /* ==========================
+               RECUPERATION FORMULAIRE
+            ========================== */
+
+            const formData =
+                new FormData(
+                    document.getElementById(
+                        "orderForm"
+                    )
+                );
+
+
+            const details = {};
+
+
+            for(
+                const [key,value]
+                of formData.entries()
+            ){
+
+                details[key] =
+                    String(value).trim();
+
+            }
+
+
+            /* ==========================
+               CREATION COMMANDE
+            ========================== */
+
+            const ordersRef =
+                ref(
+                    db,
+                    "commandes"
+                );
+
+
+            const newOrder =
+                push(
+                    ordersRef
+                );
+
+
+            await set(
+                newOrder,
+                {
+
+                    id:
+                        newOrder.key,
+
+                    telephone:
+                        userPhone,
+
+                    serviceId:
+                        selectedService.id,
+
+                    service:
+                        selectedService.name,
+
+                    prix:
+                        selectedService.price,
+
+                    details:
+                        details,
+
+                    statut:
+                        "En attente",
+
+                    date:
+                        new Date().toISOString(),
+
+                    remboursementEffectue:
+                        false
+
+                }
+            );
+
+
+            status.className =
+                "status success";
+
+
+            status.innerText =
+                "✅ Commande envoyée à l'administration.";
+
+
+            button.innerText =
+                "COMMANDE ENVOYÉE";
+
+
+            /*
+             * Petite pause pour laisser
+             * le message apparaître.
+             */
+
+            setTimeout(
+                ()=>{
+
+                    window.location.href =
+                        "dashboard.html";
+
+                },
+                1400
+            );
+
+
+        }
+
+        catch(error){
+
+            console.error(
+                "Erreur commande :",
+                error
+            );
+
+
+            /*
+             * Si la commande Firebase
+             * n'a pas pu être créée après
+             * le débit, il faut prévoir
+             * une restauration du solde.
+             *
+             * On restaure ici le montant
+             * pour éviter de débiter
+             * l'utilisateur sans commande.
+             */
+
+            try{
+
+                await runTransaction(
+                    userRef,
+                    data=>{
+
+                        if(data === null)
+                            return;
+
+
+                        const balance =
+                            Number(
+                                data.solde_principal
+                            ) || 0;
+
+
+                        data.solde_principal =
+                            balance +
+                            selectedService.price;
+
+
+                        return data;
+
+                    }
+                );
+
+            }
+            catch(refundError){
+
+                console.error(
+                    "Erreur remboursement :",
+                    refundError
+                );
+
+            }
+
+
+            status.className =
+                "status error";
+
+
+            if(
+                error.message ===
+                "SOLDE_INSUFFISANT"
+            ){
+
+                status.innerText =
+                    "❌ Solde insuffisant. Rechargez votre compte.";
+
+            }
+            else{
+
+                status.innerText =
+                    "⚠️ Impossible d'envoyer la commande.";
+
+            }
+
+
+            button.disabled =
+                false;
+
+
+            button.innerText =
+                "🛒 CONFIRMER LA COMMANDE";
+
+        }
+
+    }
+);
+
 </script>
+
 </body>
+
 </html>

@@ -1,507 +1,1027 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#030812"
+>
 
 <title>JASON BUSINESS — ADMIN</title>
 
 <style>
 
+/* =========================================================
+   VARIABLES
+========================================================= */
+
 :root{
+
     --blue:#00d2ff;
     --blue2:#0077ff;
+
     --dark:#030812;
+    --dark2:#050d19;
+
     --card:#0a1424;
+    --card2:#0d192b;
+
     --border:rgba(0,210,255,.2);
+
     --green:#00e676;
     --red:#ff4757;
     --orange:#ff9800;
     --yellow:#ffd740;
+
+    --white:#ffffff;
+    --muted:rgba(255,255,255,.55);
+
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
+
     margin:0;
-    font-family:Segoe UI,Arial,sans-serif;
+
+    font-family:
+        Segoe UI,
+        Arial,
+        sans-serif;
+
     background:
-        linear-gradient(rgba(3,8,18,.94),rgba(3,8,18,.98)),
-        url("IMG_0870.jpeg") center/cover fixed;
+        linear-gradient(
+            rgba(3,8,18,.94),
+            rgba(3,8,18,.98)
+        ),
+        url("IMG_0870.jpeg")
+        center/cover fixed;
+
     color:white;
+
     min-height:100vh;
+
 }
 
 
-/* ==========================================
-   LOGIN ADMIN
-========================================== */
+/* =========================================================
+   LOGIN
+========================================================= */
 
 #adminLogin{
+
     min-height:100vh;
+
     display:flex;
-    justify-content:center;
+
     align-items:center;
+
+    justify-content:center;
+
     padding:20px;
+
 }
 
 .login-card{
+
     width:100%;
+
     max-width:390px;
-    background:rgba(5,12,25,.94);
-    border:1px solid var(--blue);
+
+    background:
+        rgba(5,12,25,.95);
+
+    border:
+        1px solid var(--blue);
+
     border-radius:25px;
+
     padding:30px;
+
     text-align:center;
-    box-shadow:0 0 40px rgba(0,210,255,.15);
-    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 0 50px
+        rgba(0,210,255,.15);
+
+    backdrop-filter:
+        blur(20px);
+
 }
 
 .login-logo{
-    width:80px;
-    height:80px;
+
+    width:85px;
+    height:85px;
+
     margin:auto;
-    border-radius:22px;
+
+    border-radius:25px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
-    background:linear-gradient(135deg,var(--blue),var(--blue2));
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--blue2)
+        );
+
     color:#001018;
-    font-size:35px;
+
+    font-size:38px;
+
     font-weight:900;
+
+    box-shadow:
+        0 0 30px
+        rgba(0,210,255,.25);
+
 }
 
 .login-card h1{
+
     color:var(--blue);
-    letter-spacing:2px;
+
+    letter-spacing:3px;
+
+    margin:
+        18px 0 5px;
+
 }
 
 .login-card p{
-    opacity:.6;
+
+    color:var(--muted);
+
     font-size:13px;
+
 }
 
 .login-card input{
+
     width:100%;
+
     padding:16px;
-    margin:12px 0;
+
+    margin:
+        10px 0;
+
     border-radius:13px;
-    border:1px solid #263247;
+
+    border:
+        1px solid #263247;
+
     background:#07101d;
+
     color:white;
+
     outline:none;
+
+    font-size:14px;
+
 }
 
 .login-card input:focus{
-    border-color:var(--blue);
+
+    border-color:
+        var(--blue);
+
+    box-shadow:
+        0 0 12px
+        rgba(0,210,255,.1);
+
 }
 
 .login-btn{
+
     width:100%;
+
     padding:16px;
+
     border:0;
+
     border-radius:13px;
-    background:var(--blue);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--blue2)
+        );
+
     color:#001018;
+
     font-weight:900;
+
     cursor:pointer;
+
+    margin-top:8px;
+
+}
+
+.login-btn:active{
+
+    transform:scale(.98);
+
 }
 
 .login-error{
+
     color:var(--red);
+
     font-size:12px;
+
     margin-top:12px;
+
 }
 
 
-/* ==========================================
-   ADMIN
-========================================== */
+/* =========================================================
+   ADMIN PANEL
+========================================================= */
 
 #adminPanel{
+
     display:none;
+
 }
 
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
 .topbar{
+
     position:sticky;
+
     top:0;
+
     z-index:100;
-    padding:15px 20px;
+
+    min-height:65px;
+
+    padding:
+        12px 20px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
-    background:rgba(3,8,18,.96);
-    border-bottom:1px solid var(--border);
-    backdrop-filter:blur(20px);
+
+    background:
+        rgba(3,8,18,.97);
+
+    border-bottom:
+        1px solid var(--border);
+
+    backdrop-filter:
+        blur(20px);
+
 }
 
 .logo{
+
     color:var(--blue);
+
     font-weight:900;
+
     letter-spacing:2px;
+
+}
+
+.logo span{
+
+    color:white;
+
+    opacity:.5;
+
 }
 
 .logout{
-    background:rgba(255,71,87,.12);
-    border:1px solid rgba(255,71,87,.4);
+
+    background:
+        rgba(255,71,87,.12);
+
+    border:
+        1px solid
+        rgba(255,71,87,.4);
+
     color:var(--red);
-    padding:9px 13px;
+
+    padding:
+        9px 13px;
+
     border-radius:10px;
+
     cursor:pointer;
+
     font-weight:bold;
+
 }
 
 
-/* ==========================================
+/* =========================================================
    LAYOUT
-========================================== */
+========================================================= */
 
 .layout{
+
     display:flex;
-    min-height:calc(100vh - 65px);
+
+    min-height:
+        calc(100vh - 65px);
+
 }
 
 .sidebar{
+
     width:240px;
+
     padding:15px;
-    background:rgba(3,9,19,.94);
-    border-right:1px solid var(--border);
+
+    background:
+        rgba(3,9,19,.95);
+
+    border-right:
+        1px solid var(--border);
+
 }
 
 .menu-btn{
+
     width:100%;
+
     padding:14px;
+
     margin-bottom:8px;
-    border:1px solid transparent;
+
+    border:
+        1px solid transparent;
+
     border-radius:12px;
+
     background:transparent;
+
     color:white;
+
     text-align:left;
+
     cursor:pointer;
+
     font-weight:bold;
+
+    transition:.2s;
+
 }
 
 .menu-btn:hover,
 .menu-btn.active{
-    background:rgba(0,210,255,.1);
-    border-color:var(--border);
+
+    background:
+        rgba(0,210,255,.1);
+
+    border-color:
+        var(--border);
+
     color:var(--blue);
+
 }
 
 .main{
+
     flex:1;
+
     padding:20px;
+
     overflow:hidden;
+
 }
 
 .page{
+
     display:none;
+
 }
 
 .page.active{
+
     display:block;
+
 }
 
 
-/* ==========================================
-   DASHBOARD
-========================================== */
+/* =========================================================
+   TITRES
+========================================================= */
 
 .page-title{
+
     margin-top:0;
+
     letter-spacing:1px;
+
 }
 
 .page-subtitle{
-    opacity:.55;
+
+    color:var(--muted);
+
     font-size:13px;
+
 }
 
+
+/* =========================================================
+   STATS
+========================================================= */
+
 .stats{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:12px;
-    margin:20px 0;
+
+    margin:
+        20px 0;
+
 }
 
 .stat-card{
+
     padding:20px;
+
     border-radius:17px;
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.07);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10,20,36,.95),
+            rgba(7,15,28,.95)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
 }
 
 .stat-card .icon{
+
     font-size:25px;
+
 }
 
 .stat-card .value{
+
     font-size:24px;
+
     font-weight:900;
+
     color:var(--blue);
+
     margin-top:8px;
+
 }
 
 .stat-card small{
-    opacity:.5;
+
+    color:var(--muted);
+
 }
 
 
-/* ==========================================
-   TABLE / CARDS
-========================================== */
+/* =========================================================
+   PANEL
+========================================================= */
 
 .panel{
-    background:rgba(8,15,28,.9);
-    border:1px solid rgba(255,255,255,.07);
+
+    background:
+        rgba(8,15,28,.92);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
     border-radius:18px;
+
     padding:18px;
+
     margin-bottom:18px;
+
 }
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
 
 .search{
+
     width:100%;
+
     padding:14px;
+
     background:#07101d;
+
     color:white;
-    border:1px solid #263247;
+
+    border:
+        1px solid #263247;
+
     border-radius:11px;
+
     margin-bottom:15px;
+
+    outline:none;
+
 }
 
+.search:focus{
+
+    border-color:var(--blue);
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
 .table-wrap{
+
+    width:100%;
+
     overflow-x:auto;
+
 }
 
 table{
+
     width:100%;
+
     border-collapse:collapse;
+
     min-width:800px;
+
 }
 
 th,
 td{
-    padding:12px 10px;
-    border-bottom:1px solid rgba(255,255,255,.06);
+
+    padding:
+        12px 10px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
+
     text-align:left;
+
     font-size:12px;
+
 }
 
 th{
+
     color:var(--blue);
+
     font-size:11px;
+
+}
+
+tr:hover td{
+
+    background:
+        rgba(0,210,255,.025);
+
 }
 
 .user-name{
+
     font-weight:bold;
+
 }
 
 .muted{
+
     opacity:.5;
+
 }
 
+
+/* =========================================================
+   BADGES
+========================================================= */
+
 .badge{
+
     display:inline-block;
-    padding:5px 8px;
+
+    padding:
+        5px 8px;
+
     border-radius:8px;
+
     font-size:10px;
+
     font-weight:bold;
+
 }
 
 .pending{
-    background:rgba(255,215,64,.1);
+
+    background:
+        rgba(255,215,64,.1);
+
     color:var(--yellow);
+
 }
 
 .success{
-    background:rgba(0,230,118,.1);
+
+    background:
+        rgba(0,230,118,.1);
+
     color:var(--green);
+
 }
 
 .danger{
-    background:rgba(255,71,87,.1);
+
+    background:
+        rgba(255,71,87,.1);
+
     color:var(--red);
+
 }
 
 
-/* ==========================================
+/* =========================================================
    BUTTONS
-========================================== */
+========================================================= */
 
 .btn{
+
     border:0;
-    padding:8px 11px;
+
+    padding:
+        8px 11px;
+
     border-radius:9px;
+
     cursor:pointer;
+
     font-weight:bold;
+
     font-size:11px;
+
     margin:2px;
+
 }
 
 .btn-blue{
+
     background:var(--blue);
+
     color:#001018;
+
 }
 
 .btn-green{
+
     background:var(--green);
+
     color:#001508;
+
 }
 
 .btn-red{
+
     background:var(--red);
+
     color:white;
+
 }
 
 .btn-orange{
+
     background:var(--orange);
+
     color:#160b00;
+
 }
 
 .btn-dark{
+
     background:#172235;
+
     color:white;
+
+}
+
+.btn:active{
+
+    transform:scale(.97);
+
 }
 
 
-/* ==========================================
+/* =========================================================
    MODAL
-========================================== */
+========================================================= */
 
 .modal{
+
     display:none;
+
     position:fixed;
+
     inset:0;
+
     z-index:500;
-    background:rgba(0,0,0,.75);
+
+    background:
+        rgba(0,0,0,.78);
+
     align-items:center;
+
     justify-content:center;
+
     padding:20px;
+
 }
 
 .modal.show{
+
     display:flex;
+
 }
 
 .modal-box{
+
     width:100%;
-    max-width:500px;
+
+    max-width:520px;
+
     max-height:90vh;
+
     overflow:auto;
+
     background:#081322;
-    border:1px solid var(--blue);
+
+    border:
+        1px solid var(--blue);
+
     border-radius:20px;
+
     padding:22px;
+
+    box-shadow:
+        0 0 40px
+        rgba(0,210,255,.15);
+
 }
 
 .modal-box h2{
+
     color:var(--blue);
+
+}
+
+.modal-close{
+
+    float:right;
+
+    cursor:pointer;
+
+    font-size:20px;
+
 }
 
 .modal-box input,
 .modal-box textarea,
 .modal-box select{
+
     width:100%;
+
     padding:13px;
+
     margin:7px 0;
+
     border-radius:10px;
+
     background:#050c17;
-    border:1px solid #263247;
+
+    border:
+        1px solid #263247;
+
     color:white;
-}
 
-.modal-close{
-    float:right;
-    cursor:pointer;
-    font-size:20px;
+    outline:none;
+
 }
 
 
-/* ==========================================
+/* =========================================================
    MESSAGE
-========================================== */
+========================================================= */
 
 .message-card{
+
     padding:15px;
+
     background:#081322;
-    border:1px solid rgba(255,255,255,.07);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
     border-radius:14px;
+
     margin-bottom:10px;
+
 }
 
 .message-head{
+
     display:flex;
+
     justify-content:space-between;
+
     gap:10px;
+
 }
 
 .message-body{
+
     margin-top:10px;
+
     white-space:pre-wrap;
+
     font-size:13px;
+
 }
 
 .file-box{
+
     margin-top:10px;
+
     padding:10px;
+
     border-radius:10px;
-    background:rgba(0,210,255,.06);
-    border:1px solid var(--border);
+
+    background:
+        rgba(0,210,255,.06);
+
+    border:
+        1px solid var(--border);
+
 }
 
 
-/* ==========================================
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty{
+
+    text-align:center;
+
+    padding:30px;
+
+    color:var(--muted);
+
+}
+
+
+/* =========================================================
    RESPONSIVE
-========================================== */
+========================================================= */
+
+@media(max-width:900px){
+
+    .stats{
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+}
 
 @media(max-width:800px){
 
     .layout{
+
         display:block;
+
     }
 
     .sidebar{
+
         width:100%;
+
         display:flex;
+
         overflow-x:auto;
+
         border-right:0;
-        border-bottom:1px solid var(--border);
+
+        border-bottom:
+            1px solid var(--border);
+
         padding:10px;
+
     }
 
     .menu-btn{
-        min-width:130px;
-        margin-right:6px;
-        margin-bottom:0;
-        text-align:center;
-    }
 
-    .stats{
-        grid-template-columns:1fr 1fr;
+        min-width:135px;
+
+        margin-right:6px;
+
+        margin-bottom:0;
+
+        text-align:center;
+
     }
 
 }
 
 @media(max-width:480px){
 
+    .topbar{
+
+        padding:
+            12px;
+
+    }
+
+    .logo{
+
+        font-size:12px;
+
+    }
+
     .main{
+
         padding:12px;
+
     }
 
     .stats{
-        grid-template-columns:1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
+
     }
 
     .stat-card{
+
         padding:14px;
+
+    }
+
+    .stat-card .value{
+
+        font-size:20px;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -530,6 +1050,7 @@ th{
             type="password"
             id="adminPassword"
             placeholder="Mot de passe administrateur"
+            autocomplete="current-password"
         >
 
         <button
@@ -556,13 +1077,17 @@ th{
 
 <section id="adminPanel">
 
+
 <header class="topbar">
 
     <div class="logo">
-        JASON BUSINESS ADMIN
+        JASON BUSINESS <span>ADMIN</span>
     </div>
 
-    <button class="logout" id="adminLogout">
+    <button
+        class="logout"
+        id="adminLogout"
+    >
         🚪 Déconnexion
     </button>
 
@@ -572,42 +1097,68 @@ th{
 <div class="layout">
 
 
-<!-- SIDEBAR -->
+<!-- ======================================================
+     SIDEBAR
+====================================================== -->
 
 <aside class="sidebar">
 
-    <button class="menu-btn active" data-page="dashboard">
+    <button
+        class="menu-btn active"
+        data-page="dashboard"
+    >
         📊 Dashboard
     </button>
 
-    <button class="menu-btn" data-page="users">
+    <button
+        class="menu-btn"
+        data-page="users"
+    >
         👥 Utilisateurs
     </button>
 
-    <button class="menu-btn" data-page="commands">
+    <button
+        class="menu-btn"
+        data-page="commands"
+    >
         🛒 Commandes
     </button>
 
-    <button class="menu-btn" data-page="recharges">
+    <button
+        class="menu-btn"
+        data-page="recharges"
+    >
         💳 Recharges
     </button>
 
-    <button class="menu-btn" data-page="withdrawals">
+    <button
+        class="menu-btn"
+        data-page="withdrawals"
+    >
         💸 Retraits
     </button>
 
-    <button class="menu-btn" data-page="messages">
+    <button
+        class="menu-btn"
+        data-page="messages"
+    >
         💬 Messages
     </button>
 
-    <button class="menu-btn" data-page="send">
-        📤 Envoyer message
+    <button
+        class="menu-btn"
+        data-page="send"
+    >
+        📤 Envoyer
     </button>
 
 </aside>
 
 
-<!-- MAIN -->
+
+<!-- ======================================================
+     MAIN
+====================================================== -->
 
 <main class="main">
 
@@ -616,40 +1167,100 @@ th{
      DASHBOARD
 ====================================================== -->
 
-<section class="page active" id="page-dashboard">
+<section
+    class="page active"
+    id="page-dashboard"
+>
 
     <h1 class="page-title">
-        Dashboard
+        📊 Dashboard
     </h1>
 
     <p class="page-subtitle">
         Vue générale de JASON BUSINESS
     </p>
 
+
     <div class="stats">
 
-        <div class="stat-card">
-            <div class="icon">👥</div>
-            <div class="value" id="statUsers">0</div>
-            <small>Utilisateurs</small>
-        </div>
 
         <div class="stat-card">
-            <div class="icon">🛒</div>
-            <div class="value" id="statCommands">0</div>
-            <small>Commandes</small>
+
+            <div class="icon">
+                👥
+            </div>
+
+            <div
+                class="value"
+                id="statUsers"
+            >
+                0
+            </div>
+
+            <small>
+                Utilisateurs
+            </small>
+
         </div>
 
-        <div class="stat-card">
-            <div class="icon">💳</div>
-            <div class="value" id="statRecharges">0</div>
-            <small>Recharges en attente</small>
-        </div>
 
         <div class="stat-card">
-            <div class="icon">💸</div>
-            <div class="value" id="statWithdrawals">0</div>
-            <small>Retraits en attente</small>
+
+            <div class="icon">
+                🛒
+            </div>
+
+            <div
+                class="value"
+                id="statCommands"
+            >
+                0
+            </div>
+
+            <small>
+                Commandes
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="icon">
+                💳
+            </div>
+
+            <div
+                class="value"
+                id="statRecharges"
+            >
+                0
+            </div>
+
+            <small>
+                Recharges en attente
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="icon">
+                💸
+            </div>
+
+            <div
+                class="value"
+                id="statWithdrawals"
+            >
+                0
+            </div>
+
+            <small>
+                Retraits en attente
+            </small>
+
         </div>
 
     </div>
@@ -657,11 +1268,17 @@ th{
 
     <div class="panel">
 
-        <h3>⚡ Administration</h3>
+        <h3>
+            ⚡ Centre d'administration
+        </h3>
 
         <p class="muted">
-            Utilise le menu pour gérer les utilisateurs,
-            commandes, recharges, retraits et messages.
+
+            Depuis ce panneau tu peux gérer
+            les utilisateurs, les commandes,
+            les recharges, les retraits et
+            les messages.
+
         </p>
 
     </div>
@@ -674,16 +1291,23 @@ th{
      USERS
 ====================================================== -->
 
-<section class="page" id="page-users">
+<section
+    class="page"
+    id="page-users"
+>
 
     <h1 class="page-title">
         👥 Utilisateurs
     </h1>
 
+    <p class="page-subtitle">
+        Gestion des comptes clients
+    </p>
+
     <input
         class="search"
         id="userSearch"
-        placeholder="Rechercher par numéro..."
+        placeholder="🔎 Rechercher par numéro ou nom..."
     >
 
     <div class="panel">
@@ -696,20 +1320,39 @@ th{
 
                     <tr>
 
-                        <th>Numéro</th>
-                        <th>Nom</th>
-                        <th>Solde</th>
-                        <th>Gains</th>
-                        <th>Commissions</th>
-                        <th>Points</th>
-                        <th>Actions</th>
+                        <th>
+                            Numéro
+                        </th>
+
+                        <th>
+                            Nom
+                        </th>
+
+                        <th>
+                            Solde
+                        </th>
+
+                        <th>
+                            Gains
+                        </th>
+
+                        <th>
+                            Commissions
+                        </th>
+
+                        <th>
+                            Points
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
 
                     </tr>
 
                 </thead>
 
                 <tbody id="usersTable">
-
                 </tbody>
 
             </table>
@@ -726,11 +1369,18 @@ th{
      COMMANDES
 ====================================================== -->
 
-<section class="page" id="page-commands">
+<section
+    class="page"
+    id="page-commands"
+>
 
     <h1 class="page-title">
         🛒 Commandes
     </h1>
+
+    <p class="page-subtitle">
+        Gestion des commandes clients
+    </p>
 
     <div class="panel">
 
@@ -741,18 +1391,24 @@ th{
                 <thead>
 
                     <tr>
+
                         <th>Date</th>
+
                         <th>Client</th>
+
                         <th>Service</th>
+
                         <th>Montant</th>
+
                         <th>Statut</th>
+
                         <th>Actions</th>
+
                     </tr>
 
                 </thead>
 
                 <tbody id="commandsTable">
-
                 </tbody>
 
             </table>
@@ -769,11 +1425,18 @@ th{
      RECHARGES
 ====================================================== -->
 
-<section class="page" id="page-recharges">
+<section
+    class="page"
+    id="page-recharges"
+>
 
     <h1 class="page-title">
         💳 Recharges
     </h1>
+
+    <p class="page-subtitle">
+        Validation des demandes de recharge
+    </p>
 
     <div class="panel">
 
@@ -784,19 +1447,26 @@ th{
                 <thead>
 
                     <tr>
+
                         <th>Date</th>
+
                         <th>Client</th>
+
                         <th>Montant</th>
+
                         <th>Méthode</th>
+
                         <th>Transaction</th>
+
                         <th>Statut</th>
+
                         <th>Actions</th>
+
                     </tr>
 
                 </thead>
 
                 <tbody id="rechargesTable">
-
                 </tbody>
 
             </table>
@@ -813,11 +1483,18 @@ th{
      RETRAITS
 ====================================================== -->
 
-<section class="page" id="page-withdrawals">
+<section
+    class="page"
+    id="page-withdrawals"
+>
 
     <h1 class="page-title">
         💸 Retraits
     </h1>
+
+    <p class="page-subtitle">
+        Gestion des demandes de retrait
+    </p>
 
     <div class="panel">
 
@@ -828,19 +1505,26 @@ th{
                 <thead>
 
                     <tr>
+
                         <th>Date</th>
+
                         <th>Client</th>
+
                         <th>Montant</th>
+
                         <th>Méthode</th>
+
                         <th>Numéro</th>
+
                         <th>Statut</th>
+
                         <th>Actions</th>
+
                     </tr>
 
                 </thead>
 
                 <tbody id="withdrawalsTable">
-
                 </tbody>
 
             </table>
@@ -857,14 +1541,17 @@ th{
      MESSAGES
 ====================================================== -->
 
-<section class="page" id="page-messages">
+<section
+    class="page"
+    id="page-messages"
+>
 
     <h1 class="page-title">
         💬 Messages utilisateurs
     </h1>
 
     <p class="page-subtitle">
-        Tous les messages reçus des utilisateurs.
+        Messages reçus depuis la plateforme
     </p>
 
     <div id="messagesList"></div>
@@ -874,10 +1561,13 @@ th{
 
 
 <!-- ======================================================
-     SEND MESSAGE
+     ENVOYER MESSAGE
 ====================================================== -->
 
-<section class="page" id="page-send">
+<section
+    class="page"
+    id="page-send"
+>
 
     <h1 class="page-title">
         📤 Envoyer un message
@@ -885,15 +1575,19 @@ th{
 
     <div class="panel">
 
-        <label>Numéro du destinataire</label>
+        <label>
+            📱 Numéro du destinataire
+        </label>
 
         <input
             class="search"
             id="messageTo"
-            placeholder="Ex: 243XXXXXXXXX"
+            placeholder="Ex : 243XXXXXXXXX"
         >
 
-        <label>Message</label>
+        <label>
+            💬 Message
+        </label>
 
         <textarea
             id="messageText"
@@ -904,9 +1598,9 @@ th{
 
         <button
             class="btn btn-blue"
-            onclick="sendAdminMessage()"
+            id="sendMessageBtn"
         >
-            📤 ENVOYER
+            📤 ENVOYER LE MESSAGE
         </button>
 
         <div id="sendStatus"></div>
@@ -925,19 +1619,26 @@ th{
 
 
 <!-- ======================================================
-     MODAL UTILISATEUR
+     MODAL USER
 ====================================================== -->
 
-<div class="modal" id="userModal">
+<div
+    class="modal"
+    id="userModal"
+>
 
     <div class="modal-box">
 
-        <span class="modal-close"
-              onclick="closeModal('userModal')">
+        <span
+            class="modal-close"
+            onclick="closeModal('userModal')"
+        >
             ✕
         </span>
 
-        <h2>👤 Gestion utilisateur</h2>
+        <h2>
+            👤 Gestion utilisateur
+        </h2>
 
         <div id="userDetails"></div>
 
@@ -951,16 +1652,23 @@ th{
      MODAL COMMANDE
 ====================================================== -->
 
-<div class="modal" id="commandModal">
+<div
+    class="modal"
+    id="commandModal"
+>
 
     <div class="modal-box">
 
-        <span class="modal-close"
-              onclick="closeModal('commandModal')">
+        <span
+            class="modal-close"
+            onclick="closeModal('commandModal')"
+        >
             ✕
         </span>
 
-        <h2>🛒 Détails commande</h2>
+        <h2>
+            🛒 Détails commande
+        </h2>
 
         <div id="commandDetails"></div>
 
@@ -972,26 +1680,31 @@ th{
 
 <script type="module">
 
+
+/* =========================================================
+   FIREBASE
+========================================================= */
+
 import {
     initializeApp
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+}
+from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
 
 import {
     getDatabase,
     ref,
     onValue,
-    get,
     update,
     remove,
     push,
     set,
     runTransaction
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+}
+from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-
-/* =========================================================
-   FIREBASE
-========================================================= */
 
 const firebaseConfig = {
 
@@ -1018,11 +1731,13 @@ const firebaseConfig = {
 
 };
 
+
 const app =
     initializeApp(firebaseConfig);
 
 const db =
     getDatabase(app);
+
 
 
 /* =========================================================
@@ -1031,8 +1746,10 @@ const db =
 
 const ADMIN_PASSWORD = "123";
 
+
 const loginBox =
     document.getElementById("adminLogin");
+
 
 const adminPanel =
     document.getElementById("adminPanel");
@@ -1047,7 +1764,11 @@ function showAdmin(){
 }
 
 
-if(localStorage.getItem("adminAccess")==="true"){
+if(
+    localStorage.getItem("adminAccess")
+    ===
+    "true"
+){
 
     showAdmin();
 
@@ -1056,12 +1777,24 @@ if(localStorage.getItem("adminAccess")==="true"){
 
 document
 .getElementById("loginAdmin")
-.addEventListener("click",()=>{
+.addEventListener(
+    "click",
+    loginAdmin
+);
+
+
+function loginAdmin(){
 
     const password =
-        document.getElementById("adminPassword").value;
+        document
+        .getElementById("adminPassword")
+        .value;
 
-    if(password === ADMIN_PASSWORD){
+
+    if(
+        password ===
+        ADMIN_PASSWORD
+    ){
 
         localStorage.setItem(
             "adminAccess",
@@ -1070,41 +1803,51 @@ document
 
         showAdmin();
 
-    }else{
+    }
 
-        document.getElementById("loginError")
-        .innerText =
+    else{
+
+        document
+        .getElementById("loginError")
+        .textContent =
         "❌ Mot de passe incorrect.";
 
     }
 
-});
+}
 
 
 document
 .getElementById("adminPassword")
-.addEventListener("keydown",(e)=>{
+.addEventListener(
+    "keydown",
+    e=>{
 
-    if(e.key==="Enter"){
+        if(e.key==="Enter"){
 
-        document
-        .getElementById("loginAdmin")
-        .click();
+            loginAdmin();
+
+        }
 
     }
-
-});
+);
 
 
 document
 .getElementById("adminLogout")
-.addEventListener("click",()=>{
+.addEventListener(
+    "click",
+    ()=>{
 
-    localStorage.removeItem("adminAccess");
+        localStorage.removeItem(
+            "adminAccess"
+        );
 
-    location.reload();
+        location.reload();
 
-});
+    }
+);
+
 
 
 /* =========================================================
@@ -1114,7 +1857,7 @@ document
 function money(value){
 
     return Math.floor(
-        Number(value)||0
+        Number(value) || 0
     ).toLocaleString("fr-FR");
 
 }
@@ -1122,7 +1865,10 @@ function money(value){
 
 function escapeHTML(value){
 
-    return String(value ?? "")
+    return String(
+        value ?? ""
+    )
+
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -1132,45 +1878,85 @@ function escapeHTML(value){
 }
 
 
+function statusText(status){
+
+    return String(
+        status ||
+        "En attente"
+    );
+
+}
+
+
 function statusBadge(status){
 
     const s =
-        String(status || "En attente");
+        statusText(status);
+
+
+    const lower =
+        s.toLowerCase();
+
 
     if(
-        s.toLowerCase().includes("valid")
+        lower.includes("valid")
         ||
-        s.toLowerCase().includes("termin")
+        lower.includes("pay")
         ||
-        s.toLowerCase().includes("accept")
+        lower.includes("termin")
+        ||
+        lower.includes("accept")
     ){
 
         return `
         <span class="badge success">
-        ${escapeHTML(s)}
-        </span>`;
+            ${escapeHTML(s)}
+        </span>
+        `;
 
     }
 
+
     if(
-        s.toLowerCase().includes("refus")
+        lower.includes("refus")
         ||
-        s.toLowerCase().includes("annul")
+        lower.includes("annul")
+        ||
+        lower.includes("rembours")
     ){
 
         return `
         <span class="badge danger">
-        ${escapeHTML(s)}
-        </span>`;
+            ${escapeHTML(s)}
+        </span>
+        `;
 
     }
 
+
     return `
     <span class="badge pending">
-    ${escapeHTML(s)}
-    </span>`;
+        ${escapeHTML(s)}
+    </span>
+    `;
 
 }
+
+
+function isPending(status){
+
+    const s =
+        String(
+            status ||
+            "En attente"
+        ).toLowerCase();
+
+    return (
+        s.includes("attente")
+    );
+
+}
+
 
 
 /* =========================================================
@@ -1181,35 +1967,71 @@ document
 .querySelectorAll(".menu-btn")
 .forEach(button=>{
 
-    button.addEventListener("click",()=>{
+    button.addEventListener(
+        "click",
+        ()=>{
 
-        const page =
-            button.dataset.page;
+            const page =
+                button.dataset.page;
 
-        document
-        .querySelectorAll(".menu-btn")
-        .forEach(b=>b.classList.remove("active"));
 
-        button.classList.add("active");
+            document
+            .querySelectorAll(".menu-btn")
+            .forEach(
+                b =>
+                b.classList.remove(
+                    "active"
+                )
+            );
 
-        document
-        .querySelectorAll(".page")
-        .forEach(p=>p.classList.remove("active"));
 
-        document
-        .getElementById("page-"+page)
-        .classList.add("active");
+            button.classList.add(
+                "active"
+            );
 
-    });
+
+            document
+            .querySelectorAll(".page")
+            .forEach(
+                p =>
+                p.classList.remove(
+                    "active"
+                )
+            );
+
+
+            document
+            .getElementById(
+                "page-"+page
+            )
+            .classList.add(
+                "active"
+            );
+
+        }
+    );
 
 });
 
 
+
 /* =========================================================
-   USERS
+   CACHE
 ========================================================= */
 
 let usersCache = {};
+
+let commandsCache = {};
+
+let rechargeCache = {};
+
+let withdrawalCache = {};
+
+
+
+/* =========================================================
+   UTILISATEURS
+========================================================= */
 
 onValue(
     ref(db,"users"),
@@ -1218,11 +2040,15 @@ onValue(
         usersCache = {};
 
         const tbody =
-            document.getElementById("usersTable");
+            document
+            .getElementById(
+                "usersTable"
+            );
 
         tbody.innerHTML="";
 
         let count=0;
+
 
         snapshot.forEach(child=>{
 
@@ -1232,18 +2058,29 @@ onValue(
             const data =
                 child.val() || {};
 
-            usersCache[phone] = data;
+
+            usersCache[phone]=data;
 
             count++;
 
+
             const principal =
-                Number(data.solde_principal)||0;
+                Number(
+                    data.solde_principal
+                ) || 0;
+
 
             const gains =
-                Number(data.solde_gains)||0;
+                Number(
+                    data.solde_gains
+                ) || 0;
+
 
             const commissions =
-                Number(data.solde_commissions)||0;
+                Number(
+                    data.solde_commissions
+                ) || 0;
+
 
             const points =
                 Number(
@@ -1253,15 +2090,17 @@ onValue(
                     0
                 );
 
+
             const name =
                 data.nom ||
                 data.name ||
                 "Utilisateur";
 
-            const tr =
-                document.createElement("tr");
 
-            tr.dataset.phone=phone;
+            const tr =
+                document
+                .createElement("tr");
+
 
             tr.innerHTML=`
 
@@ -1293,25 +2132,44 @@ onValue(
 
                     <button
                         class="btn btn-blue"
-                        onclick="viewUser('${encodeURIComponent(phone)}')">
+                        onclick="
+                        viewUser(
+                            '${encodeURIComponent(phone)}'
+                        )"
+                    >
                         Voir
                     </button>
 
                     <button
                         class="btn btn-green"
-                        onclick="addMoney('${encodeURIComponent(phone)}')">
+                        onclick="
+                        addMoney(
+                            '${encodeURIComponent(phone)}'
+                        )
+                    "
+                    >
                         +1000
                     </button>
 
                     <button
                         class="btn btn-orange"
-                        onclick="removeMoney('${encodeURIComponent(phone)}')">
+                        onclick="
+                        removeMoney(
+                            '${encodeURIComponent(phone)}'
+                        )
+                    "
+                    >
                         -1000
                     </button>
 
                     <button
                         class="btn btn-red"
-                        onclick="deleteUser('${encodeURIComponent(phone)}')">
+                        onclick="
+                        deleteUser(
+                            '${encodeURIComponent(phone)}'
+                        )
+                    "
+                    >
                         Supprimer
                     </button>
 
@@ -1319,43 +2177,74 @@ onValue(
 
             `;
 
+
             tbody.appendChild(tr);
 
         });
 
+
         document
-        .getElementById("statUsers")
-        .innerText=count;
+        .getElementById(
+            "statUsers"
+        )
+        .textContent=count;
+
+
+        if(count===0){
+
+            tbody.innerHTML=`
+                <tr>
+                    <td colspan="7">
+                        <div class="empty">
+                            Aucun utilisateur.
+                        </div>
+                    </td>
+                </tr>
+            `;
+
+        }
 
     }
 );
 
 
+
 /* =========================================================
-   RECHERCHE USER
+   RECHERCHE USERS
 ========================================================= */
 
 document
 .getElementById("userSearch")
-.addEventListener("input",(e)=>{
+.addEventListener(
+    "input",
+    e=>{
 
-    const value =
-        e.target.value.toLowerCase();
-
-    document
-    .querySelectorAll("#usersTable tr")
-    .forEach(row=>{
-
-        row.style.display =
-            row.innerText
+        const value =
+            e.target.value
             .toLowerCase()
-            .includes(value)
-            ? ""
-            : "none";
+            .trim();
 
-    });
 
-});
+        document
+        .querySelectorAll(
+            "#usersTable tr"
+        )
+        .forEach(row=>{
+
+            row.style.display =
+                row.innerText
+                .toLowerCase()
+                .includes(value)
+                ?
+                ""
+                :
+                "none";
+
+        });
+
+    }
+);
+
 
 
 /* =========================================================
@@ -1366,19 +2255,32 @@ window.viewUser =
 function(encodedPhone){
 
     const phone =
-        decodeURIComponent(encodedPhone);
+        decodeURIComponent(
+            encodedPhone
+        );
+
 
     const data =
         usersCache[phone] || {};
 
+
     const principal =
-        Number(data.solde_principal)||0;
+        Number(
+            data.solde_principal
+        ) || 0;
+
 
     const gains =
-        Number(data.solde_gains)||0;
+        Number(
+            data.solde_gains
+        ) || 0;
+
 
     const commissions =
-        Number(data.solde_commissions)||0;
+        Number(
+            data.solde_commissions
+        ) || 0;
+
 
     const points =
         Number(
@@ -1388,148 +2290,233 @@ function(encodedPhone){
             0
         );
 
+
     document
-    .getElementById("userDetails")
+    .getElementById(
+        "userDetails"
+    )
     .innerHTML=`
 
-        <p><b>📱 Numéro :</b> ${escapeHTML(phone)}</p>
-
-        <p><b>👤 Nom :</b>
-        ${escapeHTML(data.nom || data.name || "—")}
+        <p>
+            <b>📱 Numéro :</b>
+            ${escapeHTML(phone)}
         </p>
 
-        <p><b>💰 Solde principal :</b>
-        ${money(principal)} FC
+        <p>
+            <b>👤 Nom :</b>
+            ${escapeHTML(
+                data.nom ||
+                data.name ||
+                "—"
+            )}
         </p>
 
-        <p><b>📈 Gains :</b>
-        ${money(gains)} FC
+        <p>
+            <b>💰 Solde :</b>
+            ${money(principal)} FC
         </p>
 
-        <p><b>👥 Commissions :</b>
-        ${money(commissions)} FC
+        <p>
+            <b>📈 Gains :</b>
+            ${money(gains)} FC
         </p>
 
-        <p><b>⭐ Points fidélité :</b>
-        ${money(points)}
+        <p>
+            <b>👥 Commissions :</b>
+            ${money(commissions)} FC
         </p>
 
-        <p><b>🎁 Parrain :</b>
-        ${escapeHTML(data.referredBy || "DIRECT")}
+        <p>
+            <b>⭐ Points :</b>
+            ${money(points)}
         </p>
 
-        <p><b>🔑 Code :</b>
-        ${escapeHTML(data.inviteCode || data.referralCode || "—")}
+        <p>
+            <b>🎁 Parrain :</b>
+            ${escapeHTML(
+                data.referredBy ||
+                "DIRECT"
+            )}
+        </p>
+
+        <p>
+            <b>🔑 Code :</b>
+            ${escapeHTML(
+                data.inviteCode ||
+                data.referralCode ||
+                "—"
+            )}
         </p>
 
         <hr>
 
         <button
             class="btn btn-green"
-            onclick="addMoney('${encodeURIComponent(phone)}')">
+            onclick="
+            addMoney(
+                '${encodeURIComponent(phone)}'
+            )"
+        >
             +1000 FC
         </button>
 
         <button
             class="btn btn-orange"
-            onclick="removeMoney('${encodeURIComponent(phone)}')">
+            onclick="
+            removeMoney(
+                '${encodeURIComponent(phone)}'
+            )"
+        >
             -1000 FC
         </button>
 
         <button
             class="btn btn-blue"
-            onclick="resetPassword('${encodeURIComponent(phone)}')">
-            🔑 Réinitialiser mot de passe
+            onclick="
+            resetPassword(
+                '${encodeURIComponent(phone)}'
+            )"
+        >
+            🔑 Réinitialiser
         </button>
 
         <button
             class="btn btn-red"
-            onclick="deleteUser('${encodeURIComponent(phone)}')">
-            🗑️ Supprimer utilisateur
+            onclick="
+            deleteUser(
+                '${encodeURIComponent(phone)}'
+            )"
+        >
+            🗑️ Supprimer
         </button>
 
     `;
+
 
     openModal("userModal");
 
 };
 
 
+
 /* =========================================================
-   AJOUTER 1000 FC
+   AJOUTER SOLDE
 ========================================================= */
 
 window.addMoney =
 async function(encodedPhone){
 
     const phone =
-        decodeURIComponent(encodedPhone);
+        decodeURIComponent(
+            encodedPhone
+        );
+
 
     if(
         !confirm(
-            "Ajouter 1000 FC au solde de "+phone+" ?"
+            "Ajouter 1000 FC à "+phone+" ?"
         )
     ) return;
+
 
     try{
 
         await runTransaction(
-            ref(db,"users/"+phone+"/solde_principal"),
-            current =>
-                (Number(current)||0)+1000
+
+            ref(
+                db,
+                "users/"
+                +phone+
+                "/solde_principal"
+            ),
+
+            current => {
+
+                return (
+                    Number(current)||0
+                ) + 1000;
+
+            }
+
         );
 
-        alert("✅ 1000 FC ajouté.");
+
+        alert(
+            "✅ 1000 FC ajouté."
+        );
+
 
     }catch(error){
 
         console.error(error);
 
-        alert("❌ Erreur.");
+        alert(
+            "❌ Impossible d'ajouter le solde."
+        );
 
     }
 
 };
 
 
+
 /* =========================================================
-   RETIRER 1000 FC
+   RETIRER SOLDE
 ========================================================= */
 
 window.removeMoney =
 async function(encodedPhone){
 
     const phone =
-        decodeURIComponent(encodedPhone);
+        decodeURIComponent(
+            encodedPhone
+        );
+
 
     if(
         !confirm(
-            "Retirer 1000 FC du solde de "+phone+" ?"
+            "Retirer 1000 FC de "+phone+" ?"
         )
     ) return;
+
 
     try{
 
         const result =
             await runTransaction(
+
                 ref(
                     db,
-                    "users/"+phone+"/solde_principal"
+                    "users/"
+                    +phone+
+                    "/solde_principal"
                 ),
+
                 current=>{
 
                     const value =
                         Number(current)||0;
 
-                    if(value < 1000)
+
+                    if(
+                        value < 1000
+                    ){
+
                         return;
+
+                    }
+
 
                     return value-1000;
 
                 }
+
             );
 
-        if(!result.committed){
+
+        if(
+            !result.committed
+        ){
 
             alert(
                 "❌ Solde insuffisant."
@@ -1539,17 +2526,24 @@ async function(encodedPhone){
 
         }
 
-        alert("✅ 1000 FC retiré.");
+
+        alert(
+            "✅ 1000 FC retiré."
+        );
+
 
     }catch(error){
 
         console.error(error);
 
-        alert("❌ Erreur.");
+        alert(
+            "❌ Erreur."
+        );
 
     }
 
 };
+
 
 
 /* =========================================================
@@ -1560,83 +2554,134 @@ window.deleteUser =
 async function(encodedPhone){
 
     const phone =
-        decodeURIComponent(encodedPhone);
+        decodeURIComponent(
+            encodedPhone
+        );
+
 
     if(
         !confirm(
-            "⚠️ Supprimer définitivement le compte "+phone+" ?"
+            "⚠️ Supprimer "+phone+" ?"
         )
     ) return;
 
+
     if(
         !confirm(
-            "Dernière confirmation : supprimer ce compte ?"
+            "⚠️ DERNIÈRE CONFIRMATION\n\n"+
+            "Cette opération supprimera le compte."
         )
     ) return;
+
 
     try{
 
         await remove(
-            ref(db,"users/"+phone)
+            ref(
+                db,
+                "users/"+phone
+            )
         );
 
-        alert("✅ Utilisateur supprimé.");
 
-        closeModal("userModal");
+        alert(
+            "✅ Utilisateur supprimé."
+        );
+
+
+        closeModal(
+            "userModal"
+        );
+
 
     }catch(error){
 
         console.error(error);
 
-        alert("❌ Impossible de supprimer.");
+        alert(
+            "❌ Suppression impossible."
+        );
 
     }
 
 };
 
 
+
 /* =========================================================
-   RÉINITIALISER MOT DE PASSE
+   RESET PASSWORD
 ========================================================= */
 
 window.resetPassword =
 async function(encodedPhone){
 
     const phone =
-        decodeURIComponent(encodedPhone);
+        decodeURIComponent(
+            encodedPhone
+        );
 
-    const newPassword =
+
+    const password =
         prompt(
             "Nouveau mot de passe pour "+phone+":"
         );
 
+
     if(
-        newPassword === null ||
-        newPassword.trim()===""
-    ) return;
+        password===null
+        ||
+        password.trim()===""
+    ){
+
+        return;
+
+    }
+
+
+    if(
+        password.length < 4
+    ){
+
+        alert(
+            "❌ Le mot de passe doit contenir au moins 4 caractères."
+        );
+
+        return;
+
+    }
+
 
     try{
 
         await update(
-            ref(db,"users/"+phone),
+            ref(
+                db,
+                "users/"+phone
+            ),
             {
-                password:newPassword
+                password:
+                    password.trim()
             }
         );
+
 
         alert(
             "✅ Mot de passe réinitialisé."
         );
 
+
     }catch(error){
 
         console.error(error);
 
-        alert("❌ Erreur.");
+        alert(
+            "❌ Erreur."
+        );
 
     }
 
 };
+
 
 
 /* =========================================================
@@ -1647,22 +2692,37 @@ onValue(
     ref(db,"demandes_commandes"),
     snapshot=>{
 
+        commandsCache={};
+
+
         const tbody =
-            document.getElementById("commandsTable");
+            document
+            .getElementById(
+                "commandsTable"
+            );
+
 
         tbody.innerHTML="";
 
+
         let count=0;
 
-        snapshot.forEach(child=>{
 
-            count++;
+        snapshot.forEach(child=>{
 
             const id =
                 child.key;
 
+
             const data =
                 child.val() || {};
+
+
+            commandsCache[id]=data;
+
+
+            count++;
+
 
             const phone =
                 data.telephone ||
@@ -1670,11 +2730,13 @@ onValue(
                 data.phone ||
                 "—";
 
+
             const service =
                 data.service ||
                 data.nom ||
                 data.produit ||
                 "Service";
+
 
             const montant =
                 Number(
@@ -1683,17 +2745,23 @@ onValue(
                     0
                 );
 
+
             const status =
                 data.statut ||
                 "En attente";
 
+
             const tr =
-                document.createElement("tr");
+                document
+                .createElement("tr");
+
 
             tr.innerHTML=`
 
                 <td>
-                    ${escapeHTML(data.date || "—")}
+                    ${escapeHTML(
+                        data.date || "—"
+                    )}
                 </td>
 
                 <td>
@@ -1716,59 +2784,82 @@ onValue(
 
                     <button
                         class="btn btn-blue"
-                        onclick="viewCommand('${encodeURIComponent(id)}')">
+                        onclick="
+                        viewCommand(
+                            '${encodeURIComponent(id)}'
+                        )"
+                    >
                         Voir
                     </button>
 
-                    <button
-                        class="btn btn-green"
-                        onclick="validateCommand('${encodeURIComponent(id)}')">
-                        Valider
-                    </button>
+                    ${
+                        isPending(status)
+                        ?
+                        `
+                        <button
+                            class="btn btn-green"
+                            onclick="
+                            validateCommand(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Valider
+                        </button>
 
-                    <button
-                        class="btn btn-red"
-                        onclick="refuseCommand('${encodeURIComponent(id)}')">
-                        Refuser + remboursement
-                    </button>
+                        <button
+                            class="btn btn-red"
+                            onclick="
+                            refuseCommand(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Refuser
+                        </button>
+                        `
+                        :
+                        `
+                        <span class="muted">
+                            Traité
+                        </span>
+                        `
+                    }
 
                 </td>
 
             `;
 
+
             tbody.appendChild(tr);
 
         });
 
+
         document
-        .getElementById("statCommands")
-        .innerText=count;
+        .getElementById(
+            "statCommands"
+        )
+        .textContent=count;
+
+
+        if(count===0){
+
+            tbody.innerHTML=`
+                <tr>
+                    <td colspan="6">
+                        <div class="empty">
+                            Aucune commande.
+                        </div>
+                    </td>
+                </tr>
+            `;
+
+        }
 
     }
 );
 
-
-/* =========================================================
-   CACHE COMMANDES
-========================================================= */
-
-let commandsCache={};
-
-onValue(
-    ref(db,"demandes_commandes"),
-    snapshot=>{
-
-        commandsCache={};
-
-        snapshot.forEach(child=>{
-
-            commandsCache[child.key]=
-                child.val() || {};
-
-        });
-
-    }
-);
 
 
 /* =========================================================
@@ -1779,66 +2870,93 @@ window.viewCommand =
 function(encodedId){
 
     const id =
-        decodeURIComponent(encodedId);
+        decodeURIComponent(
+            encodedId
+        );
+
 
     const data =
         commandsCache[id] || {};
 
+
     document
-    .getElementById("commandDetails")
+    .getElementById(
+        "commandDetails"
+    )
     .innerHTML=`
 
-        <p><b>Client :</b>
-        ${escapeHTML(
-            data.telephone ||
-            data.userPhone ||
-            data.phone ||
-            "—"
-        )}
+        <p>
+            <b>📱 Client :</b>
+            ${escapeHTML(
+                data.telephone ||
+                data.userPhone ||
+                data.phone ||
+                "—"
+            )}
         </p>
 
-        <p><b>Service :</b>
-        ${escapeHTML(
-            data.service ||
-            data.nom ||
-            data.produit ||
-            "—"
-        )}
+        <p>
+            <b>🛒 Service :</b>
+            ${escapeHTML(
+                data.service ||
+                data.nom ||
+                data.produit ||
+                "—"
+            )}
         </p>
 
-        <p><b>Montant :</b>
-        ${money(
-            data.montant ??
-            data.prix ??
-            0
-        )} FC
+        <p>
+            <b>💰 Montant :</b>
+            ${money(
+                data.montant ??
+                data.prix ??
+                0
+            )} FC
         </p>
 
-        <p><b>Date :</b>
-        ${escapeHTML(data.date || "—")}
+        <p>
+            <b>📅 Date :</b>
+            ${escapeHTML(
+                data.date || "—"
+            )}
         </p>
 
-        <p><b>Statut :</b>
-        ${statusBadge(data.statut)}
+        <p>
+            <b>📌 Statut :</b>
+            ${statusBadge(
+                data.statut
+            )}
         </p>
 
         <hr>
 
-        <h3>📋 Informations envoyées</h3>
+        <h3>
+            📋 Données complètes
+        </h3>
 
-        <pre style="
+        <pre
+            style="
             white-space:pre-wrap;
             font-size:12px;
             opacity:.8;
-        ">${escapeHTML(
-            JSON.stringify(data,null,2)
+            "
+        >${escapeHTML(
+            JSON.stringify(
+                data,
+                null,
+                2
+            )
         )}</pre>
 
     `;
 
-    openModal("commandModal");
+
+    openModal(
+        "commandModal"
+    );
 
 };
+
 
 
 /* =========================================================
@@ -1849,7 +2967,36 @@ window.validateCommand =
 async function(encodedId){
 
     const id =
-        decodeURIComponent(encodedId);
+        decodeURIComponent(
+            encodedId
+        );
+
+
+    const data =
+        commandsCache[id] || {};
+
+
+    const currentStatus =
+        String(
+            data.statut ||
+            "En attente"
+        ).toLowerCase();
+
+
+    if(
+        !currentStatus.includes(
+            "attente"
+        )
+    ){
+
+        alert(
+            "⚠️ Cette commande a déjà été traitée."
+        );
+
+        return;
+
+    }
+
 
     if(
         !confirm(
@@ -1857,126 +3004,225 @@ async function(encodedId){
         )
     ) return;
 
+
     try{
 
         await update(
+
             ref(
                 db,
                 "demandes_commandes/"+id
             ),
+
             {
                 statut:"Validée",
+
                 dateValidation:
-                    new Date().toISOString()
+                    new Date()
+                    .toISOString()
             }
+
         );
 
-        alert("✅ Commande validée.");
+
+        alert(
+            "✅ Commande validée."
+        );
+
 
     }catch(error){
 
         console.error(error);
 
-        alert("❌ Erreur.");
+        alert(
+            "❌ Erreur."
+        );
 
     }
 
 };
 
 
+
 /* =========================================================
-   REFUSER + REMBOURSEMENT
+   REFUSER COMMANDE + REMBOURSEMENT
 ========================================================= */
 
 window.refuseCommand =
 async function(encodedId){
 
     const id =
-        decodeURIComponent(encodedId);
+        decodeURIComponent(
+            encodedId
+        );
+
 
     const data =
         commandsCache[id] || {};
 
+
     const status =
         String(
-            data.statut || ""
+            data.statut ||
+            ""
         ).toLowerCase();
 
+
     if(
-        status.includes("refus") ||
-        status.includes("rembours")
+        !status.includes("attente")
     ){
 
         alert(
-            "Cette commande est déjà refusée."
+            "⚠️ Cette commande a déjà été traitée."
         );
 
         return;
 
     }
 
-    if(
-        !confirm(
-            "Refuser cette commande et rembourser le client ?"
-        )
-    ) return;
 
     const phone =
         data.telephone ||
         data.userPhone ||
         data.phone;
 
-    const montant =
+
+    const amount =
         Number(
             data.montant ??
             data.prix ??
             0
         );
 
-    if(!phone){
+
+    if(
+        !phone ||
+        amount<=0
+    ){
 
         alert(
-            "❌ Numéro client introuvable."
+            "❌ Données de remboursement invalides."
         );
 
         return;
 
     }
 
+
+    if(
+        !confirm(
+            "Refuser la commande et rembourser "+
+            money(amount)+
+            " FC ?"
+        )
+    ) return;
+
+
     try{
 
         /*
-         * Remboursement dans le solde principal.
+         * Transaction atomique
+         * pour éviter les problèmes
+         * de concurrence.
          */
 
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "demandes_commandes/"+id
+                ),
+
+                current=>{
+
+                    if(
+                        !current
+                    ){
+
+                        return;
+
+                    }
+
+
+                    const s =
+                        String(
+                            current.statut ||
+                            "En attente"
+                        ).toLowerCase();
+
+
+                    if(
+                        !s.includes(
+                            "attente"
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:
+                            "Refusée — Remboursée",
+
+                        dateRefus:
+                            new Date()
+                            .toISOString(),
+
+                        remboursement:
+                            amount
+
+                    };
+
+                }
+
+            );
+
+
+        if(
+            !result.committed
+        ){
+
+            alert(
+                "⚠️ Cette commande a déjà été traitée."
+            );
+
+            return;
+
+        }
+
+
         await runTransaction(
+
             ref(
                 db,
-                "users/"+phone+"/solde_principal"
+                "users/"
+                +phone+
+                "/solde_principal"
             ),
-            current =>
-                (Number(current)||0)+montant
-        );
 
+            current => {
 
-        await update(
-            ref(
-                db,
-                "demandes_commandes/"+id
-            ),
-            {
-                statut:"Refusée — Remboursée",
-                dateRefus:
-                    new Date().toISOString()
+                return (
+                    Number(current)||0
+                ) + amount;
+
             }
+
         );
 
 
         alert(
             "✅ Commande refusée.\n"+
-            "💰 "+money(montant)+
+            "💰 "+money(amount)+
             " FC remboursés."
         );
+
 
     }catch(error){
 
@@ -1991,6 +3237,7 @@ async function(encodedId){
 };
 
 
+
 /* =========================================================
    RECHARGES
 ========================================================= */
@@ -1999,32 +3246,48 @@ onValue(
     ref(db,"demandes_recharges"),
     snapshot=>{
 
+        rechargeCache={};
+
+
         const tbody =
-            document.getElementById("rechargesTable");
+            document
+            .getElementById(
+                "rechargesTable"
+            );
+
 
         tbody.innerHTML="";
 
+
         let pending=0;
+
 
         snapshot.forEach(child=>{
 
             const id =
                 child.key;
 
+
             const data =
                 child.val() || {};
+
+
+            rechargeCache[id]=data;
+
 
             const status =
                 data.statut ||
                 "En attente";
 
+
             if(
-                String(status)
-                .toLowerCase()
-                .includes("attente")
+                isPending(status)
             ){
+
                 pending++;
+
             }
+
 
             const phone =
                 data.telephone ||
@@ -2032,20 +3295,26 @@ onValue(
                 data.phone ||
                 "—";
 
+
             const amount =
                 Number(
-                    data.montant ||
-                    data.amount ||
+                    data.montant ??
+                    data.amount ??
                     0
                 );
 
+
             const tr =
-                document.createElement("tr");
+                document
+                .createElement("tr");
+
 
             tr.innerHTML=`
 
                 <td>
-                    ${escapeHTML(data.date || "—")}
+                    ${escapeHTML(
+                        data.date || "—"
+                    )}
                 </td>
 
                 <td>
@@ -2078,55 +3347,76 @@ onValue(
 
                 <td>
 
-                    <button
-                        class="btn btn-green"
-                        onclick="validateRecharge('${encodeURIComponent(id)}')">
-                        Valider
-                    </button>
+                    ${
+                        isPending(status)
+                        ?
+                        `
+                        <button
+                            class="btn btn-green"
+                            onclick="
+                            validateRecharge(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Valider
+                        </button>
 
-                    <button
-                        class="btn btn-red"
-                        onclick="refuseRecharge('${encodeURIComponent(id)}')">
-                        Refuser
-                    </button>
+                        <button
+                            class="btn btn-red"
+                            onclick="
+                            refuseRecharge(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Refuser
+                        </button>
+                        `
+                        :
+                        `
+                        <span class="muted">
+                            Traité
+                        </span>
+                        `
+                    }
 
                 </td>
 
             `;
 
+
             tbody.appendChild(tr);
 
         });
 
+
         document
-        .getElementById("statRecharges")
-        .innerText=pending;
+        .getElementById(
+            "statRecharges"
+        )
+        .textContent=pending;
+
+
+        if(
+            snapshot.size===0
+        ){
+
+            tbody.innerHTML=`
+                <tr>
+                    <td colspan="7">
+                        <div class="empty">
+                            Aucune recharge.
+                        </div>
+                    </td>
+                </tr>
+            `;
+
+        }
 
     }
 );
 
-
-/* =========================================================
-   CACHE RECHARGES
-========================================================= */
-
-let rechargeCache={};
-
-onValue(
-    ref(db,"demandes_recharges"),
-    snapshot=>{
-
-        rechargeCache={};
-
-        snapshot.forEach(child=>{
-
-            rechargeCache[child.key]=
-                child.val() || {};
-
-        });
-
-    }
-);
 
 
 /* =========================================================
@@ -2137,74 +3427,183 @@ window.validateRecharge =
 async function(encodedId){
 
     const id =
-        decodeURIComponent(encodedId);
+        decodeURIComponent(
+            encodedId
+        );
+
 
     const data =
         rechargeCache[id] || {};
 
-    const phone =
-        data.telephone ||
-        data.userPhone ||
-        data.phone;
 
-    const amount =
-        Number(
-            data.montant ||
-            data.amount ||
-            0
-        );
+    const status =
+        String(
+            data.statut ||
+            "En attente"
+        ).toLowerCase();
 
-    if(!phone || amount<=0){
+
+    if(
+        !status.includes(
+            "attente"
+        )
+    ){
 
         alert(
-            "❌ Informations de recharge invalides."
+            "⚠️ Cette recharge a déjà été traitée."
         );
 
         return;
 
     }
 
+
+    const phone =
+        data.telephone ||
+        data.userPhone ||
+        data.phone;
+
+
+    const amount =
+        Number(
+            data.montant ??
+            data.amount ??
+            0
+        );
+
+
+    if(
+        !phone ||
+        amount<=0
+    ){
+
+        alert(
+            "❌ Recharge invalide."
+        );
+
+        return;
+
+    }
+
+
     if(
         !confirm(
-            "Ajouter "+money(amount)+
-            " FC au compte de "+phone+" ?"
+            "Ajouter "+
+            money(amount)+
+            " FC au compte de "+
+            phone+
+            " ?"
         )
     ) return;
 
+
     try{
 
+        /*
+         * On verrouille la demande avant
+         * de créditer pour empêcher
+         * plusieurs validations.
+         */
+
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "demandes_recharges/"+id
+                ),
+
+                current=>{
+
+                    if(!current){
+
+                        return;
+
+                    }
+
+
+                    const s =
+                        String(
+                            current.statut ||
+                            "En attente"
+                        ).toLowerCase();
+
+
+                    if(
+                        !s.includes(
+                            "attente"
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:"Validée",
+
+                        dateValidation:
+                            new Date()
+                            .toISOString()
+
+                    };
+
+                }
+
+            );
+
+
+        if(
+            !result.committed
+        ){
+
+            alert(
+                "⚠️ Recharge déjà traitée."
+            );
+
+            return;
+
+        }
+
+
         await runTransaction(
+
             ref(
                 db,
-                "users/"+phone+"/solde_principal"
+                "users/"
+                +phone+
+                "/solde_principal"
             ),
+
             current =>
-                (Number(current)||0)+amount
+                (
+                    Number(current)||0
+                ) + amount
+
         );
 
-        await update(
-            ref(
-                db,
-                "demandes_recharges/"+id
-            ),
-            {
-                statut:"Validée",
-                dateValidation:
-                    new Date().toISOString()
-            }
+
+        alert(
+            "✅ Recharge validée."
         );
 
-        alert("✅ Recharge validée.");
 
     }catch(error){
 
         console.error(error);
 
-        alert("❌ Erreur.");
+        alert(
+            "❌ Erreur de validation."
+        );
 
     }
 
 };
+
 
 
 /* =========================================================
@@ -2215,7 +3614,36 @@ window.refuseRecharge =
 async function(encodedId){
 
     const id =
-        decodeURIComponent(encodedId);
+        decodeURIComponent(
+            encodedId
+        );
+
+
+    const data =
+        rechargeCache[id] || {};
+
+
+    const status =
+        String(
+            data.statut ||
+            "En attente"
+        ).toLowerCase();
+
+
+    if(
+        !status.includes(
+            "attente"
+        )
+    ){
+
+        alert(
+            "⚠️ Recharge déjà traitée."
+        );
+
+        return;
+
+    }
+
 
     if(
         !confirm(
@@ -2223,95 +3651,176 @@ async function(encodedId){
         )
     ) return;
 
+
     try{
 
-        await update(
-            ref(
-                db,
-                "demandes_recharges/"+id
-            ),
-            {
-                statut:"Refusée",
-                dateRefus:
-                    new Date().toISOString()
-            }
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "demandes_recharges/"+id
+                ),
+
+                current=>{
+
+                    if(!current){
+
+                        return;
+
+                    }
+
+
+                    const s =
+                        String(
+                            current.statut ||
+                            "En attente"
+                        ).toLowerCase();
+
+
+                    if(
+                        !s.includes(
+                            "attente"
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:"Refusée",
+
+                        dateRefus:
+                            new Date()
+                            .toISOString()
+
+                    };
+
+                }
+
+            );
+
+
+        if(
+            !result.committed
+        ){
+
+            alert(
+                "⚠️ Cette recharge a déjà été traitée."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "✅ Recharge refusée."
         );
 
-        alert("✅ Recharge refusée.");
 
     }catch(error){
 
         console.error(error);
 
-        alert("❌ Erreur.");
+        alert(
+            "❌ Erreur."
+        );
 
     }
 
 };
 
 
+
 /* =========================================================
    RETRAITS
 ========================================================= */
-
-let withdrawalCache={};
 
 onValue(
     ref(db,"demandes_retraits"),
     snapshot=>{
 
+        withdrawalCache={};
+
+
         const tbody =
-            document.getElementById("withdrawalsTable");
+            document
+            .getElementById(
+                "withdrawalsTable"
+            );
+
 
         tbody.innerHTML="";
 
-        withdrawalCache={};
 
         let pending=0;
+
 
         snapshot.forEach(child=>{
 
             const id =
                 child.key;
 
+
             const data =
                 child.val() || {};
 
+
             withdrawalCache[id]=data;
+
 
             const status =
                 data.statut ||
                 "En attente";
 
+
             if(
-                String(status)
-                .toLowerCase()
-                .includes("attente")
+                isPending(status)
             ){
+
                 pending++;
+
             }
 
+
+            const phone =
+                data.telephone ||
+                data.userPhone ||
+                data.phone ||
+                "—";
+
+
+            const amount =
+                Number(
+                    data.montant
+                ) || 0;
+
+
             const tr =
-                document.createElement("tr");
+                document
+                .createElement("tr");
+
 
             tr.innerHTML=`
 
                 <td>
-                    ${escapeHTML(data.date || "—")}
-                </td>
-
-                <td>
                     ${escapeHTML(
-                        data.telephone ||
-                        data.userPhone ||
-                        "—"
+                        data.date || "—"
                     )}
                 </td>
 
                 <td>
-                    ${money(
-                        data.montant || 0
-                    )} FC
+                    ${escapeHTML(phone)}
+                </td>
+
+                <td>
+                    ${money(amount)} FC
                 </td>
 
                 <td>
@@ -2322,7 +3831,8 @@ onValue(
 
                 <td>
                     ${escapeHTML(
-                        data.numero_reception || "—"
+                        data.numero_reception ||
+                        "—"
                     )}
                 </td>
 
@@ -2332,32 +3842,76 @@ onValue(
 
                 <td>
 
-                    <button
-                        class="btn btn-green"
-                        onclick="validateWithdrawal('${encodeURIComponent(id)}')">
-                        Paiement effectué
-                    </button>
+                    ${
+                        isPending(status)
+                        ?
+                        `
+                        <button
+                            class="btn btn-green"
+                            onclick="
+                            validateWithdrawal(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Paiement effectué
+                        </button>
 
-                    <button
-                        class="btn btn-red"
-                        onclick="refuseWithdrawal('${encodeURIComponent(id)}')">
-                        Refuser + remboursement
-                    </button>
+                        <button
+                            class="btn btn-red"
+                            onclick="
+                            refuseWithdrawal(
+                                '${encodeURIComponent(id)}'
+                            )
+                            "
+                        >
+                            Refuser
+                        </button>
+                        `
+                        :
+                        `
+                        <span class="muted">
+                            Traité
+                        </span>
+                        `
+                    }
 
                 </td>
 
             `;
 
+
             tbody.appendChild(tr);
 
         });
 
+
         document
-        .getElementById("statWithdrawals")
-        .innerText=pending;
+        .getElementById(
+            "statWithdrawals"
+        )
+        .textContent=pending;
+
+
+        if(
+            snapshot.size===0
+        ){
+
+            tbody.innerHTML=`
+                <tr>
+                    <td colspan="7">
+                        <div class="empty">
+                            Aucun retrait.
+                        </div>
+                    </td>
+                </tr>
+            `;
+
+        }
 
     }
 );
+
 
 
 /* =========================================================
@@ -2368,10 +3922,36 @@ window.validateWithdrawal =
 async function(encodedId){
 
     const id =
-        decodeURIComponent(encodedId);
+        decodeURIComponent(
+            encodedId
+        );
+
 
     const data =
         withdrawalCache[id] || {};
+
+
+    const status =
+        String(
+            data.statut ||
+            "En attente"
+        ).toLowerCase();
+
+
+    if(
+        !status.includes(
+            "attente"
+        )
+    ){
+
+        alert(
+            "⚠️ Ce retrait a déjà été traité."
+        );
+
+        return;
+
+    }
+
 
     if(
         !confirm(
@@ -2379,33 +3959,91 @@ async function(encodedId){
         )
     ) return;
 
+
     try{
 
-        await update(
-            ref(
-                db,
-                "demandes_retraits/"+id
-            ),
-            {
-                statut:"Payé",
-                datePaiement:
-                    new Date().toISOString()
-            }
-        );
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "demandes_retraits/"+id
+                ),
+
+                current=>{
+
+                    if(!current){
+
+                        return;
+
+                    }
+
+
+                    const s =
+                        String(
+                            current.statut ||
+                            "En attente"
+                        ).toLowerCase();
+
+
+                    if(
+                        !s.includes(
+                            "attente"
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:"Payé",
+
+                        datePaiement:
+                            new Date()
+                            .toISOString()
+
+                    };
+
+                }
+
+            );
+
+
+        if(
+            !result.committed
+        ){
+
+            alert(
+                "⚠️ Retrait déjà traité."
+            );
+
+            return;
+
+        }
+
 
         alert(
             "✅ Retrait marqué comme payé."
         );
 
+
     }catch(error){
 
         console.error(error);
 
-        alert("❌ Erreur.");
+        alert(
+            "❌ Erreur."
+        );
 
     }
 
 };
+
 
 
 /* =========================================================
@@ -2416,37 +4054,53 @@ window.refuseWithdrawal =
 async function(encodedId){
 
     const id =
-        decodeURIComponent(encodedId);
+        decodeURIComponent(
+            encodedId
+        );
+
 
     const data =
         withdrawalCache[id] || {};
 
+
     const status =
         String(
-            data.statut || ""
+            data.statut ||
+            "En attente"
         ).toLowerCase();
 
+
     if(
-        status.includes("refus") ||
-        status.includes("rembours")
+        !status.includes(
+            "attente"
+        )
     ){
 
         alert(
-            "Ce retrait est déjà refusé."
+            "⚠️ Ce retrait a déjà été traité."
         );
 
         return;
 
     }
 
+
     const phone =
         data.telephone ||
-        data.userPhone;
+        data.userPhone ||
+        data.phone;
+
 
     const amount =
-        Number(data.montant)||0;
+        Number(
+            data.montant
+        ) || 0;
 
-    if(!phone || amount<=0){
+
+    if(
+        !phone ||
+        amount<=0
+    ){
 
         alert(
             "❌ Informations invalides."
@@ -2456,59 +4110,127 @@ async function(encodedId){
 
     }
 
+
     if(
         !confirm(
             "Refuser le retrait et rembourser "+
-            money(amount)+" FC ?"
+            money(amount)+
+            " FC ?"
         )
     ) return;
 
+
     try{
 
-        /*
-         * Le montant retiré précédemment
-         * est remis dans le solde principal.
-         */
+        const result =
+            await runTransaction(
+
+                ref(
+                    db,
+                    "demandes_retraits/"+id
+                ),
+
+                current=>{
+
+                    if(!current){
+
+                        return;
+
+                    }
+
+
+                    const s =
+                        String(
+                            current.statut ||
+                            "En attente"
+                        ).toLowerCase();
+
+
+                    if(
+                        !s.includes(
+                            "attente"
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return {
+
+                        ...current,
+
+                        statut:
+                            "Refusé — Remboursé",
+
+                        dateRefus:
+                            new Date()
+                            .toISOString(),
+
+                        remboursement:
+                            amount
+
+                    };
+
+                }
+
+            );
+
+
+        if(
+            !result.committed
+        ){
+
+            alert(
+                "⚠️ Retrait déjà traité."
+            );
+
+            return;
+
+        }
+
 
         await runTransaction(
+
             ref(
                 db,
-                "users/"+phone+"/solde_principal"
+                "users/"
+                +phone+
+                "/solde_principal"
             ),
+
             current =>
-                (Number(current)||0)+amount
+                (
+                    Number(current)||0
+                ) + amount
+
         );
 
-
-        await update(
-            ref(
-                db,
-                "demandes_retraits/"+id
-            ),
-            {
-                statut:"Refusé — Remboursé",
-                dateRefus:
-                    new Date().toISOString()
-            }
-        );
 
         alert(
-            "✅ Retrait refusé et montant remboursé."
+            "✅ Retrait refusé.\n"+
+            "💰 "+money(amount)+
+            " FC remboursés."
         );
+
 
     }catch(error){
 
         console.error(error);
 
-        alert("❌ Erreur.");
+        alert(
+            "❌ Erreur pendant le remboursement."
+        );
 
     }
 
 };
 
 
+
 /* =========================================================
-   MESSAGES REÇUS
+   MESSAGES
 ========================================================= */
 
 onValue(
@@ -2516,17 +4238,30 @@ onValue(
     snapshot=>{
 
         const container =
-            document.getElementById("messagesList");
+            document
+            .getElementById(
+                "messagesList"
+            );
+
 
         container.innerHTML="";
 
+
+        let count=0;
+
+
         snapshot.forEach(child=>{
+
+            count++;
+
 
             const id =
                 child.key;
 
+
             const data =
                 child.val() || {};
+
 
             const phone =
                 data.from ||
@@ -2534,17 +4269,21 @@ onValue(
                 data.userPhone ||
                 "Utilisateur";
 
+
             const text =
                 data.message ||
                 data.text ||
                 "";
+
 
             const date =
                 data.date ||
                 data.timestamp ||
                 "—";
 
+
             let fileHTML="";
+
 
             if(
                 data.file ||
@@ -2556,6 +4295,7 @@ onValue(
                     data.file ||
                     data.fichier ||
                     data.fileData;
+
 
                 fileHTML=`
 
@@ -2569,8 +4309,9 @@ onValue(
                             href="${escapeHTML(file)}"
                             target="_blank"
                             download
-                            class="btn btn-blue">
-                            ⬇️ Télécharger
+                            class="btn btn-blue"
+                        >
+                            ⬇️ Ouvrir / télécharger
                         </a>
 
                     </div>
@@ -2579,17 +4320,23 @@ onValue(
 
             }
 
-            const card =
-                document.createElement("div");
 
-            card.className="message-card";
+            const card =
+                document
+                .createElement("div");
+
+
+            card.className=
+                "message-card";
+
 
             card.innerHTML=`
 
                 <div class="message-head">
 
                     <b>
-                        📱 ${escapeHTML(phone)}
+                        📱
+                        ${escapeHTML(phone)}
                     </b>
 
                     <small class="muted">
@@ -2608,24 +4355,49 @@ onValue(
 
                 <button
                     class="btn btn-blue"
-                    onclick="replyUser('${encodeURIComponent(phone)}')">
+                    onclick="
+                    replyUser(
+                        '${encodeURIComponent(phone)}'
+                    )
+                    "
+                >
                     ↩️ Répondre
                 </button>
 
                 <button
                     class="btn btn-red"
-                    onclick="deleteMessage('${encodeURIComponent(id)}')">
+                    onclick="
+                    deleteMessage(
+                        '${encodeURIComponent(id)}'
+                    )
+                    "
+                >
                     🗑️ Supprimer
                 </button>
 
             `;
 
-            container.prepend(card);
+
+            container.prepend(
+                card
+            );
 
         });
 
+
+        if(count===0){
+
+            container.innerHTML=`
+                <div class="panel empty">
+                    💬 Aucun message reçu.
+                </div>
+            `;
+
+        }
+
     }
 );
+
 
 
 /* =========================================================
@@ -2636,21 +4408,33 @@ window.replyUser =
 function(encodedPhone){
 
     const phone =
-        decodeURIComponent(encodedPhone);
+        decodeURIComponent(
+            encodedPhone
+        );
+
 
     document
-    .getElementById("messageTo")
+    .getElementById(
+        "messageTo"
+    )
     .value=phone;
 
-    document
-    .querySelector('[data-page="send"]')
-    .click();
 
     document
-    .getElementById("messageText")
+    .querySelector(
+        '[data-page="send"]'
+    )
+    .click();
+
+
+    document
+    .getElementById(
+        "messageText"
+    )
     .focus();
 
 };
+
 
 
 /* =========================================================
@@ -2661,13 +4445,17 @@ window.deleteMessage =
 async function(encodedId){
 
     const id =
-        decodeURIComponent(encodedId);
+        decodeURIComponent(
+            encodedId
+        );
+
 
     if(
         !confirm(
             "Supprimer ce message ?"
         )
     ) return;
+
 
     try{
 
@@ -2678,35 +4466,70 @@ async function(encodedId){
             )
         );
 
+
+        alert(
+            "✅ Message supprimé."
+        );
+
+
     }catch(error){
 
         console.error(error);
 
-        alert("❌ Erreur.");
+        alert(
+            "❌ Impossible de supprimer."
+        );
 
     }
 
 };
 
 
+
 /* =========================================================
-   ENVOYER MESSAGE ADMIN → USER
+   ENVOYER MESSAGE
 ========================================================= */
+
+document
+.getElementById(
+    "sendMessageBtn"
+)
+.addEventListener(
+    "click",
+    sendAdminMessage
+);
+
 
 window.sendAdminMessage =
 async function(){
 
     const phone =
         document
-        .getElementById("messageTo")
+        .getElementById(
+            "messageTo"
+        )
         .value
         .trim();
 
+
     const text =
         document
-        .getElementById("messageText")
+        .getElementById(
+            "messageText"
+        )
         .value
         .trim();
+
+
+    const status =
+        document
+        .getElementById(
+            "sendStatus"
+        );
+
+
+    status.innerHTML="";
+
 
     if(!phone){
 
@@ -2718,6 +4541,7 @@ async function(){
 
     }
 
+
     if(!text){
 
         alert(
@@ -2727,6 +4551,7 @@ async function(){
         return;
 
     }
+
 
     try{
 
@@ -2738,45 +4563,54 @@ async function(){
                 )
             );
 
+
+        const messageData={
+
+            from:"ADMIN",
+
+            to:phone,
+
+            telephone:phone,
+
+            message:text,
+
+            date:
+                new Date()
+                .toLocaleString(
+                    "fr-FR"
+                ),
+
+            timestamp:
+                Date.now(),
+
+            lu:false,
+
+            type:"admin"
+
+        };
+
+
         await set(
             messageRef,
-            {
-
-                from:"ADMIN",
-
-                to:phone,
-
-                telephone:phone,
-
-                message:text,
-
-                date:
-                    new Date()
-                    .toLocaleString("fr-FR"),
-
-                timestamp:
-                    Date.now(),
-
-                lu:false,
-
-                type:"admin"
-
-            }
+            messageData
         );
 
 
         /*
-         * Copie également dans la boîte
-         * personnelle de l'utilisateur.
+         * Copie dans la boîte personnelle
+         * de l'utilisateur.
          */
 
         const userMessageRef =
             push(
                 ref(
                     db,
-                    "users/"+phone+"/messages"
+                    "users/"
+                    +phone+
+                    "/messages"
                 )
             );
+
 
         await set(
             userMessageRef,
@@ -2790,7 +4624,9 @@ async function(){
 
                 date:
                     new Date()
-                    .toLocaleString("fr-FR"),
+                    .toLocaleString(
+                        "fr-FR"
+                    ),
 
                 timestamp:
                     Date.now(),
@@ -2804,30 +4640,47 @@ async function(){
 
 
         document
-        .getElementById("messageText")
+        .getElementById(
+            "messageText"
+        )
         .value="";
 
-        document
-        .getElementById("sendStatus")
-        .innerHTML=
-        `<p style="color:#00e676">
-        ✅ Message envoyé à ${escapeHTML(phone)}
-        </p>`;
+
+        status.innerHTML=`
+
+            <p
+                style="
+                color:var(--green);
+                "
+            >
+                ✅ Message envoyé à
+                ${escapeHTML(phone)}
+            </p>
+
+        `;
+
 
     }catch(error){
 
         console.error(error);
 
-        document
-        .getElementById("sendStatus")
-        .innerHTML=
-        `<p style="color:#ff4757">
-        ❌ Erreur lors de l'envoi.
-        </p>`;
+
+        status.innerHTML=`
+
+            <p
+                style="
+                color:var(--red);
+                "
+            >
+                ❌ Erreur lors de l'envoi.
+            </p>
+
+        `;
 
     }
 
 };
+
 
 
 /* =========================================================
@@ -2837,9 +4690,18 @@ async function(){
 window.openModal =
 function(id){
 
-    document
-    .getElementById(id)
-    .classList.add("show");
+    const modal =
+        document
+        .getElementById(id);
+
+
+    if(modal){
+
+        modal.classList.add(
+            "show"
+        );
+
+    }
 
 };
 
@@ -2847,9 +4709,18 @@ function(id){
 window.closeModal =
 function(id){
 
-    document
-    .getElementById(id)
-    .classList.remove("show");
+    const modal =
+        document
+        .getElementById(id);
+
+
+    if(modal){
+
+        modal.classList.remove(
+            "show"
+        );
+
+    }
 
 };
 
@@ -2858,19 +4729,56 @@ document
 .querySelectorAll(".modal")
 .forEach(modal=>{
 
-    modal.addEventListener("click",(e)=>{
+    modal.addEventListener(
+        "click",
+        e=>{
 
-        if(e.target===modal){
+            if(
+                e.target ===
+                modal
+            ){
 
-            modal.classList.remove("show");
+                modal.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+});
+
+
+document
+.addEventListener(
+    "keydown",
+    e=>{
+
+        if(
+            e.key ===
+            "Escape"
+        ){
+
+            document
+            .querySelectorAll(
+                ".modal.show"
+            )
+            .forEach(
+                modal =>
+                modal.classList.remove(
+                    "show"
+                )
+            );
 
         }
 
-    });
+    }
+);
 
-});
 
 </script>
 
 </body>
+
 </html>

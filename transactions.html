@@ -1,141 +1,1665 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starlink - Historique</title>
-    <style>
-        :root { --blue: #00d2ff; --dark: #050a14; --glass: rgba(255, 255, 255, 0.05); }
-        body { 
-            margin: 0; font-family: 'Segoe UI', sans-serif; 
-            background: var(--dark) url('IMG_0870.jpeg') no-repeat center center fixed;
-            background-size: cover; color: white; padding-bottom: 80px;
-        }
-        .header { padding: 25px; text-align: center; background: rgba(0,0,0,0.7); border-bottom: 1px solid var(--blue); backdrop-filter: blur(10px); }
-        .container { padding: 15px; }
-        .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
-        .tab-btn { flex: 1; padding: 12px; border: 1px solid var(--blue); background: transparent; color: white; border-radius: 10px; cursor: pointer; font-weight: bold; }
-        .tab-btn.active { background: var(--blue); color: black; }
-        .list-container { display: none; }
-        .list-container.active { display: block; }
-        .trans-card { 
-            background: var(--glass); border: 1px solid rgba(255,255,255,0.1); 
-            padding: 15px; border-radius: 15px; margin-bottom: 10px;
-            backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center;
-        }
-        .status-En-attente { color: #ffeb3b; font-size: 12px; }
-        .status-Validé { color: #4caf50; font-size: 12px; }
-        .status-Rejeté { color: #f44336; font-size: 12px; }
-        .amount { font-weight: bold; font-size: 16px; }
-        .date { font-size: 10px; opacity: 0.5; margin-top: 4px; }
-        .navbar { 
-            position: fixed; bottom: 0; width: 100%; background: rgba(5, 10, 20, 0.98); 
-            display: flex; justify-content: space-around; padding: 15px 0; 
-            border-top: 1px solid var(--blue); backdrop-filter: blur(15px); 
-        }
-        .nav-link { color: white; text-decoration: none; font-size: 12px; text-align: center; opacity: 0.5; }
-    </style>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>JASON Business — Historique</title>
+
+<style>
+
+:root{
+    --blue:#00d2ff;
+    --blue2:#0077ff;
+    --dark:#050a14;
+    --glass:rgba(8,15,28,.90);
+
+    --green:#00e676;
+    --yellow:#ffeb3b;
+    --red:#ff4757;
+    --orange:#ff9800;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+
+    margin:0;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color:white;
+
+    min-height:100vh;
+
+    padding-bottom:90px;
+
+    background:
+
+        linear-gradient(
+            rgba(3,8,18,.84),
+            rgba(3,8,18,.96)
+        ),
+
+        url("IMG_0870.jpeg")
+        center/cover fixed;
+
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.header{
+
+    padding:25px 18px;
+
+    text-align:center;
+
+    background:
+        rgba(0,0,0,.68);
+
+    border-bottom:
+        1px solid
+        rgba(0,210,255,.4);
+
+    backdrop-filter:
+        blur(15px);
+
+}
+
+.logo{
+
+    color:var(--blue);
+
+    font-size:22px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+
+}
+
+.subtitle{
+
+    margin-top:6px;
+
+    font-size:11px;
+
+    opacity:.55;
+
+}
+
+
+/* =====================================
+   CONTAINER
+===================================== */
+
+.container{
+
+    width:100%;
+
+    max-width:700px;
+
+    margin:auto;
+
+    padding:18px;
+
+}
+
+
+/* =====================================
+   TABS
+===================================== */
+
+.tabs{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:8px;
+
+    margin-bottom:18px;
+
+}
+
+.tab-btn{
+
+    padding:12px 6px;
+
+    border:
+        1px solid
+        rgba(0,210,255,.45);
+
+    background:
+        rgba(0,0,0,.35);
+
+    color:white;
+
+    border-radius:11px;
+
+    cursor:pointer;
+
+    font-weight:800;
+
+    font-size:11px;
+
+    transition:.2s;
+
+}
+
+.tab-btn.active{
+
+    background:var(--blue);
+
+    color:#001018;
+
+    border-color:
+        var(--blue);
+
+}
+
+.tab-btn:active{
+
+    transform:
+        scale(.96);
+
+}
+
+
+/* =====================================
+   LIST
+===================================== */
+
+.list-container{
+
+    display:none;
+
+}
+
+.list-container.active{
+
+    display:block;
+
+}
+
+
+/* =====================================
+   EMPTY
+===================================== */
+
+.empty{
+
+    text-align:center;
+
+    padding:45px 20px;
+
+    opacity:.55;
+
+    font-size:13px;
+
+}
+
+.empty-icon{
+
+    font-size:35px;
+
+    margin-bottom:10px;
+
+}
+
+
+/* =====================================
+   TRANSACTION CARD
+===================================== */
+
+.trans-card{
+
+    background:
+        var(--glass);
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    padding:15px;
+
+    border-radius:16px;
+
+    margin-bottom:10px;
+
+    backdrop-filter:
+        blur(12px);
+
+    display:flex;
+
+    justify-content:
+        space-between;
+
+    align-items:center;
+
+    gap:12px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.2);
+
+}
+
+
+/* =====================================
+   LEFT
+===================================== */
+
+.trans-left{
+
+    min-width:0;
+
+    flex:1;
+
+}
+
+.amount{
+
+    font-weight:900;
+
+    font-size:16px;
+
+}
+
+.deposit{
+
+    color:var(--green);
+
+}
+
+.withdraw{
+
+    color:var(--red);
+
+}
+
+.order{
+
+    color:var(--blue);
+
+}
+
+.service{
+
+    margin-top:4px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.date{
+
+    margin-top:5px;
+
+    font-size:10px;
+
+    opacity:.48;
+
+    line-height:1.4;
+
+}
+
+.detail{
+
+    margin-top:5px;
+
+    font-size:10px;
+
+    opacity:.55;
+
+    word-break:break-word;
+
+}
+
+
+/* =====================================
+   STATUS
+===================================== */
+
+.status{
+
+    flex-shrink:0;
+
+    padding:6px 9px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    text-align:center;
+
+}
+
+
+/* attente */
+
+.status-attente{
+
+    color:var(--yellow);
+
+    background:
+        rgba(255,235,59,.10);
+
+    border:
+        1px solid
+        rgba(255,235,59,.25);
+
+}
+
+
+/* valide */
+
+.status-valide{
+
+    color:var(--green);
+
+    background:
+        rgba(0,230,118,.10);
+
+    border:
+        1px solid
+        rgba(0,230,118,.25);
+
+}
+
+
+/* rejet */
+
+.status-rejete{
+
+    color:var(--red);
+
+    background:
+        rgba(255,71,87,.10);
+
+    border:
+        1px solid
+        rgba(255,71,87,.25);
+
+}
+
+
+/* autres */
+
+.status-autre{
+
+    color:var(--orange);
+
+    background:
+        rgba(255,152,0,.10);
+
+    border:
+        1px solid
+        rgba(255,152,0,.25);
+
+}
+
+
+/* =====================================
+   LOADING
+===================================== */
+
+.loading{
+
+    text-align:center;
+
+    padding:30px;
+
+    font-size:12px;
+
+    opacity:.55;
+
+}
+
+.loader{
+
+    display:inline-block;
+
+    width:20px;
+
+    height:20px;
+
+    border:
+        2px solid
+        rgba(255,255,255,.15);
+
+    border-top:
+        2px solid
+        var(--blue);
+
+    border-radius:50%;
+
+    animation:
+        spin .8s linear infinite;
+
+    vertical-align:middle;
+
+    margin-right:7px;
+
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =====================================
+   NAVBAR
+===================================== */
+
+.navbar{
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    height:72px;
+
+    z-index:1000;
+
+    display:flex;
+
+    justify-content:
+        space-around;
+
+    align-items:center;
+
+    background:
+        rgba(5,10,20,.97);
+
+    border-top:
+        1px solid
+        rgba(0,210,255,.3);
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+.nav-link{
+
+    color:white;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    font-size:10px;
+
+    opacity:.5;
+
+    transition:.2s;
+
+}
+
+.nav-link span{
+
+    display:block;
+
+    font-size:21px;
+
+    margin-bottom:3px;
+
+}
+
+.nav-link.active{
+
+    color:var(--blue);
+
+    opacity:1;
+
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:430px){
+
+    .container{
+
+        padding:13px;
+
+    }
+
+    .trans-card{
+
+        padding:13px;
+
+    }
+
+    .amount{
+
+        font-size:15px;
+
+    }
+
+    .status{
+
+        font-size:9px;
+
+    }
+
+}
+
+</style>
+
 </head>
+
+
 <body>
 
-<div class="header">
-    <h2 style="margin:0; letter-spacing:2px;">HISTORIQUE</h2>
-</div>
 
-<div class="container">
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="header">
+
+    <div class="logo">
+        JASON BUSINESS
+    </div>
+
+    <div class="subtitle">
+        HISTORIQUE DE VOS OPÉRATIONS
+    </div>
+
+</header>
+
+
+<!-- =====================================
+     CONTENT
+===================================== -->
+
+<main class="container">
+
+
+    <!-- TABS -->
+
     <div class="tabs">
-        <button class="tab-btn active" onclick="showTab('depots', this)">DÉPÔTS</button>
-        <button class="tab-btn" onclick="showTab('retraits', this)">RETRAITS</button>
+
+        <button
+            class="tab-btn active"
+            data-tab="depots">
+
+            💰 DÉPÔTS
+
+        </button>
+
+
+        <button
+            class="tab-btn"
+            data-tab="retraits">
+
+            💸 RETRAITS
+
+        </button>
+
+
+        <button
+            class="tab-btn"
+            data-tab="commandes">
+
+            🛒 COMMANDES
+
+        </button>
+
     </div>
 
-    <div id="depots" class="list-container active">
-        <div id="listeDepots"><p style="text-align:center; opacity:0.5;">Liaison satellite...</p></div>
-    </div>
 
-    <div id="retraits" class="list-container">
-        <div id="listeRetraits"><p style="text-align:center; opacity:0.5;">Liaison satellite...</p></div>
-    </div>
-</div>
+    <!-- =================================
+         DEPOTS
+    ================================== -->
+
+    <section
+        id="depots"
+        class="list-container active">
+
+        <div
+            id="listeDepots"
+            class="loading">
+
+            <span class="loader"></span>
+
+            Chargement des dépôts...
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         RETRAITS
+    ================================== -->
+
+    <section
+        id="retraits"
+        class="list-container">
+
+        <div
+            id="listeRetraits"
+            class="loading">
+
+            <span class="loader"></span>
+
+            Chargement des retraits...
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         COMMANDES
+    ================================== -->
+
+    <section
+        id="commandes"
+        class="list-container">
+
+        <div
+            id="listeCommandes"
+            class="loading">
+
+            <span class="loader"></span>
+
+            Chargement des commandes...
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =====================================
+     NAVBAR
+===================================== -->
 
 <nav class="navbar">
-    <a href="dashboard.html" class="nav-link">📊<br>Dash</a>
-    <a href="shop.html" class="nav-link">📡<br>Shop</a>
-    <a href="equipe.html" class="nav-link">👥<br>Equipe</a>
-    <a href="profil.html" class="nav-link">👤<br>Profil</a>
+
+    <a
+        href="dashboard.html"
+        class="nav-link">
+
+        <span>📊</span>
+        Dash
+
+    </a>
+
+
+    <a
+        href="shop.html"
+        class="nav-link">
+
+        <span>🛒</span>
+        Shop
+
+    </a>
+
+
+    <a
+        href="equipe.html"
+        class="nav-link">
+
+        <span>👥</span>
+        Équipe
+
+    </a>
+
+
+    <a
+        href="profil.html"
+        class="nav-link">
+
+        <span>👤</span>
+        Profil
+
+    </a>
+
 </nav>
 
+
 <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
-        authDomain: "starlink-investit.firebaseapp.com",
-        databaseURL: "https://starlink-investit-default-rtdb.firebaseio.com",
-        projectId: "starlink-investit",
-        storageBucket: "starlink-investit.firebasestorage.app",
-        messagingSenderId: "807081599583",
-        appId: "1:807081599583:web:e00ec3959bc4acdae031ea"
-    };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const userPhone = localStorage.getItem("userPhone");
+/* ==========================================
+   FIREBASE
+========================================== */
 
-    window.showTab = (id, btn) => {
-        document.querySelectorAll('.list-container').forEach(c => c.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        btn.classList.add('active');
-    };
+import {
 
-    // Historique des Dépôts
-    onValue(ref(db, 'demandes_recharges'), (snap) => {
-        const list = document.getElementById("listeDepots");
+    initializeApp
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+
+import {
+
+    getDatabase,
+    ref,
+    onValue
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+
+/* ==========================================
+   CONFIGURATION
+========================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
+
+    authDomain:
+    "starlink-investit.firebaseapp.com",
+
+    databaseURL:
+    "https://starlink-investit-default-rtdb.firebaseio.com",
+
+    projectId:
+    "starlink-investit",
+
+    storageBucket:
+    "starlink-investit.firebasestorage.app",
+
+    messagingSenderId:
+    "807081599583",
+
+    appId:
+    "1:807081599583:web:e00ec3959bc4acdae031ea"
+
+};
+
+
+/* ==========================================
+   INITIALISATION
+========================================== */
+
+const app =
+    initializeApp(
+        firebaseConfig
+    );
+
+
+const db =
+    getDatabase(app);
+
+
+/* ==========================================
+   SESSION
+========================================== */
+
+const userPhone =
+    localStorage.getItem(
+        "userPhone"
+    );
+
+
+if(!userPhone){
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* ==========================================
+   FORMAT FC
+========================================== */
+
+function formatFC(value){
+
+    return Math.floor(
+        Number(value) || 0
+    ).toLocaleString(
+        "fr-FR"
+    );
+
+}
+
+
+/* ==========================================
+   NORMALISER STATUT
+========================================== */
+
+function normalizeStatus(status){
+
+    const value =
+        String(
+            status ||
+            "En attente"
+        ).toLowerCase();
+
+
+    if(
+
+        value.includes("attente") ||
+        value.includes("pending")
+
+    ){
+
+        return "attente";
+
+    }
+
+
+    if(
+
+        value.includes("valid") ||
+        value.includes("accept") ||
+        value.includes("approuv")
+
+    ){
+
+        return "valide";
+
+    }
+
+
+    if(
+
+        value.includes("rejet") ||
+        value.includes("refus") ||
+        value.includes("annul")
+
+    ){
+
+        return "rejete";
+
+    }
+
+
+    return "autre";
+
+}
+
+
+/* ==========================================
+   AFFICHER STATUT
+========================================== */
+
+function statusHTML(status){
+
+    const text =
+        status ||
+        "En attente";
+
+
+    const cls =
+        normalizeStatus(
+            text
+        );
+
+
+    return `
+
+        <div class="status status-${cls}">
+
+            ${escapeHTML(text)}
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==========================================
+   PROTECTION HTML
+========================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* ==========================================
+   TAB SYSTEM
+========================================== */
+
+document
+.querySelectorAll(".tab-btn")
+.forEach(button=>{
+
+    button.addEventListener(
+        "click",
+        ()=>{
+
+            const tab =
+                button.dataset.tab;
+
+
+            document
+            .querySelectorAll(
+                ".tab-btn"
+            )
+            .forEach(btn=>{
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+            document
+            .querySelectorAll(
+                ".list-container"
+            )
+            .forEach(section=>{
+
+                section.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+            button.classList.add(
+                "active"
+            );
+
+
+            document
+            .getElementById(tab)
+            .classList.add(
+                "active"
+            );
+
+        }
+    );
+
+});
+
+
+/* ==========================================
+   DEPOTS
+========================================== */
+
+onValue(
+
+    ref(
+        db,
+        "demandes_recharges"
+    ),
+
+    snapshot=>{
+
+        const list =
+            document.getElementById(
+                "listeDepots"
+            );
+
+
         list.innerHTML = "";
-        let count = 0;
-        snap.forEach(child => {
-            const data = child.val();
-            if(data.telephone === userPhone) {
-                count++;
-                const statusClass = "status-" + (data.statut || "En-attente").replace(" ", "-");
-                list.innerHTML += `
-                    <div class="trans-card">
-                        <div>
-                            <div class="amount">+ ${parseInt(data.montant).toLocaleString()} FC</div>
-                            <div class="date">${data.date}</div>
-                        </div>
-                        <div class="${statusClass}">${data.statut || "En attente"}</div>
-                    </div>
-                `;
-            }
-        });
-        if(count === 0) list.innerHTML = "<p style='text-align:center; opacity:0.5;'>Aucun dépôt trouvé.</p>";
-    });
 
-    // Historique des Retraits
-    onValue(ref(db, 'demandes_retraits'), (snap) => {
-        const list = document.getElementById("listeRetraits");
-        list.innerHTML = "";
+
         let count = 0;
-        snap.forEach(child => {
-            const data = child.val();
-            if(data.telephone === userPhone) {
-                count++;
-                const statusClass = "status-" + (data.statut || "En-attente").replace(" ", "-");
-                list.innerHTML += `
-                    <div class="trans-card">
-                        <div>
-                            <div class="amount">- ${parseInt(data.montant).toLocaleString()} FC</div>
-                            <div class="date">${data.methode} - ${data.numero_reception}</div>
-                        </div>
-                        <div class="${statusClass}">${data.statut || "En attente"}</div>
-                    </div>
-                `;
+
+
+        const items = [];
+
+
+        snapshot.forEach(
+            child=>{
+
+                const data =
+                    child.val() || {};
+
+
+                if(
+                    String(
+                        data.telephone
+                    ) !==
+                    String(
+                        userPhone
+                    )
+                ){
+
+                    return;
+
+                }
+
+
+                items.push({
+
+                    key:
+                        child.key,
+
+                    data:
+                        data
+
+                });
+
             }
+        );
+
+
+        /* plus récent en premier */
+
+        items.reverse();
+
+
+        items.forEach(item=>{
+
+            const data =
+                item.data;
+
+
+            count++;
+
+
+            const amount =
+                Number(
+                    data.montant
+                ) || 0;
+
+
+            const transaction =
+                data.transactionID ||
+                data.transactionId ||
+                data.transID ||
+                "";
+
+
+            const date =
+                data.date ||
+                data.createdAt ||
+                "Date inconnue";
+
+
+            list.innerHTML += `
+
+                <div class="trans-card">
+
+                    <div class="trans-left">
+
+                        <div class="amount deposit">
+
+                            + ${formatFC(amount)} FC
+
+                        </div>
+
+                        <div class="service">
+
+                            💰 Recharge du compte
+
+                        </div>
+
+                        ${
+                            transaction
+                            ?
+                            `
+                            <div class="detail">
+
+                                ID :
+                                ${escapeHTML(transaction)}
+
+                            </div>
+                            `
+                            :
+                            ""
+                        }
+
+                        <div class="date">
+
+                            ${escapeHTML(date)}
+
+                        </div>
+
+                    </div>
+
+
+                    ${statusHTML(
+                        data.statut
+                    )}
+
+                </div>
+
+            `;
+
         });
-        if(count === 0) list.innerHTML = "<p style='text-align:center; opacity:0.5;'>Aucun retrait trouvé.</p>";
-    });
+
+
+        if(count === 0){
+
+            list.innerHTML = `
+
+                <div class="empty">
+
+                    <div class="empty-icon">
+                        💰
+                    </div>
+
+                    Aucun dépôt trouvé.
+
+                </div>
+
+            `;
+
+        }
+
+    },
+
+    error=>{
+
+        console.error(
+            "Erreur dépôts :",
+            error
+        );
+
+
+        document.getElementById(
+            "listeDepots"
+        ).innerHTML = `
+
+            <div class="empty">
+
+                ⚠️ Impossible de charger
+                les dépôts.
+
+            </div>
+
+        `;
+
+    }
+
+);
+
+
+/* ==========================================
+   RETRAITS
+========================================== */
+
+onValue(
+
+    ref(
+        db,
+        "demandes_retraits"
+    ),
+
+    snapshot=>{
+
+        const list =
+            document.getElementById(
+                "listeRetraits"
+            );
+
+
+        list.innerHTML = "";
+
+
+        let count = 0;
+
+
+        const items = [];
+
+
+        snapshot.forEach(
+            child=>{
+
+                const data =
+                    child.val() || {};
+
+
+                if(
+                    String(
+                        data.telephone
+                    ) !==
+                    String(
+                        userPhone
+                    )
+                ){
+
+                    return;
+
+                }
+
+
+                items.push({
+
+                    key:
+                        child.key,
+
+                    data:
+                        data
+
+                });
+
+            }
+        );
+
+
+        items.reverse();
+
+
+        items.forEach(item=>{
+
+            const data =
+                item.data;
+
+
+            count++;
+
+
+            const amount =
+                Number(
+                    data.montant
+                ) || 0;
+
+
+            const method =
+                data.methode ||
+                "Méthode inconnue";
+
+
+            const wallet =
+                data.numero_reception ||
+                data.numero ||
+                "";
+
+
+            const date =
+                data.date ||
+                data.createdAt ||
+                "Date inconnue";
+
+
+            list.innerHTML += `
+
+                <div class="trans-card">
+
+                    <div class="trans-left">
+
+                        <div class="amount withdraw">
+
+                            - ${formatFC(amount)} FC
+
+                        </div>
+
+                        <div class="service">
+
+                            💸 ${escapeHTML(method)}
+
+                        </div>
+
+                        ${
+                            wallet
+                            ?
+                            `
+                            <div class="detail">
+
+                                Réception :
+                                ${escapeHTML(wallet)}
+
+                            </div>
+                            `
+                            :
+                            ""
+                        }
+
+                        <div class="date">
+
+                            ${escapeHTML(date)}
+
+                        </div>
+
+                    </div>
+
+
+                    ${statusHTML(
+                        data.statut
+                    )}
+
+                </div>
+
+            `;
+
+        });
+
+
+        if(count === 0){
+
+            list.innerHTML = `
+
+                <div class="empty">
+
+                    <div class="empty-icon">
+                        💸
+                    </div>
+
+                    Aucun retrait trouvé.
+
+                </div>
+
+            `;
+
+        }
+
+    },
+
+    error=>{
+
+        console.error(
+            "Erreur retraits :",
+            error
+        );
+
+
+        document.getElementById(
+            "listeRetraits"
+        ).innerHTML = `
+
+            <div class="empty">
+
+                ⚠️ Impossible de charger
+                les retraits.
+
+            </div>
+
+        `;
+
+    }
+
+);
+
+
+/* ==========================================
+   COMMANDES
+========================================== */
+
+onValue(
+
+    ref(
+        db,
+        "commandes"
+    ),
+
+    snapshot=>{
+
+        const list =
+            document.getElementById(
+                "listeCommandes"
+            );
+
+
+        list.innerHTML = "";
+
+
+        let count = 0;
+
+
+        const items = [];
+
+
+        snapshot.forEach(
+            child=>{
+
+                const data =
+                    child.val() || {};
+
+
+                if(
+                    String(
+                        data.telephone
+                    ) !==
+                    String(
+                        userPhone
+                    )
+                ){
+
+                    return;
+
+                }
+
+
+                items.push({
+
+                    key:
+                        child.key,
+
+                    data:
+                        data
+
+                });
+
+            }
+        );
+
+
+        items.reverse();
+
+
+        items.forEach(item=>{
+
+            const data =
+                item.data;
+
+
+            count++;
+
+
+            const price =
+                Number(
+                    data.prix
+                ) || 0;
+
+
+            const service =
+                data.service ||
+                "Service";
+
+
+            const date =
+                data.date ||
+                data.createdAt ||
+                "Date inconnue";
+
+
+            let detailsText = "";
+
+
+            if(
+                data.details &&
+                typeof data.details ===
+                "object"
+            ){
+
+                const values =
+                    Object.entries(
+                        data.details
+                    )
+                    .filter(
+                        ([key,value]) =>
+                            value !== "" &&
+                            value !== null &&
+                            value !== undefined
+                    )
+                    .slice(0,2);
+
+
+                if(values.length){
+
+                    detailsText =
+                        values
+                        .map(
+                            ([key,value]) =>
+                                `${escapeHTML(value)}`
+                        )
+                        .join(
+                            " • "
+                        );
+
+                }
+
+            }
+
+
+            list.innerHTML += `
+
+                <div class="trans-card">
+
+                    <div class="trans-left">
+
+                        <div class="amount order">
+
+                            - ${formatFC(price)} FC
+
+                        </div>
+
+                        <div class="service">
+
+                            🛒
+                            ${escapeHTML(service)}
+
+                        </div>
+
+                        ${
+                            detailsText
+                            ?
+                            `
+                            <div class="detail">
+
+                                ${detailsText}
+
+                            </div>
+                            `
+                            :
+                            ""
+                        }
+
+                        <div class="date">
+
+                            ${escapeHTML(date)}
+
+                        </div>
+
+                    </div>
+
+
+                    ${statusHTML(
+                        data.statut
+                    )}
+
+                </div>
+
+            `;
+
+        });
+
+
+        if(count === 0){
+
+            list.innerHTML = `
+
+                <div class="empty">
+
+                    <div class="empty-icon">
+                        🛒
+                    </div>
+
+                    Aucune commande trouvée.
+
+                </div>
+
+            `;
+
+        }
+
+    },
+
+    error=>{
+
+        console.error(
+            "Erreur commandes :",
+            error
+        );
+
+
+        document.getElementById(
+            "listeCommandes"
+        ).innerHTML = `
+
+            <div class="empty">
+
+                ⚠️ Impossible de charger
+                les commandes.
+
+            </div>
+
+        `;
+
+    }
+
+);
+
 </script>
+
 </body>
+
 </html>

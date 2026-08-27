@@ -5,23 +5,15 @@
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
->
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
-<meta
-    name="theme-color"
-    content="#030812"
->
+<meta name="theme-color" content="#050914">
 
-<meta
-    name="description"
-    content="JASON BUSINESS — Administration"
->
+<meta name="description"
+content="JASON Business — Administration">
 
 <title>JASON BUSINESS — ADMIN</title>
-
 
 <style>
 
@@ -30,27 +22,19 @@
 ========================================================= */
 
 :root{
+    --bg:#050914;
+    --panel:#0b1220;
+    --panel2:#101a2b;
+    --border:rgba(255,255,255,.08);
+    --text:#f5f7fb;
+    --muted:#8e9aad;
 
-    --blue:#00d2ff;
-    --blue2:#0077ff;
-
-    --dark:#030812;
-    --dark2:#050d19;
-
-    --card:#091525;
-    --card2:#0d192b;
-
-    --border:rgba(0,210,255,.18);
-
-    --green:#00e676;
-    --red:#ff4757;
-    --orange:#ff9800;
-    --yellow:#ffd740;
-    --purple:#9b59ff;
-
-    --white:#ffffff;
-    --muted:rgba(255,255,255,.55);
-
+    --blue:#3b82f6;
+    --green:#22c55e;
+    --red:#ef4444;
+    --orange:#f59e0b;
+    --purple:#a855f7;
+    --cyan:#06b6d4;
 }
 
 
@@ -59,39 +43,27 @@
 ========================================================= */
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
+    box-sizing:border-box;
+    font-family:
+        Inter,
+        Segoe UI,
+        Arial,
+        sans-serif;
 }
 
 body{
-
-    min-height:100vh;
-
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    color:white;
-
     background:
         radial-gradient(
-            circle at top right,
-            rgba(0,119,255,.10),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at bottom left,
-            rgba(0,210,255,.06),
-            transparent 30%
-        ),
-        #030812;
+            circle at top,
+            #101d35 0,
+            var(--bg) 45%,
+            #02040a 100%
+        );
 
+    color:var(--text);
+    min-height:100vh;
 }
 
 
@@ -100,289 +72,202 @@ body{
 ========================================================= */
 
 #adminLogin{
-
-    min-height:100vh;
+    position:fixed;
+    inset:0;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     padding:20px;
 
+    background:
+        radial-gradient(
+            circle at top,
+            #172744,
+            #030711 70%
+        );
+
+    z-index:9999;
 }
 
-.login-card{
-
+.login-box{
     width:100%;
-    max-width:410px;
-
-    padding:32px;
-
-    border-radius:26px;
+    max-width:400px;
 
     background:
-        rgba(6,15,29,.96);
+        rgba(11,18,32,.96);
 
-    border:
-        1px solid
-        rgba(0,210,255,.45);
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:30px;
 
     box-shadow:
-        0 0 70px
-        rgba(0,210,255,.10);
-
-    backdrop-filter:
-        blur(20px);
-
-    text-align:center;
-
+        0 25px 80px rgba(0,0,0,.55);
 }
 
 .login-logo{
+    text-align:center;
 
-    width:90px;
-    height:90px;
-
-    margin:0 auto 20px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:26px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--blue2)
-        );
-
-    color:#001018;
-
-    font-size:42px;
-
+    font-size:25px;
     font-weight:900;
 
-    box-shadow:
-        0 0 35px
-        rgba(0,210,255,.25);
+    letter-spacing:1px;
 
+    margin-bottom:7px;
 }
 
-.login-card h1{
-
-    font-size:24px;
-
-    letter-spacing:3px;
-
-    color:var(--blue);
-
-}
-
-.login-card p{
-
-    margin-top:7px;
-
-    margin-bottom:22px;
-
+.login-subtitle{
+    text-align:center;
     color:var(--muted);
 
-    font-size:13px;
+    font-size:12px;
 
+    margin-bottom:25px;
 }
 
-.login-input{
-
+.input{
     width:100%;
 
-    padding:16px;
+    background:#070d18;
 
-    border-radius:13px;
-
-    border:
-        1px solid
-        #263247;
-
-    background:#050d18;
+    border:1px solid var(--border);
 
     color:white;
 
+    border-radius:13px;
+
+    padding:14px;
+
     outline:none;
 
-    font-size:14px;
-
-    margin-bottom:10px;
-
+    margin-bottom:12px;
 }
 
-.login-input:focus{
-
-    border-color:
-        var(--blue);
-
-    box-shadow:
-        0 0 0 3px
-        rgba(0,210,255,.07);
-
+.input:focus{
+    border-color:var(--blue);
 }
 
 .login-btn{
-
     width:100%;
-
-    padding:16px;
 
     border:0;
 
     border-radius:13px;
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--blue2)
-        );
+    padding:14px;
 
-    color:#001018;
+    background:var(--blue);
 
-    font-weight:900;
+    color:white;
+
+    font-weight:800;
 
     cursor:pointer;
-
-}
-
-.login-btn:active{
-    transform:scale(.98);
 }
 
 .login-error{
+    color:#ff6b6b;
+
+    text-align:center;
+
+    font-size:12px;
 
     min-height:18px;
 
     margin-top:12px;
-
-    color:var(--red);
-
-    font-size:12px;
-
 }
 
 
 /* =========================================================
-   PANEL
+   ADMIN PANEL
 ========================================================= */
 
 #adminPanel{
     display:none;
+
+    min-height:100vh;
 }
 
 
 /* =========================================================
-   TOPBAR
+   HEADER
 ========================================================= */
 
-.topbar{
-
+.header{
     position:sticky;
-
     top:0;
-
     z-index:100;
 
-    min-height:66px;
-
-    padding:
-        11px 20px;
+    height:68px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
+    padding:0 18px;
+
     background:
-        rgba(3,8,18,.96);
+        rgba(5,9,20,.94);
 
-    border-bottom:
-        1px solid
-        var(--border);
+    backdrop-filter:blur(15px);
 
-    backdrop-filter:
-        blur(20px);
-
+    border-bottom:1px solid var(--border);
 }
 
-.logo{
-
-    font-size:15px;
-
+.brand{
+    font-size:18px;
     font-weight:900;
-
-    letter-spacing:2px;
-
-    color:var(--blue);
-
 }
 
-.logo span{
+.brand span{
+    color:#4da3ff;
+}
 
-    color:white;
-
-    opacity:.45;
-
-    margin-left:5px;
-
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
 .admin-status{
-
     display:flex;
-
     align-items:center;
+    gap:7px;
 
-    gap:10px;
+    font-size:11px;
 
+    color:#9ca9bc;
 }
 
 .online-dot{
-
     width:8px;
     height:8px;
 
-    border-radius:50%;
-
     background:var(--green);
 
-    box-shadow:
-        0 0 10px
-        var(--green);
+    border-radius:50%;
 
+    box-shadow:
+        0 0 10px var(--green);
 }
 
 .logout{
+    border:1px solid rgba(239,68,68,.3);
 
-    border:
-        1px solid
-        rgba(255,71,87,.35);
+    background:rgba(239,68,68,.08);
 
-    background:
-        rgba(255,71,87,.10);
-
-    color:var(--red);
-
-    padding:
-        9px 13px;
+    color:#ff6b6b;
 
     border-radius:10px;
 
+    padding:9px 12px;
+
     cursor:pointer;
 
-    font-weight:bold;
-
+    font-weight:700;
 }
 
 
@@ -391,55 +276,47 @@ body{
 ========================================================= */
 
 .layout{
-
     display:flex;
 
-    min-height:
-        calc(100vh - 66px);
-
+    min-height:calc(100vh - 68px);
 }
 
-.sidebar{
 
-    width:245px;
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar{
+    width:235px;
 
     flex-shrink:0;
 
-    padding:15px;
-
     background:
-        rgba(3,9,19,.96);
+        rgba(7,12,23,.94);
 
-    border-right:
-        1px solid
-        var(--border);
+    border-right:1px solid var(--border);
 
-}
-
-.menu-title{
-
-    color:var(--muted);
-
-    font-size:10px;
-
-    text-transform:uppercase;
-
-    letter-spacing:1.5px;
-
-    padding:
-        8px 10px;
-
-    margin-bottom:5px;
-
+    padding:15px 12px;
 }
 
 .menu-btn{
-
     width:100%;
 
-    padding:13px 14px;
+    border:0;
 
-    margin-bottom:7px;
+    background:transparent;
+
+    color:#a8b3c5;
+
+    padding:13px 12px;
+
+    margin-bottom:5px;
+
+    border-radius:12px;
+
+    text-align:left;
+
+    cursor:pointer;
 
     display:flex;
 
@@ -447,260 +324,128 @@ body{
 
     gap:10px;
 
-    border:
-        1px solid
-        transparent;
-
-    border-radius:12px;
-
-    background:transparent;
-
-    color:white;
-
-    text-align:left;
-
-    cursor:pointer;
-
     font-weight:700;
 
-    transition:.2s;
-
+    font-size:13px;
 }
 
-.menu-btn:hover,
+.menu-btn:hover{
+    background:rgba(255,255,255,.04);
+}
+
 .menu-btn.active{
-
     background:
-        rgba(0,210,255,.09);
+        rgba(59,130,246,.15);
 
-    border-color:
-        var(--border);
-
-    color:var(--blue);
-
+    color:#fff;
 }
 
 .menu-count{
-
     margin-left:auto;
 
-    min-width:20px;
+    min-width:21px;
+    height:21px;
 
-    padding:3px 6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    border-radius:7px;
+    border-radius:20px;
 
-    background:
-        rgba(255,215,64,.12);
+    background:var(--red);
 
-    color:var(--yellow);
+    color:white;
 
     font-size:10px;
-
-    text-align:center;
-
 }
 
-.main{
 
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content{
     flex:1;
 
     min-width:0;
 
-    padding:22px;
-
+    padding:20px;
 }
 
 .page{
-
     display:none;
-
-    animation:
-        fadeIn .18s ease;
-
 }
 
 .page.active{
     display:block;
 }
 
-@keyframes fadeIn{
-
-    from{
-        opacity:0;
-        transform:translateY(4px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-
-/* =========================================================
-   PAGE HEADER
-========================================================= */
-
-.page-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:flex-start;
-
-    gap:15px;
-
-    margin-bottom:20px;
-
-}
-
 .page-title{
-
-    margin:0;
-
     font-size:25px;
+    font-weight:900;
 
-    letter-spacing:.5px;
-
+    margin-bottom:5px;
 }
 
 .page-subtitle{
-
-    margin-top:6px;
-
-    color:var(--muted);
-
-    font-size:13px;
-
-}
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-.stats{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:13px;
-
-    margin-bottom:18px;
-
-}
-
-.stat-card{
-
-    position:relative;
-
-    overflow:hidden;
-
-    padding:19px;
-
-    border-radius:17px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(10,20,36,.96),
-            rgba(6,14,26,.96)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.07);
-
-}
-
-.stat-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    right:-35px;
-    bottom:-35px;
-
-    width:100px;
-    height:100px;
-
-    border-radius:50%;
-
-    background:
-        rgba(0,210,255,.04);
-
-}
-
-.stat-icon{
-
-    font-size:23px;
-
-}
-
-.stat-value{
-
-    margin-top:8px;
-
-    color:var(--blue);
-
-    font-size:24px;
-
-    font-weight:900;
-
-}
-
-.stat-label{
-
-    color:var(--muted);
-
-    font-size:11px;
-
-}
-
-
-/* =========================================================
-   PANELS
-========================================================= */
-
-.panel{
-
-    margin-bottom:18px;
-
-    padding:18px;
-
-    border-radius:18px;
-
-    background:
-        rgba(8,15,28,.94);
-
-    border:
-        1px solid
-        rgba(255,255,255,.07);
-
-}
-
-.panel-title{
-
-    margin-bottom:15px;
-
-    font-size:15px;
-
-}
-
-.panel-description{
-
     color:var(--muted);
 
     font-size:12px;
 
-    line-height:1.6;
+    margin-bottom:20px;
+}
 
+
+/* =========================================================
+   DASHBOARD CARDS
+========================================================= */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:13px;
+
+    margin-bottom:20px;
+}
+
+.stat-card{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16,26,43,.96),
+            rgba(8,14,26,.96)
+        );
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    min-height:110px;
+}
+
+.stat-icon{
+    font-size:22px;
+
+    margin-bottom:10px;
+}
+
+.stat-label{
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.stat-value{
+    font-size:22px;
+
+    font-weight:900;
+
+    margin-top:5px;
 }
 
 
@@ -709,60 +454,84 @@ body{
 ========================================================= */
 
 .quick-grid{
-
     display:grid;
 
     grid-template-columns:
-        repeat(2,1fr);
+        repeat(4,minmax(0,1fr));
 
-    gap:12px;
-
+    gap:13px;
 }
 
 .quick-card{
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:17px;
 
     padding:18px;
 
-    border-radius:15px;
-
-    background:#07111f;
-
-    border:
-        1px solid
-        rgba(255,255,255,.06);
-
     cursor:pointer;
-
-    transition:.2s;
-
 }
 
 .quick-card:hover{
-
     border-color:
-        var(--border);
-
-    transform:
-        translateY(-2px);
-
+        rgba(59,130,246,.4);
 }
 
-.quick-card strong{
-
+.quick-card b{
     display:block;
 
-    margin-top:8px;
-
+    margin-bottom:5px;
 }
 
-.quick-card small{
-
-    display:block;
-
-    margin-top:5px;
-
+.quick-card span{
     color:var(--muted);
 
+    font-size:11px;
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.panel{
+    background:
+        rgba(11,18,32,.9);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    margin-bottom:18px;
+}
+
+.panel-head{
+    padding:16px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:12px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.panel-title{
+    font-weight:900;
+}
+
+.panel-description{
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-top:4px;
 }
 
 
@@ -771,32 +540,20 @@ body{
 ========================================================= */
 
 .search{
-
     width:100%;
+    max-width:380px;
 
-    padding:14px;
+    background:#070d18;
 
-    margin-bottom:15px;
+    border:1px solid var(--border);
 
     border-radius:11px;
 
-    border:
-        1px solid
-        #263247;
-
-    background:#050d18;
-
     color:white;
 
+    padding:11px 13px;
+
     outline:none;
-
-}
-
-.search:focus{
-
-    border-color:
-        var(--blue);
-
 }
 
 
@@ -805,46 +562,21 @@ body{
 ========================================================= */
 
 .table-wrap{
-
     width:100%;
 
     overflow-x:auto;
-
-    -webkit-overflow-scrolling:touch;
-
 }
 
 table{
-
     width:100%;
 
     min-width:850px;
 
     border-collapse:collapse;
-
-}
-
-th,
-td{
-
-    padding:
-        12px 10px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.055);
-
-    text-align:left;
-
-    font-size:12px;
-
-    vertical-align:middle;
-
 }
 
 th{
-
-    color:var(--blue);
+    color:#7f8da2;
 
     font-size:10px;
 
@@ -852,94 +584,33 @@ th{
 
     letter-spacing:.5px;
 
+    text-align:left;
+
+    padding:13px;
+
+    border-bottom:1px solid var(--border);
+
+    white-space:nowrap;
 }
 
-tbody tr:hover td{
+td{
+    padding:13px;
 
+    border-bottom:1px solid
+        rgba(255,255,255,.045);
+
+    font-size:12px;
+
+    vertical-align:middle;
+}
+
+tr:hover td{
     background:
-        rgba(0,210,255,.025);
-
+        rgba(255,255,255,.018);
 }
 
 .user-name{
-
     font-weight:700;
-
-}
-
-.muted{
-
-    color:var(--muted);
-
-}
-
-
-/* =========================================================
-   BADGES
-========================================================= */
-
-.badge{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:4px;
-
-    padding:
-        5px 8px;
-
-    border-radius:8px;
-
-    font-size:10px;
-
-    font-weight:800;
-
-}
-
-.badge-success{
-
-    background:
-        rgba(0,230,118,.10);
-
-    color:var(--green);
-
-}
-
-.badge-danger{
-
-    background:
-        rgba(255,71,87,.10);
-
-    color:var(--red);
-
-}
-
-.badge-pending{
-
-    background:
-        rgba(255,215,64,.10);
-
-    color:var(--yellow);
-
-}
-
-.badge-blue{
-
-    background:
-        rgba(0,210,255,.10);
-
-    color:var(--blue);
-
-}
-
-.badge-purple{
-
-    background:
-        rgba(155,89,255,.12);
-
-    color:#b98cff;
-
 }
 
 
@@ -948,109 +619,113 @@ tbody tr:hover td{
 ========================================================= */
 
 .btn{
-
     border:0;
 
-    padding:
-        8px 11px;
+    border-radius:8px;
 
-    margin:2px;
+    padding:7px 9px;
 
-    border-radius:9px;
+    color:white;
 
-    cursor:pointer;
-
-    font-size:11px;
+    font-size:10px;
 
     font-weight:800;
 
-    transition:.15s;
+    cursor:pointer;
 
-}
+    margin:2px;
 
-.btn:hover{
-    filter:brightness(1.1);
-}
-
-.btn:active{
-    transform:scale(.96);
+    white-space:nowrap;
 }
 
 .btn-blue{
-
     background:var(--blue);
-
-    color:#001018;
-
 }
 
 .btn-green{
-
     background:var(--green);
-
-    color:#001508;
-
 }
 
 .btn-red{
-
     background:var(--red);
-
-    color:white;
-
 }
 
 .btn-orange{
-
     background:var(--orange);
-
-    color:#160b00;
-
 }
 
 .btn-purple{
-
     background:var(--purple);
-
-    color:white;
-
 }
 
 .btn-dark{
-
-    background:#172235;
-
-    color:white;
-
+    background:#263246;
 }
 
-.btn-outline{
-
-    background:transparent;
-
-    border:
-        1px solid
-        #263247;
-
-    color:white;
-
+.btn-cyan{
+    background:var(--cyan);
 }
 
 
 /* =========================================================
-   EMPTY
+   BADGES
 ========================================================= */
 
-.empty{
+.badge{
+    display:inline-flex;
 
-    padding:35px 20px;
+    align-items:center;
 
-    text-align:center;
+    gap:4px;
 
+    border-radius:20px;
+
+    padding:5px 8px;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+}
+
+.badge-success{
+    color:#54e889;
+
+    background:
+        rgba(34,197,94,.12);
+}
+
+.badge-danger{
+    color:#ff7777;
+
+    background:
+        rgba(239,68,68,.12);
+}
+
+.badge-pending{
+    color:#ffc95a;
+
+    background:
+        rgba(245,158,11,.12);
+}
+
+.badge-purple{
+    color:#d39aff;
+
+    background:
+        rgba(168,85,247,.14);
+}
+
+.badge-blue{
+    color:#70a9ff;
+
+    background:
+        rgba(59,130,246,.13);
+}
+
+.muted{
     color:var(--muted);
-
-    font-size:13px;
-
 }
 
 
@@ -1059,174 +734,152 @@ tbody tr:hover td{
 ========================================================= */
 
 .detail-grid{
-
     display:grid;
 
     grid-template-columns:
-        1fr 1fr;
+        repeat(2,minmax(0,1fr));
 
     gap:10px;
-
 }
 
 .detail-item{
+    background:
+        rgba(255,255,255,.035);
 
-    padding:13px;
+    border:1px solid var(--border);
 
-    border-radius:11px;
+    border-radius:12px;
 
-    background:#050d18;
-
-    border:
-        1px solid
-        rgba(255,255,255,.06);
-
+    padding:12px;
 }
 
 .detail-item small{
-
     display:block;
-
-    margin-bottom:5px;
 
     color:var(--muted);
 
     font-size:10px;
 
+    margin-bottom:6px;
 }
 
 .detail-item strong{
+    display:block;
 
     font-size:13px;
 
+    word-break:break-word;
 }
 
 
 /* =========================================================
-   MESSAGE
+   MESSAGES
 ========================================================= */
 
 .message-card{
-
     padding:16px;
 
-    margin-bottom:10px;
+    border-bottom:1px solid var(--border);
+}
 
-    border-radius:15px;
-
-    background:#07111f;
-
-    border:
-        1px solid
-        rgba(255,255,255,.07);
-
+.message-card:last-child{
+    border-bottom:0;
 }
 
 .message-head{
-
     display:flex;
 
     justify-content:space-between;
 
-    gap:10px;
+    gap:12px;
 
+    margin-bottom:10px;
 }
 
 .message-body{
-
-    margin-top:10px;
-
-    color:#e8eef7;
+    color:#dce3ed;
 
     font-size:13px;
 
-    line-height:1.6;
+    line-height:1.55;
 
     white-space:pre-wrap;
 
-    overflow-wrap:anywhere;
-
+    word-break:break-word;
 }
 
 .file-box{
-
     margin-top:12px;
 
-    padding:11px;
+    padding:12px;
 
-    border-radius:10px;
+    border-radius:12px;
 
     background:
-        rgba(0,210,255,.05);
+        rgba(59,130,246,.07);
 
-    border:
-        1px solid
-        var(--border);
-
+    border:1px solid
+        rgba(59,130,246,.18);
 }
 
 
 /* =========================================================
-   FORM
+   SEND
 ========================================================= */
 
-.form-group{
-
-    margin-bottom:13px;
-
+.form{
+    padding:18px;
 }
 
-.form-label{
-
+.label{
     display:block;
-
-    margin-bottom:6px;
-
-    color:var(--muted);
 
     font-size:11px;
 
+    color:#9ba7b9;
+
+    margin-bottom:6px;
+
     font-weight:700;
-
 }
 
-.form-input,
-.form-textarea,
-.form-select{
-
+.textarea{
     width:100%;
-
-    padding:13px;
-
-    border-radius:10px;
-
-    border:
-        1px solid
-        #263247;
-
-    background:#050d18;
-
-    color:white;
-
-    outline:none;
-
-}
-
-.form-input:focus,
-.form-textarea:focus,
-.form-select:focus{
-
-    border-color:
-        var(--blue);
-
-}
-
-.form-textarea{
 
     min-height:150px;
 
     resize:vertical;
 
+    background:#070d18;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    color:white;
+
+    padding:13px;
+
+    outline:none;
+}
+
+.textarea:focus{
+    border-color:var(--blue);
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty{
+    padding:35px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:13px;
 }
 
 
@@ -1235,12 +888,9 @@ tbody tr:hover td{
 ========================================================= */
 
 .modal{
-
     position:fixed;
 
     inset:0;
-
-    z-index:500;
 
     display:none;
 
@@ -1251,11 +901,11 @@ tbody tr:hover td{
     padding:18px;
 
     background:
-        rgba(0,0,0,.78);
+        rgba(0,0,0,.72);
 
-    backdrop-filter:
-        blur(5px);
+    backdrop-filter:blur(7px);
 
+    z-index:5000;
 }
 
 .modal.show{
@@ -1263,69 +913,62 @@ tbody tr:hover td{
 }
 
 .modal-box{
-
     width:100%;
 
-    max-width:600px;
+    max-width:650px;
 
     max-height:90vh;
 
     overflow-y:auto;
 
-    padding:22px;
+    background:
+        #0b1220;
+
+    border:1px solid var(--border);
 
     border-radius:20px;
 
-    background:#081322;
-
-    border:
-        1px solid
-        var(--border);
-
     box-shadow:
-        0 0 60px
-        rgba(0,210,255,.10);
-
+        0 30px 100px rgba(0,0,0,.7);
 }
 
 .modal-header{
-
     display:flex;
 
+    align-items:center;
     justify-content:space-between;
 
-    align-items:center;
+    padding:17px;
 
-    margin-bottom:18px;
-
+    border-bottom:1px solid var(--border);
 }
 
-.modal-header h2{
+.modal-title{
+    font-weight:900;
 
-    color:var(--blue);
-
-    font-size:18px;
-
+    font-size:16px;
 }
 
-.modal-close{
-
-    width:32px;
-    height:32px;
+.close{
+    width:34px;
+    height:34px;
 
     border:0;
 
-    border-radius:9px;
+    border-radius:10px;
 
     background:
         rgba(255,255,255,.06);
 
     color:white;
 
+    font-size:20px;
+
     cursor:pointer;
+}
 
-    font-size:16px;
-
+.modal-content{
+    padding:18px;
 }
 
 
@@ -1334,13 +977,12 @@ tbody tr:hover td{
 ========================================================= */
 
 #toastContainer{
-
     position:fixed;
 
-    right:18px;
-    bottom:18px;
+    top:78px;
+    right:15px;
 
-    z-index:1000;
+    z-index:10000;
 
     display:flex;
 
@@ -1348,105 +990,46 @@ tbody tr:hover td{
 
     gap:8px;
 
-    max-width:
-        calc(100vw - 36px);
-
+    width:min(330px,calc(100% - 30px));
 }
 
 .toast{
+    padding:13px 15px;
 
-    padding:
-        12px 15px;
+    border-radius:12px;
 
-    border-radius:11px;
+    background:#111b2d;
 
-    background:#0b1728;
-
-    border:
-        1px solid
-        var(--border);
+    border:1px solid var(--border);
 
     box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.3);
+        0 15px 40px rgba(0,0,0,.35);
 
     font-size:12px;
 
     animation:
-        toastIn .2s ease;
-
+        toastIn .25s ease;
 }
 
 .toast.success{
-
     border-color:
-        rgba(0,230,118,.3);
-
+        rgba(34,197,94,.35);
 }
 
 .toast.error{
-
     border-color:
-        rgba(255,71,87,.3);
-
+        rgba(239,68,68,.35);
 }
 
 @keyframes toastIn{
-
     from{
         opacity:0;
-        transform:translateY(10px);
+        transform:translateY(-8px);
     }
-
     to{
         opacity:1;
         transform:translateY(0);
     }
-
-}
-
-
-/* =========================================================
-   LOADING
-========================================================= */
-
-.loading{
-
-    padding:30px;
-
-    text-align:center;
-
-    color:var(--muted);
-
-}
-
-.spinner{
-
-    width:25px;
-    height:25px;
-
-    margin:0 auto 10px;
-
-    border:
-        3px solid
-        rgba(255,255,255,.1);
-
-    border-top-color:
-        var(--blue);
-
-    border-radius:50%;
-
-    animation:
-        spin .8s linear infinite;
-
-}
-
-@keyframes spin{
-
-    to{
-        transform:rotate(360deg);
-    }
-
 }
 
 
@@ -1454,172 +1037,128 @@ tbody tr:hover td{
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:1050px){
+@media(max-width:1000px){
 
     .stats{
-
         grid-template-columns:
             repeat(2,1fr);
+    }
 
+    .quick-grid{
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
 }
 
-@media(max-width:800px){
+@media(max-width:700px){
+
+    .header{
+        padding:0 12px;
+    }
+
+    .admin-status{
+        display:none;
+    }
+
+    .brand{
+        font-size:15px;
+    }
 
     .layout{
         display:block;
     }
 
     .sidebar{
-
         width:100%;
 
         display:flex;
 
-        gap:7px;
-
         overflow-x:auto;
-
-        padding:10px;
 
         border-right:0;
 
-        border-bottom:
-            1px solid
-            var(--border);
+        border-bottom:1px solid var(--border);
 
-    }
-
-    .menu-title{
-        display:none;
+        padding:8px;
     }
 
     .menu-btn{
-
-        flex:
-            0 0 auto;
-
         width:auto;
 
-        min-width:130px;
-
-        justify-content:center;
+        flex-shrink:0;
 
         margin:0;
 
-    }
-
-    .main{
-        padding:14px;
-    }
-
-}
-
-@media(max-width:520px){
-
-    .topbar{
-
-        padding:
-            11px 12px;
-
-    }
-
-    .logo{
+        padding:10px 12px;
 
         font-size:11px;
-
     }
 
-    .admin-status{
-
-        gap:5px;
-
-    }
-
-    .online-dot{
+    .menu-count{
         display:none;
     }
 
-    .logout{
-
-        padding:
-            8px 9px;
-
-        font-size:10px;
-
-    }
-
-    .page-title{
-
-        font-size:21px;
-
+    .content{
+        padding:14px;
     }
 
     .stats{
+        grid-template-columns:
+            repeat(2,1fr);
 
         gap:9px;
-
     }
 
     .stat-card{
-
         padding:14px;
-
+        min-height:95px;
     }
 
     .stat-value{
-
-        font-size:19px;
-
-    }
-
-    .detail-grid{
-
-        grid-template-columns:1fr;
-
+        font-size:17px;
     }
 
     .quick-grid{
+        grid-template-columns:
+            1fr 1fr;
 
+        gap:9px;
+    }
+
+    .quick-card{
+        padding:14px;
+    }
+
+    .page-title{
+        font-size:21px;
+    }
+
+    .panel-head{
+        align-items:flex-start;
+
+        flex-direction:column;
+    }
+
+    .search{
+        max-width:none;
+    }
+
+    .detail-grid{
         grid-template-columns:1fr;
-
-    }
-
-    .modal{
-
-        padding:10px;
-
-    }
-
-    .modal-box{
-
-        padding:17px;
-
     }
 
 }
 
+@media(max-width:420px){
 
-/* =========================================================
-   SCROLLBAR
-========================================================= */
+    .stats{
+        grid-template-columns:1fr;
+    }
 
-::-webkit-scrollbar{
-    width:6px;
-    height:6px;
-}
-
-::-webkit-scrollbar-track{
-    background:#030812;
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:
-        #1b3048;
-
-    border-radius:20px;
+    .quick-grid{
+        grid-template-columns:1fr;
+    }
 
 }
 
@@ -1631,28 +1170,26 @@ tbody tr:hover td{
 <body>
 
 
-<!-- ======================================================
+<!-- =======================================================
      LOGIN
-====================================================== -->
+======================================================== -->
 
-<section id="adminLogin">
+<div id="adminLogin">
 
-    <div class="login-card">
+    <div class="login-box">
 
         <div class="login-logo">
-            J
+            JASON BUSINESS
         </div>
 
-        <h1>JASON BUSINESS</h1>
-
-        <p>
-            Panneau d'administration sécurisé
-        </p>
+        <div class="login-subtitle">
+            🔐 PANNEAU D'ADMINISTRATION
+        </div>
 
         <input
             type="password"
             id="adminPassword"
-            class="login-input"
+            class="input"
             placeholder="Mot de passe administrateur"
             autocomplete="current-password"
         >
@@ -1660,8 +1197,9 @@ tbody tr:hover td{
         <button
             id="loginAdmin"
             class="login-btn"
+            type="button"
         >
-            🔐 ACCÉDER À L'ADMINISTRATION
+            🔓 Ouvrir l'administration
         </button>
 
         <div
@@ -1671,35 +1209,40 @@ tbody tr:hover td{
 
     </div>
 
-</section>
+</div>
 
 
+<!-- =======================================================
+     ADMIN
+======================================================== -->
 
-<!-- ======================================================
-     ADMIN PANEL
-====================================================== -->
-
-<section id="adminPanel">
+<div id="adminPanel">
 
 
-<header class="topbar">
+<!-- HEADER -->
 
-    <div class="logo">
+<header class="header">
 
-        JASON BUSINESS
-        <span>ADMIN</span>
-
+    <div class="brand">
+        JASON <span>BUSINESS</span>
     </div>
 
-    <div class="admin-status">
+    <div class="header-right">
 
-        <span class="online-dot"></span>
+        <div class="admin-status">
+
+            <span class="online-dot"></span>
+
+            Firebase connecté
+
+        </div>
 
         <button
             class="logout"
             id="adminLogout"
+            type="button"
         >
-            🚪 Déconnexion
+            Déconnexion
         </button>
 
     </div>
@@ -1707,131 +1250,134 @@ tbody tr:hover td{
 </header>
 
 
-
 <div class="layout">
 
 
-<!-- ======================================================
+<!-- =====================================================
      SIDEBAR
-====================================================== -->
+===================================================== -->
 
 <aside class="sidebar">
-
-    <div class="menu-title">
-        Administration
-    </div>
 
     <button
         class="menu-btn active"
         data-page="dashboard"
+        type="button"
     >
-        📊
-        <span>Dashboard</span>
+        📊 Dashboard
     </button>
 
     <button
         class="menu-btn"
         data-page="users"
+        type="button"
     >
-        👥
-        <span>Utilisateurs</span>
+        👥 Utilisateurs
     </button>
 
     <button
         class="menu-btn"
         data-page="commands"
+        type="button"
     >
-        🛒
-        <span>Commandes</span>
+        🛒 Commandes
+
         <span
             class="menu-count"
             id="menuCommands"
-        >0</span>
+        >
+            0
+        </span>
+
     </button>
 
     <button
         class="menu-btn"
         data-page="recharges"
+        type="button"
     >
-        💳
-        <span>Recharges</span>
+        💳 Recharges
+
         <span
             class="menu-count"
             id="menuRecharges"
-        >0</span>
+        >
+            0
+        </span>
+
     </button>
 
     <button
         class="menu-btn"
         data-page="withdrawals"
+        type="button"
     >
-        💸
-        <span>Retraits</span>
+        💸 Retraits
+
         <span
             class="menu-count"
             id="menuWithdrawals"
-        >0</span>
+        >
+            0
+        </span>
+
     </button>
 
     <button
         class="menu-btn"
         data-page="messages"
+        type="button"
     >
-        💬
-        <span>Messages</span>
+        💬 Messages
     </button>
 
     <button
         class="menu-btn"
         data-page="send"
+        type="button"
     >
-        📤
-        <span>Envoyer</span>
+        📤 Envoyer
     </button>
 
 </aside>
 
 
+<!-- =====================================================
+     CONTENT
+===================================================== -->
 
-<!-- ======================================================
-     MAIN
-====================================================== -->
-
-<main class="main">
+<main class="content">
 
 
-<!-- ======================================================
+<!-- =====================================================
      DASHBOARD
-====================================================== -->
+===================================================== -->
 
 <section
     class="page active"
     id="page-dashboard"
 >
 
-    <div class="page-header">
+    <div class="page-title">
+        📊 Dashboard
+    </div>
 
-        <div>
-
-            <h1 class="page-title">
-                📊 Dashboard
-            </h1>
-
-            <p class="page-subtitle">
-                Vue générale de JASON BUSINESS
-            </p>
-
-        </div>
-
+    <div class="page-subtitle">
+        Vue générale de JASON Business
     </div>
 
 
     <div class="stats">
 
-
         <div class="stat-card">
 
-            <div class="stat-icon">👥</div>
+            <div class="stat-icon">
+                👥
+            </div>
+
+            <div class="stat-label">
+                Utilisateurs
+            </div>
 
             <div
                 class="stat-value"
@@ -1840,8 +1386,24 @@ tbody tr:hover td{
                 0
             </div>
 
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                💰
+            </div>
+
             <div class="stat-label">
-                Utilisateurs
+                Solde utilisateurs
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalBalance"
+            >
+                0 FC
             </div>
 
         </div>
@@ -1849,7 +1411,13 @@ tbody tr:hover td{
 
         <div class="stat-card">
 
-            <div class="stat-icon">🛒</div>
+            <div class="stat-icon">
+                🛒
+            </div>
+
+            <div class="stat-label">
+                Commandes en attente
+            </div>
 
             <div
                 class="stat-value"
@@ -1858,16 +1426,18 @@ tbody tr:hover td{
                 0
             </div>
 
-            <div class="stat-label">
-                Commandes
-            </div>
-
         </div>
 
 
         <div class="stat-card">
 
-            <div class="stat-icon">💳</div>
+            <div class="stat-icon">
+                💳
+            </div>
+
+            <div class="stat-label">
+                Recharges en attente
+            </div>
 
             <div
                 class="stat-value"
@@ -1876,16 +1446,18 @@ tbody tr:hover td{
                 0
             </div>
 
-            <div class="stat-label">
-                Recharges en attente
-            </div>
-
         </div>
 
 
         <div class="stat-card">
 
-            <div class="stat-icon">💸</div>
+            <div class="stat-icon">
+                💸
+            </div>
+
+            <div class="stat-label">
+                Retraits en attente
+            </div>
 
             <div
                 class="stat-value"
@@ -1894,185 +1466,101 @@ tbody tr:hover td{
                 0
             </div>
 
-            <div class="stat-label">
-                Retraits en attente
-            </div>
-
         </div>
 
     </div>
 
 
-
-    <div class="panel">
-
-        <h3 class="panel-title">
-            💰 Solde total des utilisateurs
-        </h3>
+    <div class="quick-grid">
 
         <div
-            id="totalBalance"
-            style="
-            font-size:30px;
-            font-weight:900;
-            color:var(--green);
-            "
+            class="quick-card"
+            data-open-page="users"
         >
-            0 FC
+            <b>👥 Utilisateurs</b>
+            <span>
+                Gérer les comptes et les soldes
+            </span>
         </div>
 
-    </div>
 
-
-
-    <div class="panel">
-
-        <h3 class="panel-title">
-            ⚡ Accès rapide
-        </h3>
-
-        <div class="quick-grid">
-
-            <div
-                class="quick-card"
-                data-open-page="users"
-            >
-
-                👥
-
-                <strong>
-                    Utilisateurs
-                </strong>
-
-                <small>
-                    Gérer les comptes clients
-                </small>
-
-            </div>
-
-
-            <div
-                class="quick-card"
-                data-open-page="recharges"
-            >
-
-                💳
-
-                <strong>
-                    Recharges
-                </strong>
-
-                <small>
-                    Valider les paiements
-                </small>
-
-            </div>
-
-
-            <div
-                class="quick-card"
-                data-open-page="withdrawals"
-            >
-
-                💸
-
-                <strong>
-                    Retraits
-                </strong>
-
-                <small>
-                    Traiter les demandes
-                </small>
-
-            </div>
-
-
-            <div
-                class="quick-card"
-                data-open-page="messages"
-            >
-
-                💬
-
-                <strong>
-                    Messages
-                </strong>
-
-                <small>
-                    Consulter les messages
-                </small>
-
-            </div>
-
+        <div
+            class="quick-card"
+            data-open-page="commands"
+        >
+            <b>🛒 Commandes</b>
+            <span>
+                Valider ou refuser les commandes
+            </span>
         </div>
 
-    </div>
+
+        <div
+            class="quick-card"
+            data-open-page="recharges"
+        >
+            <b>💳 Recharges</b>
+            <span>
+                Vérifier les paiements clients
+            </span>
+        </div>
 
 
-
-    <div class="panel">
-
-        <h3 class="panel-title">
-            🛡️ Administration
-        </h3>
-
-        <p class="panel-description">
-
-            Cet espace permet de gérer les comptes
-            JASON BUSINESS, les commandes,
-            les recharges, les retraits et les
-            communications avec les utilisateurs.
-
-            <br><br>
-
-            <strong style="color:var(--blue)">
-                Base utilisée :
-            </strong>
-
-            jasonBusiness/
-
-        </p>
+        <div
+            class="quick-card"
+            data-open-page="withdrawals"
+        >
+            <b>💸 Retraits</b>
+            <span>
+                Gérer les demandes de retrait
+            </span>
+        </div>
 
     </div>
 
 </section>
 
 
-
-<!-- ======================================================
+<!-- =====================================================
      USERS
-====================================================== -->
+===================================================== -->
 
 <section
     class="page"
     id="page-users"
 >
 
-    <div class="page-header">
+    <div class="page-title">
+        👥 Utilisateurs
+    </div>
 
-        <div>
-
-            <h1 class="page-title">
-                👥 Utilisateurs
-            </h1>
-
-            <p class="page-subtitle">
-                Gestion des comptes JASON BUSINESS
-            </p>
-
-        </div>
-
+    <div class="page-subtitle">
+        Gestion des comptes JASON Business
     </div>
 
 
-    <input
-        id="userSearch"
-        class="search"
-        placeholder="🔎 Rechercher par numéro, nom ou code..."
-    >
-
-
     <div class="panel">
+
+        <div class="panel-head">
+
+            <div>
+                <div class="panel-title">
+                    Liste des utilisateurs
+                </div>
+
+                <div class="panel-description">
+                    Solde, gains, commissions et VIP
+                </div>
+            </div>
+
+            <input
+                id="userSearch"
+                class="search"
+                placeholder="🔎 Rechercher..."
+            >
+
+        </div>
+
 
         <div class="table-wrap">
 
@@ -2082,30 +1570,43 @@ tbody tr:hover td{
 
                     <tr>
 
-                        <th>Numéro</th>
-                        <th>Nom</th>
-                        <th>Solde</th>
-                        <th>Gains</th>
-                        <th>Commissions</th>
-                        <th>Points</th>
-                        <th>VIP</th>
-                        <th>Actions</th>
+                        <th>
+                            Numéro
+                        </th>
+
+                        <th>
+                            Nom
+                        </th>
+
+                        <th>
+                            Solde
+                        </th>
+
+                        <th>
+                            Gains
+                        </th>
+
+                        <th>
+                            Commissions
+                        </th>
+
+                        <th>
+                            Points
+                        </th>
+
+                        <th>
+                            VIP
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
 
                     </tr>
 
                 </thead>
 
-                <tbody id="usersTable">
-
-                    <tr>
-                        <td colspan="8">
-                            <div class="loading">
-                                Chargement...
-                            </div>
-                        </td>
-                    </tr>
-
-                </tbody>
+                <tbody id="usersTable"></tbody>
 
             </table>
 
@@ -2116,34 +1617,48 @@ tbody tr:hover td{
 </section>
 
 
-
-<!-- ======================================================
+<!-- =====================================================
      COMMANDES
-====================================================== -->
+===================================================== -->
 
 <section
     class="page"
     id="page-commands"
 >
 
-    <div class="page-header">
+    <div class="page-title">
+        🛒 Commandes
+    </div>
 
-        <div>
-
-            <h1 class="page-title">
-                🛒 Commandes
-            </h1>
-
-            <p class="page-subtitle">
-                Gestion des commandes clients
-            </p>
-
-        </div>
-
+    <div class="page-subtitle">
+        Commandes envoyées depuis la boutique
     </div>
 
 
     <div class="panel">
+
+        <div class="panel-head">
+
+            <div>
+
+                <div class="panel-title">
+                    Demandes de commandes
+                </div>
+
+                <div class="panel-description">
+                    Données synchronisées avec Firebase
+                </div>
+
+            </div>
+
+            <input
+                id="commandSearch"
+                class="search"
+                placeholder="🔎 Rechercher une commande..."
+            >
+
+        </div>
+
 
         <div class="table-wrap">
 
@@ -2164,17 +1679,7 @@ tbody tr:hover td{
 
                 </thead>
 
-                <tbody id="commandsTable">
-
-                    <tr>
-                        <td colspan="6">
-                            <div class="loading">
-                                Chargement...
-                            </div>
-                        </td>
-                    </tr>
-
-                </tbody>
+                <tbody id="commandsTable"></tbody>
 
             </table>
 
@@ -2185,30 +1690,21 @@ tbody tr:hover td{
 </section>
 
 
-
-<!-- ======================================================
+<!-- =====================================================
      RECHARGES
-====================================================== -->
+===================================================== -->
 
 <section
     class="page"
     id="page-recharges"
 >
 
-    <div class="page-header">
+    <div class="page-title">
+        💳 Recharges
+    </div>
 
-        <div>
-
-            <h1 class="page-title">
-                💳 Recharges
-            </h1>
-
-            <p class="page-subtitle">
-                Validation des demandes de recharge
-            </p>
-
-        </div>
-
+    <div class="page-subtitle">
+        Validation des dépôts clients
     </div>
 
 
@@ -2234,17 +1730,7 @@ tbody tr:hover td{
 
                 </thead>
 
-                <tbody id="rechargesTable">
-
-                    <tr>
-                        <td colspan="7">
-                            <div class="loading">
-                                Chargement...
-                            </div>
-                        </td>
-                    </tr>
-
-                </tbody>
+                <tbody id="rechargesTable"></tbody>
 
             </table>
 
@@ -2255,30 +1741,21 @@ tbody tr:hover td{
 </section>
 
 
-
-<!-- ======================================================
+<!-- =====================================================
      RETRAITS
-====================================================== -->
+===================================================== -->
 
 <section
     class="page"
     id="page-withdrawals"
 >
 
-    <div class="page-header">
+    <div class="page-title">
+        💸 Retraits
+    </div>
 
-        <div>
-
-            <h1 class="page-title">
-                💸 Retraits
-            </h1>
-
-            <p class="page-subtitle">
-                Gestion des demandes de retrait
-            </p>
-
-        </div>
-
+    <div class="page-subtitle">
+        Gestion des demandes de retrait
     </div>
 
 
@@ -2304,17 +1781,7 @@ tbody tr:hover td{
 
                 </thead>
 
-                <tbody id="withdrawalsTable">
-
-                    <tr>
-                        <td colspan="7">
-                            <div class="loading">
-                                Chargement...
-                            </div>
-                        </td>
-                    </tr>
-
-                </tbody>
+                <tbody id="withdrawalsTable"></tbody>
 
             </table>
 
@@ -2325,37 +1792,31 @@ tbody tr:hover td{
 </section>
 
 
-
-<!-- ======================================================
+<!-- =====================================================
      MESSAGES
-====================================================== -->
+===================================================== -->
 
 <section
     class="page"
     id="page-messages"
 >
 
-    <div class="page-header">
+    <div class="page-title">
+        💬 Messages
+    </div>
 
-        <div>
-
-            <h1 class="page-title">
-                💬 Messages
-            </h1>
-
-            <p class="page-subtitle">
-                Messages reçus des utilisateurs
-            </p>
-
-        </div>
-
+    <div class="page-subtitle">
+        Messages reçus des utilisateurs
     </div>
 
 
-    <div id="messagesList">
+    <div
+        class="panel"
+        id="messagesList"
+    >
 
-        <div class="panel loading">
-            Chargement...
+        <div class="empty">
+            ⏳ Chargement...
         </div>
 
     </div>
@@ -2363,77 +1824,71 @@ tbody tr:hover td{
 </section>
 
 
-
-<!-- ======================================================
+<!-- =====================================================
      SEND MESSAGE
-====================================================== -->
+===================================================== -->
 
 <section
     class="page"
     id="page-send"
 >
 
-    <div class="page-header">
+    <div class="page-title">
+        📤 Envoyer un message
+    </div>
 
-        <div>
-
-            <h1 class="page-title">
-                📤 Envoyer un message
-            </h1>
-
-            <p class="page-subtitle">
-                Envoyer une notification à un utilisateur
-            </p>
-
-        </div>
-
+    <div class="page-subtitle">
+        Envoyer directement un message à un utilisateur
     </div>
 
 
     <div class="panel">
 
-        <div class="form-group">
+        <div class="form">
 
-            <label class="form-label">
-                📱 Numéro du destinataire
+            <label class="label">
+                Numéro du destinataire
             </label>
 
             <input
                 id="messageTo"
-                class="form-input"
-                placeholder="Ex : 243XXXXXXXXX"
+                class="input"
+                placeholder="Ex : 0990000000"
             >
 
-        </div>
 
-
-        <div class="form-group">
-
-            <label class="form-label">
-                💬 Message
+            <label class="label">
+                Message
             </label>
 
             <textarea
                 id="messageText"
-                class="form-textarea"
+                class="textarea"
                 placeholder="Écrire votre message..."
             ></textarea>
 
+
+            <br>
+
+            <button
+                id="sendMessageBtn"
+                class="btn btn-blue"
+                type="button"
+                style="
+                    padding:12px 18px;
+                    font-size:12px;
+                "
+            >
+                📤 Envoyer le message
+            </button>
+
+
+            <div
+                id="sendStatus"
+                style="margin-top:12px;"
+            ></div>
+
         </div>
-
-
-        <button
-            id="sendMessageBtn"
-            class="btn btn-blue"
-        >
-            📤 ENVOYER LE MESSAGE
-        </button>
-
-
-        <div
-            id="sendStatus"
-            style="margin-top:12px"
-        ></div>
 
     </div>
 
@@ -2444,13 +1899,12 @@ tbody tr:hover td{
 
 </div>
 
-</section>
+</div>
 
 
-
-<!-- ======================================================
+<!-- =======================================================
      USER MODAL
-====================================================== -->
+======================================================== -->
 
 <div
     class="modal"
@@ -2461,30 +1915,33 @@ tbody tr:hover td{
 
         <div class="modal-header">
 
-            <h2>
-                👤 Gestion utilisateur
-            </h2>
+            <div class="modal-title">
+                👤 Utilisateur
+            </div>
 
             <button
-                class="modal-close"
+                class="close"
+                type="button"
                 onclick="closeModal('userModal')"
             >
-                ✕
+                ×
             </button>
 
         </div>
 
-        <div id="userDetails"></div>
+        <div
+            class="modal-content"
+            id="userDetails"
+        ></div>
 
     </div>
 
 </div>
 
 
-
-<!-- ======================================================
+<!-- =======================================================
      COMMAND MODAL
-====================================================== -->
+======================================================== -->
 
 <div
     class="modal"
@@ -2495,40 +1952,42 @@ tbody tr:hover td{
 
         <div class="modal-header">
 
-            <h2>
-                🛒 Détails commande
-            </h2>
+            <div class="modal-title">
+                🛒 Détails de la commande
+            </div>
 
             <button
-                class="modal-close"
+                class="close"
+                type="button"
                 onclick="closeModal('commandModal')"
             >
-                ✕
+                ×
             </button>
 
         </div>
 
-        <div id="commandDetails"></div>
+        <div
+            class="modal-content"
+            id="commandDetails"
+        ></div>
 
     </div>
 
 </div>
 
 
-
-<!-- ======================================================
+<!-- =======================================================
      TOAST
-====================================================== -->
+======================================================== -->
 
 <div id="toastContainer"></div>
 
 
+<!-- =======================================================
+     FIREBASE
+======================================================== -->
 
 <script type="module">
-
-/* =========================================================
-   FIREBASE
-========================================================= */
 
 import {
     initializeApp
@@ -2584,60 +2043,46 @@ const firebaseConfig = {
 const app =
     initializeApp(firebaseConfig);
 
-
 const db =
     getDatabase(app);
 
 
 /* =========================================================
-   JASON BUSINESS ROOT
+   PATHS
 ========================================================= */
 
-const JASON_ROOT =
+const ROOT =
     "jasonBusiness";
 
-
 const USERS_PATH =
-    `${JASON_ROOT}/users`;
+    `${ROOT}/users`;
 
 const COMMANDS_PATH =
-    `${JASON_ROOT}/demandes_commandes`;
+    `${ROOT}/demandes_commandes`;
 
 const RECHARGES_PATH =
-    `${JASON_ROOT}/demandes_recharges`;
+    `${ROOT}/demandes_recharges`;
 
 const WITHDRAWALS_PATH =
-    `${JASON_ROOT}/demandes_retraits`;
+    `${ROOT}/demandes_retraits`;
 
 const MESSAGES_PATH =
-    `${JASON_ROOT}/messages`;
+    `${ROOT}/messages`;
 
 
 /* =========================================================
    ADMIN LOGIN
 ========================================================= */
 
-/*
-    IMPORTANT :
-    Cette protection est une porte d'entrée UI.
-    Elle ne remplace PAS Firebase Authentication
-    ni les Security Rules.
-*/
-
 const ADMIN_PASSWORD =
     "123";
 
 
 const loginBox =
-    document.getElementById(
-        "adminLogin"
-    );
-
+    document.getElementById("adminLogin");
 
 const adminPanel =
-    document.getElementById(
-        "adminPanel"
-    );
+    document.getElementById("adminPanel");
 
 
 function showAdmin(){
@@ -2662,59 +2107,16 @@ function hideAdmin(){
 }
 
 
-if(
-    localStorage.getItem(
-        "jasonBusinessAdmin"
-    ) === "true"
-){
-
-    showAdmin();
-
-}
-
-
-document
-.getElementById("loginAdmin")
-.addEventListener(
-    "click",
-    loginAdmin
-);
-
-
-document
-.getElementById("adminPassword")
-.addEventListener(
-    "keydown",
-    event => {
-
-        if(
-            event.key === "Enter"
-        ){
-
-            loginAdmin();
-
-        }
-
-    }
-);
-
-
 function loginAdmin(){
 
     const password =
         document
-        .getElementById(
-            "adminPassword"
-        )
+        .getElementById("adminPassword")
         .value;
-
 
     const error =
         document
-        .getElementById(
-            "loginError"
-        );
-
+        .getElementById("loginError");
 
     error.textContent = "";
 
@@ -2731,10 +2133,11 @@ function loginAdmin(){
 
         showAdmin();
 
-        loadAll();
+        showToast(
+            "🔓 Administration ouverte."
+        );
 
     }
-
     else{
 
         error.textContent =
@@ -2743,6 +2146,32 @@ function loginAdmin(){
     }
 
 }
+
+
+document
+.getElementById("loginAdmin")
+.addEventListener(
+    "click",
+    loginAdmin
+);
+
+
+document
+.getElementById("adminPassword")
+.addEventListener(
+    "keydown",
+    e => {
+
+        if(
+            e.key === "Enter"
+        ){
+
+            loginAdmin();
+
+        }
+
+    }
+);
 
 
 document
@@ -2761,6 +2190,17 @@ document
 );
 
 
+if(
+    localStorage.getItem(
+        "jasonBusinessAdmin"
+    ) === "true"
+){
+
+    showAdmin();
+
+}
+
+
 /* =========================================================
    UTILS
 ========================================================= */
@@ -2769,9 +2209,7 @@ function money(value){
 
     return Math.floor(
         Number(value) || 0
-    ).toLocaleString(
-        "fr-FR"
-    );
+    ).toLocaleString("fr-FR");
 
 }
 
@@ -2781,26 +2219,11 @@ function escapeHTML(value){
     return String(
         value ?? ""
     )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
-    );
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
@@ -2814,6 +2237,7 @@ function getPhone(data){
         data.numero ??
         data.user ??
         data.client ??
+        data.from ??
         ""
     );
 
@@ -2897,9 +2321,7 @@ function isPending(status){
         status || ""
     )
     .toLowerCase()
-    .includes(
-        "attente"
-    );
+    .includes("attente");
 
 }
 
@@ -2917,7 +2339,6 @@ function statusBadge(status){
 
 
     if(
-
         low.includes("valid")
         ||
         low.includes("pay")
@@ -2925,51 +2346,36 @@ function statusBadge(status){
         low.includes("termin")
         ||
         low.includes("accept")
-
     ){
 
         return `
-
-            <span
-                class="badge badge-success"
-            >
+            <span class="badge badge-success">
                 ✓ ${escapeHTML(value)}
             </span>
-
         `;
 
     }
 
 
     if(
-
         low.includes("refus")
         ||
         low.includes("annul")
-
     ){
 
         return `
-
-            <span
-                class="badge badge-danger"
-            >
+            <span class="badge badge-danger">
                 ✕ ${escapeHTML(value)}
             </span>
-
         `;
 
     }
 
 
     return `
-
-        <span
-            class="badge badge-pending"
-        >
+        <span class="badge badge-pending">
             ⏳ ${escapeHTML(value)}
         </span>
-
     `;
 
 }
@@ -2985,32 +2391,19 @@ function showToast(
             "toastContainer"
         );
 
-
     const toast =
-        document.createElement(
-            "div"
-        );
-
+        document.createElement("div");
 
     toast.className =
         `toast ${type}`;
 
-
     toast.textContent =
         message;
 
-
-    container.appendChild(
-        toast
-    );
-
+    container.appendChild(toast);
 
     setTimeout(
-        () => {
-
-            toast.remove();
-
-        },
+        () => toast.remove(),
         3500
     );
 
@@ -3022,11 +2415,8 @@ function showToast(
 ========================================================= */
 
 let usersCache = {};
-
 let commandsCache = {};
-
 let rechargeCache = {};
-
 let withdrawalCache = {};
 
 
@@ -3034,102 +2424,60 @@ let withdrawalCache = {};
    NAVIGATION
 ========================================================= */
 
-function openPage(
-    page
-){
+function openPage(page){
 
     document
-    .querySelectorAll(
-        ".menu-btn"
-    )
-    .forEach(
-        button => {
+    .querySelectorAll(".menu-btn")
+    .forEach(btn => {
 
-            button.classList.toggle(
-                "active",
-                button.dataset.page === page
-            );
+        btn.classList.toggle(
+            "active",
+            btn.dataset.page === page
+        );
 
-        }
-    );
+    });
 
 
     document
-    .querySelectorAll(
-        ".page"
-    )
-    .forEach(
-        section => {
+    .querySelectorAll(".page")
+    .forEach(section => {
 
-            section.classList.toggle(
-                "active",
-                section.id ===
-                `page-${page}`
-            );
+        section.classList.toggle(
+            "active",
+            section.id === `page-${page}`
+        );
 
-        }
-    );
+    });
 
 }
 
 
 document
-.querySelectorAll(
-    ".menu-btn"
-)
-.forEach(
-    button => {
+.querySelectorAll(".menu-btn")
+.forEach(btn => {
 
-        button.addEventListener(
-            "click",
-            () => {
+    btn.addEventListener(
+        "click",
+        () => openPage(
+            btn.dataset.page
+        )
+    );
 
-                openPage(
-                    button.dataset.page
-                );
-
-            }
-        );
-
-    }
-);
+});
 
 
 document
-.querySelectorAll(
-    ".quick-card"
-)
-.forEach(
-    card => {
+.querySelectorAll(".quick-card")
+.forEach(card => {
 
-        card.addEventListener(
-            "click",
-            () => {
+    card.addEventListener(
+        "click",
+        () => openPage(
+            card.dataset.openPage
+        )
+    );
 
-                openPage(
-                    card.dataset.openPage
-                );
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   LOAD ALL
-========================================================= */
-
-function loadAll(){
-
-    /*
-        Les listeners onValue sont permanents.
-        Firebase actualisera automatiquement
-        l'interface lorsque les données changent.
-    */
-
-}
+});
 
 
 /* =========================================================
@@ -3137,10 +2485,8 @@ function loadAll(){
 ========================================================= */
 
 onValue(
-    ref(
-        db,
-        USERS_PATH
-    ),
+    ref(db,USERS_PATH),
+
     snapshot => {
 
         usersCache = {};
@@ -3150,252 +2496,182 @@ onValue(
                 "usersTable"
             );
 
-
         tbody.innerHTML = "";
 
-
         let count = 0;
-
         let totalBalance = 0;
 
 
-        snapshot.forEach(
-            child => {
+        snapshot.forEach(child => {
 
-                const phone =
-                    child.key;
+            const phone =
+                child.key;
 
-                const data =
-                    child.val() || {};
+            const data =
+                child.val() || {};
 
+            usersCache[phone] =
+                data;
 
-                usersCache[
-                    phone
-                ] = data;
-
-
-                count++;
+            count++;
 
 
-                const balance =
-                    getBalance(
-                        data
-                    );
+            const balance =
+                getBalance(data);
+
+            totalBalance +=
+                balance;
 
 
-                totalBalance +=
-                    balance;
-
-
-                const gains =
-                    getGains(
-                        data
-                    );
-
-
-                const commissions =
-                    getCommissions(
-                        data
-                    );
-
-
-                const points =
-                    getPoints(
-                        data
-                    );
-
-
-                const vip =
-                    Boolean(
-                        data.vipActif ??
-                        data.vip ??
-                        data.vip_active ??
-                        false
-                    );
-
-
-                const encodedPhone =
-                    encodeURIComponent(
-                        phone
-                    );
-
-
-                const tr =
-                    document.createElement(
-                        "tr"
-                    );
-
-
-                tr.innerHTML = `
-
-                    <td>
-                        ${escapeHTML(phone)}
-                    </td>
-
-                    <td class="user-name">
-                        ${escapeHTML(
-                            getName(data)
-                        )}
-                    </td>
-
-                    <td>
-                        ${money(balance)} FC
-                    </td>
-
-                    <td>
-                        ${money(gains)} FC
-                    </td>
-
-                    <td>
-                        ${money(commissions)} FC
-                    </td>
-
-                    <td>
-                        ⭐ ${money(points)}
-                    </td>
-
-                    <td>
-
-                        ${
-                            vip
-
-                            ?
-
-                            `
-                            <span
-                                class="badge badge-purple"
-                            >
-                                👑 VIP
-                            </span>
-                            `
-
-                            :
-
-                            `
-                            <span
-                                class="badge badge-blue"
-                            >
-                                Normal
-                            </span>
-                            `
-                        }
-
-                    </td>
-
-                    <td>
-
-                        <button
-                            class="btn btn-blue"
-                            onclick="
-                                viewUser(
-                                    '${encodedPhone}'
-                                )
-                            "
-                        >
-                            👁 Voir
-                        </button>
-
-                        <button
-                            class="btn btn-green"
-                            onclick="
-                                addMoney(
-                                    '${encodedPhone}'
-                                )
-                            "
-                        >
-                            +1000
-                        </button>
-
-                        <button
-                            class="btn btn-orange"
-                            onclick="
-                                removeMoney(
-                                    '${encodedPhone}'
-                                )
-                            "
-                        >
-                            -1000
-                        </button>
-
-                        <button
-                            class="btn btn-red"
-                            onclick="
-                                deleteUser(
-                                    '${encodedPhone}'
-                                )
-                            "
-                        >
-                            🗑
-                        </button>
-
-                    </td>
-
-                `;
-
-
-                tbody.appendChild(
-                    tr
+            const vip =
+                Boolean(
+                    data.vipActif ??
+                    data.vip ??
+                    data.vip_active ??
+                    false
                 );
 
-            }
-        );
+
+            const encoded =
+                encodeURIComponent(
+                    phone
+                );
 
 
-        document
-        .getElementById(
+            const tr =
+                document.createElement("tr");
+
+
+            tr.innerHTML = `
+
+                <td>
+                    ${escapeHTML(phone)}
+                </td>
+
+                <td class="user-name">
+                    ${escapeHTML(
+                        getName(data)
+                    )}
+                </td>
+
+                <td>
+                    ${money(balance)} FC
+                </td>
+
+                <td>
+                    ${money(
+                        getGains(data)
+                    )} FC
+                </td>
+
+                <td>
+                    ${money(
+                        getCommissions(data)
+                    )} FC
+                </td>
+
+                <td>
+                    ⭐ ${money(
+                        getPoints(data)
+                    )}
+                </td>
+
+                <td>
+
+                    ${
+                        vip
+                        ?
+                        `<span class="badge badge-purple">
+                            👑 VIP
+                        </span>`
+                        :
+                        `<span class="badge badge-blue">
+                            Normal
+                        </span>`
+                    }
+
+                </td>
+
+                <td>
+
+                    <button
+                        class="btn btn-blue"
+                        onclick="viewUser('${encoded}')"
+                    >
+                        👁
+                    </button>
+
+                    <button
+                        class="btn btn-green"
+                        onclick="addMoney('${encoded}')"
+                    >
+                        +1000
+                    </button>
+
+                    <button
+                        class="btn btn-orange"
+                        onclick="removeMoney('${encoded}')"
+                    >
+                        -1000
+                    </button>
+
+                    <button
+                        class="btn btn-red"
+                        onclick="deleteUser('${encoded}')"
+                    >
+                        🗑
+                    </button>
+
+                </td>
+            `;
+
+
+            tbody.appendChild(tr);
+
+        });
+
+
+        document.getElementById(
             "statUsers"
-        )
-        .textContent =
-            count;
+        ).textContent = count;
 
 
-        document
-        .getElementById(
+        document.getElementById(
             "totalBalance"
-        )
-        .textContent =
-            money(
-                totalBalance
-            ) +
-            " FC";
+        ).textContent =
+            money(totalBalance) + " FC";
 
 
-        if(
-            count === 0
-        ){
+        if(!count){
 
             tbody.innerHTML = `
-
                 <tr>
-
                     <td colspan="8">
-
                         <div class="empty">
                             👥 Aucun utilisateur.
                         </div>
-
                     </td>
-
                 </tr>
-
             `;
 
         }
 
     },
+
     error => {
 
         console.error(
-            "Users:",
+            "Firebase users:",
             error
         );
 
         showToast(
-            "Impossible de charger les utilisateurs.",
+            "❌ Impossible de charger les utilisateurs.",
             "error"
         );
 
     }
+
 );
 
 
@@ -3404,39 +2680,29 @@ onValue(
 ========================================================= */
 
 document
-.getElementById(
-    "userSearch"
-)
+.getElementById("userSearch")
 .addEventListener(
     "input",
-    event => {
+    e => {
 
         const search =
-            event.target.value
+            e.target.value
             .toLowerCase()
             .trim();
 
 
         document
-        .querySelectorAll(
-            "#usersTable tr"
-        )
-        .forEach(
-            row => {
+        .querySelectorAll("#usersTable tr")
+        .forEach(row => {
 
-                row.style.display =
-                    row.innerText
-                    .toLowerCase()
-                    .includes(
-                        search
-                    )
-                    ?
-                    ""
-                    :
-                    "none";
+            row.style.display =
+                row.innerText
+                .toLowerCase()
+                .includes(search)
+                ? ""
+                : "none";
 
-            }
-        );
+        });
 
     }
 );
@@ -3447,44 +2713,15 @@ document
 ========================================================= */
 
 window.viewUser =
-function(
-    encodedPhone
-){
+function(encodedPhone){
 
     const phone =
         decodeURIComponent(
             encodedPhone
         );
 
-
     const data =
-        usersCache[
-            phone
-        ] || {};
-
-
-    const balance =
-        getBalance(
-            data
-        );
-
-
-    const gains =
-        getGains(
-            data
-        );
-
-
-    const commissions =
-        getCommissions(
-            data
-        );
-
-
-    const points =
-        getPoints(
-            data
-        );
+        usersCache[phone] || {};
 
 
     const vip =
@@ -3497,9 +2734,7 @@ function(
 
 
     document
-    .getElementById(
-        "userDetails"
-    )
+    .getElementById("userDetails")
     .innerHTML = `
 
         <div class="detail-grid">
@@ -3521,30 +2756,38 @@ function(
             </div>
 
             <div class="detail-item">
-                <small>💰 Solde principal</small>
+                <small>💰 Solde</small>
                 <strong>
-                    ${money(balance)} FC
+                    ${money(
+                        getBalance(data)
+                    )} FC
                 </strong>
             </div>
 
             <div class="detail-item">
                 <small>📈 Gains</small>
                 <strong>
-                    ${money(gains)} FC
+                    ${money(
+                        getGains(data)
+                    )} FC
                 </strong>
             </div>
 
             <div class="detail-item">
                 <small>👥 Commissions</small>
                 <strong>
-                    ${money(commissions)} FC
+                    ${money(
+                        getCommissions(data)
+                    )} FC
                 </strong>
             </div>
 
             <div class="detail-item">
                 <small>⭐ Points</small>
                 <strong>
-                    ${money(points)}
+                    ${money(
+                        getPoints(data)
+                    )}
                 </strong>
             </div>
 
@@ -3560,7 +2803,7 @@ function(
             </div>
 
             <div class="detail-item">
-                <small>🔑 Code de parrainage</small>
+                <small>🔑 Code parrainage</small>
                 <strong>
                     ${escapeHTML(
                         data.inviteCode ??
@@ -3575,10 +2818,8 @@ function(
                 <strong>
                     ${
                         vip
-                        ?
-                        "ACTIF"
-                        :
-                        "NON ACTIF"
+                        ? "ACTIF"
+                        : "NON ACTIF"
                     }
                 </strong>
             </div>
@@ -3586,24 +2827,16 @@ function(
         </div>
 
 
-        <hr
-            style="
+        <hr style="
             margin:18px 0;
             border:0;
-            border-top:
-                1px solid
-                rgba(255,255,255,.08);
-            "
-        >
+            border-top:1px solid rgba(255,255,255,.08);
+        ">
 
 
         <button
             class="btn btn-green"
-            onclick="
-                addMoney(
-                    '${encodeURIComponent(phone)}'
-                )
-            "
+            onclick="addMoney('${encodeURIComponent(phone)}')"
         >
             +1000 FC
         </button>
@@ -3611,11 +2844,7 @@ function(
 
         <button
             class="btn btn-orange"
-            onclick="
-                removeMoney(
-                    '${encodeURIComponent(phone)}'
-                )
-            "
+            onclick="removeMoney('${encodeURIComponent(phone)}')"
         >
             -1000 FC
         </button>
@@ -3623,11 +2852,7 @@ function(
 
         <button
             class="btn btn-blue"
-            onclick="
-                addPoints(
-                    '${encodeURIComponent(phone)}'
-                )
-            "
+            onclick="addPoints('${encodeURIComponent(phone)}')"
         >
             ⭐ Points
         </button>
@@ -3635,11 +2860,7 @@ function(
 
         <button
             class="btn btn-dark"
-            onclick="
-                editUser(
-                    '${encodeURIComponent(phone)}'
-                )
-            "
+            onclick="editUser('${encodeURIComponent(phone)}')"
         >
             ✏️ Modifier
         </button>
@@ -3647,11 +2868,7 @@ function(
 
         <button
             class="btn btn-purple"
-            onclick="
-                toggleVIP(
-                    '${encodeURIComponent(phone)}'
-                )
-            "
+            onclick="toggleVIP('${encodeURIComponent(phone)}')"
         >
             👑 VIP
         </button>
@@ -3659,11 +2876,7 @@ function(
 
         <button
             class="btn btn-blue"
-            onclick="
-                resetPassword(
-                    '${encodeURIComponent(phone)}'
-                )
-            "
+            onclick="resetPassword('${encodeURIComponent(phone)}')"
         >
             🔑 Mot de passe
         </button>
@@ -3671,42 +2884,25 @@ function(
 
         <button
             class="btn btn-red"
-            onclick="
-                deleteUser(
-                    '${encodeURIComponent(phone)}'
-                )
-            "
+            onclick="deleteUser('${encodeURIComponent(phone)}')"
         >
             🗑 Supprimer
         </button>
 
 
-        <hr
-            style="
-            margin:18px 0;
-            border:0;
-            border-top:
-                1px solid
-                rgba(255,255,255,.08);
-            "
-        >
-
-
-        <details>
+        <details style="margin-top:18px">
 
             <summary>
                 📋 Données Firebase
             </summary>
 
-            <pre
-                style="
-                margin-top:12px;
+            <pre style="
+                margin-top:10px;
                 white-space:pre-wrap;
                 overflow-wrap:anywhere;
                 font-size:10px;
-                color:rgba(255,255,255,.65);
-                "
-            >${escapeHTML(
+                color:#8794a8;
+            ">${escapeHTML(
                 JSON.stringify(
                     data,
                     null,
@@ -3715,13 +2911,10 @@ function(
             )}</pre>
 
         </details>
-
     `;
 
 
-    openModal(
-        "userModal"
-    );
+    openModal("userModal");
 
 };
 
@@ -3731,9 +2924,7 @@ function(
 ========================================================= */
 
 window.addMoney =
-async function(
-    encodedPhone
-){
+async function(encodedPhone){
 
     const phone =
         decodeURIComponent(
@@ -3741,15 +2932,9 @@ async function(
         );
 
 
-    if(
-        !confirm(
-            `Ajouter 1000 FC à ${phone} ?`
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        `Ajouter 1000 FC à ${phone} ?`
+    )) return;
 
 
     try{
@@ -3761,13 +2946,8 @@ async function(
                 `${USERS_PATH}/${phone}/solde_principal`
             ),
 
-            current => {
-
-                return (
-                    Number(current) || 0
-                ) + 1000;
-
-            }
+            current =>
+                (Number(current) || 0) + 1000
 
         );
 
@@ -3782,7 +2962,7 @@ async function(
         console.error(error);
 
         showToast(
-            "❌ Impossible de modifier le solde.",
+            "❌ Erreur.",
             "error"
         );
 
@@ -3796,9 +2976,7 @@ async function(
 ========================================================= */
 
 window.removeMoney =
-async function(
-    encodedPhone
-){
+async function(encodedPhone){
 
     const phone =
         decodeURIComponent(
@@ -3806,15 +2984,9 @@ async function(
         );
 
 
-    if(
-        !confirm(
-            `Retirer 1000 FC de ${phone} ?`
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        `Retirer 1000 FC de ${phone} ?`
+    )) return;
 
 
     try{
@@ -3832,15 +3004,8 @@ async function(
                     const value =
                         Number(current) || 0;
 
-
-                    if(
-                        value < 1000
-                    ){
-
+                    if(value < 1000)
                         return;
-
-                    }
-
 
                     return value - 1000;
 
@@ -3849,9 +3014,7 @@ async function(
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             showToast(
                 "❌ Solde insuffisant.",
@@ -3873,7 +3036,7 @@ async function(
         console.error(error);
 
         showToast(
-            "❌ Erreur de modification.",
+            "❌ Erreur.",
             "error"
         );
 
@@ -3887,9 +3050,7 @@ async function(
 ========================================================= */
 
 window.addPoints =
-async function(
-    encodedPhone
-){
+async function(encodedPhone){
 
     const phone =
         decodeURIComponent(
@@ -3910,11 +3071,7 @@ async function(
         !Number.isFinite(amount)
         ||
         amount <= 0
-    ){
-
-        return;
-
-    }
+    ) return;
 
 
     try{
@@ -3926,13 +3083,8 @@ async function(
                 `${USERS_PATH}/${phone}/points_fidelite`
             ),
 
-            current => {
-
-                return (
-                    Number(current) || 0
-                ) + amount;
-
-            }
+            current =>
+                (Number(current) || 0) + amount
 
         );
 
@@ -3947,7 +3099,7 @@ async function(
         console.error(error);
 
         showToast(
-            "❌ Impossible d'ajouter les points.",
+            "❌ Erreur.",
             "error"
         );
 
@@ -3957,24 +3109,19 @@ async function(
 
 
 /* =========================================================
-   TOGGLE VIP
+   VIP
 ========================================================= */
 
 window.toggleVIP =
-async function(
-    encodedPhone
-){
+async function(encodedPhone){
 
     const phone =
         decodeURIComponent(
             encodedPhone
         );
 
-
     const data =
-        usersCache[
-            phone
-        ] || {};
+        usersCache[phone] || {};
 
 
     const current =
@@ -3986,23 +3133,15 @@ async function(
         );
 
 
-    const newValue =
+    const next =
         !current;
 
 
-    if(
-        !confirm(
-            newValue
-            ?
-            `Activer le VIP pour ${phone} ?`
-            :
-            `Désactiver le VIP pour ${phone} ?`
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        next
+        ? `Activer le VIP pour ${phone} ?`
+        : `Désactiver le VIP pour ${phone} ?`
+    )) return;
 
 
     try{
@@ -4015,24 +3154,17 @@ async function(
             ),
 
             {
-
-                vipActif:
-                    newValue,
-
-                vip:
-                    newValue
-
+                vipActif:next,
+                vip:next
             }
 
         );
 
 
         showToast(
-            newValue
-            ?
-            "👑 VIP activé."
-            :
-            "VIP désactivé."
+            next
+            ? "👑 VIP activé."
+            : "VIP désactivé."
         );
 
     }
@@ -4055,20 +3187,15 @@ async function(
 ========================================================= */
 
 window.editUser =
-async function(
-    encodedPhone
-){
+async function(encodedPhone){
 
     const phone =
         decodeURIComponent(
             encodedPhone
         );
 
-
     const data =
-        usersCache[
-            phone
-        ] || {};
+        usersCache[phone] || {};
 
 
     const name =
@@ -4078,16 +3205,10 @@ async function(
         );
 
 
-    if(
-        name === null
-    ){
-
-        return;
-
-    }
+    if(name === null) return;
 
 
-    const inviteCode =
+    const code =
         prompt(
             "Code de parrainage :",
             data.inviteCode ??
@@ -4096,13 +3217,7 @@ async function(
         );
 
 
-    if(
-        inviteCode === null
-    ){
-
-        return;
-
-    }
+    if(code === null) return;
 
 
     try{
@@ -4115,13 +3230,8 @@ async function(
             ),
 
             {
-
-                nom:
-                    name.trim(),
-
-                inviteCode:
-                    inviteCode.trim()
-
+                nom:name.trim(),
+                inviteCode:code.trim()
             }
 
         );
@@ -4151,9 +3261,7 @@ async function(
 ========================================================= */
 
 window.deleteUser =
-async function(
-    encodedPhone
-){
+async function(encodedPhone){
 
     const phone =
         decodeURIComponent(
@@ -4161,49 +3269,31 @@ async function(
         );
 
 
-    if(
-        !confirm(
-            `⚠️ Supprimer ${phone} ?`
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        `⚠️ Supprimer ${phone} ?`
+    )) return;
 
 
-    if(
-        !confirm(
-            "⚠️ DERNIÈRE CONFIRMATION\n\n"+
-            "Toutes les données du compte "+
-            "JASON BUSINESS seront supprimées."
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        "⚠️ DERNIÈRE CONFIRMATION\n\n"+
+        "Toutes les données du compte seront supprimées."
+    )) return;
 
 
     try{
 
         await remove(
-
             ref(
                 db,
                 `${USERS_PATH}/${phone}`
             )
-
         );
 
+
+        closeModal("userModal");
 
         showToast(
             "✅ Utilisateur supprimé."
-        );
-
-
-        closeModal(
-            "userModal"
         );
 
     }
@@ -4226,9 +3316,7 @@ async function(
 ========================================================= */
 
 window.resetPassword =
-async function(
-    encodedPhone
-){
+async function(encodedPhone){
 
     const phone =
         decodeURIComponent(
@@ -4243,19 +3331,12 @@ async function(
 
 
     if(
-        password === null
-        ||
-        password.trim() === ""
-    ){
-
-        return;
-
-    }
+        password === null ||
+        !password.trim()
+    ) return;
 
 
-    if(
-        password.length < 4
-    ){
+    if(password.length < 4){
 
         showToast(
             "❌ Minimum 4 caractères.",
@@ -4277,10 +3358,8 @@ async function(
             ),
 
             {
-
                 password:
                     password.trim()
-
             }
 
         );
@@ -4296,7 +3375,7 @@ async function(
         console.error(error);
 
         showToast(
-            "❌ Impossible de modifier le mot de passe.",
+            "❌ Erreur.",
             "error"
         );
 
@@ -4306,14 +3385,12 @@ async function(
 
 
 /* =========================================================
-   COMMANDES
+   COMMANDES — IMPORTANT
 ========================================================= */
 
 onValue(
-    ref(
-        db,
-        COMMANDS_PATH
-    ),
+    ref(db,COMMANDS_PATH),
+
     snapshot => {
 
         commandsCache = {};
@@ -4323,215 +3400,209 @@ onValue(
                 "commandsTable"
             );
 
-
         tbody.innerHTML = "";
 
-
         let count = 0;
-
         let pending = 0;
 
 
-        snapshot.forEach(
-            child => {
+        snapshot.forEach(child => {
 
-                const id =
-                    child.key;
+            const id =
+                child.key;
 
-                const data =
-                    child.val() || {};
-
-
-                commandsCache[
-                    id
-                ] = data;
+            const data =
+                child.val() || {};
 
 
-                count++;
+            commandsCache[id] =
+                data;
+
+            count++;
 
 
-                const phone =
-                    getPhone(
-                        data
-                    ) ||
-                    "—";
+            const phone =
+                getPhone(data) || "—";
 
 
-                const service =
-                    data.service ??
-                    data.nom ??
-                    data.produit ??
-                    data.serviceName ??
-                    "Service";
+            const service =
+                data.service ??
+                data.nom ??
+                data.produit ??
+                data.serviceName ??
+                data.serviceNom ??
+                "Service";
 
 
-                const amount =
-                    Number(
-                        data.montant ??
-                        data.prix ??
-                        data.amount ??
-                        0
-                    ) || 0;
+            const amount =
+                Number(
+                    data.montant ??
+                    data.prix ??
+                    data.amount ??
+                    data.price ??
+                    0
+                ) || 0;
 
 
-                const status =
-                    getStatus(
-                        data
-                    );
+            const status =
+                getStatus(data);
 
 
-                if(
-                    isPending(status)
-                ){
-
-                    pending++;
-
-                }
+            if(isPending(status))
+                pending++;
 
 
-                const tr =
-                    document.createElement(
-                        "tr"
-                    );
+            const tr =
+                document.createElement("tr");
 
 
-                tr.innerHTML = `
+            tr.innerHTML = `
 
-                    <td>
-                        ${escapeHTML(
-                            data.date ??
-                            data.createdAt ??
-                            "—"
-                        )}
-                    </td>
+                <td>
+                    ${escapeHTML(
+                        data.date ??
+                        data.createdAt ??
+                        data.timestamp ??
+                        "—"
+                    )}
+                </td>
 
-                    <td>
-                        ${escapeHTML(phone)}
-                    </td>
+                <td>
+                    ${escapeHTML(phone)}
+                </td>
 
-                    <td>
-                        ${escapeHTML(service)}
-                    </td>
+                <td>
+                    ${escapeHTML(service)}
+                </td>
 
-                    <td>
-                        ${money(amount)} FC
-                    </td>
+                <td>
+                    ${money(amount)} FC
+                </td>
 
-                    <td>
-                        ${statusBadge(status)}
-                    </td>
+                <td>
+                    ${statusBadge(status)}
+                </td>
 
-                    <td>
+                <td>
+
+                    <button
+                        class="btn btn-blue"
+                        onclick="viewCommand('${encodeURIComponent(id)}')"
+                    >
+                        👁 Voir
+                    </button>
+
+                    ${
+                        isPending(status)
+
+                        ?
+
+                        `
 
                         <button
-                            class="btn btn-blue"
-                            onclick="
-                                viewCommand(
-                                    '${encodeURIComponent(id)}'
-                                )
-                            "
+                            class="btn btn-green"
+                            onclick="validateCommand('${encodeURIComponent(id)}')"
                         >
-                            👁 Voir
+                            ✓ Valider
                         </button>
 
-                        ${
-                            isPending(status)
+                        <button
+                            class="btn btn-red"
+                            onclick="refuseCommand('${encodeURIComponent(id)}')"
+                        >
+                            ✕ Refuser
+                        </button>
 
-                            ?
+                        `
 
-                            `
+                        :
 
-                            <button
-                                class="btn btn-green"
-                                onclick="
-                                    validateCommand(
-                                        '${encodeURIComponent(id)}'
-                                    )
-                                "
-                            >
-                                ✓ Valider
-                            </button>
+                        `<span class="muted">
+                            Traité
+                        </span>`
 
-                            <button
-                                class="btn btn-red"
-                                onclick="
-                                    refuseCommand(
-                                        '${encodeURIComponent(id)}'
-                                    )
-                                "
-                            >
-                                ✕ Refuser
-                            </button>
+                    }
 
-                            `
-
-                            :
-
-                            `
-                            <span class="muted">
-                                Traité
-                            </span>
-                            `
-                        }
-
-                    </td>
-
-                `;
+                </td>
+            `;
 
 
-                tbody.appendChild(
-                    tr
-                );
+            tbody.appendChild(tr);
 
-            }
-        );
+        });
 
 
-        document
-        .getElementById(
+        document.getElementById(
             "statCommands"
-        )
-        .textContent =
-            count;
+        ).textContent = pending;
 
 
-        document
-        .getElementById(
+        document.getElementById(
             "menuCommands"
-        )
-        .textContent =
-            pending;
+        ).textContent = pending;
 
 
-        if(
-            count === 0
-        ){
+        if(!count){
 
             tbody.innerHTML = `
-
                 <tr>
-
                     <td colspan="6">
-
                         <div class="empty">
                             🛒 Aucune commande.
                         </div>
-
                     </td>
-
                 </tr>
-
             `;
 
         }
 
     },
+
     error => {
 
         console.error(
-            "Commands:",
+            "COMMANDES FIREBASE:",
             error
         );
+
+        showToast(
+            "❌ Erreur de lecture des commandes.",
+            "error"
+        );
+
+    }
+
+);
+
+
+/* =========================================================
+   COMMAND SEARCH
+========================================================= */
+
+document
+.getElementById("commandSearch")
+.addEventListener(
+    "input",
+    e => {
+
+        const search =
+            e.target.value
+            .toLowerCase()
+            .trim();
+
+
+        document
+        .querySelectorAll("#commandsTable tr")
+        .forEach(row => {
+
+            row.style.display =
+                row.innerText
+                .toLowerCase()
+                .includes(search)
+                ? ""
+                : "none";
+
+        });
 
     }
 );
@@ -4542,70 +3613,47 @@ onValue(
 ========================================================= */
 
 window.viewCommand =
-function(
-    encodedId
-){
+function(encodedId){
 
     const id =
         decodeURIComponent(
             encodedId
         );
 
-
     const data =
-        commandsCache[
-            id
-        ] || {};
+        commandsCache[id] || {};
 
 
     document
-    .getElementById(
-        "commandDetails"
-    )
+    .getElementById("commandDetails")
     .innerHTML = `
 
         <div class="detail-grid">
 
             <div class="detail-item">
-
-                <small>
-                    📱 Client
-                </small>
-
+                <small>📱 Client</small>
                 <strong>
                     ${escapeHTML(
-                        getPhone(data) ||
-                        "—"
+                        getPhone(data) || "—"
                     )}
                 </strong>
-
             </div>
 
-
             <div class="detail-item">
-
-                <small>
-                    🛒 Service
-                </small>
-
+                <small>🛒 Service</small>
                 <strong>
                     ${escapeHTML(
                         data.service ??
                         data.nom ??
                         data.produit ??
+                        data.serviceName ??
                         "—"
                     )}
                 </strong>
-
             </div>
 
-
             <div class="detail-item">
-
-                <small>
-                    💰 Montant
-                </small>
-
+                <small>💰 Montant</small>
                 <strong>
                     ${money(
                         data.montant ??
@@ -4614,63 +3662,45 @@ function(
                         0
                     )} FC
                 </strong>
-
             </div>
 
-
             <div class="detail-item">
-
-                <small>
-                    📌 Statut
-                </small>
-
+                <small>📌 Statut</small>
                 <strong>
                     ${statusBadge(
                         getStatus(data)
                     )}
                 </strong>
-
             </div>
 
-
             <div class="detail-item">
-
-                <small>
-                    📅 Date
-                </small>
-
+                <small>📅 Date</small>
                 <strong>
                     ${escapeHTML(
                         data.date ??
                         data.createdAt ??
+                        data.timestamp ??
                         "—"
                     )}
                 </strong>
-
             </div>
 
         </div>
 
 
-        <hr
-            style="
+        <hr style="
             margin:18px 0;
             border:0;
-            border-top:
-                1px solid
-                rgba(255,255,255,.08);
-            "
-        >
+            border-top:1px solid rgba(255,255,255,.08);
+        ">
 
 
-        <pre
-            style="
+        <pre style="
             white-space:pre-wrap;
             overflow-wrap:anywhere;
             font-size:10px;
-            color:rgba(255,255,255,.65);
-            "
-        >${escapeHTML(
+            color:#8794a8;
+        ">${escapeHTML(
             JSON.stringify(
                 data,
                 null,
@@ -4681,9 +3711,7 @@ function(
     `;
 
 
-    openModal(
-        "commandModal"
-    );
+    openModal("commandModal");
 
 };
 
@@ -4693,30 +3721,23 @@ function(
 ========================================================= */
 
 window.validateCommand =
-async function(
-    encodedId
-){
+async function(encodedId){
 
     const id =
         decodeURIComponent(
             encodedId
         );
 
-
     const data =
-        commandsCache[
-            id
-        ] || {};
+        commandsCache[id] || {};
 
 
-    if(
-        !isPending(
-            getStatus(data)
-        )
-    ){
+    if(!isPending(
+        getStatus(data)
+    )){
 
         showToast(
-            "⚠️ Cette commande est déjà traitée.",
+            "⚠️ Commande déjà traitée.",
             "error"
         );
 
@@ -4725,15 +3746,9 @@ async function(
     }
 
 
-    if(
-        !confirm(
-            "Valider cette commande ?"
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        "Valider cette commande ?"
+    )) return;
 
 
     try{
@@ -4748,25 +3763,15 @@ async function(
 
                 current => {
 
-                    if(
-                        !current
-                    ){
-
+                    if(!current)
                         return;
-
-                    }
-
 
                     if(
                         !isPending(
                             getStatus(current)
                         )
-                    ){
-
+                    )
                         return;
-
-                    }
-
 
                     return {
 
@@ -4786,9 +3791,7 @@ async function(
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             showToast(
                 "⚠️ Commande déjà traitée.",
@@ -4824,20 +3827,15 @@ async function(
 ========================================================= */
 
 window.refuseCommand =
-async function(
-    encodedId
-){
+async function(encodedId){
 
     const id =
         decodeURIComponent(
             encodedId
         );
 
-
     const data =
-        commandsCache[
-            id
-        ] || {};
+        commandsCache[id] || {};
 
 
     const phone =
@@ -4859,7 +3857,7 @@ async function(
     ){
 
         showToast(
-            "❌ Données de remboursement invalides.",
+            "❌ Informations de remboursement invalides.",
             "error"
         );
 
@@ -4868,17 +3866,11 @@ async function(
     }
 
 
-    if(
-        !confirm(
-            "Refuser la commande et rembourser "+
-            money(amount)+
-            " FC ?"
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        "Refuser la commande et rembourser "+
+        money(amount)+
+        " FC ?"
+    )) return;
 
 
     try{
@@ -4893,25 +3885,15 @@ async function(
 
                 current => {
 
-                    if(
-                        !current
-                    ){
-
+                    if(!current)
                         return;
-
-                    }
-
 
                     if(
                         !isPending(
                             getStatus(current)
                         )
-                    ){
-
+                    )
                         return;
-
-                    }
-
 
                     return {
 
@@ -4934,9 +3916,7 @@ async function(
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             showToast(
                 "⚠️ Commande déjà traitée.",
@@ -4955,19 +3935,14 @@ async function(
                 `${USERS_PATH}/${phone}/solde_principal`
             ),
 
-            current => {
-
-                return (
-                    Number(current) || 0
-                ) + amount;
-
-            }
+            current =>
+                (Number(current) || 0) + amount
 
         );
 
 
         showToast(
-            `✅ Commande refusée. ${money(amount)} FC remboursés.`
+            `✅ ${money(amount)} FC remboursés.`
         );
 
     }
@@ -4990,10 +3965,8 @@ async function(
 ========================================================= */
 
 onValue(
-    ref(
-        db,
-        RECHARGES_PATH
-    ),
+    ref(db,RECHARGES_PATH),
+
     snapshot => {
 
         rechargeCache = {};
@@ -5003,215 +3976,172 @@ onValue(
                 "rechargesTable"
             );
 
-
         tbody.innerHTML = "";
 
-
         let count = 0;
-
         let pending = 0;
 
 
-        snapshot.forEach(
-            child => {
+        snapshot.forEach(child => {
 
-                const id =
-                    child.key;
+            const id =
+                child.key;
 
-                const data =
-                    child.val() || {};
-
-
-                rechargeCache[
-                    id
-                ] = data;
+            const data =
+                child.val() || {};
 
 
-                count++;
+            rechargeCache[id] =
+                data;
+
+            count++;
 
 
-                const status =
-                    getStatus(
-                        data
-                    );
+            const status =
+                getStatus(data);
 
 
-                if(
-                    isPending(status)
-                ){
-
-                    pending++;
-
-                }
+            if(isPending(status))
+                pending++;
 
 
-                const phone =
-                    getPhone(
-                        data
-                    ) ||
-                    "—";
+            const phone =
+                getPhone(data) || "—";
 
 
-                const amount =
-                    Number(
-                        data.montant ??
-                        data.amount ??
-                        0
-                    ) || 0;
+            const amount =
+                Number(
+                    data.montant ??
+                    data.amount ??
+                    0
+                ) || 0;
 
 
-                const method =
-                    data.methode ??
-                    data.method ??
-                    data.modePaiement ??
-                    "—";
+            const method =
+                data.methode ??
+                data.method ??
+                data.modePaiement ??
+                "—";
 
 
-                const transaction =
-                    data.transactionId ??
-                    data.transaction ??
-                    data.reference ??
-                    "—";
+            const transaction =
+                data.transactionId ??
+                data.transaction ??
+                data.reference ??
+                "—";
 
 
-                const tr =
-                    document.createElement(
-                        "tr"
-                    );
+            const tr =
+                document.createElement("tr");
 
 
-                tr.innerHTML = `
+            tr.innerHTML = `
 
-                    <td>
-                        ${escapeHTML(
-                            data.date ??
-                            data.createdAt ??
-                            "—"
-                        )}
-                    </td>
+                <td>
+                    ${escapeHTML(
+                        data.date ??
+                        data.createdAt ??
+                        "—"
+                    )}
+                </td>
 
-                    <td>
-                        ${escapeHTML(phone)}
-                    </td>
+                <td>
+                    ${escapeHTML(phone)}
+                </td>
 
-                    <td>
-                        ${money(amount)} FC
-                    </td>
+                <td>
+                    ${money(amount)} FC
+                </td>
 
-                    <td>
-                        ${escapeHTML(method)}
-                    </td>
+                <td>
+                    ${escapeHTML(method)}
+                </td>
 
-                    <td>
-                        ${escapeHTML(transaction)}
-                    </td>
+                <td>
+                    ${escapeHTML(transaction)}
+                </td>
 
-                    <td>
-                        ${statusBadge(status)}
-                    </td>
+                <td>
+                    ${statusBadge(status)}
+                </td>
 
-                    <td>
+                <td>
 
-                        ${
-                            isPending(status)
+                    ${
+                        isPending(status)
 
-                            ?
+                        ?
 
-                            `
+                        `
 
-                            <button
-                                class="btn btn-green"
-                                onclick="
-                                    validateRecharge(
-                                        '${encodeURIComponent(id)}'
-                                    )
-                                "
-                            >
-                                ✓ Valider
-                            </button>
+                        <button
+                            class="btn btn-green"
+                            onclick="validateRecharge('${encodeURIComponent(id)}')"
+                        >
+                            ✓ Valider
+                        </button>
 
-                            <button
-                                class="btn btn-red"
-                                onclick="
-                                    refuseRecharge(
-                                        '${encodeURIComponent(id)}'
-                                    )
-                                "
-                            >
-                                ✕ Refuser
-                            </button>
+                        <button
+                            class="btn btn-red"
+                            onclick="refuseRecharge('${encodeURIComponent(id)}')"
+                        >
+                            ✕ Refuser
+                        </button>
 
-                            `
+                        `
 
-                            :
+                        :
 
-                            `
-                            <span class="muted">
-                                Traité
-                            </span>
-                            `
-                        }
+                        `<span class="muted">
+                            Traité
+                        </span>`
 
-                    </td>
+                    }
 
-                `;
+                </td>
+            `;
 
 
-                tbody.appendChild(
-                    tr
-                );
+            tbody.appendChild(tr);
 
-            }
-        );
+        });
 
 
-        document
-        .getElementById(
+        document.getElementById(
             "statRecharges"
-        )
-        .textContent =
-            pending;
+        ).textContent = pending;
 
 
-        document
-        .getElementById(
+        document.getElementById(
             "menuRecharges"
-        )
-        .textContent =
-            pending;
+        ).textContent = pending;
 
 
-        if(
-            count === 0
-        ){
+        if(!count){
 
             tbody.innerHTML = `
-
                 <tr>
-
                     <td colspan="7">
-
                         <div class="empty">
                             💳 Aucune recharge.
                         </div>
-
                     </td>
-
                 </tr>
-
             `;
 
         }
 
     },
+
     error => {
 
         console.error(
-            "Recharges:",
+            "RECHARGES:",
             error
         );
 
     }
+
 );
 
 
@@ -5220,20 +4150,15 @@ onValue(
 ========================================================= */
 
 window.validateRecharge =
-async function(
-    encodedId
-){
+async function(encodedId){
 
     const id =
         decodeURIComponent(
             encodedId
         );
 
-
     const data =
-        rechargeCache[
-            id
-        ] || {};
+        rechargeCache[id] || {};
 
 
     const phone =
@@ -5263,27 +4188,16 @@ async function(
     }
 
 
-    if(
-        !confirm(
-            "Créditer "+
-            money(amount)+
-            " FC à "+
-            phone+
-            " ?"
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        "Créditer "+
+        money(amount)+
+        " FC à "+
+        phone+
+        " ?"
+    )) return;
 
 
     try{
-
-        /*
-         * Première étape :
-         * verrouillage de la demande.
-         */
 
         const result =
             await runTransaction(
@@ -5295,25 +4209,15 @@ async function(
 
                 current => {
 
-                    if(
-                        !current
-                    ){
-
+                    if(!current)
                         return;
-
-                    }
-
 
                     if(
                         !isPending(
                             getStatus(current)
                         )
-                    ){
-
+                    )
                         return;
-
-                    }
-
 
                     return {
 
@@ -5336,9 +4240,7 @@ async function(
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             showToast(
                 "⚠️ Recharge déjà traitée.",
@@ -5350,11 +4252,6 @@ async function(
         }
 
 
-        /*
-         * Deuxième étape :
-         * créditer le compte.
-         */
-
         await runTransaction(
 
             ref(
@@ -5362,19 +4259,14 @@ async function(
                 `${USERS_PATH}/${phone}/solde_principal`
             ),
 
-            current => {
-
-                return (
-                    Number(current) || 0
-                ) + amount;
-
-            }
+            current =>
+                (Number(current) || 0) + amount
 
         );
 
 
         showToast(
-            `✅ Recharge de ${money(amount)} FC validée.`
+            `✅ ${money(amount)} FC crédités.`
         );
 
     }
@@ -5383,7 +4275,7 @@ async function(
         console.error(error);
 
         showToast(
-            "❌ Erreur de validation.",
+            "❌ Erreur de recharge.",
             "error"
         );
 
@@ -5397,9 +4289,7 @@ async function(
 ========================================================= */
 
 window.refuseRecharge =
-async function(
-    encodedId
-){
+async function(encodedId){
 
     const id =
         decodeURIComponent(
@@ -5407,15 +4297,9 @@ async function(
         );
 
 
-    if(
-        !confirm(
-            "Refuser cette recharge ?"
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        "Refuser cette recharge ?"
+    )) return;
 
 
     try{
@@ -5430,25 +4314,15 @@ async function(
 
                 current => {
 
-                    if(
-                        !current
-                    ){
-
+                    if(!current)
                         return;
-
-                    }
-
 
                     if(
                         !isPending(
                             getStatus(current)
                         )
-                    ){
-
+                    )
                         return;
-
-                    }
-
 
                     return {
 
@@ -5468,9 +4342,7 @@ async function(
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             showToast(
                 "⚠️ Recharge déjà traitée.",
@@ -5506,10 +4378,8 @@ async function(
 ========================================================= */
 
 onValue(
-    ref(
-        db,
-        WITHDRAWALS_PATH
-    ),
+    ref(db,WITHDRAWALS_PATH),
+
     snapshot => {
 
         withdrawalCache = {};
@@ -5519,214 +4389,172 @@ onValue(
                 "withdrawalsTable"
             );
 
-
         tbody.innerHTML = "";
 
-
         let count = 0;
-
         let pending = 0;
 
 
-        snapshot.forEach(
-            child => {
+        snapshot.forEach(child => {
 
-                const id =
-                    child.key;
+            const id =
+                child.key;
 
-                const data =
-                    child.val() || {};
-
-
-                withdrawalCache[
-                    id
-                ] = data;
+            const data =
+                child.val() || {};
 
 
-                count++;
+            withdrawalCache[id] =
+                data;
+
+            count++;
 
 
-                const status =
-                    getStatus(
-                        data
-                    );
+            const status =
+                getStatus(data);
 
 
-                if(
-                    isPending(status)
-                ){
-
-                    pending++;
-
-                }
+            if(isPending(status))
+                pending++;
 
 
-                const phone =
-                    getPhone(data)
-                    ||
-                    "—";
+            const phone =
+                getPhone(data) || "—";
 
 
-                const amount =
-                    Number(
-                        data.montant ??
-                        data.amount ??
-                        0
-                    ) || 0;
+            const amount =
+                Number(
+                    data.montant ??
+                    data.amount ??
+                    0
+                ) || 0;
 
 
-                const method =
-                    data.methode ??
-                    data.method ??
-                    "—";
+            const method =
+                data.methode ??
+                data.method ??
+                "—";
 
 
-                const receiver =
-                    data.numero_reception ??
-                    data.numeroReception ??
-                    data.numero ??
-                    data.receiver ??
-                    "—";
+            const receiver =
+                data.numero_reception ??
+                data.numeroReception ??
+                data.numero ??
+                data.receiver ??
+                "—";
 
 
-                const tr =
-                    document.createElement(
-                        "tr"
-                    );
+            const tr =
+                document.createElement("tr");
 
 
-                tr.innerHTML = `
+            tr.innerHTML = `
 
-                    <td>
-                        ${escapeHTML(
-                            data.date ??
-                            data.createdAt ??
-                            "—"
-                        )}
-                    </td>
+                <td>
+                    ${escapeHTML(
+                        data.date ??
+                        data.createdAt ??
+                        "—"
+                    )}
+                </td>
 
-                    <td>
-                        ${escapeHTML(phone)}
-                    </td>
+                <td>
+                    ${escapeHTML(phone)}
+                </td>
 
-                    <td>
-                        ${money(amount)} FC
-                    </td>
+                <td>
+                    ${money(amount)} FC
+                </td>
 
-                    <td>
-                        ${escapeHTML(method)}
-                    </td>
+                <td>
+                    ${escapeHTML(method)}
+                </td>
 
-                    <td>
-                        ${escapeHTML(receiver)}
-                    </td>
+                <td>
+                    ${escapeHTML(receiver)}
+                </td>
 
-                    <td>
-                        ${statusBadge(status)}
-                    </td>
+                <td>
+                    ${statusBadge(status)}
+                </td>
 
-                    <td>
+                <td>
 
-                        ${
-                            isPending(status)
+                    ${
+                        isPending(status)
 
-                            ?
+                        ?
 
-                            `
+                        `
 
-                            <button
-                                class="btn btn-green"
-                                onclick="
-                                    validateWithdrawal(
-                                        '${encodeURIComponent(id)}'
-                                    )
-                                "
-                            >
-                                ✓ Paiement effectué
-                            </button>
+                        <button
+                            class="btn btn-green"
+                            onclick="validateWithdrawal('${encodeURIComponent(id)}')"
+                        >
+                            ✓ Payé
+                        </button>
 
-                            <button
-                                class="btn btn-red"
-                                onclick="
-                                    refuseWithdrawal(
-                                        '${encodeURIComponent(id)}'
-                                    )
-                                "
-                            >
-                                ✕ Refuser
-                            </button>
+                        <button
+                            class="btn btn-red"
+                            onclick="refuseWithdrawal('${encodeURIComponent(id)}')"
+                        >
+                            ✕ Refuser
+                        </button>
 
-                            `
+                        `
 
-                            :
+                        :
 
-                            `
-                            <span class="muted">
-                                Traité
-                            </span>
-                            `
-                        }
+                        `<span class="muted">
+                            Traité
+                        </span>`
 
-                    </td>
+                    }
 
-                `;
+                </td>
+            `;
 
 
-                tbody.appendChild(
-                    tr
-                );
+            tbody.appendChild(tr);
 
-            }
-        );
+        });
 
 
-        document
-        .getElementById(
+        document.getElementById(
             "statWithdrawals"
-        )
-        .textContent =
-            pending;
+        ).textContent = pending;
 
 
-        document
-        .getElementById(
+        document.getElementById(
             "menuWithdrawals"
-        )
-        .textContent =
-            pending;
+        ).textContent = pending;
 
 
-        if(
-            count === 0
-        ){
+        if(!count){
 
             tbody.innerHTML = `
-
                 <tr>
-
                     <td colspan="7">
-
                         <div class="empty">
                             💸 Aucun retrait.
                         </div>
-
                     </td>
-
                 </tr>
-
             `;
 
         }
 
     },
+
     error => {
 
         console.error(
-            "Withdrawals:",
+            "WITHDRAWALS:",
             error
         );
 
     }
+
 );
 
 
@@ -5735,9 +4563,7 @@ onValue(
 ========================================================= */
 
 window.validateWithdrawal =
-async function(
-    encodedId
-){
+async function(encodedId){
 
     const id =
         decodeURIComponent(
@@ -5745,21 +4571,9 @@ async function(
         );
 
 
-    const data =
-        withdrawalCache[
-            id
-        ] || {};
-
-
-    if(
-        !confirm(
-            "Confirmer que le paiement a été effectué ?"
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        "Confirmer que le paiement a été effectué ?"
+    )) return;
 
 
     try{
@@ -5774,25 +4588,15 @@ async function(
 
                 current => {
 
-                    if(
-                        !current
-                    ){
-
+                    if(!current)
                         return;
-
-                    }
-
 
                     if(
                         !isPending(
                             getStatus(current)
                         )
-                    ){
-
+                    )
                         return;
-
-                    }
-
 
                     return {
 
@@ -5812,9 +4616,7 @@ async function(
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             showToast(
                 "⚠️ Retrait déjà traité.",
@@ -5850,20 +4652,15 @@ async function(
 ========================================================= */
 
 window.refuseWithdrawal =
-async function(
-    encodedId
-){
+async function(encodedId){
 
     const id =
         decodeURIComponent(
             encodedId
         );
 
-
     const data =
-        withdrawalCache[
-            id
-        ] || {};
+        withdrawalCache[id] || {};
 
 
     const phone =
@@ -5893,17 +4690,11 @@ async function(
     }
 
 
-    if(
-        !confirm(
-            "Refuser le retrait et rembourser "+
-            money(amount)+
-            " FC ?"
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        "Refuser le retrait et rembourser "+
+        money(amount)+
+        " FC ?"
+    )) return;
 
 
     try{
@@ -5918,25 +4709,15 @@ async function(
 
                 current => {
 
-                    if(
-                        !current
-                    ){
-
+                    if(!current)
                         return;
-
-                    }
-
 
                     if(
                         !isPending(
                             getStatus(current)
                         )
-                    ){
-
+                    )
                         return;
-
-                    }
-
 
                     return {
 
@@ -5959,9 +4740,7 @@ async function(
             );
 
 
-        if(
-            !result.committed
-        ){
+        if(!result.committed){
 
             showToast(
                 "⚠️ Retrait déjà traité.",
@@ -5980,19 +4759,14 @@ async function(
                 `${USERS_PATH}/${phone}/solde_principal`
             ),
 
-            current => {
-
-                return (
-                    Number(current) || 0
-                ) + amount;
-
-            }
+            current =>
+                (Number(current) || 0) + amount
 
         );
 
 
         showToast(
-            `✅ Retrait refusé. ${money(amount)} FC remboursés.`
+            `✅ ${money(amount)} FC remboursés.`
         );
 
     }
@@ -6015,10 +4789,8 @@ async function(
 ========================================================= */
 
 onValue(
-    ref(
-        db,
-        MESSAGES_PATH
-    ),
+    ref(db,MESSAGES_PATH),
+
     snapshot => {
 
         const container =
@@ -6029,193 +4801,159 @@ onValue(
 
         container.innerHTML = "";
 
-
         let count = 0;
 
 
-        snapshot.forEach(
-            child => {
+        snapshot.forEach(child => {
 
-                count++;
-
-
-                const id =
-                    child.key;
+            count++;
 
 
-                const data =
-                    child.val() || {};
+            const id =
+                child.key;
+
+            const data =
+                child.val() || {};
 
 
-                const phone =
-                    data.from ??
-                    data.telephone ??
-                    data.userPhone ??
-                    data.phone ??
-                    "Utilisateur";
+            const phone =
+                data.from ??
+                data.telephone ??
+                data.userPhone ??
+                data.phone ??
+                "Utilisateur";
 
 
-                const text =
-                    data.message ??
-                    data.text ??
-                    "";
+            const text =
+                data.message ??
+                data.text ??
+                "";
 
 
-                const date =
-                    data.date ??
-                    data.timestamp ??
-                    "—";
+            const date =
+                data.date ??
+                data.timestamp ??
+                "—";
 
 
-                const file =
-                    data.file ??
-                    data.fichier ??
-                    data.fileData;
+            const file =
+                data.file ??
+                data.fichier ??
+                data.fileData;
 
 
-                let fileHTML = "";
+            let fileHTML = "";
 
 
-                if(
-                    file
-                ){
+            if(file){
 
-                    fileHTML = `
+                fileHTML = `
 
-                        <div class="file-box">
+                    <div class="file-box">
 
-                            📎 Fichier reçu
+                        📎 Fichier reçu
 
-                            <br><br>
+                        <br><br>
 
-                            <a
-                                href="${escapeHTML(file)}"
-                                target="_blank"
-                                rel="noopener"
-                                class="btn btn-blue"
-                            >
-                                ⬇️ Ouvrir
-                            </a>
-
-                        </div>
-
-                    `;
-
-                }
-
-
-                const card =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                card.className =
-                    "message-card";
-
-
-                card.innerHTML = `
-
-                    <div class="message-head">
-
-                        <strong>
-                            📱
-                            ${escapeHTML(phone)}
-                        </strong>
-
-                        <small class="muted">
-                            ${escapeHTML(date)}
-                        </small>
-
-                    </div>
-
-
-                    <div class="message-body">
-                        ${escapeHTML(text)}
-                    </div>
-
-
-                    ${fileHTML}
-
-
-                    <div
-                        style="
-                        margin-top:12px;
-                        "
-                    >
-
-                        <button
+                        <a
+                            href="${escapeHTML(file)}"
+                            target="_blank"
+                            rel="noopener"
                             class="btn btn-blue"
-                            onclick="
-                                replyUser(
-                                    '${encodeURIComponent(phone)}'
-                                )
-                            "
                         >
-                            ↩️ Répondre
-                        </button>
-
-
-                        <button
-                            class="btn btn-red"
-                            onclick="
-                                deleteMessage(
-                                    '${encodeURIComponent(id)}'
-                                )
-                            "
-                        >
-                            🗑 Supprimer
-                        </button>
+                            ⬇️ Ouvrir
+                        </a>
 
                     </div>
 
                 `;
 
-
-                container.prepend(
-                    card
-                );
-
             }
-        );
 
 
-        if(
-            count === 0
-        ){
+            const card =
+                document.createElement("div");
 
-            container.innerHTML = `
 
-                <div class="panel empty">
+            card.className =
+                "message-card";
 
-                    💬 Aucun message reçu.
+
+            card.innerHTML = `
+
+                <div class="message-head">
+
+                    <strong>
+                        📱 ${escapeHTML(phone)}
+                    </strong>
+
+                    <small class="muted">
+                        ${escapeHTML(date)}
+                    </small>
 
                 </div>
 
+                <div class="message-body">
+                    ${escapeHTML(text)}
+                </div>
+
+                ${fileHTML}
+
+                <div style="margin-top:12px">
+
+                    <button
+                        class="btn btn-blue"
+                        onclick="replyUser('${encodeURIComponent(phone)}')"
+                    >
+                        ↩️ Répondre
+                    </button>
+
+                    <button
+                        class="btn btn-red"
+                        onclick="deleteMessage('${encodeURIComponent(id)}')"
+                    >
+                        🗑 Supprimer
+                    </button>
+
+                </div>
+            `;
+
+
+            container.prepend(card);
+
+        });
+
+
+        if(!count){
+
+            container.innerHTML = `
+                <div class="empty">
+                    💬 Aucun message reçu.
+                </div>
             `;
 
         }
 
     },
+
     error => {
 
         console.error(
-            "Messages:",
+            "MESSAGES:",
             error
         );
 
     }
+
 );
 
 
 /* =========================================================
-   REPLY USER
+   REPLY
 ========================================================= */
 
 window.replyUser =
-function(
-    encodedPhone
-){
+function(encodedPhone){
 
     const phone =
         decodeURIComponent(
@@ -6223,24 +4961,17 @@ function(
         );
 
 
-    document
-    .getElementById(
+    document.getElementById(
         "messageTo"
-    )
-    .value =
-        phone;
+    ).value = phone;
 
 
-    openPage(
-        "send"
-    );
+    openPage("send");
 
 
-    document
-    .getElementById(
+    document.getElementById(
         "messageText"
-    )
-    .focus();
+    ).focus();
 
 };
 
@@ -6250,9 +4981,7 @@ function(
 ========================================================= */
 
 window.deleteMessage =
-async function(
-    encodedId
-){
+async function(encodedId){
 
     const id =
         decodeURIComponent(
@@ -6260,15 +4989,9 @@ async function(
         );
 
 
-    if(
-        !confirm(
-            "Supprimer ce message ?"
-        )
-    ){
-
-        return;
-
-    }
+    if(!confirm(
+        "Supprimer ce message ?"
+    )) return;
 
 
     try{
@@ -6293,7 +5016,7 @@ async function(
         console.error(error);
 
         showToast(
-            "❌ Impossible de supprimer le message.",
+            "❌ Suppression impossible.",
             "error"
         );
 
@@ -6303,43 +5026,28 @@ async function(
 
 
 /* =========================================================
-   SEND MESSAGE
+   SEND ADMIN MESSAGE
 ========================================================= */
-
-document
-.getElementById(
-    "sendMessageBtn"
-)
-.addEventListener(
-    "click",
-    sendAdminMessage
-);
-
 
 window.sendAdminMessage =
 async function(){
 
     const phone =
         document
-        .getElementById(
-            "messageTo"
-        )
+        .getElementById("messageTo")
         .value
         .trim();
 
 
     const text =
         document
-        .getElementById(
-            "messageText"
-        )
+        .getElementById("messageText")
         .value
         .trim();
 
 
     const status =
-        document
-        .getElementById(
+        document.getElementById(
             "sendStatus"
         );
 
@@ -6347,21 +5055,12 @@ async function(){
     status.innerHTML = "";
 
 
-    if(
-        !phone
-    ){
+    if(!phone){
 
         status.innerHTML = `
-
-            <p
-                style="
-                color:var(--red);
-                font-size:12px;
-                "
-            >
+            <p style="color:#ff6666;font-size:12px">
                 ❌ Numéro obligatoire.
             </p>
-
         `;
 
         return;
@@ -6369,21 +5068,12 @@ async function(){
     }
 
 
-    if(
-        !text
-    ){
+    if(!text){
 
         status.innerHTML = `
-
-            <p
-                style="
-                color:var(--red);
-                font-size:12px;
-                "
-            >
+            <p style="color:#ff6666;font-size:12px">
                 ❌ Message obligatoire.
             </p>
-
         `;
 
         return;
@@ -6399,14 +5089,8 @@ async function(){
 
         const date =
             new Date()
-            .toLocaleString(
-                "fr-FR"
-            );
+            .toLocaleString("fr-FR");
 
-
-        /*
-         * Message général admin
-         */
 
         const messageRef =
             push(
@@ -6421,38 +5105,25 @@ async function(){
             messageRef,
             {
 
-                from:
-                    "ADMIN",
+                from:"ADMIN",
 
-                to:
-                    phone,
+                to:phone,
 
-                telephone:
-                    phone,
+                telephone:phone,
 
-                message:
-                    text,
+                message:text,
 
-                date:
-                    date,
+                date:date,
 
-                timestamp:
-                    now,
+                timestamp:now,
 
-                lu:
-                    false,
+                lu:false,
 
-                type:
-                    "admin"
+                type:"admin"
 
             }
         );
 
-
-        /*
-         * Message dans la boîte
-         * de l'utilisateur.
-         */
 
         const userMessageRef =
             push(
@@ -6467,50 +5138,34 @@ async function(){
             userMessageRef,
             {
 
-                from:
-                    "ADMIN",
+                from:"ADMIN",
 
-                to:
-                    phone,
+                to:phone,
 
-                message:
-                    text,
+                message:text,
 
-                date:
-                    date,
+                date:date,
 
-                timestamp:
-                    now,
+                timestamp:now,
 
-                lu:
-                    false,
+                lu:false,
 
-                type:
-                    "admin"
+                type:"admin"
 
             }
         );
 
 
-        document
-        .getElementById(
+        document.getElementById(
             "messageText"
-        )
-        .value = "";
+        ).value = "";
 
 
         status.innerHTML = `
-
-            <p
-                style="
-                color:var(--green);
-                font-size:12px;
-                "
-            >
+            <p style="color:#42df79;font-size:12px">
                 ✅ Message envoyé à
                 ${escapeHTML(phone)}
             </p>
-
         `;
 
 
@@ -6524,16 +5179,9 @@ async function(){
         console.error(error);
 
         status.innerHTML = `
-
-            <p
-                style="
-                color:var(--red);
-                font-size:12px;
-                "
-            >
+            <p style="color:#ff6666;font-size:12px">
                 ❌ Erreur lors de l'envoi.
             </p>
-
         `;
 
     }
@@ -6541,109 +5189,83 @@ async function(){
 };
 
 
+document
+.getElementById("sendMessageBtn")
+.addEventListener(
+    "click",
+    sendAdminMessage
+);
+
+
 /* =========================================================
    MODALS
 ========================================================= */
 
 window.openModal =
-function(
-    id
-){
+function(id){
 
     const modal =
-        document.getElementById(
-            id
-        );
+        document.getElementById(id);
 
-
-    if(
-        modal
-    ){
-
-        modal.classList.add(
-            "show"
-        );
-
-    }
+    if(modal)
+        modal.classList.add("show");
 
 };
 
 
 window.closeModal =
-function(
-    id
-){
+function(id){
 
     const modal =
-        document.getElementById(
-            id
-        );
+        document.getElementById(id);
 
-
-    if(
-        modal
-    ){
-
-        modal.classList.remove(
-            "show"
-        );
-
-    }
+    if(modal)
+        modal.classList.remove("show");
 
 };
 
 
 document
-.querySelectorAll(
-    ".modal"
-)
-.forEach(
-    modal => {
+.querySelectorAll(".modal")
+.forEach(modal => {
 
-        modal.addEventListener(
-            "click",
-            event => {
+    modal.addEventListener(
+        "click",
+        e => {
 
-                if(
-                    event.target ===
-                    modal
-                ){
+            if(
+                e.target === modal
+            ){
 
-                    modal.classList.remove(
-                        "show"
-                    );
-
-                }
+                modal.classList.remove(
+                    "show"
+                );
 
             }
-        );
 
-    }
-);
+        }
+    );
+
+});
 
 
 document.addEventListener(
     "keydown",
-    event => {
+    e => {
 
-        if(
-            event.key ===
-            "Escape"
-        ){
+        if(e.key === "Escape"){
 
             document
             .querySelectorAll(
                 ".modal.show"
             )
-            .forEach(
-                modal => {
+            .forEach(modal => {
 
-                    modal.classList.remove(
-                        "show"
-                    );
+                modal.classList.remove(
+                    "show"
+                );
 
-                }
-            );
+            });
 
         }
 
@@ -6652,38 +5274,19 @@ document.addEventListener(
 
 
 /* =========================================================
-   GLOBAL ERROR
+   FIN
 ========================================================= */
 
-window.addEventListener(
-    "error",
-    event => {
-
-        console.error(
-            "JASON BUSINESS ADMIN:",
-            event.error
-        );
-
-    }
+console.log(
+    "JASON BUSINESS ADMIN chargé."
 );
 
-
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
-
-if(
-    localStorage.getItem(
-        "jasonBusinessAdmin"
-    ) === "true"
-){
-
-    showAdmin();
-
-}
+console.log(
+    "Commandes Firebase:",
+    COMMANDS_PATH
+);
 
 </script>
 
 </body>
-
 </html>

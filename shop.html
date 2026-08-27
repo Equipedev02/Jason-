@@ -12,7 +12,7 @@
 
 <meta
     name="theme-color"
-    content="#030812"
+    content="#050a14"
 >
 
 <meta
@@ -24,942 +24,457 @@
 
 <style>
 
-:root{
-
-    --blue:#00d2ff;
-    --blue2:#0077ff;
-
-    --dark:#030812;
-    --dark2:#07111f;
-
-    --card:#091525;
-    --card2:#0d192b;
-
-    --border:rgba(0,210,255,.18);
-
-    --green:#00e676;
-    --red:#ff4757;
-    --orange:#ff9800;
-    --yellow:#ffd740;
-    --purple:#9b59ff;
-
-    --white:#fff;
-    --muted:rgba(255,255,255,.58);
-
-}
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+    font-family:Segoe UI,Arial,sans-serif;
 }
 
 body{
-
     min-height:100vh;
-
-    padding-bottom:85px;
-
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    color:white;
-
     background:
-
         radial-gradient(
-            circle at top right,
-            rgba(0,119,255,.12),
-            transparent 35%
-        ),
-
-        radial-gradient(
-            circle at bottom left,
-            rgba(0,210,255,.07),
-            transparent 30%
-        ),
-
-        var(--dark);
-
+            circle at top,
+            #102044 0,
+            #050a14 45%,
+            #02050b 100%
+        );
+    color:#fff;
+    padding-bottom:90px;
 }
 
+button,
+input,
+textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
 
 /* =========================================================
    HEADER
 ========================================================= */
 
 .header{
-
-    padding:
-        30px 18px 20px;
-
+    padding:28px 18px 20px;
     text-align:center;
-
 }
 
 .logo{
-
-    font-size:25px;
-
+    font-size:27px;
     font-weight:900;
-
-    letter-spacing:3px;
-
-    color:var(--blue);
-
-    text-shadow:
-        0 0 20px
-        rgba(0,210,255,.20);
-
+    letter-spacing:1px;
 }
 
 .subtitle{
-
     margin-top:7px;
-
-    color:var(--muted);
-
+    color:#8da4c9;
     font-size:11px;
-
-    letter-spacing:1.5px;
-
+    letter-spacing:2px;
 }
 
 .balance{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:7px;
-
-    margin-top:20px;
-
-    padding:
-        11px 17px;
-
-    border-radius:14px;
-
-    background:
-        rgba(0,230,118,.08);
-
-    border:
-        1px solid
-        rgba(0,230,118,.18);
-
-    color:#fff;
-
-    font-size:13px;
-
+    margin:20px auto 0;
+    max-width:420px;
+    padding:15px 18px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.04);
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    font-size:14px;
 }
 
-.balance strong,
-#balance{
-
-    color:var(--green);
-
+.balance span{
+    color:#37e68c;
+    font-size:20px;
     font-weight:900;
-
 }
-
 
 /* =========================================================
-   CONTAINER
+   CONTENT
 ========================================================= */
 
 .container{
-
-    width:100%;
-
-    max-width:1000px;
-
+    width:min(1100px,94%);
     margin:auto;
-
-    padding:
-        0 15px;
-
 }
 
 .section-title{
-
-    font-size:22px;
-
-    margin-top:5px;
-
+    font-size:23px;
+    margin-top:15px;
 }
 
 .section-description{
-
-    margin-top:7px;
-
-    color:var(--muted);
-
-    font-size:12px;
-
+    color:#91a0b8;
     line-height:1.6;
-
+    font-size:13px;
+    margin-top:7px;
 }
-
 
 /* =========================================================
    SERVICES
 ========================================================= */
 
 .services{
-
     display:grid;
-
     grid-template-columns:
-        repeat(3,1fr);
-
+        repeat(auto-fit,minmax(230px,1fr));
     gap:14px;
-
-    margin-top:20px;
-
+    margin-top:22px;
 }
 
 .service-card{
-
     position:relative;
-
-    overflow:hidden;
-
-    padding:19px;
-
-    min-height:210px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    border-radius:19px;
-
+    padding:20px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
     background:
         linear-gradient(
             145deg,
-            rgba(10,23,40,.98),
-            rgba(5,13,25,.98)
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
         );
-
-    border:
-        1px solid
-        rgba(255,255,255,.07);
-
-    transition:
-        transform .2s,
-        border-color .2s,
-        box-shadow .2s;
-
-}
-
-.service-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:110px;
-    height:110px;
-
-    right:-45px;
-    bottom:-45px;
-
-    border-radius:50%;
-
-    background:
-        rgba(0,210,255,.05);
-
+    box-shadow:0 15px 35px rgba(0,0,0,.22);
+    transition:.2s;
+    overflow:hidden;
 }
 
 .service-card:hover{
-
-    transform:
-        translateY(-3px);
-
-    border-color:
-        rgba(0,210,255,.28);
-
-    box-shadow:
-        0 10px 35px
-        rgba(0,0,0,.22);
-
+    transform:translateY(-3px);
+    border-color:rgba(73,151,255,.35);
 }
 
 .service-icon{
-
-    width:50px;
-    height:50px;
-
+    width:52px;
+    height:52px;
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     border-radius:15px;
-
-    background:
-        rgba(0,210,255,.09);
-
-    border:
-        1px solid
-        var(--border);
-
+    background:rgba(49,119,255,.13);
     font-size:25px;
-
+    margin-bottom:14px;
 }
 
 .service-name{
-
-    margin-top:14px;
-
-    font-size:16px;
-
-    font-weight:900;
-
+    font-size:18px;
+    font-weight:800;
 }
 
-.service-description{
-
+.service-desc{
+    color:#91a0b8;
+    font-size:12px;
+    line-height:1.5;
     margin-top:7px;
-
-    color:var(--muted);
-
-    font-size:11px;
-
-    line-height:1.55;
-
-    flex:1;
-
-}
-
-.service-bottom{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:8px;
-
-    margin-top:15px;
-
+    min-height:38px;
 }
 
 .service-price{
-
-    color:var(--green);
-
-    font-size:14px;
-
+    margin-top:15px;
+    font-size:19px;
+    color:#37e68c;
     font-weight:900;
-
 }
 
 .order-btn{
-
+    width:100%;
     border:0;
-
-    padding:
-        10px 13px;
-
-    border-radius:10px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--blue2)
-        );
-
-    color:#001018;
-
-    font-weight:900;
-
-    font-size:11px;
-
-    cursor:pointer;
-
+    border-radius:13px;
+    margin-top:15px;
+    padding:13px;
+    background:#1268ff;
+    color:white;
+    font-weight:800;
 }
 
 .order-btn:active{
-
-    transform:scale(.96);
-
+    transform:scale(.98);
 }
-
 
 /* =========================================================
    INFO
 ========================================================= */
 
 .info-box{
-
-    margin-top:18px;
-
-    padding:16px;
-
-    border-radius:15px;
-
-    background:
-        rgba(0,210,255,.045);
-
-    border:
-        1px solid
-        var(--border);
-
-    color:var(--muted);
-
-    font-size:11px;
-
+    margin-top:25px;
+    padding:17px;
+    border-radius:17px;
+    background:rgba(37,103,255,.08);
+    border:1px solid rgba(37,103,255,.18);
+    color:#b9c8df;
+    font-size:12px;
     line-height:1.8;
-
 }
-
 
 /* =========================================================
    LOADING
 ========================================================= */
 
 .loading{
-
-    grid-column:
-        1 / -1;
-
-    padding:45px 20px;
-
+    grid-column:1/-1;
     text-align:center;
-
-    color:var(--muted);
-
+    padding:40px;
+    color:#8da4c9;
 }
-
 
 /* =========================================================
    MODAL
 ========================================================= */
 
 .modal{
-
     position:fixed;
-
     inset:0;
-
-    z-index:500;
-
+    z-index:999;
     display:none;
-
     align-items:center;
-
     justify-content:center;
-
-    padding:14px;
-
-    background:
-        rgba(0,0,0,.80);
-
-    backdrop-filter:
-        blur(7px);
-
+    padding:18px;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(8px);
 }
 
 .modal.show{
-
     display:flex;
-
 }
 
 .modal-box{
-
-    width:100%;
-
-    max-width:570px;
-
-    max-height:92vh;
-
+    width:min(520px,100%);
+    max-height:90vh;
     overflow-y:auto;
-
+    background:#08111f;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:23px;
+    box-shadow:0 25px 80px rgba(0,0,0,.5);
     padding:20px;
-
-    border-radius:21px;
-
-    background:#081322;
-
-    border:
-        1px solid
-        var(--border);
-
-    box-shadow:
-        0 20px 70px
-        rgba(0,0,0,.5);
-
 }
 
 .modal-header{
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     gap:10px;
-
-    margin-bottom:17px;
-
 }
 
 .modal-title{
-
-    font-size:19px;
-
+    font-size:20px;
     font-weight:900;
-
-    color:var(--blue);
-
 }
 
 .close{
-
-    width:34px;
-    height:34px;
-
+    width:38px;
+    height:38px;
     border:0;
-
-    border-radius:10px;
-
-    background:
-        rgba(255,255,255,.07);
-
-    color:white;
-
-    font-size:20px;
-
-    cursor:pointer;
-
+    border-radius:12px;
+    background:rgba(255,255,255,.07);
+    color:#fff;
+    font-size:25px;
 }
-
 
 /* =========================================================
    SUMMARY
 ========================================================= */
 
 .order-summary{
-
-    padding:14px;
-
-    margin-bottom:16px;
-
-    border-radius:14px;
-
-    background:#050d18;
-
-    border:
-        1px solid
-        rgba(255,255,255,.06);
-
+    margin-top:18px;
+    padding:15px;
+    border-radius:17px;
+    background:rgba(255,255,255,.04);
 }
 
 .summary-row{
-
     display:flex;
-
-    align-items:center;
-
     justify-content:space-between;
-
-    gap:12px;
-
+    gap:15px;
     padding:8px 0;
-
-    font-size:12px;
-
+    font-size:13px;
 }
 
 .summary-row span:first-child{
-
-    color:var(--muted);
-
+    color:#8d9bb0;
 }
 
 .summary-row strong{
-
     text-align:right;
-
 }
 
 .summary-balance{
-
-    color:var(--green);
-
+    color:#37e68c;
 }
-
 
 /* =========================================================
    FORM
 ========================================================= */
 
 .form-group{
-
-    margin-bottom:14px;
-
+    margin-top:15px;
 }
 
-.form-label{
-
+.form-group label{
     display:block;
-
-    margin-bottom:6px;
-
-    color:var(--muted);
-
-    font-size:11px;
-
-    font-weight:700;
-
+    font-size:12px;
+    color:#a8b6cc;
+    margin-bottom:7px;
 }
 
-.form-input,
-.form-textarea,
-.form-select{
-
+.form-group input,
+.form-group textarea{
     width:100%;
-
-    padding:13px;
-
-    border-radius:11px;
-
-    border:
-        1px solid
-        #263247;
-
-    background:#050d18;
-
-    color:white;
-
+    border:1px solid rgba(255,255,255,.1);
+    background:#050b15;
+    color:#fff;
+    border-radius:13px;
     outline:none;
-
-    font-family:inherit;
-
+    padding:13px;
 }
 
-.form-input:focus,
-.form-textarea:focus,
-.form-select:focus{
-
-    border-color:
-        var(--blue);
-
-    box-shadow:
-        0 0 0 3px
-        rgba(0,210,255,.05);
-
-}
-
-.form-textarea{
-
-    min-height:120px;
-
+.form-group textarea{
+    min-height:110px;
     resize:vertical;
-
 }
 
-.field-help{
-
-    margin-top:5px;
-
-    color:
-        rgba(255,255,255,.4);
-
-    font-size:9px;
-
+.form-group input:focus,
+.form-group textarea:focus{
+    border-color:#2478ff;
 }
-
-.required{
-
-    color:var(--red);
-
-}
-
-
-/* =========================================================
-   SUBMIT
-========================================================= */
 
 .submit-order{
-
     width:100%;
-
-    padding:15px;
-
+    margin-top:20px;
     border:0;
-
-    border-radius:12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--blue2)
-        );
-
-    color:#001018;
-
-    font-size:12px;
-
+    padding:15px;
+    border-radius:14px;
+    background:#0f6cff;
+    color:#fff;
     font-weight:900;
-
-    cursor:pointer;
-
 }
 
 .submit-order:disabled{
-
     opacity:.5;
-
     cursor:not-allowed;
-
 }
 
 .status{
-
-    min-height:20px;
-
     margin-top:12px;
-
-    text-align:center;
-
     font-size:12px;
-
     line-height:1.5;
-
 }
 
+.status.success{
+    color:#37e68c;
+}
+
+.status.error{
+    color:#ff5d6c;
+}
 
 /* =========================================================
    NAVIGATION
 ========================================================= */
 
 .bottom-nav{
-
     position:fixed;
-
-    left:0;
-    right:0;
-    bottom:0;
-
-    z-index:300;
-
-    height:68px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:
-        space-around;
-
-    background:
-        rgba(3,8,18,.96);
-
-    border-top:
-        1px solid
-        var(--border);
-
-    backdrop-filter:
-        blur(20px);
-
+    left:50%;
+    bottom:10px;
+    transform:translateX(-50%);
+    z-index:100;
+    width:min(600px,94%);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:8px;
+    gap:5px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    background:rgba(5,10,20,.92);
+    backdrop-filter:blur(15px);
+    box-shadow:0 15px 40px rgba(0,0,0,.45);
 }
 
 .nav-link{
-
-    min-width:70px;
-
-    padding:7px;
-
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
-
+    justify-content:center;
     gap:4px;
-
-    color:
-        rgba(255,255,255,.5);
-
-    text-decoration:none;
-
-    font-size:9px;
-
-    font-weight:700;
-
+    min-height:58px;
+    border-radius:14px;
+    color:#77869e;
+    font-size:11px;
 }
 
 .nav-link span{
-
-    font-size:19px;
-
+    font-size:18px;
 }
 
 .nav-link.active{
-
-    color:var(--blue);
-
+    color:#fff;
+    background:rgba(37,111,255,.16);
 }
-
 
 /* =========================================================
    TOAST
 ========================================================= */
 
 #toastContainer{
-
     position:fixed;
-
     top:15px;
-
-    left:15px;
-    right:15px;
-
-    z-index:1000;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:8px;
-
-    pointer-events:none;
-
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2000;
+    width:min(420px,92%);
 }
 
 .toast{
-
-    width:100%;
-
-    max-width:430px;
-
-    margin-left:auto;
-
-    padding:13px 15px;
-
-    border-radius:12px;
-
-    background:#0b1728;
-
-    border:
-        1px solid
-        var(--border);
-
-    box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.35);
-
-    font-size:12px;
-
-    animation:
-        toastIn .2s ease;
-
+    padding:14px 16px;
+    border-radius:14px;
+    margin-bottom:8px;
+    background:#101c2e;
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    font-size:13px;
 }
 
 .toast.success{
-
-    border-color:
-        rgba(0,230,118,.3);
-
+    border-color:rgba(55,230,140,.3);
 }
 
 .toast.error{
-
-    border-color:
-        rgba(255,71,87,.3);
-
+    border-color:rgba(255,80,100,.3);
 }
-
-@keyframes toastIn{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(-8px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            translateY(0);
-
-    }
-
-}
-
 
 /* =========================================================
-   RESPONSIVE
+   MOBILE
 ========================================================= */
 
-@media(max-width:850px){
-
-    .services{
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-    }
-
-}
-
-@media(max-width:550px){
-
-    .header{
-
-        padding-top:25px;
-
-    }
+@media(max-width:600px){
 
     .logo{
-
-        font-size:21px;
-
+        font-size:23px;
     }
 
     .services{
-
         grid-template-columns:1fr;
-
-        gap:11px;
-
     }
 
     .service-card{
-
-        min-height:190px;
-
+        padding:18px;
     }
 
-    .container{
-
-        padding:
-            0 12px;
-
+    .modal{
+        padding:10px;
+        align-items:flex-end;
     }
 
     .modal-box{
-
-        padding:16px;
-
+        max-height:92vh;
+        border-radius:23px 23px 0 0;
     }
 
 }
@@ -968,13 +483,12 @@ body{
 
 </head>
 
-
 <body>
 
 
-<!-- ======================================================
+<!-- =========================================================
      HEADER
-====================================================== -->
+========================================================= -->
 
 <header class="header">
 
@@ -988,14 +502,10 @@ body{
 
     <div class="balance">
 
-        💰
-
-        Solde :
-
+        💰 Solde :
         <span id="balance">
             0
         </span>
-
         FC
 
     </div>
@@ -1003,10 +513,9 @@ body{
 </header>
 
 
-
-<!-- ======================================================
+<!-- =========================================================
      MAIN
-====================================================== -->
+========================================================= -->
 
 <main class="container">
 
@@ -1034,18 +543,18 @@ body{
 
     <div class="info-box">
 
-        🔐 Les commandes sont enregistrées dans
-        votre compte JASON Business.
+        🔐 Les commandes sont enregistrées dans votre
+        compte JASON Business.
 
         <br>
 
         💰 Le montant du service est déduit du
-        solde principal après confirmation.
+        solde principal lors de la confirmation.
 
         <br>
 
-        📩 Une fois envoyée, votre commande est
-        transmise à l'administration.
+        📩 La commande est ensuite transmise
+        à l'administration.
 
         <br>
 
@@ -1057,10 +566,9 @@ body{
 </main>
 
 
-
-<!-- ======================================================
+<!-- =========================================================
      ORDER MODAL
-====================================================== -->
+========================================================= -->
 
 <div
     class="modal"
@@ -1099,9 +607,7 @@ body{
                     Service
                 </span>
 
-                <strong
-                    id="summaryService"
-                >
+                <strong id="summaryService">
                     -
                 </strong>
 
@@ -1171,10 +677,9 @@ body{
 </div>
 
 
-
-<!-- ======================================================
-     NAV
-====================================================== -->
+<!-- =========================================================
+     BOTTOM NAV
+========================================================= -->
 
 <nav class="bottom-nav">
 
@@ -1182,11 +687,8 @@ body{
         href="dashboard.html"
         class="nav-link"
     >
-
         <span>📊</span>
-
         Dash
-
     </a>
 
 
@@ -1194,11 +696,8 @@ body{
         href="shop.html"
         class="nav-link active"
     >
-
         <span>🛒</span>
-
         Boutique
-
     </a>
 
 
@@ -1206,11 +705,8 @@ body{
         href="equipe.html"
         class="nav-link"
     >
-
         <span>👥</span>
-
         Équipe
-
     </a>
 
 
@@ -1218,26 +714,25 @@ body{
         href="profil.html"
         class="nav-link"
     >
-
         <span>👤</span>
-
         Profil
-
     </a>
 
 </nav>
 
 
-
 <div id="toastContainer"></div>
 
 
-
-<!-- ======================================================
+<!-- =========================================================
      FIREBASE + APPLICATION
-====================================================== -->
+========================================================= -->
 
 <script type="module">
+
+/* =========================================================
+   FIREBASE IMPORTS
+========================================================= */
 
 import {
     initializeApp
@@ -1250,8 +745,10 @@ import {
     getDatabase,
     ref,
     onValue,
+    get,
+    runTransaction,
     push,
-    runTransaction
+    set
 }
 from
 "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
@@ -1288,87 +785,24 @@ const firebaseConfig = {
 
 
 const app =
-    initializeApp(
-        firebaseConfig
-    );
-
+    initializeApp(firebaseConfig);
 
 const db =
     getDatabase(app);
 
 
 /* =========================================================
-   FIREBASE PATHS
+   PATHS
 ========================================================= */
 
 const ROOT =
     "jasonBusiness";
 
-
 const USERS_PATH =
     `${ROOT}/users`;
 
-
 const COMMANDS_PATH =
     `${ROOT}/demandes_commandes`;
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const balanceElement =
-    document.getElementById(
-        "balance"
-    );
-
-
-const servicesContainer =
-    document.getElementById(
-        "servicesContainer"
-    );
-
-
-const orderModal =
-    document.getElementById(
-        "orderModal"
-    );
-
-
-const orderForm =
-    document.getElementById(
-        "orderForm"
-    );
-
-
-const dynamicFields =
-    document.getElementById(
-        "dynamicFields"
-    );
-
-
-const orderStatus =
-    document.getElementById(
-        "orderStatus"
-    );
-
-
-const submitOrder =
-    document.getElementById(
-        "submitOrder"
-    );
-
-
-let currentUserPhone =
-    "";
-
-
-let currentUserData =
-    {};
-
-
-let selectedService =
-    null;
 
 
 /* =========================================================
@@ -1378,383 +812,251 @@ let selectedService =
 const SERVICES = [
 
     {
-        id:"web",
-
-        nom:"Création Web",
-
-        description:
-            "Création de sites web modernes, professionnels et adaptés au mobile.",
-
-        icon:"🌐",
-
-        prix:5000,
-
-        fields:[
-
-            {
-                name:"nomProjet",
-                label:"Nom du projet",
-                type:"text",
-                placeholder:"Ex : Boutique JASON",
-                required:true
-            },
-
-            {
-                name:"description",
-                label:"Description du site",
-                type:"textarea",
-                placeholder:"Expliquez votre projet...",
-                required:true
-            },
-
-            {
-                name:"contact",
-                label:"Contact",
-                type:"text",
-                placeholder:"Numéro WhatsApp / téléphone",
-                required:true
-            }
-
-        ]
-
-    },
-
-
-    {
-        id:"design",
-
-        nom:"Design graphique",
-
-        description:
-            "Création d'affiches, logos, flyers, visuels et supports professionnels.",
-
-        icon:"🎨",
-
-        prix:3000,
-
-        fields:[
-
-            {
-                name:"typeDesign",
-                label:"Type de design",
-                type:"select",
-                required:true,
-
-                options:[
-                    "Logo",
-                    "Affiche",
-                    "Flyer",
-                    "Bannière",
-                    "Carte de visite",
-                    "Autre"
-                ]
-
-            },
-
-            {
-                name:"description",
-                label:"Détails du design",
-                type:"textarea",
-                placeholder:"Décrivez ce que vous souhaitez...",
-                required:true
-            },
-
-            {
-                name:"contact",
-                label:"Contact",
-                type:"text",
-                placeholder:"Numéro WhatsApp",
-                required:true
-            }
-
-        ]
-
-    },
-
-
-    {
-        id:"social",
-
-        nom:"Réseaux Sociaux",
-
-        description:
-            "Boost de visibilité et accompagnement pour Facebook, TikTok, Instagram, YouTube et autres.",
-
+        id:"application",
+        name:"Application",
+        price:10000,
         icon:"📱",
-
-        prix:2500,
-
+        description:"Création d'application mobile personnalisée.",
         fields:[
+            {
+                name:"description",
+                label:"Décrivez votre application",
+                type:"textarea",
+                placeholder:"Expliquez votre projet..."
+            }
+        ]
+    },
 
+    {
+        id:"site-web",
+        name:"Site web",
+        price:15000,
+        icon:"🌐",
+        description:"Création de site web moderne et professionnel.",
+        fields:[
+            {
+                name:"description",
+                label:"Décrivez votre site",
+                type:"textarea",
+                placeholder:"Type de site, pages, fonctionnalités..."
+            }
+        ]
+    },
+
+    {
+        id:"chanson",
+        name:"Chanson",
+        price:5000,
+        icon:"🎵",
+        description:"Création d'une chanson personnalisée.",
+        fields:[
+            {
+                name:"theme",
+                label:"Thème de la chanson",
+                type:"input",
+                placeholder:"Amour, anniversaire, motivation..."
+            },
+            {
+                name:"description",
+                label:"Informations supplémentaires",
+                type:"textarea",
+                placeholder:"Artiste, paroles, style..."
+            }
+        ]
+    },
+
+    {
+        id:"logo",
+        name:"Logo",
+        price:3000,
+        icon:"🎨",
+        description:"Création d'un logo professionnel.",
+        fields:[
+            {
+                name:"nomEntreprise",
+                label:"Nom de l'entreprise / projet",
+                type:"input",
+                placeholder:"Nom à afficher"
+            },
+            {
+                name:"description",
+                label:"Description du logo",
+                type:"textarea",
+                placeholder:"Couleurs, style, symbole..."
+            }
+        ]
+    },
+
+    {
+        id:"affiche",
+        name:"Affiche",
+        price:3000,
+        icon:"🖼️",
+        description:"Création d'affiche publicitaire ou événementielle.",
+        fields:[
+            {
+                name:"titre",
+                label:"Titre de l'affiche",
+                type:"input",
+                placeholder:"Titre"
+            },
+            {
+                name:"description",
+                label:"Informations à afficher",
+                type:"textarea",
+                placeholder:"Date, lieu, téléphone, prix..."
+            }
+        ]
+    },
+
+    {
+        id:"video",
+        name:"Vidéo",
+        price:8000,
+        icon:"🎬",
+        description:"Montage et création de vidéos personnalisées.",
+        fields:[
+            {
+                name:"description",
+                label:"Décrivez votre vidéo",
+                type:"textarea",
+                placeholder:"Durée, style, contenu, texte..."
+            }
+        ]
+    },
+
+    {
+        id:"chatbot",
+        name:"Chatbot",
+        price:7000,
+        icon:"🤖",
+        description:"Création d'un chatbot intelligent.",
+        fields:[
             {
                 name:"plateforme",
                 label:"Plateforme",
-                type:"select",
-                required:true,
-
-                options:[
-                    "Facebook",
-                    "TikTok",
-                    "Instagram",
-                    "YouTube",
-                    "Telegram",
-                    "WhatsApp"
-                ]
-
+                type:"input",
+                placeholder:"WhatsApp, site web, Telegram..."
             },
-
-            {
-                name:"objectif",
-                label:"Objectif",
-                type:"text",
-                placeholder:"Ex : augmenter les abonnés",
-                required:true
-            },
-
-            {
-                name:"lien",
-                label:"Lien du compte / publication",
-                type:"url",
-                placeholder:"https://...",
-                required:true
-            }
-
-        ]
-
-    },
-
-
-    {
-        id:"ia",
-
-        nom:"IA & Automatisation",
-
-        description:
-            "Création d'assistants IA, chatbots, automatisations et solutions intelligentes.",
-
-        icon:"🤖",
-
-        prix:8000,
-
-        fields:[
-
-            {
-                name:"projet",
-                label:"Type de solution",
-                type:"text",
-                placeholder:"Ex : Chatbot WhatsApp",
-                required:true
-            },
-
             {
                 name:"description",
-                label:"Description du projet",
+                label:"Fonctionnement souhaité",
                 type:"textarea",
-                placeholder:"Expliquez votre besoin...",
-                required:true
-            },
-
-            {
-                name:"contact",
-                label:"Contact",
-                type:"text",
-                placeholder:"WhatsApp / téléphone",
-                required:true
+                placeholder:"Que doit faire le chatbot ?"
             }
-
         ]
-
     },
 
-
     {
-        id:"vpn",
-
-        nom:"VPN Premium",
-
-        description:
-            "Configuration et accès aux services VPN premium.",
-
-        icon:"🛡️",
-
-        prix:2000,
-
+        id:"api",
+        name:"API",
+        price:10000,
+        icon:"🔌",
+        description:"Création d'une API personnalisée.",
         fields:[
-
-            {
-                name:"appareil",
-                label:"Appareil",
-                type:"select",
-                required:true,
-
-                options:[
-                    "Android",
-                    "iPhone",
-                    "Windows",
-                    "Autre"
-                ]
-
-            },
-
-            {
-                name:"duree",
-                label:"Durée souhaitée",
-                type:"select",
-                required:true,
-
-                options:[
-                    "7 jours",
-                    "30 jours",
-                    "90 jours"
-                ]
-
-            },
-
-            {
-                name:"contact",
-                label:"Contact",
-                type:"text",
-                placeholder:"Numéro WhatsApp",
-                required:true
-            }
-
-        ]
-
-    },
-
-
-    {
-        id:"studio",
-
-        nom:"DAVBOT Studio",
-
-        description:
-            "Création musicale, montage vidéo, affiches et contenus digitaux.",
-
-        icon:"🎬",
-
-        prix:5000,
-
-        fields:[
-
-            {
-                name:"service",
-                label:"Service demandé",
-                type:"select",
-                required:true,
-
-                options:[
-                    "Montage vidéo",
-                    "Création musicale",
-                    "Affiche",
-                    "Mini-jeu",
-                    "Autre"
-                ]
-
-            },
-
             {
                 name:"description",
-                label:"Description",
+                label:"Décrivez votre API",
                 type:"textarea",
-                placeholder:"Décrivez votre demande...",
-                required:true
-            },
-
-            {
-                name:"contact",
-                label:"Contact",
-                type:"text",
-                placeholder:"WhatsApp / téléphone",
-                required:true
+                placeholder:"Fonctions, données, intégrations..."
             }
-
         ]
-
     },
 
+    {
+        id:"cv",
+        name:"CV",
+        price:3000,
+        icon:"📄",
+        description:"Création d'un CV professionnel.",
+        fields:[
+            {
+                name:"informations",
+                label:"Vos informations",
+                type:"textarea",
+                placeholder:"Nom, études, expériences, compétences..."
+            }
+        ]
+    },
 
     {
-        id:"autres",
-
-        nom:"Services Autres",
-
-        description:
-            "Solutions personnalisées : API, analyse de dossiers, documents, logos, graphiques et outils intelligents.",
-
-        icon:"⚙️",
-
-        prix:3000,
-
+        id:"redaction",
+        name:"Rédaction",
+        price:2000,
+        icon:"✍️",
+        description:"Rédaction de contenus personnalisés.",
         fields:[
-
-            {
-                name:"typeService",
-                label:"Type de service",
-                type:"select",
-                required:true,
-
-                options:[
-                    "API personnalisée",
-                    "Analyse de dossier",
-                    "Analyse de document",
-                    "Logo",
-                    "Affiche",
-                    "Graphique",
-                    "Outil personnalisé",
-                    "Autre"
-                ]
-
-            },
-
             {
                 name:"description",
-                label:"Expliquez votre besoin",
+                label:"Que souhaitez-vous rédiger ?",
                 type:"textarea",
-                placeholder:"Décrivez précisément votre demande...",
-                required:true
-            },
-
-            {
-                name:"contact",
-                label:"Contact",
-                type:"text",
-                placeholder:"WhatsApp / téléphone",
-                required:true
+                placeholder:"Lettre, article, message, document..."
             }
-
         ]
+    },
 
+    {
+        id:"traduction",
+        name:"Traduction",
+        price:2000,
+        icon:"🌍",
+        description:"Traduction professionnelle de vos textes.",
+        fields:[
+            {
+                name:"langues",
+                label:"Langues",
+                type:"input",
+                placeholder:"Français → Anglais"
+            },
+            {
+                name:"texte",
+                label:"Texte à traduire",
+                type:"textarea",
+                placeholder:"Collez votre texte ici..."
+            }
+        ]
+    },
+
+    {
+        id:"correction",
+        name:"Correction",
+        price:5000,
+        icon:"🛠️",
+        description:"Correction et amélioration de vos documents.",
+        fields:[
+            {
+                name:"description",
+                label:"Texte / informations",
+                type:"textarea",
+                placeholder:"Indiquez le document à corriger..."
+            }
+        ]
     }
 
 ];
 
 
 /* =========================================================
-   UTILS
+   UTILITIES
 ========================================================= */
 
 function money(value){
 
     return Math.floor(
         Number(value) || 0
-    ).toLocaleString(
-        "fr-FR"
-    );
+    ).toLocaleString("fr-FR");
 
 }
 
 
 function escapeHTML(value){
 
-    return String(
-        value ?? ""
-    )
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
@@ -1769,25 +1071,20 @@ function showToast(
             "toastContainer"
         );
 
-
     const toast =
         document.createElement(
             "div"
         );
 
-
     toast.className =
         `toast ${type}`;
-
 
     toast.textContent =
         message;
 
-
     container.appendChild(
         toast
     );
-
 
     setTimeout(
         () => toast.remove(),
@@ -1798,77 +1095,39 @@ function showToast(
 
 
 /* =========================================================
-   DETECT USER PHONE
+   CURRENT USER
 ========================================================= */
 
-function detectUserPhone(){
+function getCurrentPhone(){
 
-    const possibleKeys = [
+    /*
+     * Plusieurs noms sont acceptés
+     * pour rester compatible avec
+     * ton système existant.
+     */
+
+    const keys = [
 
         "jasonBusinessPhone",
-
-        "jasonBusinessUser",
-
         "userPhone",
-
         "telephone",
-
         "phone",
-
         "numero",
-
-        "currentUserPhone",
-
-        "loggedUser",
-
-        "jasonUser"
+        "currentUserPhone"
 
     ];
 
-
     for(
-        const key of possibleKeys
+        const key of keys
     ){
 
         const value =
-            localStorage.getItem(
-                key
-            );
-
+            localStorage.getItem(key);
 
         if(
             value &&
-            value !== "null" &&
-            value !== "undefined"
+            value.trim()
         ){
-
-            try{
-
-                const parsed =
-                    JSON.parse(value);
-
-                if(
-                    typeof parsed === "object" &&
-                    parsed !== null
-                ){
-
-                    const phone =
-                        parsed.telephone ??
-                        parsed.phone ??
-                        parsed.numero ??
-                        parsed.userPhone;
-
-                    if(phone){
-
-                        return String(phone);
-
-                    }
-
-                }
-
-            }
-            catch(e){}
-
 
             return value.trim();
 
@@ -1876,8 +1135,50 @@ function detectUserPhone(){
 
     }
 
-
     return "";
+
+}
+
+
+/* =========================================================
+   USER PHONE
+========================================================= */
+
+let currentPhone =
+    getCurrentPhone();
+
+
+/*
+ * Si ton système utilise une autre
+ * clé localStorage, tu peux aussi
+ * mettre directement :
+ *
+ * localStorage.setItem(
+ *     "jasonBusinessPhone",
+ *     telephone
+ * );
+ */
+
+
+/* =========================================================
+   USER BALANCE
+========================================================= */
+
+let currentBalance = 0;
+
+
+function updateBalanceUI(){
+
+    document
+        .getElementById("balance")
+        .textContent =
+        money(currentBalance);
+
+    document
+        .getElementById("summaryBalance")
+        .textContent =
+        money(currentBalance) +
+        " FC";
 
 }
 
@@ -1886,21 +1187,16 @@ function detectUserPhone(){
    LOAD USER
 ========================================================= */
 
-function loadCurrentUser(){
+async function loadUser(){
 
-    currentUserPhone =
-        detectUserPhone();
+    if(!currentPhone){
 
+        currentBalance = 0;
 
-    if(
-        !currentUserPhone
-    ){
-
-        balanceElement.textContent =
-            "0";
+        updateBalanceUI();
 
         showToast(
-            "⚠️ Connectez-vous d'abord à votre compte.",
+            "⚠️ Utilisateur non identifié. Connectez-vous d'abord.",
             "error"
         );
 
@@ -1909,101 +1205,68 @@ function loadCurrentUser(){
     }
 
 
-    onValue(
+    try{
 
-        ref(
-            db,
-            `${USERS_PATH}/${currentUserPhone}`
-        ),
+        const userRef =
+            ref(
+                db,
+                `${USERS_PATH}/${currentPhone}`
+            );
 
-        snapshot => {
 
-            if(
-                !snapshot.exists()
-            ){
+        onValue(
+            userRef,
+            snapshot => {
 
-                currentUserData = {};
+                if(
+                    !snapshot.exists()
+                ){
 
-                balanceElement.textContent =
-                    "0";
+                    currentBalance = 0;
+
+                    updateBalanceUI();
+
+                    return;
+
+                }
+
+
+                const data =
+                    snapshot.val() || {};
+
+
+                currentBalance =
+                    Number(
+                        data.solde_principal ??
+                        data.solde ??
+                        data.balance ??
+                        0
+                    ) || 0;
+
+
+                updateBalanceUI();
+
+            },
+            error => {
+
+                console.error(
+                    error
+                );
 
                 showToast(
-                    "⚠️ Compte utilisateur introuvable.",
+                    "❌ Impossible de charger votre compte.",
                     "error"
                 );
 
-                return;
-
             }
+        );
 
+    }
+    catch(error){
 
-            currentUserData =
-                snapshot.val() || {};
-
-
-            updateBalance();
-
-        },
-
-        error => {
-
-            console.error(
-                "USER:",
-                error
-            );
-
-            showToast(
-                "❌ Impossible de charger votre compte.",
-                "error"
-            );
-
-        }
-
-    );
-
-}
-
-
-/* =========================================================
-   BALANCE
-========================================================= */
-
-function getBalance(){
-
-    return Number(
-
-        currentUserData.solde_principal ??
-
-        currentUserData.solde ??
-
-        currentUserData.balance ??
-
-        0
-
-    ) || 0;
-
-}
-
-
-function updateBalance(){
-
-    const value =
-        getBalance();
-
-
-    balanceElement.textContent =
-        money(value);
-
-
-    if(
-        selectedService
-    ){
-
-        document.getElementById(
-            "summaryBalance"
-        ).textContent =
-            money(value) +
-            " FC";
+        console.error(
+            error
+        );
 
     }
 
@@ -2014,10 +1277,15 @@ function updateBalance(){
    RENDER SERVICES
 ========================================================= */
 
+const servicesContainer =
+    document.getElementById(
+        "servicesContainer"
+    );
+
+
 function renderServices(){
 
-    servicesContainer.innerHTML =
-        "";
+    servicesContainer.innerHTML = "";
 
 
     SERVICES.forEach(
@@ -2025,9 +1293,8 @@ function renderServices(){
 
             const card =
                 document.createElement(
-                    "article"
+                    "div"
                 );
-
 
             card.className =
                 "service-card";
@@ -2040,37 +1307,34 @@ function renderServices(){
                 </div>
 
                 <div class="service-name">
-                    ${escapeHTML(service.nom)}
+                    ${escapeHTML(service.name)}
                 </div>
 
-                <div class="service-description">
+                <div class="service-desc">
                     ${escapeHTML(service.description)}
                 </div>
 
-                <div class="service-bottom">
-
-                    <div class="service-price">
-                        ${money(service.prix)} FC
-                    </div>
-
-                    <button
-                        class="order-btn"
-                        type="button"
-                    >
-                        Commander
-                    </button>
-
+                <div class="service-price">
+                    ${money(service.price)} FC
                 </div>
+
+                <button
+                    class="order-btn"
+                    type="button"
+                    data-service-id="${escapeHTML(service.id)}"
+                >
+                    🛒 Commander
+                </button>
 
             `;
 
 
             card
-            .querySelector(".order-btn")
-            .addEventListener(
-                "click",
-                () => openOrder(service)
-            );
+                .querySelector(".order-btn")
+                .addEventListener(
+                    "click",
+                    () => openOrder(service.id)
+                );
 
 
             servicesContainer.appendChild(
@@ -2083,179 +1347,14 @@ function renderServices(){
 }
 
 
+renderServices();
+
+
 /* =========================================================
-   CREATE FIELD
+   ORDER STATE
 ========================================================= */
 
-function createField(
-    field
-){
-
-    const group =
-        document.createElement(
-            "div"
-        );
-
-
-    group.className =
-        "form-group";
-
-
-    const label =
-        document.createElement(
-            "label"
-        );
-
-
-    label.className =
-        "form-label";
-
-
-    label.innerHTML =
-        escapeHTML(field.label) +
-        (
-            field.required
-            ?
-            ' <span class="required">*</span>'
-            :
-            ''
-        );
-
-
-    group.appendChild(
-        label
-    );
-
-
-    let input;
-
-
-    if(
-        field.type === "textarea"
-    ){
-
-        input =
-            document.createElement(
-                "textarea"
-            );
-
-        input.className =
-            "form-textarea";
-
-    }
-
-    else if(
-        field.type === "select"
-    ){
-
-        input =
-            document.createElement(
-                "select"
-            );
-
-        input.className =
-            "form-select";
-
-
-        const first =
-            document.createElement(
-                "option"
-            );
-
-        first.value = "";
-
-        first.textContent =
-            "Sélectionner...";
-
-        input.appendChild(
-            first
-        );
-
-
-        (
-            field.options || []
-        )
-        .forEach(
-            option => {
-
-                const opt =
-                    document.createElement(
-                        "option"
-                    );
-
-                opt.value =
-                    option;
-
-                opt.textContent =
-                    option;
-
-                input.appendChild(
-                    opt
-                );
-
-            }
-        );
-
-    }
-
-    else{
-
-        input =
-            document.createElement(
-                "input"
-            );
-
-        input.className =
-            "form-input";
-
-        input.type =
-            field.type || "text";
-
-    }
-
-
-    input.name =
-        field.name;
-
-
-    input.required =
-        Boolean(field.required);
-
-
-    input.placeholder =
-        field.placeholder || "";
-
-
-    group.appendChild(
-        input
-    );
-
-
-    if(
-        field.help
-    ){
-
-        const help =
-            document.createElement(
-                "div"
-            );
-
-        help.className =
-            "field-help";
-
-        help.textContent =
-            field.help;
-
-        group.appendChild(
-            help
-        );
-
-    }
-
-
-    return group;
-
-}
+let selectedService = null;
 
 
 /* =========================================================
@@ -2263,79 +1362,70 @@ function createField(
 ========================================================= */
 
 function openOrder(
-    service
+    serviceId
 ){
 
-    if(
-        !currentUserPhone
-    ){
-
-        showToast(
-            "⚠️ Connectez-vous avant de commander.",
-            "error"
+    selectedService =
+        SERVICES.find(
+            service =>
+                service.id === serviceId
         );
+
+
+    if(
+        !selectedService
+    ){
 
         return;
 
     }
 
 
-    selectedService =
-        service;
-
-
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
+    document
+        .getElementById("modalTitle")
+        .textContent =
         "Commander — " +
-        service.nom;
+        selectedService.name;
 
 
-    document.getElementById(
-        "summaryService"
-    ).textContent =
-        service.nom;
+    document
+        .getElementById("summaryService")
+        .textContent =
+        selectedService.icon +
+        " " +
+        selectedService.name;
 
 
-    document.getElementById(
-        "summaryPrice"
-    ).textContent =
-        money(service.prix);
+    document
+        .getElementById("summaryPrice")
+        .textContent =
+        money(
+            selectedService.price
+        );
 
 
-    document.getElementById(
-        "summaryBalance"
-    ).textContent =
-        money(getBalance()) +
+    document
+        .getElementById("summaryBalance")
+        .textContent =
+        money(
+            currentBalance
+        ) +
         " FC";
 
 
-    dynamicFields.innerHTML =
-        "";
-
-
-    service.fields.forEach(
-        field => {
-
-            dynamicFields.appendChild(
-                createField(field)
-            );
-
-        }
+    renderFields(
+        selectedService
     );
 
 
-    orderStatus.innerHTML =
-        "";
+    document
+        .getElementById("orderStatus")
+        .innerHTML = "";
 
 
-    submitOrder.disabled =
-        false;
-
-
-    orderModal.classList.add(
-        "show"
-    );
+    document
+        .getElementById("orderModal")
+        .classList.add("show");
 
 }
 
@@ -2346,49 +1436,731 @@ function openOrder(
 
 function closeOrder(){
 
-    orderModal.classList.remove(
-        "show"
-    );
+    document
+        .getElementById("orderModal")
+        .classList.remove("show");
 
-    selectedService =
-        null;
+    selectedService = null;
 
 }
 
 
 document
-.getElementById(
-    "closeModal"
-)
-.addEventListener(
-    "click",
-    closeOrder
-);
+    .getElementById("closeModal")
+    .addEventListener(
+        "click",
+        closeOrder
+    );
 
 
-orderModal.addEventListener(
-    "click",
-    event => {
+document
+    .getElementById("orderModal")
+    .addEventListener(
+        "click",
+        event => {
+
+            if(
+                event.target.id ===
+                "orderModal"
+            ){
+
+                closeOrder();
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   DYNAMIC FIELDS
+========================================================= */
+
+function renderFields(
+    service
+){
+
+    const container =
+        document.getElementById(
+            "dynamicFields"
+        );
+
+
+    container.innerHTML = "";
+
+
+    service.fields.forEach(
+        field => {
+
+            const group =
+                document.createElement(
+                    "div"
+                );
+
+
+            group.className =
+                "form-group";
+
+
+            const label =
+                document.createElement(
+                    "label"
+                );
+
+
+            label.textContent =
+                field.label;
+
+
+            let input;
+
+
+            if(
+                field.type ===
+                "textarea"
+            ){
+
+                input =
+                    document.createElement(
+                        "textarea"
+                    );
+
+            }
+            else{
+
+                input =
+                    document.createElement(
+                        "input"
+                    );
+
+                input.type =
+                    "text";
+
+            }
+
+
+            input.name =
+                field.name;
+
+            input.placeholder =
+                field.placeholder || "";
+
+            input.required =
+                true;
+
+
+            group.appendChild(
+                label
+            );
+
+            group.appendChild(
+                input
+            );
+
+
+            container.appendChild(
+                group
+            );
+
+        }
+    );
+
+
+    /*
+     * Champ téléphone visible.
+     * Cela permet à l'admin de retrouver
+     * facilement la commande.
+     */
+
+    const phoneGroup =
+        document.createElement(
+            "div"
+        );
+
+
+    phoneGroup.className =
+        "form-group";
+
+
+    phoneGroup.innerHTML = `
+
+        <label>
+            📱 Votre numéro
+        </label>
+
+        <input
+            type="text"
+            name="telephone"
+            value="${escapeHTML(currentPhone)}"
+            placeholder="Votre numéro"
+            required
+        >
+
+    `;
+
+
+    container.insertBefore(
+        phoneGroup,
+        container.firstChild
+    );
+
+}
+
+
+/* =========================================================
+   CREATE ORDER
+========================================================= */
+
+document
+    .getElementById("orderForm")
+    .addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
+
+            await submitOrder();
+
+        }
+    );
+
+
+async function submitOrder(){
+
+    if(
+        !selectedService
+    ){
+
+        return;
+
+    }
+
+
+    const form =
+        document.getElementById(
+            "orderForm"
+        );
+
+
+    const formData =
+        new FormData(form);
+
+
+    const phone =
+        String(
+            formData.get(
+                "telephone"
+            ) || ""
+        )
+        .trim();
+
+
+    if(
+        !phone
+    ){
+
+        showOrderStatus(
+            "❌ Numéro obligatoire.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * On utilise le numéro saisi
+     * comme identifiant Firebase.
+     */
+
+    currentPhone =
+        phone;
+
+
+    const submitButton =
+        document.getElementById(
+            "submitOrder"
+        );
+
+
+    submitButton.disabled =
+        true;
+
+    submitButton.textContent =
+        "⏳ Vérification...";
+
+
+    try{
+
+        /*
+         * Récupération du compte
+         */
+
+        const userRef =
+            ref(
+                db,
+                `${USERS_PATH}/${phone}`
+            );
+
+
+        const userSnapshot =
+            await get(
+                userRef
+            );
+
 
         if(
-            event.target ===
-            orderModal
+            !userSnapshot.exists()
         ){
 
-            closeOrder();
+            showOrderStatus(
+                "❌ Compte utilisateur introuvable.",
+                "error"
+            );
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "🛒 CONFIRMER LA COMMANDE";
+
+            return;
 
         }
 
-    }
-);
 
+        const userData =
+            userSnapshot.val() || {};
+
+
+        const balance =
+            Number(
+                userData.solde_principal ??
+                userData.solde ??
+                userData.balance ??
+                0
+            ) || 0;
+
+
+        currentBalance =
+            balance;
+
+
+        updateBalanceUI();
+
+
+        /*
+         * Vérification du solde
+         */
+
+        if(
+            balance <
+            selectedService.price
+        ){
+
+            showOrderStatus(
+
+                "❌ Solde insuffisant. " +
+                "Prix : " +
+                money(selectedService.price) +
+                " FC — Solde : " +
+                money(balance) +
+                " FC.",
+
+                "error"
+
+            );
+
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "🛒 CONFIRMER LA COMMANDE";
+
+            return;
+
+        }
+
+
+        /*
+         * Collecte des données
+         */
+
+        const details = {};
+
+
+        selectedService.fields
+            .forEach(
+                field => {
+
+                    details[field.name] =
+                        String(
+                            formData.get(
+                                field.name
+                            ) || ""
+                        ).trim();
+
+                }
+            );
+
+
+        const now =
+            Date.now();
+
+
+        const date =
+            new Date()
+            .toLocaleString(
+                "fr-FR"
+            );
+
+
+        /*
+         * =====================================================
+         * TRANSACTION SOLDE
+         *
+         * On retire le prix seulement si
+         * le solde est toujours suffisant.
+         * =====================================================
+         */
+
+        const balanceTransaction =
+            await runTransaction(
+
+                ref(
+                    db,
+                    `${USERS_PATH}/${phone}/solde_principal`
+                ),
+
+                current => {
+
+                    const value =
+                        Number(current) || 0;
+
+
+                    if(
+                        value <
+                        selectedService.price
+                    ){
+
+                        return;
+
+                    }
+
+
+                    return (
+                        value -
+                        selectedService.price
+                    );
+
+                }
+
+            );
+
+
+        if(
+            !balanceTransaction.committed
+        ){
+
+            showOrderStatus(
+                "❌ Solde insuffisant ou modification impossible.",
+                "error"
+            );
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "🛒 CONFIRMER LA COMMANDE";
+
+            return;
+
+        }
+
+
+        /*
+         * =====================================================
+         * CRÉATION DE LA COMMANDE
+         * =====================================================
+         */
+
+        const commandRef =
+            push(
+                ref(
+                    db,
+                    COMMANDS_PATH
+                )
+            );
+
+
+        const command = {
+
+            /*
+             * Identité client
+             */
+
+            telephone:
+                phone,
+
+            userPhone:
+                phone,
+
+            phone:
+                phone,
+
+
+            /*
+             * Service
+             */
+
+            service:
+                selectedService.name,
+
+            serviceId:
+                selectedService.id,
+
+            serviceName:
+                selectedService.name,
+
+            produit:
+                selectedService.name,
+
+
+            /*
+             * Prix
+             */
+
+            montant:
+                selectedService.price,
+
+            prix:
+                selectedService.price,
+
+            amount:
+                selectedService.price,
+
+
+            /*
+             * Statut attendu par ADMIN
+             */
+
+            statut:
+                "En attente",
+
+            status:
+                "En attente",
+
+
+            /*
+             * Dates
+             */
+
+            date:
+                date,
+
+            createdAt:
+                date,
+
+            timestamp:
+                now,
+
+
+            /*
+             * Détails du formulaire
+             */
+
+            details:
+                details,
+
+
+            /*
+             * Copie pratique des informations
+             */
+
+            informations:
+                details,
+
+
+            /*
+             * État financier
+             */
+
+            paiement:
+                "Solde principal",
+
+            montantDeduit:
+                selectedService.price,
+
+
+            /*
+             * Métadonnées
+             */
+
+            type:
+                "commande_service",
+
+            source:
+                "shop",
+
+            createdBy:
+                "client"
+
+        };
+
+
+        await set(
+            commandRef,
+            command
+        );
+
+
+        /*
+         * Mise à jour UI
+         */
+
+        currentBalance -=
+            selectedService.price;
+
+
+        updateBalanceUI();
+
+
+        showOrderStatus(
+            "✅ Commande envoyée avec succès ! " +
+            money(selectedService.price) +
+            " FC ont été déduits de votre solde.",
+            "success"
+        );
+
+
+        showToast(
+            "🛒 Commande envoyée à l'administration."
+        );
+
+
+        form.reset();
+
+
+        setTimeout(
+            () => {
+
+                closeOrder();
+
+            },
+            1800
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "Erreur commande :",
+            error
+        );
+
+
+        /*
+         * IMPORTANT :
+         * Si le solde a été retiré mais que
+         * l'écriture de commande échoue,
+         * on tente de rembourser automatiquement.
+         */
+
+        try{
+
+            await runTransaction(
+
+                ref(
+                    db,
+                    `${USERS_PATH}/${phone}/solde_principal`
+                ),
+
+                current => {
+
+                    return (
+                        Number(current) || 0
+                    ) +
+                    selectedService.price;
+
+                }
+
+            );
+
+        }
+        catch(
+            refundError
+        ){
+
+            console.error(
+                "Erreur remboursement:",
+                refundError
+            );
+
+        }
+
+
+        showOrderStatus(
+            "❌ Une erreur est survenue. " +
+            "La commande n'a pas été enregistrée.",
+            "error"
+        );
+
+
+        showToast(
+            "❌ Impossible d'envoyer la commande.",
+            "error"
+        );
+
+    }
+
+
+    submitButton.disabled =
+        false;
+
+    submitButton.textContent =
+        "🛒 CONFIRMER LA COMMANDE";
+
+}
+
+
+/* =========================================================
+   ORDER STATUS
+========================================================= */
+
+function showOrderStatus(
+    message,
+    type
+){
+
+    const status =
+        document.getElementById(
+            "orderStatus"
+        );
+
+
+    status.className =
+        `status ${type}`;
+
+
+    status.textContent =
+        message;
+
+}
+
+
+/* =========================================================
+   ESCAPE MODAL
+========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
         if(
-            event.key === "Escape"
+            event.key ===
+            "Escape"
         ){
 
             closeOrder();
@@ -2400,478 +2172,10 @@ document.addEventListener(
 
 
 /* =========================================================
-   COLLECT FORM DATA
+   INITIAL
 ========================================================= */
 
-function collectFormData(){
-
-    const formData =
-        new FormData(
-            orderForm
-        );
-
-
-    const result = {};
-
-
-    for(
-        const [
-            key,
-            value
-        ]
-        of formData.entries()
-    ){
-
-        result[key] =
-            String(value).trim();
-
-    }
-
-
-    return result;
-
-}
-
-
-/* =========================================================
-   SUBMIT ORDER
-========================================================= */
-
-orderForm.addEventListener(
-    "submit",
-    async event => {
-
-        event.preventDefault();
-
-
-        if(
-            !selectedService
-        ){
-
-            return;
-
-        }
-
-
-        if(
-            !currentUserPhone
-        ){
-
-            showToast(
-                "❌ Utilisateur non connecté.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        const amount =
-            Number(
-                selectedService.prix
-            );
-
-
-        const currentBalance =
-            getBalance();
-
-
-        if(
-            currentBalance <
-            amount
-        ){
-
-            orderStatus.innerHTML = `
-
-                <span style="color:var(--red)">
-                    ❌ Solde insuffisant.
-                    Solde disponible :
-                    ${money(currentBalance)} FC
-                </span>
-
-            `;
-
-            return;
-
-        }
-
-
-        const fields =
-            collectFormData();
-
-
-        submitOrder.disabled =
-            true;
-
-
-        orderStatus.innerHTML = `
-
-            <span style="color:var(--blue)">
-                ⏳ Vérification du solde et
-                création de la commande...
-            </span>
-
-        `;
-
-
-        try{
-
-            /*
-             * =================================================
-             * 1. DÉDUCTION ATOMIQUE DU SOLDE
-             * =================================================
-             */
-
-            const balanceRef =
-                ref(
-                    db,
-                    `${USERS_PATH}/${currentUserPhone}/solde_principal`
-                );
-
-
-            const balanceTransaction =
-                await runTransaction(
-
-                    balanceRef,
-
-                    current => {
-
-                        const balance =
-                            Number(current) || 0;
-
-
-                        if(
-                            balance <
-                            amount
-                        ){
-
-                            return;
-
-                        }
-
-
-                        return balance - amount;
-
-                    }
-
-                );
-
-
-            if(
-                !balanceTransaction.committed
-            ){
-
-                orderStatus.innerHTML = `
-
-                    <span style="color:var(--red)">
-                        ❌ Solde insuffisant.
-                    </span>
-
-                `;
-
-                submitOrder.disabled =
-                    false;
-
-                return;
-
-            }
-
-
-            /*
-             * =================================================
-             * 2. CRÉATION DE LA COMMANDE
-             * =================================================
-             */
-
-            const commandRef =
-                push(
-                    ref(
-                        db,
-                        COMMANDS_PATH
-                    )
-                );
-
-
-            const now =
-                Date.now();
-
-
-            const date =
-                new Date(
-                    now
-                ).toLocaleString(
-                    "fr-FR"
-                );
-
-
-            const command = {
-
-                /*
-                 * IDENTIFICATION CLIENT
-                 */
-
-                telephone:
-                    currentUserPhone,
-
-                userPhone:
-                    currentUserPhone,
-
-                phone:
-                    currentUserPhone,
-
-                nom:
-                    currentUserData.nom ??
-                    currentUserData.name ??
-                    currentUserData.username ??
-                    "Utilisateur",
-
-
-                /*
-                 * SERVICE
-                 */
-
-                service:
-                    selectedService.nom,
-
-                serviceId:
-                    selectedService.id,
-
-                serviceName:
-                    selectedService.nom,
-
-                produit:
-                    selectedService.nom,
-
-
-                /*
-                 * PRIX
-                 */
-
-                montant:
-                    amount,
-
-                prix:
-                    amount,
-
-                amount:
-                    amount,
-
-
-                /*
-                 * STATUT
-                 */
-
-                statut:
-                    "En attente",
-
-                status:
-                    "En attente",
-
-
-                /*
-                 * DATE
-                 */
-
-                date:
-                    date,
-
-                createdAt:
-                    now,
-
-                timestamp:
-                    now,
-
-
-                /*
-                 * INFORMATIONS DU FORMULAIRE
-                 */
-
-                details:
-                    fields,
-
-
-                /*
-                 * INFORMATIONS DIRECTES
-                 * pour faciliter la lecture
-                 */
-
-                ...fields,
-
-
-                /*
-                 * ORIGINE
-                 */
-
-                source:
-                    "shop",
-
-                plateforme:
-                    "JASON BUSINESS"
-
-            };
-
-
-            /*
-             * =================================================
-             * 3. ÉCRITURE FIREBASE
-             * =================================================
-             */
-
-            await import(
-                "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"
-            )
-            .then(
-                async module => {
-
-                    await module.set(
-                        commandRef,
-                        command
-                    );
-
-                }
-            );
-
-
-            /*
-             * =================================================
-             * 4. SUCCÈS
-             * =================================================
-             */
-
-            orderStatus.innerHTML = `
-
-                <span style="color:var(--green)">
-                    ✅ Commande envoyée avec succès !
-                    <br>
-                    Votre commande est maintenant
-                    en attente de traitement.
-                </span>
-
-            `;
-
-
-            showToast(
-                "🛒 Commande envoyée à l'administration."
-            );
-
-
-            orderForm.reset();
-
-
-            submitOrder.disabled =
-                true;
-
-
-            /*
-             * Firebase met automatiquement
-             * à jour le solde grâce au listener.
-             */
-
-
-            setTimeout(
-                () => {
-
-                    closeOrder();
-
-                },
-                1800
-            );
-
-        }
-        catch(error){
-
-            console.error(
-                "ORDER ERROR:",
-                error
-            );
-
-
-            /*
-             * IMPORTANT :
-             * Si la création de commande échoue
-             * après la déduction du solde,
-             * on remet le montant.
-             */
-
-            try{
-
-                await runTransaction(
-
-                    balanceRef,
-
-                    current => {
-
-                        return (
-                            Number(current) || 0
-                        ) + amount;
-
-                    }
-
-                );
-
-            }
-            catch(
-                refundError
-            ){
-
-                console.error(
-                    "REFUND ERROR:",
-                    refundError
-                );
-
-            }
-
-
-            orderStatus.innerHTML = `
-
-                <span style="color:var(--red)">
-                    ❌ Impossible d'envoyer la commande.
-                    Votre solde a été restauré.
-                </span>
-
-            `;
-
-
-            showToast(
-                "❌ Erreur lors de la commande.",
-                "error"
-            );
-
-
-            submitOrder.disabled =
-                false;
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   INITIALISATION
-========================================================= */
-
-renderServices();
-
-loadCurrentUser();
-
-
-/* =========================================================
-   GLOBAL ERROR
-========================================================= */
-
-window.addEventListener(
-    "error",
-    event => {
-
-        console.error(
-            "JASON SHOP:",
-            event.error
-        );
-
-    }
-);
+loadUser();
 
 </script>
 

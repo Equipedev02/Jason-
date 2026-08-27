@@ -7,7 +7,12 @@
 
 <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#050a14"
 >
 
 <title>JASON Business — Retrait</title>
@@ -25,11 +30,11 @@
 
     --dark:#050a14;
 
-    --red:#ff4757;
     --green:#00e676;
-    --yellow:#ffeb3b;
+    --red:#ff4757;
+    --yellow:#ffd740;
 
-    --card:rgba(5,10,20,.88);
+    --card:rgba(5,10,20,.92);
 
     --border:rgba(0,210,255,.25);
 
@@ -41,21 +46,28 @@
 ========================================================= */
 
 *{
+
     box-sizing:border-box;
-}
-
-
-/* =========================================================
-   BODY
-========================================================= */
-
-body{
 
     margin:0;
 
+    padding:0;
+
+}
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+body{
+
     min-height:100vh;
 
-    padding:20px 0;
+    padding:20px 12px 40px;
 
     font-family:
         "Segoe UI",
@@ -68,18 +80,113 @@ body{
 
         linear-gradient(
             rgba(3,8,18,.82),
-            rgba(3,8,18,.95)
+            rgba(3,8,18,.97)
         ),
 
         url("IMG_0870.jpeg")
         center/cover
         fixed;
 
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.jb-container{
+
+    width:100%;
+
+    max-width:460px;
+
+    margin:auto;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.jb-header{
+
+    text-align:center;
+
+    margin:
+        8px
+        0
+        20px;
+
+}
+
+
+.jb-logo{
+
+    width:62px;
+
+    height:62px;
+
+    margin:
+        0
+        auto
+        12px;
+
+    border-radius:20px;
+
     display:flex;
 
     justify-content:center;
 
     align-items:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--blue2)
+        );
+
+    color:#001018;
+
+    font-size:27px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 0 30px
+        rgba(0,210,255,.35);
+
+}
+
+
+.jb-title{
+
+    font-size:23px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+}
+
+
+.jb-title span{
+
+    color:var(--blue);
+
+}
+
+
+.jb-subtitle{
+
+    margin-top:7px;
+
+    font-size:11px;
+
+    opacity:.55;
+
+    line-height:1.5;
 
 }
 
@@ -88,13 +195,11 @@ body{
    CARD
 ========================================================= */
 
-.card{
+.jb-card{
 
-    width:92%;
+    width:100%;
 
-    max-width:420px;
-
-    padding:25px;
+    padding:21px;
 
     border-radius:24px;
 
@@ -116,75 +221,88 @@ body{
 
 
 /* =========================================================
-   HEADER
+   USER
 ========================================================= */
 
-.header{
-
-    text-align:center;
-
-}
-
-
-.logo{
-
-    width:58px;
-
-    height:58px;
-
-    margin:auto;
-
-    border-radius:18px;
+.jb-user-box{
 
     display:flex;
 
-    justify-content:center;
+    align-items:center;
+
+    gap:12px;
+
+    padding:13px;
+
+    margin-bottom:16px;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+}
+
+
+.jb-user-icon{
+
+    width:42px;
+
+    height:42px;
+
+    flex-shrink:0;
+
+    border-radius:13px;
+
+    display:flex;
 
     align-items:center;
 
+    justify-content:center;
+
     background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--blue2)
-        );
-
-    color:#001018;
-
-    font-size:25px;
-
-    font-weight:900;
-
-    box-shadow:
-        0 0 30px
-        rgba(0,210,255,.35);
-
-}
-
-
-h2{
-
-    margin:
-        14px
-        0
-        5px;
+        rgba(0,210,255,.12);
 
     color:var(--blue);
 
-    letter-spacing:1.5px;
-
-    font-size:21px;
+    font-size:19px;
 
 }
 
 
-.subtitle{
+.jb-user-info{
 
-    margin:0 0 20px;
+    min-width:0;
 
-    font-size:11px;
+}
 
-    opacity:.55;
+
+.jb-user-name{
+
+    font-size:13px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+
+.jb-user-phone{
+
+    margin-top:3px;
+
+    font-size:10px;
+
+    opacity:.5;
 
 }
 
@@ -193,40 +311,38 @@ h2{
    SOLDE
 ========================================================= */
 
-.info-solde{
+.jb-balance{
+
+    text-align:center;
 
     padding:18px;
-
-    margin-bottom:18px;
 
     border-radius:18px;
 
     background:
-        rgba(0,210,255,.08);
+        rgba(0,210,255,.07);
 
     border:
         1px solid
-        rgba(0,210,255,.2);
-
-    text-align:center;
+        rgba(0,210,255,.18);
 
 }
 
 
-.solde-label{
+.jb-balance-label{
 
-    font-size:11px;
-
-    opacity:.55;
+    font-size:10px;
 
     text-transform:uppercase;
 
     letter-spacing:1px;
 
+    opacity:.55;
+
 }
 
 
-#displayGains{
+#jbBalance{
 
     display:block;
 
@@ -241,7 +357,16 @@ h2{
 }
 
 
-.solde-details{
+.jb-balance-fc{
+
+    font-size:11px;
+
+    opacity:.6;
+
+}
+
+
+.jb-balance-details{
 
     display:grid;
 
@@ -251,30 +376,34 @@ h2{
 
     gap:8px;
 
-    margin-top:14px;
+    margin-top:13px;
 
 }
 
 
-.detail{
+.jb-detail{
 
-    padding:9px;
+    padding:10px;
 
-    border-radius:10px;
+    border-radius:11px;
 
     background:
-        rgba(255,255,255,.05);
+        rgba(255,255,255,.045);
 
     font-size:10px;
 
+    opacity:.7;
+
 }
 
 
-.detail b{
+.jb-detail strong{
 
     display:block;
 
     margin-top:3px;
+
+    color:white;
 
     font-size:12px;
 
@@ -282,17 +411,21 @@ h2{
 
 
 /* =========================================================
-   LABEL
+   SECTION
 ========================================================= */
 
-label{
+.jb-section{
+
+    margin-top:20px;
+
+}
+
+
+.jb-label{
 
     display:block;
 
-    margin:
-        13px
-        0
-        6px;
+    margin-bottom:7px;
 
     font-size:11px;
 
@@ -301,27 +434,23 @@ label{
 }
 
 
-/* =========================================================
-   INPUT / SELECT
-========================================================= */
-
-input,
-select{
+.jb-input,
+.jb-select{
 
     width:100%;
 
-    padding:14px;
+    padding:15px;
 
-    border-radius:12px;
+    border-radius:13px;
 
     border:
         1px solid
-        rgba(255,255,255,.1);
+        rgba(255,255,255,.10);
 
     outline:none;
 
     background:
-        rgba(0,0,0,.5);
+        rgba(0,0,0,.48);
 
     color:white;
 
@@ -329,11 +458,13 @@ select{
 
     font-size:14px;
 
+    transition:.2s;
+
 }
 
 
-input:focus,
-select:focus{
+.jb-input:focus,
+.jb-select:focus{
 
     border-color:
         var(--blue);
@@ -345,7 +476,7 @@ select:focus{
 }
 
 
-select option{
+.jb-select option{
 
     background:#101722;
 
@@ -355,54 +486,56 @@ select option{
 
 
 /* =========================================================
-   FRAIS
+   INFO
 ========================================================= */
 
-.fees{
+.jb-info{
 
-    margin-top:15px;
+    margin-top:17px;
 
-    padding:13px;
+    padding:14px;
 
-    border-radius:13px;
+    border-radius:14px;
 
     background:
-        rgba(255,235,59,.06);
+        rgba(255,215,64,.055);
 
     border:
         1px solid
-        rgba(255,235,59,.15);
+        rgba(255,215,64,.14);
 
-    font-size:11px;
+    font-size:10px;
 
     line-height:1.7;
-
-    opacity:.8;
 
 }
 
 
-.fees strong{
+.jb-info-title{
 
     color:var(--yellow);
+
+    font-weight:900;
+
+    margin-bottom:4px;
 
 }
 
 
 /* =========================================================
-   RESUME
+   SUMMARY
 ========================================================= */
 
-.summary{
+.jb-summary{
 
-    margin-top:15px;
+    margin-top:16px;
 
     padding:15px;
 
     border-radius:15px;
 
     background:
-        rgba(255,255,255,.05);
+        rgba(255,255,255,.045);
 
     border:
         1px solid
@@ -411,24 +544,33 @@ select option{
 }
 
 
-.summary-row{
+.jb-summary-row{
 
     display:flex;
 
     justify-content:space-between;
 
-    padding:5px 0;
+    gap:10px;
+
+    padding:6px 0;
 
     font-size:12px;
 
 }
 
 
-.summary-row.total{
+.jb-summary-row span{
 
-    margin-top:6px;
+    opacity:.6;
 
-    padding-top:10px;
+}
+
+
+.jb-summary-total{
+
+    margin-top:7px;
+
+    padding-top:11px;
 
     border-top:
         1px solid
@@ -436,12 +578,12 @@ select option{
 
     font-size:14px;
 
-    font-weight:bold;
+    font-weight:900;
 
 }
 
 
-#netAmount{
+#jbNet{
 
     color:var(--green);
 
@@ -452,7 +594,7 @@ select option{
    BUTTON
 ========================================================= */
 
-.btn-withdraw{
+#jbWithdrawButton{
 
     width:100%;
 
@@ -462,7 +604,7 @@ select option{
 
     border:none;
 
-    border-radius:13px;
+    border-radius:14px;
 
     background:
         linear-gradient(
@@ -473,31 +615,37 @@ select option{
 
     color:white;
 
-    font-weight:900;
+    font-size:13px;
 
-    font-size:14px;
+    font-weight:900;
 
     cursor:pointer;
 
     transition:.2s;
 
+    box-shadow:
+        0 8px 25px
+        rgba(255,71,87,.16);
+
 }
 
 
-.btn-withdraw:active{
+#jbWithdrawButton:active{
 
     transform:scale(.98);
 
 }
 
 
-.btn-withdraw:disabled{
+#jbWithdrawButton:disabled{
 
-    background:#444;
+    background:#343943;
 
-    opacity:.6;
+    opacity:.55;
 
     cursor:not-allowed;
+
+    box-shadow:none;
 
 }
 
@@ -506,7 +654,7 @@ select option{
    STATUS
 ========================================================= */
 
-.status-msg{
+#jbStatus{
 
     min-height:20px;
 
@@ -516,7 +664,26 @@ select option{
 
     font-size:11px;
 
-    font-weight:bold;
+    line-height:1.5;
+
+}
+
+
+.jb-success{
+
+    color:var(--green);
+
+}
+
+
+.jb-error{
+
+    color:var(--red);
+
+}
+
+
+.jb-loading{
 
     color:var(--yellow);
 
@@ -524,31 +691,43 @@ select option{
 
 
 /* =========================================================
-   RETOUR
+   BACK
 ========================================================= */
 
-.back{
+.jb-back{
 
     display:block;
 
-    margin-top:18px;
+    margin-top:17px;
 
-    text-align:center;
+    padding:13px;
+
+    border-radius:13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    background:
+        rgba(255,255,255,.035);
 
     color:white;
 
-    opacity:.65;
-
     text-decoration:none;
+
+    text-align:center;
 
     font-size:12px;
 
 }
 
 
-.back:hover{
+.jb-back:hover{
 
-    opacity:1;
+    color:var(--blue);
+
+    border-color:
+        var(--blue);
 
 }
 
@@ -557,26 +736,58 @@ select option{
    NOTICE
 ========================================================= */
 
-.notice{
+.jb-notice{
 
-    margin-top:15px;
+    margin-top:14px;
 
-    padding:12px;
+    padding:13px;
 
-    border-radius:12px;
+    border-radius:13px;
 
     background:
-        rgba(0,210,255,.05);
+        rgba(0,210,255,.04);
 
     border:
         1px solid
-        rgba(0,210,255,.12);
+        rgba(0,210,255,.10);
 
-    font-size:10px;
+    font-size:9px;
 
     line-height:1.6;
 
-    opacity:.55;
+    text-align:center;
+
+    opacity:.5;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:380px){
+
+    body{
+
+        padding:
+            14px
+            9px
+            30px;
+
+    }
+
+    .jb-card{
+
+        padding:17px;
+
+    }
+
+    .jb-title{
+
+        font-size:21px;
+
+    }
 
 }
 
@@ -588,340 +799,355 @@ select option{
 <body>
 
 
-<div class="card">
+<div class="jb-container">
 
 
-<!-- ======================================================
+<!-- =====================================================
      HEADER
-====================================================== -->
+===================================================== -->
 
-<div class="header">
+<header class="jb-header">
 
-    <div class="logo">
-
+    <div class="jb-logo">
         J
+    </div>
+
+    <h1 class="jb-title">
+
+        RETRAIT
+        <span>JASON BUSINESS</span>
+
+    </h1>
+
+    <p class="jb-subtitle">
+
+        Retirez vos gains disponibles
+        vers votre moyen de paiement.
+
+    </p>
+
+</header>
+
+
+
+<!-- =====================================================
+     CARD
+===================================================== -->
+
+<div class="jb-card">
+
+
+<!-- =====================================================
+     UTILISATEUR
+===================================================== -->
+
+<div class="jb-user-box">
+
+    <div class="jb-user-icon">
+
+        👤
 
     </div>
 
-    <h2>
+    <div class="jb-user-info">
 
-        RETRAIT DE GAINS
+        <div
+            class="jb-user-name"
+            id="jbUserName"
+        >
 
-    </h2>
+            Chargement...
 
-    <p class="subtitle">
+        </div>
 
-        Demandez le paiement de vos gains disponibles.
+        <div
+            class="jb-user-phone"
+            id="jbUserPhone"
+        >
 
-    </p>
+            ...
+
+        </div>
+
+    </div>
 
 </div>
 
 
 
-<!-- ======================================================
+<!-- =====================================================
      SOLDE
-====================================================== -->
+===================================================== -->
 
-<div class="info-solde">
+<div class="jb-balance">
 
-    <div class="solde-label">
+    <div class="jb-balance-label">
 
         Solde retirable
 
     </div>
 
-
-    <span id="displayGains">
+    <span id="jbBalance">
 
         0
 
     </span>
 
-
-    <small>
+    <span class="jb-balance-fc">
 
         FC
 
-    </small>
+    </span>
 
 
-    <div class="solde-details">
+    <div class="jb-balance-details">
 
-
-        <div class="detail">
+        <div class="jb-detail">
 
             Gains
 
-            <b id="displayGainPart">
+            <strong id="jbGains">
 
                 0 FC
 
-            </b>
+            </strong>
 
         </div>
 
 
-        <div class="detail">
+        <div class="jb-detail">
 
             Commissions
 
-            <b id="displayCommPart">
+            <strong id="jbCommissions">
 
                 0 FC
 
-            </b>
+            </strong>
 
         </div>
 
-
     </div>
 
 </div>
 
 
 
-<!-- ======================================================
+<!-- =====================================================
      MONTANT
-====================================================== -->
+===================================================== -->
 
-<label for="amount">
+<div class="jb-section">
 
-    Montant du retrait
+    <label
+        class="jb-label"
+        for="jbAmount"
+    >
 
-</label>
+        💰 Montant du retrait
+
+    </label>
+
+    <input
+        class="jb-input"
+        type="number"
+        id="jbAmount"
+        min="5000"
+        step="1"
+        inputmode="numeric"
+        placeholder="Minimum 5 000 FC"
+    >
+
+</div>
 
 
-<input
 
-    type="number"
-
-    id="amount"
-
-    min="5000"
-
-    step="1"
-
-    placeholder="Minimum 5000 FC"
-
->
-
-
-
-<!-- ======================================================
+<!-- =====================================================
      MÉTHODE
-====================================================== -->
+===================================================== -->
 
-<label for="method">
+<div class="jb-section">
 
-    Méthode de paiement
+    <label
+        class="jb-label"
+        for="jbMethod"
+    >
 
-</label>
+        📱 Méthode de paiement
+
+    </label>
+
+    <select
+        class="jb-select"
+        id="jbMethod"
+    >
+
+        <option value="Orange Money">
+
+            Orange Money
+
+        </option>
+
+        <option value="Airtel Money">
+
+            Airtel Money
+
+        </option>
+
+        <option value="M-Pesa">
+
+            M-Pesa
+
+        </option>
+
+    </select>
+
+</div>
 
 
-<select id="method">
 
-    <option value="M-Pesa">
-
-        M-Pesa
-
-    </option>
-
-    <option value="Airtel Money">
-
-        Airtel Money
-
-    </option>
-
-    <option value="Orange Money">
-
-        Orange Money
-
-    </option>
-
-</select>
-
-
-
-<!-- ======================================================
+<!-- =====================================================
      NUMÉRO
-====================================================== -->
+===================================================== -->
 
-<label for="wallet">
+<div class="jb-section">
 
-    Numéro de réception
+    <label
+        class="jb-label"
+        for="jbWallet"
+    >
 
-</label>
+        📞 Numéro de réception
 
+    </label>
 
-<input
-
-    type="tel"
-
-    id="wallet"
-
-    maxlength="20"
-
-    placeholder="Ex : 0840000000"
-
->
-
-
-
-<!-- ======================================================
-     FRAIS
-====================================================== -->
-
-<div class="fees">
-
-    <strong>ℹ️ Informations</strong>
-
-    <br>
-
-    • Minimum de retrait : <b>5 000 FC</b>
-
-    <br>
-
-    • Frais de retrait : <b>5%</b>
-
-    <br>
-
-    • Traitement estimé : <b>1h à 24h</b>
-
-    <br>
-
-    • Le paiement est effectué après validation de la demande.
+    <input
+        class="jb-input"
+        type="tel"
+        id="jbWallet"
+        maxlength="20"
+        inputmode="tel"
+        autocomplete="tel"
+        placeholder="Exemple : 0840000000"
+    >
 
 </div>
 
 
 
-<!-- ======================================================
-     RÉSUMÉ
-====================================================== -->
+<!-- =====================================================
+     INFORMATIONS
+===================================================== -->
 
-<div class="summary">
+<div class="jb-info">
+
+    <div class="jb-info-title">
+
+        ℹ️ Conditions du retrait
+
+    </div>
+
+    • Montant minimum :
+    <b>5 000 FC</b>
+
+    <br>
+
+    • Frais de retrait :
+    <b>5%</b>
+
+    <br>
+
+    • Traitement :
+    <b>1h à 24h</b>
+
+    <br>
+
+    • Le paiement est effectué après validation
+    par l'administration.
+
+</div>
 
 
-    <div class="summary-row">
+
+<!-- =====================================================
+     RESUME
+===================================================== -->
+
+<div class="jb-summary">
+
+    <div class="jb-summary-row">
 
         <span>
-
             Montant demandé
-
         </span>
 
-        <b id="summaryAmount">
-
+        <strong id="jbRequested">
             0 FC
-
-        </b>
+        </strong>
 
     </div>
 
 
-    <div class="summary-row">
+    <div class="jb-summary-row">
 
         <span>
-
-            Frais (5%)
-
+            Frais 5%
         </span>
 
-        <b id="summaryFees">
-
+        <strong id="jbFees">
             0 FC
-
-        </b>
+        </strong>
 
     </div>
 
 
-    <div class="summary-row total">
+    <div class="jb-summary-row jb-summary-total">
 
         <span>
-
             Vous recevrez
-
         </span>
 
-        <b id="netAmount">
-
+        <strong id="jbNet">
             0 FC
-
-        </b>
+        </strong>
 
     </div>
-
 
 </div>
 
 
 
-<!-- ======================================================
-     BOUTON
-====================================================== -->
+<!-- =====================================================
+     BUTTON
+===================================================== -->
 
 <button
-
-    class="btn-withdraw"
-
-    id="btnSubmit"
-
+    id="jbWithdrawButton"
+    type="button"
     disabled
-
 >
 
-    VÉRIFICATION...
+    CHARGEMENT DU COMPTE...
 
 </button>
 
 
 
-<!-- ======================================================
+<!-- =====================================================
      STATUS
-====================================================== -->
+===================================================== -->
 
-<div
-
-    id="status"
-
-    class="status-msg"
-
-></div>
+<div id="jbStatus"></div>
 
 
 
-<!-- ======================================================
-     NOTICE
-====================================================== -->
-
-<div class="notice">
-
-    🔒 Votre demande sera enregistrée dans votre compte.
-
-    <br>
-
-    ⚠️ Ne partagez jamais votre mot de passe.
-
-    <br>
-
-    💳 Le solde principal n'est pas utilisé pour les retraits.
-
-</div>
-
-
-
-<!-- ======================================================
-     RETOUR
-====================================================== -->
+<!-- =====================================================
+     BACK
+===================================================== -->
 
 <a
-
     href="profil.html"
-
-    class="back"
-
+    class="jb-back"
 >
 
     ← Retour au profil
@@ -929,15 +1155,42 @@ select option{
 </a>
 
 
+
+<!-- =====================================================
+     NOTICE
+===================================================== -->
+
+<div class="jb-notice">
+
+    🔒 Votre demande est enregistrée dans Firebase.
+
+    <br>
+
+    ⚠️ Le solde est réservé lors de la demande
+    et sera traité par l'administration.
+
+    <br>
+
+    Ne partagez jamais votre mot de passe.
+
 </div>
 
 
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
 
 <script type="module">
 
 
 /* =========================================================
-   FIREBASE
+   IMPORTS
 ========================================================= */
 
 import {
@@ -952,18 +1205,12 @@ from
 import {
 
     getDatabase,
-
     ref,
-
+    onValue,
     get,
-
     push,
-
     set,
-
-    update,
-
-    onValue
+    update
 
 }
 from
@@ -972,7 +1219,7 @@ from
 
 
 /* =========================================================
-   CONFIG
+   FIREBASE CONFIG
 ========================================================= */
 
 const firebaseConfig = {
@@ -1001,12 +1248,21 @@ const firebaseConfig = {
 };
 
 
+
+/* =========================================================
+   INITIALISATION
+========================================================= */
+
 const app =
-    initializeApp(firebaseConfig);
+    initializeApp(
+        firebaseConfig
+    );
 
 
 const db =
-    getDatabase(app);
+    getDatabase(
+        app
+    );
 
 
 
@@ -1026,7 +1282,7 @@ if(!userPhone){
         "login.html";
 
     throw new Error(
-        "Utilisateur non connecté"
+        "Aucun utilisateur connecté."
     );
 
 }
@@ -1034,92 +1290,120 @@ if(!userPhone){
 
 
 /* =========================================================
-   REFERENCES
+   CHEMINS FIREBASE
 ========================================================= */
+
+/*
+   UTILISATEUR :
+
+   jasonBusiness
+       └── users
+             └── TELEPHONE
+*/
 
 const userRef =
     ref(
         db,
-        "users/" +
+        "jasonBusiness/users/" +
         userPhone
     );
 
 
+/*
+   DEMANDES :
+
+   jasonBusiness
+       └── demandes_retraits
+             └── ID
+*/
+
 const withdrawalsRef =
     ref(
         db,
-        "demandes_retraits"
+        "jasonBusiness/demandes_retraits"
     );
 
 
 
 /* =========================================================
-   ÉLÉMENTS
+   ELEMENTS
 ========================================================= */
 
-const displayGains =
+const userNameElement =
     document.getElementById(
-        "displayGains"
+        "jbUserName"
     );
 
 
-const displayGainPart =
+const userPhoneElement =
     document.getElementById(
-        "displayGainPart"
+        "jbUserPhone"
     );
 
 
-const displayCommPart =
+const balanceElement =
     document.getElementById(
-        "displayCommPart"
+        "jbBalance"
     );
 
 
-const amountInput =
+const gainsElement =
     document.getElementById(
-        "amount"
+        "jbGains"
     );
 
 
-const methodInput =
+const commissionsElement =
     document.getElementById(
-        "method"
+        "jbCommissions"
     );
 
 
-const walletInput =
+const amountElement =
     document.getElementById(
-        "wallet"
+        "jbAmount"
     );
 
 
-const btnSubmit =
+const methodElement =
     document.getElementById(
-        "btnSubmit"
+        "jbMethod"
     );
 
 
-const statusDiv =
+const walletElement =
     document.getElementById(
-        "status"
+        "jbWallet"
     );
 
 
-const summaryAmount =
+const requestedElement =
     document.getElementById(
-        "summaryAmount"
+        "jbRequested"
     );
 
 
-const summaryFees =
+const feesElement =
     document.getElementById(
-        "summaryFees"
+        "jbFees"
     );
 
 
-const netAmount =
+const netElement =
     document.getElementById(
-        "netAmount"
+        "jbNet"
+    );
+
+
+const buttonElement =
+    document.getElementById(
+        "jbWithdrawButton"
+    );
+
+
+const statusElement =
+    document.getElementById(
+        "jbStatus"
     );
 
 
@@ -1128,19 +1412,20 @@ const netAmount =
    VARIABLES
 ========================================================= */
 
-let currentUser =
-    null;
+let currentUser = null;
 
-let totalRetirable =
-    0;
+let currentGains = 0;
 
-let canWithdraw =
-    false;
+let currentCommissions = 0;
+
+let currentBalance = 0;
+
+let accountLoaded = false;
 
 
 
 /* =========================================================
-   FORMAT FC
+   FORMATAGE
 ========================================================= */
 
 function formatFC(value){
@@ -1156,48 +1441,69 @@ function formatFC(value){
 
 
 /* =========================================================
-   CALCUL FRAIS
+   STATUS
 ========================================================= */
 
-function updateSummary(){
+function showStatus(
+    message,
+    type = ""
+){
 
-    const amount =
-        Number(
-            amountInput.value
-        ) || 0;
+    statusElement.className =
+        type;
 
-
-    const fees =
-        amount * 0.05;
-
-
-    const net =
-        amount - fees;
-
-
-    summaryAmount.innerText =
-        formatFC(amount) +
-        " FC";
-
-
-    summaryFees.innerText =
-        formatFC(fees) +
-        " FC";
-
-
-    netAmount.innerText =
-        formatFC(net) +
-        " FC";
+    statusElement.textContent =
+        message;
 
 }
 
 
 
 /* =========================================================
-   INPUT MONTANT
+   RESUME
 ========================================================= */
 
-amountInput.addEventListener(
+function updateSummary(){
+
+    const amount =
+        Math.floor(
+            Number(
+                amountElement.value
+            ) || 0
+        );
+
+
+    const fees =
+        Math.floor(
+            amount * 0.05
+        );
+
+
+    const net =
+        Math.max(
+            0,
+            amount - fees
+        );
+
+
+    requestedElement.textContent =
+        formatFC(amount) +
+        " FC";
+
+
+    feesElement.textContent =
+        formatFC(fees) +
+        " FC";
+
+
+    netElement.textContent =
+        formatFC(net) +
+        " FC";
+
+}
+
+
+amountElement.addEventListener(
     "input",
     updateSummary
 );
@@ -1214,47 +1520,59 @@ onValue(
 
     (snapshot)=>{
 
+        accountLoaded = true;
+
 
         if(
             !snapshot.exists()
         ){
 
-            currentUser =
-                null;
+            currentUser = null;
 
-            canWithdraw =
-                false;
+            currentGains = 0;
 
-            totalRetirable =
-                0;
+            currentCommissions = 0;
+
+            currentBalance = 0;
 
 
-            displayGains.innerText =
+            userNameElement.textContent =
+                "Compte introuvable";
+
+
+            userPhoneElement.textContent =
+                userPhone;
+
+
+            balanceElement.textContent =
                 "0";
 
 
-            displayGainPart.innerText =
+            gainsElement.textContent =
                 "0 FC";
 
 
-            displayCommPart.innerText =
+            commissionsElement.textContent =
                 "0 FC";
 
 
-            btnSubmit.disabled =
+            buttonElement.disabled =
                 true;
 
 
-            btnSubmit.innerText =
+            buttonElement.textContent =
                 "COMPTE INTROUVABLE";
 
 
-            statusDiv.innerText =
-                "⚠️ Compte introuvable.";
+            showStatus(
+                "❌ Aucun compte trouvé pour ce numéro.",
+                "jb-error"
+            );
 
             return;
 
         }
+
 
 
         const data =
@@ -1267,95 +1585,95 @@ onValue(
 
 
         /* =================================================
+           NOM
+        ================================================= */
+
+        const name =
+            data.nom ||
+            data.name ||
+            data.username ||
+            "Utilisateur";
+
+
+        userNameElement.textContent =
+            name;
+
+
+        userPhoneElement.textContent =
+            userPhone;
+
+
+
+        /* =================================================
            SOLDES
         ================================================= */
 
-        const gains =
+        currentGains =
             Number(
                 data.solde_gains
             ) || 0;
 
 
-        const commissions =
+        currentCommissions =
             Number(
                 data.solde_commissions
             ) || 0;
 
 
-        totalRetirable =
+        /*
+           Le solde retirable correspond
+           aux gains + commissions.
+        */
+
+        currentBalance =
             Math.max(
                 0,
-                gains + commissions
+                currentGains +
+                currentCommissions
             );
 
 
-        displayGains.innerText =
+        balanceElement.textContent =
             formatFC(
-                totalRetirable
+                currentBalance
             );
 
 
-        displayGainPart.innerText =
-            formatFC(gains) +
+        gainsElement.textContent =
+            formatFC(
+                currentGains
+            ) +
             " FC";
 
 
-        displayCommPart.innerText =
-            formatFC(commissions) +
+        commissionsElement.textContent =
+            formatFC(
+                currentCommissions
+            ) +
             " FC";
 
 
 
         /* =================================================
-           VÉRIFICATION INVESTISSEMENT
+           VERIFICATION SOLDE
         ================================================= */
 
-        const investissements =
-            data.mes_investissements;
+        if(
+            currentBalance < 5000
+        ){
 
-
-        const aInvesti =
-            investissements &&
-            typeof investissements === "object" &&
-            Object.keys(
-                investissements
-            ).length > 0;
-
-
-        canWithdraw =
-            Boolean(
-                aInvesti
-            );
-
-
-
-        if(!canWithdraw){
-
-            btnSubmit.disabled =
+            buttonElement.disabled =
                 true;
 
-            btnSubmit.innerText =
-                "ACHAT REQUIS";
 
-            statusDiv.innerText =
-                "⚠️ Activez un satellite pour débloquer les retraits.";
-
-            return;
-
-        }
-
-
-
-        if(totalRetirable < 5000){
-
-            btnSubmit.disabled =
-                true;
-
-            btnSubmit.innerText =
+            buttonElement.textContent =
                 "SOLDE INSUFFISANT";
 
-            statusDiv.innerText =
-                "⚠️ Minimum de retrait : 5 000 FC.";
+
+            showStatus(
+                "⚠️ Solde minimum requis : 5 000 FC.",
+                "jb-error"
+            );
 
             return;
 
@@ -1363,14 +1681,17 @@ onValue(
 
 
 
-        btnSubmit.disabled =
+        buttonElement.disabled =
             false;
 
-        btnSubmit.innerText =
+
+        buttonElement.textContent =
             "DEMANDER LE PAIEMENT";
 
-        statusDiv.innerText =
-            "";
+
+        showStatus(
+            ""
+        );
 
     }
 
@@ -1379,20 +1700,24 @@ onValue(
 
 
 /* =========================================================
-   ENVOI RETRAIT
+   SOUMISSION
 ========================================================= */
 
-btnSubmit.addEventListener(
+buttonElement.addEventListener(
 
     "click",
 
     async()=>{
 
 
-        if(!canWithdraw){
+        if(
+            !accountLoaded ||
+            !currentUser
+        ){
 
-            alert(
-                "⚠️ Vous devez d'abord activer un satellite."
+            showStatus(
+                "❌ Compte non disponible.",
+                "jb-error"
             );
 
             return;
@@ -1400,67 +1725,109 @@ btnSubmit.addEventListener(
         }
 
 
+
+        /* =================================================
+           MONTANT
+        ================================================= */
+
         const amount =
             Math.floor(
                 Number(
-                    amountInput.value
+                    amountElement.value
                 )
             );
 
-
-        const wallet =
-            walletInput.value.trim();
-
-
-        const method =
-            methodInput.value;
-
-
-
-        /* =================================================
-           VALIDATION
-        ================================================= */
 
         if(
             !Number.isFinite(amount) ||
             amount < 5000
         ){
 
-            alert(
-                "❌ Minimum de retrait : 5 000 FC."
+            showStatus(
+                "❌ Le retrait minimum est de 5 000 FC.",
+                "jb-error"
             );
+
+            amountElement.focus();
 
             return;
 
         }
 
+
+
+        /* =================================================
+           SOLDE
+        ================================================= */
 
         if(
             amount >
-            totalRetirable
+            currentBalance
         ){
 
-            alert(
-                "❌ Solde retirable insuffisant."
+            showStatus(
+                "❌ Votre solde retirable est insuffisant.",
+                "jb-error"
             );
 
             return;
 
         }
+
+
+
+        /* =================================================
+           NUMERO
+        ================================================= */
+
+        const wallet =
+            walletElement.value.trim();
 
 
         if(
             wallet.length < 9
         ){
 
-            alert(
-                "❌ Numéro de réception invalide."
+            showStatus(
+                "❌ Veuillez entrer un numéro valide.",
+                "jb-error"
             );
+
+            walletElement.focus();
 
             return;
 
         }
 
+
+
+        /* =================================================
+           METHOD
+        ================================================= */
+
+        const method =
+            methodElement.value;
+
+
+
+        /* =================================================
+           FRAIS
+        ================================================= */
+
+        const fees =
+            Math.floor(
+                amount * 0.05
+            );
+
+
+        const net =
+            amount - fees;
+
+
+
+        /* =================================================
+           CONFIRMATION
+        ================================================= */
 
         const confirmation =
             confirm(
@@ -1470,6 +1837,14 @@ btnSubmit.addEventListener(
                 "Montant : " +
                 formatFC(amount) +
                 " FC\n" +
+
+                "Frais : " +
+                formatFC(fees) +
+                " FC\n" +
+
+                "Vous recevrez : " +
+                formatFC(net) +
+                " FC\n\n" +
 
                 "Méthode : " +
                 method +
@@ -1481,7 +1856,9 @@ btnSubmit.addEventListener(
             );
 
 
-        if(!confirmation){
+        if(
+            !confirmation
+        ){
 
             return;
 
@@ -1489,20 +1866,26 @@ btnSubmit.addEventListener(
 
 
 
+        /* =================================================
+           ETAT CHARGEMENT
+        ================================================= */
+
+        buttonElement.disabled =
+            true;
+
+
+        buttonElement.textContent =
+            "TRANSMISSION...";
+
+
+        showStatus(
+            "⏳ Enregistrement de votre demande...",
+            "jb-loading"
+        );
+
+
+
         try{
-
-
-            btnSubmit.disabled =
-                true;
-
-
-            btnSubmit.innerText =
-                "TRANSMISSION...";
-
-
-            statusDiv.innerText =
-                "⏳ Création de votre demande...";
-
 
 
             /* =================================================
@@ -1520,40 +1903,45 @@ btnSubmit.addEventListener(
             ){
 
                 throw new Error(
-                    "Compte introuvable"
+                    "Compte introuvable."
                 );
 
             }
 
 
-            const data =
+            const user =
                 snapshot.val();
 
 
-            const soldeGains =
+            const gains =
                 Number(
-                    data.solde_gains
+                    user.solde_gains
                 ) || 0;
 
 
-            const soldeComm =
+            const commissions =
                 Number(
-                    data.solde_commissions
+                    user.solde_commissions
                 ) || 0;
 
 
-            const soldeTotal =
-                soldeGains +
-                soldeComm;
+            const total =
+                gains +
+                commissions;
 
+
+
+            /* =================================================
+               VERIFICATION FINALE
+            ================================================= */
 
             if(
                 amount >
-                soldeTotal
+                total
             ){
 
                 throw new Error(
-                    "Solde insuffisant"
+                    "Solde insuffisant."
                 );
 
             }
@@ -1561,141 +1949,176 @@ btnSubmit.addEventListener(
 
 
             /* =================================================
-               DÉDUCTION
-               
-               Gains d'abord,
-               puis commissions.
+               DEDUCTION
+
+               On retire d'abord des gains.
+               Si les gains ne suffisent pas,
+               on utilise les commissions.
             ================================================= */
 
-            let nouveauGains =
-                soldeGains;
+            let newGains =
+                gains;
 
 
-            let nouvelleComm =
-                soldeComm;
+            let newCommissions =
+                commissions;
 
 
             if(
-                soldeGains >= amount
+                gains >= amount
             ){
 
-                nouveauGains =
-                    soldeGains -
+                newGains =
+                    gains -
                     amount;
 
-            }else{
+            }
+            else{
 
-                const reste =
+                const remaining =
                     amount -
-                    soldeGains;
+                    gains;
 
 
-                nouveauGains =
+                newGains =
                     0;
 
 
-                nouvelleComm =
-                    soldeComm -
-                    reste;
+                newCommissions =
+                    commissions -
+                    remaining;
 
             }
 
 
 
             /* =================================================
-               ID RETRAIT
+               ID DEMANDE
             ================================================= */
 
-            const newWithdrawal =
+            const newRequest =
                 push(
                     withdrawalsRef
                 );
 
 
-            const retraitId =
-                newWithdrawal.key;
+            const requestId =
+                newRequest.key;
 
 
 
             /* =================================================
-               DATE
+               TIMESTAMP
             ================================================= */
 
-            const now =
+            const timestamp =
                 Date.now();
 
 
 
             /* =================================================
-               CRÉATION DEMANDE
+               DONNEES RETRAIT
+
+               Tout est envoyé à l'administration.
+            ================================================= */
+
+            const requestData = {
+
+                id:
+                    requestId,
+
+                telephone:
+                    userPhone,
+
+                nom:
+                    user.nom ||
+                    user.name ||
+                    user.username ||
+                    "",
+
+                montant:
+                    amount,
+
+                montantDemande:
+                    amount,
+
+                frais:
+                    fees,
+
+                montantNet:
+                    net,
+
+                methode:
+                    method,
+
+                numero_reception:
+                    wallet,
+
+                statut:
+                    "En attente",
+
+                timestamp:
+                    timestamp,
+
+                createdAt:
+                    timestamp,
+
+                date:
+                    new Date(
+                        timestamp
+                    ).toLocaleString(
+                        "fr-FR"
+                    ),
+
+                source:
+                    "jasonBusiness",
+
+                type:
+                    "retrait",
+
+                gainsAvant:
+                    gains,
+
+                commissionsAvant:
+                    commissions,
+
+                soldeAvant:
+                    total,
+
+                gainsApres:
+                    newGains,
+
+                commissionsApres:
+                    newCommissions,
+
+                soldeApres:
+                    newGains +
+                    newCommissions
+
+            };
+
+
+
+            /* =================================================
+               ENREGISTREMENT DEMANDE
             ================================================= */
 
             await set(
 
-                newWithdrawal,
+                newRequest,
 
-                {
-
-                    id:
-                        retraitId,
-
-                    telephone:
-                        userPhone,
-
-                    montant:
-                        amount,
-
-                    montantDemande:
-                        amount,
-
-                    frais:
-                        amount * 0.05,
-
-                    montantNet:
-                        amount -
-                        (amount * 0.05),
-
-                    methode:
-                        method,
-
-                    numero_reception:
-                        wallet,
-
-                    statut:
-                        "En attente",
-
-                    date:
-                        new Date()
-                        .toLocaleString(
-                            "fr-FR"
-                        ),
-
-                    timestamp:
-                        now,
-
-                    createdAt:
-                        now,
-
-                    gainsAvant:
-                        soldeGains,
-
-                    commissionsAvant:
-                        soldeComm,
-
-                    gainsApres:
-                        nouveauGains,
-
-                    commissionsApres:
-                        nouvelleComm
-
-                }
+                requestData
 
             );
 
 
 
             /* =================================================
-               DÉDUCTION DU SOLDE
+               MISE À JOUR UTILISATEUR
+
+               CHEMIN :
+
+               jasonBusiness/users/TELEPHONE
             ================================================= */
 
             await update(
@@ -1705,10 +2128,10 @@ btnSubmit.addEventListener(
                 {
 
                     solde_gains:
-                        nouveauGains,
+                        newGains,
 
                     solde_commissions:
-                        nouvelleComm
+                        newCommissions
 
                 }
 
@@ -1720,67 +2143,79 @@ btnSubmit.addEventListener(
                SUCCÈS
             ================================================= */
 
-            alert(
+            showStatus(
 
-                "✅ Demande de retrait envoyée !\n\n" +
+                "✅ Demande envoyée avec succès. " +
+                "Elle est maintenant en attente de validation.",
 
-                "Montant : " +
-                formatFC(amount) +
-                " FC\n" +
-
-                "Frais : " +
-                formatFC(
-                    amount * 0.05
-                ) +
-                " FC\n" +
-
-                "Net : " +
-                formatFC(
-                    amount -
-                    amount * 0.05
-                ) +
-                " FC\n\n" +
-
-                "Votre demande est maintenant en attente de validation."
+                "jb-success"
 
             );
 
 
-            window.location.href =
-                "profil.html";
+            buttonElement.textContent =
+                "✅ DEMANDE ENVOYÉE";
 
 
-        }catch(error){
+            amountElement.value =
+                "";
 
+
+            walletElement.value =
+                "";
+
+
+            updateSummary();
+
+
+
+            /* =================================================
+               REDIRECTION
+            ================================================= */
+
+            setTimeout(
+
+                ()=>{
+
+                    window.location.href =
+                        "profil.html";
+
+                },
+
+                2200
+
+            );
+
+
+        }
+
+        catch(error){
 
             console.error(
-                "Erreur retrait :",
+                "JASON BUSINESS RETRAIT :",
                 error
             );
 
 
-            alert(
+            showStatus(
 
-                "❌ Impossible d'envoyer la demande.\n\n" +
-
+                "❌ Impossible d'envoyer la demande. " +
                 (
                     error.message ||
-                    "Erreur inconnue."
-                )
+                    "Erreur Firebase."
+                ),
+
+                "jb-error"
 
             );
 
 
-            btnSubmit.disabled =
+            buttonElement.disabled =
                 false;
 
 
-            btnSubmit.innerText =
+            buttonElement.textContent =
                 "RÉESSAYER";
-
-
-            statusDiv.innerText =
-                "❌ Erreur lors de la transmission.";
 
         }
 
@@ -1791,11 +2226,10 @@ btnSubmit.addEventListener(
 
 
 /* =========================================================
-   MISE À JOUR INITIALE
+   INITIALISATION
 ========================================================= */
 
 updateSummary();
-
 
 </script>
 

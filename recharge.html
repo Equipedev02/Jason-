@@ -7,12 +7,17 @@
 
 <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
 >
 
 <meta
     name="theme-color"
     content="#050a14"
+>
+
+<meta
+    name="description"
+    content="JASON Business — Recharge du compte"
 >
 
 <title>JASON Business — Recharge</title>
@@ -21,25 +26,25 @@
 <style>
 
 /* =========================================================
-   JB RECHARGE — VARIABLES
+   JASON BUSINESS — RECHARGE
 ========================================================= */
 
 :root{
 
-    --jb-blue:#00d2ff;
-    --jb-blue2:#0077ff;
+    --blue:#00d2ff;
+    --blue2:#0077ff;
 
-    --jb-dark:#050a14;
+    --dark:#050a14;
 
-    --jb-green:#00e676;
+    --green:#00e676;
 
-    --jb-yellow:#ffd740;
+    --yellow:#ffd740;
 
-    --jb-red:#ff4757;
+    --red:#ff4757;
 
-    --jb-card:rgba(5,12,24,.92);
+    --card:rgba(5,12,24,.94);
 
-    --jb-border:rgba(0,210,255,.28);
+    --border:rgba(0,210,255,.25);
 
 }
 
@@ -89,24 +94,41 @@ body{
         fixed;
 
     padding:
-        20px
-        15px
+        18px
+        14px
         40px;
 
 }
 
 
+button,
+input,
+a{
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+}
+
+
+button{
+
+    font-family:inherit;
+
+}
+
+
 /* =========================================================
-   CONTENEUR
+   CONTAINER
 ========================================================= */
 
-.jb-recharge-container{
+.jb-container{
 
     width:100%;
 
-    max-width:500px;
+    max-width:520px;
 
-    margin:0 auto;
+    margin:auto;
 
 }
 
@@ -115,11 +137,11 @@ body{
    HEADER
 ========================================================= */
 
-.jb-recharge-header{
+.jb-header{
 
     text-align:center;
 
-    margin:
+    padding:
         10px
         0
         20px;
@@ -127,15 +149,15 @@ body{
 }
 
 
-.jb-recharge-icon{
+.jb-icon{
 
-    width:65px;
+    width:68px;
 
-    height:65px;
+    height:68px;
 
-    margin:0 auto 12px;
-
-    border-radius:20px;
+    margin:
+        0 auto
+        12px;
 
     display:flex;
 
@@ -143,43 +165,47 @@ body{
 
     justify-content:center;
 
-    font-size:30px;
+    border-radius:20px;
 
     background:
+
         linear-gradient(
             135deg,
-            var(--jb-blue),
-            var(--jb-blue2)
+            var(--blue),
+            var(--blue2)
         );
 
     color:#001018;
 
+    font-size:30px;
+
     box-shadow:
+
         0 0 30px
         rgba(0,210,255,.35);
 
 }
 
 
-.jb-recharge-title{
+.jb-title{
 
-    font-size:24px;
+    font-size:23px;
 
     font-weight:900;
 
-    letter-spacing:1px;
+    letter-spacing:.7px;
 
 }
 
 
-.jb-recharge-title span{
+.jb-title span{
 
-    color:var(--jb-blue);
+    color:var(--blue);
 
 }
 
 
-.jb-recharge-subtitle{
+.jb-subtitle{
 
     margin-top:7px;
 
@@ -193,56 +219,149 @@ body{
 
 
 /* =========================================================
-   CARTE PRINCIPALE
+   USER INFO
 ========================================================= */
 
-.jb-recharge-card{
+.jb-user-card{
+
+    margin-bottom:14px;
+
+    padding:14px 16px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    border-radius:17px;
+
+    background:
+
+        rgba(255,255,255,.045);
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.08);
+
+}
+
+
+.jb-user-avatar{
+
+    width:42px;
+
+    height:42px;
+
+    flex:none;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:13px;
+
+    background:
+
+        rgba(0,210,255,.12);
+
+    color:var(--blue);
+
+    font-weight:900;
+
+}
+
+
+.jb-user-info{
+
+    min-width:0;
+
+    flex:1;
+
+}
+
+
+.jb-user-name{
+
+    font-size:13px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+
+.jb-user-phone{
+
+    margin-top:3px;
+
+    font-size:10px;
+
+    opacity:.5;
+
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.jb-card{
 
     width:100%;
 
+    padding:21px;
+
     background:
-        var(--jb-card);
+        var(--card);
 
     border:
         1px solid
-        var(--jb-border);
+        var(--border);
 
-    border-radius:25px;
-
-    padding:22px;
+    border-radius:24px;
 
     backdrop-filter:
         blur(18px);
 
     box-shadow:
-        0 20px 50px
+
+        0 20px 55px
         rgba(0,0,0,.45);
 
 }
 
 
 /* =========================================================
-   TITRE SECTION
+   SECTION TITLE
 ========================================================= */
 
 .jb-section-title{
 
     font-size:14px;
 
-    font-weight:800;
+    font-weight:900;
 
-    margin-bottom:10px;
+    margin-bottom:8px;
 
 }
 
 
-.jb-section-info{
+.jb-section-description{
 
     font-size:11px;
 
-    opacity:.55;
+    opacity:.52;
 
-    line-height:1.5;
+    line-height:1.55;
 
 }
 
@@ -260,53 +379,50 @@ body{
 
     gap:9px;
 
-    margin:
-        16px
-        0;
+    margin-top:17px;
 
 }
 
 
-.jb-price-item{
-
-    padding:
-        13px
-        5px;
-
-    border-radius:13px;
+.jb-price{
 
     border:
         1px solid
         rgba(255,255,255,.10);
 
+    border-radius:13px;
+
+    padding:
+        13px
+        4px;
+
     background:
-        rgba(255,255,255,.055);
+        rgba(255,255,255,.045);
 
     color:white;
+
+    font-size:11px;
+
+    font-weight:900;
 
     text-align:center;
 
     cursor:pointer;
 
-    font-size:12px;
-
-    font-weight:800;
-
-    transition:
-        .2s ease;
+    transition:.2s ease;
 
 }
 
 
-.jb-price-item:hover{
+.jb-price:hover{
 
     border-color:
-        var(--jb-blue);
+        var(--blue);
 
 }
 
 
-.jb-price-item:active{
+.jb-price:active{
 
     transform:
         scale(.96);
@@ -314,44 +430,31 @@ body{
 }
 
 
-.jb-price-item.jb-active{
+.jb-price.active{
 
-    background:
-        rgba(0,210,255,.16);
+    color:var(--blue);
 
     border-color:
-        var(--jb-blue);
+        var(--blue);
 
-    color:
-        var(--jb-blue);
+    background:
+        rgba(0,210,255,.14);
 
     box-shadow:
-        0 0 15px
-        rgba(0,210,255,.12);
 
-}
-
-
-.jb-price-item small{
-
-    display:block;
-
-    font-size:9px;
-
-    opacity:.5;
-
-    margin-top:3px;
+        0 0 16px
+        rgba(0,210,255,.10);
 
 }
 
 
 /* =========================================================
-   INPUT
+   FIELD
 ========================================================= */
 
 .jb-field{
 
-    margin-top:14px;
+    margin-top:17px;
 
 }
 
@@ -375,25 +478,22 @@ body{
 
     padding:15px;
 
-    border-radius:13px;
-
     border:
         1px solid
         rgba(255,255,255,.10);
 
+    border-radius:13px;
+
     background:
-        rgba(0,0,0,.45);
+        rgba(0,0,0,.42);
 
     color:white;
 
     outline:none;
 
-    font-size:15px;
-
     font-family:inherit;
 
-    transition:
-        .2s ease;
+    font-size:15px;
 
 }
 
@@ -401,11 +501,12 @@ body{
 .jb-input:focus{
 
     border-color:
-        var(--jb-blue);
+        var(--blue);
 
     box-shadow:
+
         0 0 12px
-        rgba(0,210,255,.10);
+        rgba(0,210,255,.08);
 
 }
 
@@ -418,39 +519,36 @@ body{
 
 
 /* =========================================================
-   INFORMATIONS PAIEMENT
+   PAYMENT
 ========================================================= */
 
-.jb-payment-box{
+.jb-payment{
 
-    margin:
-        18px
-        0;
+    margin-top:19px;
 
-    padding:17px;
+    padding:16px;
 
     border-radius:16px;
 
     background:
-        rgba(0,210,255,.055);
+        rgba(0,210,255,.05);
 
     border:
         1px solid
-        rgba(0,210,255,.16);
+        rgba(0,210,255,.15);
 
 }
 
 
 .jb-payment-title{
 
-    color:
-        var(--jb-blue);
+    color:var(--blue);
 
     font-size:13px;
 
     font-weight:900;
 
-    margin-bottom:13px;
+    margin-bottom:12px;
 
 }
 
@@ -459,14 +557,14 @@ body{
 
     display:flex;
 
-    justify-content:space-between;
-
     align-items:center;
+
+    justify-content:space-between;
 
     gap:10px;
 
     padding:
-        9px
+        10px
         0;
 
     border-bottom:
@@ -487,39 +585,37 @@ body{
 
 .jb-payment-name{
 
-    opacity:.7;
+    opacity:.68;
 
 }
 
 
 .jb-payment-number{
 
-    font-weight:800;
-
     text-align:right;
 
-}
-
-
-.jb-unavailable{
-
-    color:
-        var(--jb-red);
-
-    font-size:11px;
+    font-weight:900;
 
 }
 
 
 .jb-available{
 
-    color:
-        var(--jb-green);
+    color:var(--green);
 
 }
 
 
-.jb-warning{
+.jb-unavailable{
+
+    color:var(--red);
+
+    font-size:10px;
+
+}
+
+
+.jb-payment-warning{
 
     margin-top:12px;
 
@@ -530,10 +626,26 @@ body{
     background:
         rgba(255,215,64,.07);
 
-    color:
-        var(--jb-yellow);
+    color:var(--yellow);
 
     font-size:10px;
+
+    line-height:1.55;
+
+}
+
+
+/* =========================================================
+   TRANSACTION INFO
+========================================================= */
+
+.jb-hint{
+
+    margin-top:6px;
+
+    font-size:10px;
+
+    opacity:.42;
 
     line-height:1.5;
 
@@ -541,36 +653,74 @@ body{
 
 
 /* =========================================================
-   TRANSACTION
+   SUMMARY
 ========================================================= */
 
-.jb-transaction-box{
+.jb-summary{
 
-    margin-top:15px;
+    margin-top:18px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
 
 }
 
 
-.jb-transaction-hint{
+.jb-summary-row{
 
-    margin-top:6px;
+    display:flex;
 
-    font-size:10px;
+    align-items:center;
 
-    opacity:.45;
+    justify-content:space-between;
+
+    gap:10px;
+
+    padding:5px 0;
+
+    font-size:12px;
+
+}
+
+
+.jb-summary-label{
+
+    opacity:.55;
+
+}
+
+
+.jb-summary-value{
+
+    font-weight:900;
+
+}
+
+
+#jbSummaryAmount{
+
+    color:var(--blue);
 
 }
 
 
 /* =========================================================
-   BOUTON
+   SUBMIT
 ========================================================= */
 
 .jb-submit{
 
     width:100%;
 
-    margin-top:20px;
+    margin-top:19px;
 
     padding:16px;
 
@@ -579,33 +729,27 @@ body{
     border-radius:14px;
 
     background:
+
         linear-gradient(
             135deg,
-            var(--jb-blue),
-            var(--jb-blue2)
+            var(--blue),
+            var(--blue2)
         );
 
     color:#001018;
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:900;
 
     cursor:pointer;
 
     box-shadow:
+
         0 8px 25px
         rgba(0,210,255,.20);
 
-    transition:
-        .2s ease;
-
-}
-
-
-.jb-submit:hover{
-
-    filter:brightness(1.08);
+    transition:.2s ease;
 
 }
 
@@ -620,11 +764,9 @@ body{
 
 .jb-submit:disabled{
 
-    opacity:.5;
+    opacity:.45;
 
     cursor:not-allowed;
-
-    transform:none;
 
 }
 
@@ -635,7 +777,7 @@ body{
 
 .jb-status{
 
-    min-height:20px;
+    min-height:22px;
 
     margin-top:12px;
 
@@ -648,77 +790,29 @@ body{
 }
 
 
-.jb-status.jb-success{
+.jb-success{
 
-    color:
-        var(--jb-green);
-
-}
-
-
-.jb-status.jb-error{
-
-    color:
-        var(--jb-red);
+    color:var(--green);
 
 }
 
 
-.jb-status.jb-loading{
+.jb-error{
 
-    color:
-        var(--jb-yellow);
-
-}
-
-
-/* =========================================================
-   RETOUR
-========================================================= */
-
-.jb-back{
-
-    display:block;
-
-    margin-top:18px;
-
-    padding:13px;
-
-    border-radius:13px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    background:
-        rgba(255,255,255,.04);
-
-    color:white;
-
-    text-decoration:none;
-
-    text-align:center;
-
-    font-size:12px;
-
-    transition:.2s;
+    color:var(--red);
 
 }
 
 
-.jb-back:hover{
+.jb-loading{
 
-    border-color:
-        var(--jb-blue);
-
-    color:
-        var(--jb-blue);
+    color:var(--yellow);
 
 }
 
 
 /* =========================================================
-   NOTICE
+   SECURITY NOTICE
 ========================================================= */
 
 .jb-notice{
@@ -730,19 +824,59 @@ body{
     border-radius:14px;
 
     background:
-        rgba(255,255,255,.035);
+        rgba(255,255,255,.03);
 
     border:
         1px solid
         rgba(255,255,255,.06);
 
-    font-size:10px;
+    text-align:center;
 
-    opacity:.55;
+    font-size:10px;
 
     line-height:1.6;
 
+    opacity:.55;
+
+}
+
+
+/* =========================================================
+   BUTTON RETOUR
+========================================================= */
+
+.jb-back{
+
+    display:block;
+
+    margin-top:14px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    color:white;
+
+    text-decoration:none;
+
     text-align:center;
+
+    font-size:12px;
+
+}
+
+
+.jb-back:active{
+
+    transform:
+        scale(.98);
 
 }
 
@@ -756,14 +890,14 @@ body{
     body{
 
         padding:
-            15px
+            12px
             10px
             30px;
 
     }
 
 
-    .jb-recharge-card{
+    .jb-card{
 
         padding:17px;
 
@@ -778,7 +912,7 @@ body{
     }
 
 
-    .jb-recharge-title{
+    .jb-title{
 
         font-size:21px;
 
@@ -794,24 +928,23 @@ body{
 <body>
 
 
-<div class="jb-recharge-container">
+<div class="jb-container">
 
 
 <!-- =====================================================
      HEADER
 ===================================================== -->
 
-<header class="jb-recharge-header">
+<header class="jb-header">
 
-
-    <div class="jb-recharge-icon">
+    <div class="jb-icon">
 
         💳
 
     </div>
 
 
-    <h1 class="jb-recharge-title">
+    <h1 class="jb-title">
 
         RECHARGE
         <span>JASON BUSINESS</span>
@@ -819,327 +952,473 @@ body{
     </h1>
 
 
-    <p class="jb-recharge-subtitle">
+    <p class="jb-subtitle">
 
         Ajoutez des fonds à votre compte
-        en toute simplicité.
+        et envoyez votre demande à
+        l'administration.
 
     </p>
-
 
 </header>
 
 
 
 <!-- =====================================================
-     CARTE
+     UTILISATEUR
 ===================================================== -->
 
-<div class="jb-recharge-card">
-
-
-    <!-- MONTANT -->
-
-    <div class="jb-section-title">
-
-        💰 Choisissez votre montant
-
-    </div>
-
-
-    <div class="jb-section-info">
-
-        Sélectionnez un montant ou saisissez
-        directement la somme souhaitée.
-
-        <br>
-
-        <b style="color:#00d2ff;">
-            Minimum : 5 000 FC
-        </b>
-
-    </div>
-
-
-
-    <div class="jb-price-grid">
-
-
-        <button
-            type="button"
-            class="jb-price-item"
-            data-amount="5000"
-        >
-
-            5 000 FC
-
-        </button>
-
-
-        <button
-            type="button"
-            class="jb-price-item"
-            data-amount="18000"
-        >
-
-            18 000 FC
-
-        </button>
-
-
-        <button
-            type="button"
-            class="jb-price-item"
-            data-amount="65000"
-        >
-
-            65 000 FC
-
-        </button>
-
-
-        <button
-            type="button"
-            class="jb-price-item"
-            data-amount="260000"
-        >
-
-            260 000 FC
-
-        </button>
-
-
-        <button
-            type="button"
-            class="jb-price-item"
-            data-amount="470000"
-        >
-
-            470 000 FC
-
-        </button>
-
-
-        <button
-            type="button"
-            class="jb-price-item"
-            data-amount="1000000"
-        >
-
-            1 000 000 FC
-
-        </button>
-
-
-    </div>
-
-
-
-    <!-- MONTANT PERSONNALISÉ -->
-
-    <div class="jb-field">
-
-
-        <label
-            class="jb-label"
-            for="jbRechargeAmount"
-        >
-
-            Montant personnalisé
-
-        </label>
-
-
-        <input
-            class="jb-input"
-            type="number"
-            id="jbRechargeAmount"
-            min="5000"
-            step="1"
-            inputmode="numeric"
-            placeholder="Exemple : 10000"
-        >
-
-
-    </div>
-
-
-
-    <!-- =================================================
-         PAIEMENT
-    ================================================= -->
-
-    <div class="jb-payment-box">
-
-
-        <div class="jb-payment-title">
-
-            📱 Informations de paiement
-
-        </div>
-
-
-        <div class="jb-payment-row">
-
-            <span class="jb-payment-name">
-
-                Airtel Money
-
-            </span>
-
-
-            <span class="jb-unavailable">
-
-                Indisponible
-
-            </span>
-
-        </div>
-
-
-
-        <div class="jb-payment-row">
-
-            <span class="jb-payment-name">
-
-                Orange Money
-
-            </span>
-
-
-            <span class="jb-payment-number jb-available">
-
-                0847500590
-
-            </span>
-
-        </div>
-
-
-
-        <div class="jb-payment-row">
-
-            <span class="jb-payment-name">
-
-                M-Pesa / Vodacom
-
-            </span>
-
-
-            <span class="jb-unavailable">
-
-                Indisponible
-
-            </span>
-
-        </div>
-
-
-
-        <div class="jb-warning">
-
-            ⚠️ Envoyez d'abord le montant exact
-            vers le moyen de paiement disponible,
-            puis indiquez l'ID de transaction
-            ci-dessous.
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- =================================================
-         ID TRANSACTION
-    ================================================= -->
-
-    <div class="jb-transaction-box">
-
-
-        <label
-            class="jb-label"
-            for="jbTransactionId"
-        >
-
-            🔐 ID de transaction
-
-        </label>
-
-
-        <input
-            class="jb-input"
-            type="text"
-            id="jbTransactionId"
-            maxlength="100"
-            autocomplete="off"
-            placeholder="Exemple : 1234567890"
-        >
-
-
-        <div class="jb-transaction-hint">
-
-            L'ID doit correspondre à la transaction
-            effectuée pour cette recharge.
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- =================================================
-         BOUTON
-    ================================================= -->
-
-    <button
-        type="button"
-        class="jb-submit"
-        id="jbSubmitRecharge"
-    >
-
-        💳 SOUMETTRE LA RECHARGE
-
-    </button>
-
-
-    <!-- STATUS -->
+<div class="jb-user-card">
 
     <div
-        class="jb-status"
-        id="jbRechargeStatus"
-    ></div>
-
-
-
-    <!-- RETOUR -->
-
-    <a
-        href="dashboard.html"
-        class="jb-back"
+        class="jb-user-avatar"
+        id="jbUserAvatar"
     >
 
-        ← Retour au tableau de bord
-
-    </a>
-
-
-
-    <!-- NOTICE -->
-
-    <div class="jb-notice">
-
-        🔒 Votre demande est enregistrée
-        dans Firebase.
-
-        <br>
-
-        Le solde n'est crédité qu'après
-        vérification et validation par
-        l'administration.
+        J
 
     </div>
+
+
+    <div class="jb-user-info">
+
+        <div
+            class="jb-user-name"
+            id="jbUserName"
+        >
+
+            Chargement...
+
+        </div>
+
+
+        <div
+            class="jb-user-phone"
+            id="jbUserPhone"
+        >
+
+            Vérification du compte...
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CARTE PRINCIPALE
+===================================================== -->
+
+<div class="jb-card">
+
+
+<div class="jb-section-title">
+
+    💰 Choisissez votre montant
+
+</div>
+
+
+<div class="jb-section-description">
+
+    Sélectionnez un montant rapide ou
+    saisissez directement le montant souhaité.
+
+    <br><br>
+
+    <b style="color:#00d2ff;">
+
+        Minimum : 5 000 FC
+
+    </b>
+
+</div>
+
+
+
+<!-- =====================================================
+     MONTANTS RAPIDES
+===================================================== -->
+
+<div class="jb-price-grid">
+
+
+<button
+    type="button"
+    class="jb-price"
+    data-amount="5000"
+>
+
+    5 000 FC
+
+</button>
+
+
+<button
+    type="button"
+    class="jb-price"
+    data-amount="18000"
+>
+
+    18 000 FC
+
+</button>
+
+
+<button
+    type="button"
+    class="jb-price"
+    data-amount="65000"
+>
+
+    65 000 FC
+
+</button>
+
+
+<button
+    type="button"
+    class="jb-price"
+    data-amount="260000"
+>
+
+    260 000 FC
+
+</button>
+
+
+<button
+    type="button"
+    class="jb-price"
+    data-amount="470000"
+>
+
+    470 000 FC
+
+</button>
+
+
+<button
+    type="button"
+    class="jb-price"
+    data-amount="1000000"
+>
+
+    1 000 000 FC
+
+</button>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     MONTANT PERSONNALISÉ
+===================================================== -->
+
+<div class="jb-field">
+
+
+<label
+    class="jb-label"
+    for="jbAmount"
+>
+
+    💰 Montant personnalisé
+
+</label>
+
+
+<input
+    type="number"
+    id="jbAmount"
+    class="jb-input"
+    min="5000"
+    step="1"
+    inputmode="numeric"
+    autocomplete="off"
+    placeholder="Exemple : 10000"
+>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     PAIEMENT
+===================================================== -->
+
+<div class="jb-payment">
+
+
+<div class="jb-payment-title">
+
+    📱 Moyen de paiement
+
+</div>
+
+
+<div class="jb-payment-row">
+
+
+<span class="jb-payment-name">
+
+    Airtel Money
+
+</span>
+
+
+<span class="jb-unavailable">
+
+    Indisponible
+
+</span>
+
+
+</div>
+
+
+
+<div class="jb-payment-row">
+
+
+<span class="jb-payment-name">
+
+    Orange Money
+
+</span>
+
+
+<span class="jb-payment-number jb-available">
+
+    0847500590
+
+</span>
+
+
+</div>
+
+
+
+<div class="jb-payment-row">
+
+
+<span class="jb-payment-name">
+
+    M-Pesa / Vodacom
+
+</span>
+
+
+<span class="jb-unavailable">
+
+    Indisponible
+
+</span>
+
+
+</div>
+
+
+
+<div class="jb-payment-warning">
+
+    ⚠️ Envoyez exactement le montant choisi
+    vers le moyen de paiement disponible,
+    puis saisissez l'ID de transaction
+    correspondant à votre paiement.
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     ID TRANSACTION
+===================================================== -->
+
+<div class="jb-field">
+
+
+<label
+    class="jb-label"
+    for="jbTransactionId"
+>
+
+    🔐 ID de transaction
+
+</label>
+
+
+<input
+    type="text"
+    id="jbTransactionId"
+    class="jb-input"
+    maxlength="100"
+    autocomplete="off"
+    placeholder="Exemple : 1234567890"
+>
+
+
+<div class="jb-hint">
+
+    L'ID de transaction permet à
+    l'administration de vérifier votre paiement.
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     RÉSUMÉ
+===================================================== -->
+
+<div class="jb-summary">
+
+
+<div class="jb-summary-row">
+
+
+<span class="jb-summary-label">
+
+    Compte
+
+</span>
+
+
+<span
+    class="jb-summary-value"
+    id="jbSummaryPhone"
+>
+
+    —
+
+</span>
+
+
+</div>
+
+
+
+<div class="jb-summary-row">
+
+
+<span class="jb-summary-label">
+
+    Montant
+
+</span>
+
+
+<span
+    class="jb-summary-value"
+    id="jbSummaryAmount"
+>
+
+    0 FC
+
+</span>
+
+
+</div>
+
+
+
+<div class="jb-summary-row">
+
+
+<span class="jb-summary-label">
+
+    Statut
+
+</span>
+
+
+<span
+    class="jb-summary-value"
+    style="color:#ffd740;"
+>
+
+    En attente
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     ENVOI
+===================================================== -->
+
+<button
+    type="button"
+    id="jbSubmit"
+    class="jb-submit"
+>
+
+    💳 ENVOYER LA DEMANDE
+
+</button>
+
+
+
+<!-- =====================================================
+     STATUS
+===================================================== -->
+
+<div
+    id="jbStatus"
+    class="jb-status"
+>
+</div>
+
+
+
+<!-- =====================================================
+     NOTICE
+===================================================== -->
+
+<div class="jb-notice">
+
+    🔒 Votre demande sera envoyée à
+    l'administration de JASON Business.
+
+    <br>
+
+    Le montant ne sera ajouté à votre solde
+    qu'après vérification et validation
+    par l'administration.
+
+</div>
+
+
+
+<!-- =====================================================
+     RETOUR
+===================================================== -->
+
+<a
+    href="profil.html"
+    class="jb-back"
+>
+
+    ← Retour à mon profil
+
+</a>
 
 
 </div>
@@ -1156,7 +1435,7 @@ body{
 
 
 /* =========================================================
-   IMPORTS
+   FIREBASE IMPORTS
 ========================================================= */
 
 import {
@@ -1173,6 +1452,8 @@ import {
     getDatabase,
 
     ref,
+
+    get,
 
     push,
 
@@ -1225,7 +1506,7 @@ const jbApp =
     );
 
 
-const jbDb =
+const jbDB =
     getDatabase(
         jbApp
     );
@@ -1256,50 +1537,155 @@ if(!jbUserPhone){
 
 
 /* =========================================================
-   ELEMENTS
+   REFERENCES
 ========================================================= */
 
-const jbAmountInput =
-    document.getElementById(
-        "jbRechargeAmount"
+/*
+   CHEMIN UTILISATEUR :
+
+   jasonBusiness/users/TELEPHONE
+*/
+
+const jbUserRef =
+    ref(
+
+        jbDB,
+
+        "jasonBusiness/users/" +
+        jbUserPhone
+
     );
 
 
-const jbTransactionInput =
-    document.getElementById(
-        "jbTransactionId"
-    );
+/*
+   CHEMIN DES DEMANDES :
 
+   jasonBusiness/demandes_recharges
+*/
 
-const jbSubmitButton =
-    document.getElementById(
-        "jbSubmitRecharge"
-    );
+const jbRechargeRequestsRef =
+    ref(
 
+        jbDB,
 
-const jbStatus =
-    document.getElementById(
-        "jbRechargeStatus"
-    );
+        "jasonBusiness/demandes_recharges"
 
-
-const jbPriceItems =
-    document.querySelectorAll(
-        ".jb-price-item"
     );
 
 
 
 /* =========================================================
-   FORMATAGE
+   ELEMENTS
 ========================================================= */
 
-function jbFormatNumber(value){
+const jbAmount =
+    document.getElementById(
+        "jbAmount"
+    );
+
+
+const jbTransactionId =
+    document.getElementById(
+        "jbTransactionId"
+    );
+
+
+const jbSubmit =
+    document.getElementById(
+        "jbSubmit"
+    );
+
+
+const jbStatus =
+    document.getElementById(
+        "jbStatus"
+    );
+
+
+const jbSummaryAmount =
+    document.getElementById(
+        "jbSummaryAmount"
+    );
+
+
+const jbSummaryPhone =
+    document.getElementById(
+        "jbSummaryPhone"
+    );
+
+
+const jbUserName =
+    document.getElementById(
+        "jbUserName"
+    );
+
+
+const jbUserPhoneElement =
+    document.getElementById(
+        "jbUserPhone"
+    );
+
+
+const jbUserAvatar =
+    document.getElementById(
+        "jbUserAvatar"
+    );
+
+
+const jbPriceButtons =
+    document.querySelectorAll(
+        ".jb-price"
+    );
+
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let jbCurrentUser = null;
+
+let jbSubmitting = false;
+
+
+
+/* =========================================================
+   FORMAT NOMBRE
+========================================================= */
+
+function jbFormatNumber(
+    value
+){
 
     return Math.floor(
         Number(value) || 0
-    ).toLocaleString(
+    )
+    .toLocaleString(
         "fr-FR"
+    );
+
+}
+
+
+
+/* =========================================================
+   FORMAT FC
+========================================================= */
+
+function jbFormatFC(
+    value
+){
+
+    return (
+
+        jbFormatNumber(
+            value
+        )
+
+        +
+
+        " FC"
+
     );
 
 }
@@ -1310,7 +1696,7 @@ function jbFormatNumber(value){
    STATUS
 ========================================================= */
 
-function jbShowStatus(
+function jbSetStatus(
     message,
     type = ""
 ){
@@ -1327,52 +1713,196 @@ function jbShowStatus(
 
 
 /* =========================================================
-   SELECTION MONTANT
+   CHARGER LE COMPTE
 ========================================================= */
 
-jbPriceItems.forEach(
-    (item)=>{
+async function jbLoadUser(){
+
+    try{
+
+        const snapshot =
+            await get(
+                jbUserRef
+            );
 
 
-        item.addEventListener(
+        if(
+            !snapshot.exists()
+        ){
+
+            jbUserPhoneElement.innerText =
+                "Compte introuvable";
+
+
+            jbSetStatus(
+                "❌ Votre compte JASON Business est introuvable.",
+                "jb-error"
+            );
+
+
+            jbSubmit.disabled =
+                true;
+
+
+            return;
+
+        }
+
+
+        jbCurrentUser =
+            snapshot.val();
+
+
+
+        /* =================================================
+           NOM
+        ================================================= */
+
+        const name =
+
+            jbCurrentUser.nom ||
+
+            jbCurrentUser.name ||
+
+            jbCurrentUser.username ||
+
+            "Utilisateur JASON Business";
+
+
+
+        jbUserName.innerText =
+            name;
+
+
+
+        /* =================================================
+           TELEPHONE
+        ================================================= */
+
+        jbUserPhoneElement.innerText =
+            jbUserPhone;
+
+
+        jbSummaryPhone.innerText =
+            jbUserPhone;
+
+
+
+        /* =================================================
+           AVATAR
+        ================================================= */
+
+        jbUserAvatar.innerText =
+
+            String(name)
+                .substring(0,2)
+                .toUpperCase();
+
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "JB USER LOAD ERROR:",
+            error
+        );
+
+
+        jbSetStatus(
+            "❌ Impossible de vérifier votre compte.",
+            "jb-error"
+        );
+
+
+        jbSubmit.disabled =
+            true;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MISE À JOUR DU RÉSUMÉ
+========================================================= */
+
+function jbUpdateSummary(){
+
+    const amount =
+        Number(
+            jbAmount.value
+        ) || 0;
+
+
+    jbSummaryAmount.innerText =
+        jbFormatFC(
+            amount
+        );
+
+}
+
+
+
+/* =========================================================
+   BOUTONS MONTANTS
+========================================================= */
+
+jbPriceButtons.forEach(
+
+    (button)=>{
+
+
+        button.addEventListener(
+
             "click",
+
             ()=>{
 
 
                 const amount =
                     Number(
-                        item.dataset.amount
+                        button.dataset.amount
                     );
 
 
-                jbAmountInput.value =
+                jbAmount.value =
                     amount;
 
 
-                jbPriceItems.forEach(
-                    (other)=>{
+                jbPriceButtons.forEach(
 
-                        other.classList.remove(
-                            "jb-active"
+                    (item)=>{
+
+                        item.classList.remove(
+                            "active"
                         );
 
                     }
+
                 );
 
 
-                item.classList.add(
-                    "jb-active"
+                button.classList.add(
+                    "active"
                 );
 
 
-                jbShowStatus(
+                jbUpdateSummary();
+
+
+                jbSetStatus(
                     ""
                 );
 
             }
+
         );
 
     }
+
 );
 
 
@@ -1381,76 +1911,103 @@ jbPriceItems.forEach(
    MONTANT PERSONNALISÉ
 ========================================================= */
 
-jbAmountInput.addEventListener(
+jbAmount.addEventListener(
+
     "input",
+
     ()=>{
 
 
         const value =
             Number(
-                jbAmountInput.value
+                jbAmount.value
             );
 
 
-        jbPriceItems.forEach(
-            (item)=>{
+        jbPriceButtons.forEach(
 
-                const itemAmount =
+            (button)=>{
+
+
+                const buttonAmount =
                     Number(
-                        item.dataset.amount
+                        button.dataset.amount
                     );
 
 
                 if(
-                    itemAmount === value
+                    buttonAmount === value
                 ){
 
-                    item.classList.add(
-                        "jb-active"
+                    button.classList.add(
+                        "active"
                     );
 
                 }
+
                 else{
 
-                    item.classList.remove(
-                        "jb-active"
+                    button.classList.remove(
+                        "active"
                     );
 
                 }
 
             }
+
         );
 
+
+        jbUpdateSummary();
+
     }
+
 );
 
 
 
 /* =========================================================
-   VALIDATION MONTANT
+   VALIDATION
 ========================================================= */
 
-function jbValidateAmount(){
+function jbValidate(){
 
-    const raw =
-        jbAmountInput.value.trim();
+    const rawAmount =
+        jbAmount.value.trim();
 
 
     const amount =
-        Number(raw);
+        Number(
+            rawAmount
+        );
 
 
     if(
-        raw === "" ||
-        !Number.isFinite(amount)
+        rawAmount === ""
     ){
 
-        jbShowStatus(
-            "❌ Veuillez entrer un montant.",
+        jbSetStatus(
+            "❌ Veuillez choisir ou saisir un montant.",
             "jb-error"
         );
 
-        jbAmountInput.focus();
+        jbAmount.focus();
+
+        return null;
+
+    }
+
+
+    if(
+        !Number.isFinite(amount)
+    ){
+
+        jbSetStatus(
+            "❌ Montant invalide.",
+            "jb-error"
+        );
+
+        jbAmount.focus();
 
         return null;
 
@@ -1461,12 +2018,12 @@ function jbValidateAmount(){
         amount < 5000
     ){
 
-        jbShowStatus(
+        jbSetStatus(
             "❌ Le montant minimum est de 5 000 FC.",
             "jb-error"
         );
 
-        jbAmountInput.focus();
+        jbAmount.focus();
 
         return null;
 
@@ -1477,19 +2034,63 @@ function jbValidateAmount(){
         !Number.isInteger(amount)
     ){
 
-        jbShowStatus(
+        jbSetStatus(
             "❌ Le montant doit être un nombre entier.",
             "jb-error"
         );
 
-        jbAmountInput.focus();
+        jbAmount.focus();
 
         return null;
 
     }
 
 
-    return amount;
+    const transaction =
+        jbTransactionId.value.trim();
+
+
+    if(
+        transaction.length < 5
+    ){
+
+        jbSetStatus(
+            "❌ Veuillez saisir un ID de transaction valide.",
+            "jb-error"
+        );
+
+        jbTransactionId.focus();
+
+        return null;
+
+    }
+
+
+    if(
+        transaction.length > 100
+    ){
+
+        jbSetStatus(
+            "❌ L'ID de transaction est trop long.",
+            "jb-error"
+        );
+
+        jbTransactionId.focus();
+
+        return null;
+
+    }
+
+
+    return {
+
+        amount:
+            amount,
+
+        transactionID:
+            transaction
+
+    };
 
 }
 
@@ -1499,21 +2100,15 @@ function jbValidateAmount(){
    SOUMISSION
 ========================================================= */
 
-jbSubmitButton.addEventListener(
+jbSubmit.addEventListener(
+
     "click",
+
     async()=>{
 
 
-        /* -------------------------
-           MONTANT
-        ------------------------- */
-
-        const jbAmount =
-            jbValidateAmount();
-
-
         if(
-            jbAmount === null
+            jbSubmitting
         ){
 
             return;
@@ -1521,27 +2116,67 @@ jbSubmitButton.addEventListener(
         }
 
 
-
-        /* -------------------------
-           TRANSACTION
-        ------------------------- */
-
-        const jbTransactionId =
-            jbTransactionInput.value
-                .trim();
-
+        const data =
+            jbValidate();
 
 
         if(
-            jbTransactionId.length < 5
+            !data
         ){
 
-            jbShowStatus(
-                "❌ Veuillez entrer un ID de transaction valide.",
+            return;
+
+        }
+
+
+        if(
+            !jbCurrentUser
+        ){
+
+            jbSetStatus(
+                "❌ Votre compte n'a pas encore été vérifié.",
                 "jb-error"
             );
 
-            jbTransactionInput.focus();
+            return;
+
+        }
+
+
+
+        /* =================================================
+           CONFIRMATION
+        ================================================= */
+
+        const confirmation =
+            confirm(
+
+                "Confirmer la demande de recharge de "
+
+                +
+
+                jbFormatFC(
+                    data.amount
+                )
+
+                +
+
+                " ?\n\n"
+
+                +
+
+                "ID transaction : "
+
+                +
+
+                data.transactionID
+
+            );
+
+
+        if(
+            !confirmation
+        ){
 
             return;
 
@@ -1549,20 +2184,24 @@ jbSubmitButton.addEventListener(
 
 
 
-        /* -------------------------
-           ETAT
-        ------------------------- */
+        /* =================================================
+           ETAT ENVOI
+        ================================================= */
 
-        jbSubmitButton.disabled =
+        jbSubmitting =
             true;
 
 
-        jbSubmitButton.innerText =
+        jbSubmit.disabled =
+            true;
+
+
+        jbSubmit.innerText =
             "⏳ ENVOI EN COURS...";
 
 
-        jbShowStatus(
-            "Vérification et enregistrement de votre demande...",
+        jbSetStatus(
+            "⏳ Enregistrement de votre demande...",
             "jb-loading"
         );
 
@@ -1571,41 +2210,69 @@ jbSubmitButton.addEventListener(
         try{
 
 
-            /* ==============================================
-               REFERENCE DEMANDES
-            ============================================== */
+            /* =================================================
+               NOUVELLE DEMANDE
+            ================================================= */
 
-            const jbRequestsRef =
-                ref(
-                    jbDb,
-                    "demandes_recharges"
-                );
-
-
-            const jbNewRequest =
+            const requestRef =
                 push(
-                    jbRequestsRef
+                    jbRechargeRequestsRef
                 );
 
 
+            const requestId =
+                requestRef.key;
 
-            /* ==============================================
-               DONNEES
-            ============================================== */
 
-            const jbRequestData = {
+
+            /* =================================================
+               DONNEES UTILISATEUR
+            ================================================= */
+
+            const name =
+
+                jbCurrentUser.nom ||
+
+                jbCurrentUser.name ||
+
+                jbCurrentUser.username ||
+
+                "";
+
+
+
+            /* =================================================
+               DONNÉES DEMANDE
+            ================================================= */
+
+            const requestData = {
+
+                id:
+                    requestId,
 
                 telephone:
                     jbUserPhone,
 
+                nom:
+                    name,
+
                 montant:
-                    jbAmount,
+                    data.amount,
 
                 transactionID:
-                    jbTransactionId,
+                    data.transactionID,
 
                 statut:
                     "En attente",
+
+                type:
+                    "recharge",
+
+                source:
+                    "jasonBusiness",
+
+                plateforme:
+                    "JASON Business",
 
                 date:
                     new Date()
@@ -1616,105 +2283,143 @@ jbSubmitButton.addEventListener(
                 timestamp:
                     Date.now(),
 
-                type:
-                    "recharge",
+                adminNote:
+                    "",
 
-                source:
-                    "jason-business"
+                validatedAt:
+                    null,
+
+                refusedAt:
+                    null
 
             };
 
 
 
-            /* ==============================================
-               ENREGISTREMENT FIREBASE
-            ============================================== */
+            /* =================================================
+               ENVOI À L'ADMIN
+            ================================================= */
 
             await set(
-                jbNewRequest,
-                jbRequestData
+
+                requestRef,
+
+                requestData
+
             );
 
 
 
-            /* ==============================================
+            /* =================================================
                SUCCÈS
-            ============================================== */
+            ================================================= */
 
-            jbShowStatus(
-                "✅ Demande envoyée avec succès. Votre solde sera crédité après vérification.",
+            jbSetStatus(
+
+                "✅ Votre demande a été envoyée à l'administration. Votre solde sera crédité après validation.",
+
                 "jb-success"
+
             );
 
 
-            jbSubmitButton.innerText =
+            jbSubmit.innerText =
                 "✅ DEMANDE ENVOYÉE";
 
 
-            jbAmountInput.value =
+
+            /* =================================================
+               RESET
+            ================================================= */
+
+            jbAmount.value =
                 "";
 
 
-            jbTransactionInput.value =
+            jbTransactionId.value =
                 "";
 
 
-            jbPriceItems.forEach(
-                (item)=>{
+            jbPriceButtons.forEach(
 
-                    item.classList.remove(
-                        "jb-active"
+                (button)=>{
+
+                    button.classList.remove(
+                        "active"
                     );
 
                 }
+
             );
 
 
+            jbUpdateSummary();
 
-            /* ==============================================
-               REDIRECTION
-            ============================================== */
+
+
+            /* =================================================
+               RETOUR PROFIL
+            ================================================= */
 
             setTimeout(
+
                 ()=>{
 
                     window.location.href =
-                        "dashboard.html";
+                        "profil.html";
 
                 },
-                2200
-            );
 
+                2500
+
+            );
 
         }
 
         catch(error){
 
-
             console.error(
-                "JB RECHARGE ERROR:",
+                "JASON BUSINESS RECHARGE ERROR:",
                 error
             );
 
 
-            jbShowStatus(
-                "❌ Impossible d'envoyer la demande. Vérifiez votre connexion et réessayez.",
+            jbSetStatus(
+
+                "❌ Impossible d'envoyer la demande. Vérifiez votre connexion puis réessayez.",
+
                 "jb-error"
+
             );
 
 
-            jbSubmitButton.disabled =
+            jbSubmit.disabled =
                 false;
 
 
-            jbSubmitButton.innerText =
-                "💳 SOUMETTRE LA RECHARGE";
+            jbSubmitting =
+                false;
+
+
+            jbSubmit.innerText =
+                "💳 ENVOYER LA DEMANDE";
 
         }
 
     }
 
 );
+
+
+
+/* =========================================================
+   INITIALISATION
+========================================================= */
+
+jbUpdateSummary();
+
+jbLoadUser();
+
 
 </script>
 

@@ -1,3431 +1,3665 @@
-<!DOCTYPE html>  <html lang="fr">  <head>  <meta charset="UTF-8">  <meta
-name="viewport"
-content="width=device-width,initial-scale=1.0"
+<!DOCTYPE html>
+<html lang="fr">
 
-> 
+<head>
 
-<title>JASON Business — Mon Profil</title>  <style>  
-  
-/* =========================================================  
-   JASON BUSINESS — PROFIL  
-========================================================= */  
-  
-:root{  
-  
-    --blue:#00d2ff;  
-    --blue2:#0077ff;  
-  
-    --dark:#050a14;  
-  
-    --card:rgba(8,15,28,.88);  
-  
-    --border:rgba(0,210,255,.25);  
-  
-    --green:#00e676;  
-  
-    --orange:#ff9800;  
-  
-    --gold:#ffd700;  
-  
-    --red:#ff4757;  
-  
-}  
-  
-  
-*{  
-    box-sizing:border-box;  
-}  
-  
-  
-body{  
-  
-    margin:0;  
-  
-    font-family:  
-        "Segoe UI",  
-        Arial,  
-        sans-serif;  
-  
-    background:  
-  
-        linear-gradient(  
-            rgba(3,8,18,.82),  
-            rgba(3,8,18,.94)  
-        ),  
-  
-        url("IMG_0870.jpeg")  
-        center/cover  
-        fixed;  
-  
-    color:white;  
-  
-    min-height:100vh;  
-  
-    padding-bottom:100px;  
-  
-}  
-  
-  
-.container{  
-  
-    width:100%;  
-  
-    max-width:650px;  
-  
-    margin:auto;  
-  
-}  
-  
-  
-/* =========================================================  
-   HEADER  
-========================================================= */  
-  
-.header{  
-  
-    padding:  
-        28px  
-        20px  
-        25px;  
-  
-    text-align:center;  
-  
-    background:  
-        rgba(0,0,0,.55);  
-  
-    border-bottom:  
-        1px solid var(--border);  
-  
-    backdrop-filter:  
-        blur(18px);  
-  
-}  
-  
-  
-.avatar{  
-  
-    width:82px;  
-  
-    height:82px;  
-  
-    border-radius:50%;  
-  
-    margin:auto;  
-  
-    display:flex;  
-  
-    justify-content:center;  
-  
-    align-items:center;  
-  
-    background:  
-        linear-gradient(  
-            135deg,  
-            var(--blue),  
-            var(--blue2)  
-        );  
-  
-    color:#001018;  
-  
-    font-size:28px;  
-  
-    font-weight:900;  
-  
-    box-shadow:  
-        0 0 30px  
-        rgba(0,210,255,.45);  
-  
-}  
-  
-  
-.name{  
-  
-    margin:  
-        12px  
-        0  
-        4px;  
-  
-    font-size:20px;  
-  
-    letter-spacing:1px;  
-  
-}  
-  
-  
-.phone{  
-  
-    font-size:13px;  
-  
-    opacity:.65;  
-  
-}  
-  
-  
-.invite{  
-  
-    display:inline-block;  
-  
-    margin-top:10px;  
-  
-    padding:  
-        7px  
-        14px;  
-  
-    border-radius:20px;  
-  
-    color:var(--blue);  
-  
-    background:  
-        rgba(0,210,255,.08);  
-  
-    border:  
-        1px solid var(--border);  
-  
-    font-size:12px;  
-  
-    font-weight:bold;  
-  
-}  
-  
-  
-/* =========================================================  
-   SECTION  
-========================================================= */  
-  
-.section{  
-  
-    padding:18px;  
-  
-}  
-  
-  
-/* =========================================================  
-   SOLDE  
-========================================================= */  
-  
-.balance-card{  
-  
-    background:  
-  
-        linear-gradient(  
-            145deg,  
-            rgba(0,210,255,.18),  
-            rgba(0,50,100,.25)  
-        );  
-  
-    border:  
-        1px solid var(--border);  
-  
-    border-radius:22px;  
-  
-    padding:22px;  
-  
-    box-shadow:  
-        0 10px 35px  
-        rgba(0,0,0,.3);  
-  
-}  
-  
-  
-.balance-title{  
-  
-    font-size:12px;  
-  
-    opacity:.65;  
-  
-    text-transform:uppercase;  
-  
-    letter-spacing:1px;  
-  
-}  
-  
-  
-.total{  
-  
-    margin:  
-        7px  
-        0;  
-  
-    font-size:32px;  
-  
-    font-weight:900;  
-  
-    color:var(--blue);  
-  
-}  
-  
-  
-.fc{  
-  
-    font-size:13px;  
-  
-    opacity:.7;  
-  
-}  
-  
-  
-.balance-actions{  
-  
-    display:grid;  
-  
-    grid-template-columns:  
-        1fr  
-        1fr;  
-  
-    gap:10px;  
-  
-    margin-top:18px;  
-  
-}  
-  
-  
-.action{  
-  
-    text-decoration:none;  
-  
-    text-align:center;  
-  
-    padding:12px;  
-  
-    border-radius:12px;  
-  
-    font-size:13px;  
-  
-    font-weight:bold;  
-  
-}  
-  
-  
-.recharge{  
-  
-    background:var(--blue);  
-  
-    color:#001018;  
-  
-}  
-  
-  
-.withdraw{  
-  
-    background:  
-        rgba(255,255,255,.07);  
-  
-    color:white;  
-  
-    border:  
-        1px solid  
-        rgba(255,255,255,.12);  
-  
-}  
-  
-  
-/* =========================================================  
-   STATS  
-========================================================= */  
-  
-.stats{  
-  
-    display:grid;  
-  
-    grid-template-columns:  
-        repeat(3,1fr);  
-  
-    gap:10px;  
-  
-    margin-top:12px;  
-  
-}  
-  
-  
-.stat{  
-  
-    background:var(--card);  
-  
-    border:  
-        1px solid  
-        rgba(255,255,255,.08);  
-  
-    border-radius:16px;  
-  
-    padding:  
-        15px  
-        8px;  
-  
-    text-align:center;  
-  
-}  
-  
-  
-.stat-icon{  
-  
-    font-size:20px;  
-  
-}  
-  
-  
-.stat-value{  
-  
-    margin-top:7px;  
-  
-    font-size:15px;  
-  
-    font-weight:bold;  
-  
-}  
-  
-  
-.stat-label{  
-  
-    margin-top:3px;  
-  
-    font-size:10px;  
-  
-    opacity:.55;  
-  
-}  
-  
-  
-/* =========================================================  
-   FIDELITE  
-========================================================= */  
-  
-.loyalty{  
-  
-    margin-top:12px;  
-  
-    background:var(--card);  
-  
-    border:  
-        1px solid  
-        rgba(255,152,0,.25);  
-  
-    border-radius:20px;  
-  
-    padding:20px;  
-  
-}  
-  
-  
-.loyalty-head{  
-  
-    display:flex;  
-  
-    justify-content:space-between;  
-  
-    align-items:center;  
-  
-    gap:15px;  
-  
-}  
-  
-  
-.loyalty-title{  
-  
-    font-weight:bold;  
-  
-}  
-  
-  
-.points{  
-  
-    color:var(--orange);  
-  
-    font-size:22px;  
-  
-    font-weight:900;  
-  
-}  
-  
-  
-.progress{  
-  
-    height:8px;  
-  
-    background:  
-        rgba(255,255,255,.08);  
-  
-    border-radius:20px;  
-  
-    overflow:hidden;  
-  
-    margin-top:15px;  
-  
-}  
-  
-  
-.progress-bar{  
-  
-    height:100%;  
-  
-    width:0%;  
-  
-    background:  
-        linear-gradient(  
-            90deg,  
-            #ff9800,  
-            #ffc107  
-        );  
-  
-    border-radius:20px;  
-  
-    transition:  
-        width .4s ease;  
-  
-}  
-  
-  
-.loyalty-info{  
-  
-    margin-top:9px;  
-  
-    font-size:11px;  
-  
-    opacity:.6;  
-  
-}  
-  
-  
-/* =========================================================  
-   POINTS INFO  
-========================================================= */  
-  
-.points-rules{  
-  
-    display:grid;  
-  
-    grid-template-columns:  
-        1fr  
-        1fr;  
-  
-    gap:10px;  
-  
-    margin-top:15px;  
-  
-}  
-  
-  
-.points-rule{  
-  
-    background:  
-        rgba(255,152,0,.07);  
-  
-    border:  
-        1px solid  
-        rgba(255,152,0,.15);  
-  
-    border-radius:13px;  
-  
-    padding:12px;  
-  
-    text-align:center;  
-  
-}  
-  
-  
-.points-rule strong{  
-  
-    display:block;  
-  
-    color:var(--orange);  
-  
-    font-size:17px;  
-  
-}  
-  
-  
-.points-rule span{  
-  
-    display:block;  
-  
-    margin-top:4px;  
-  
-    font-size:10px;  
-  
-    opacity:.6;  
-  
-}  
-  
-  
-/* =========================================================  
-   CONVERSION  
-========================================================= */  
-  
-.convert-box{  
-  
-    margin-top:15px;  
-  
-    padding:15px;  
-  
-    border-radius:15px;  
-  
-    background:  
-        rgba(255,152,0,.07);  
-  
-    border:  
-        1px solid  
-        rgba(255,152,0,.18);  
-  
-}  
-  
-  
-.convert-info{  
-  
-    font-size:11px;  
-  
-    opacity:.65;  
-  
-    line-height:1.6;  
-  
-}  
-  
-  
-.convert-info b{  
-  
-    color:var(--gold);  
-  
-}  
-  
-  
-.convert-button{  
-  
-    width:100%;  
-  
-    margin-top:12px;  
-  
-    padding:13px;  
-  
-    border:none;  
-  
-    border-radius:11px;  
-  
-    background:  
-        linear-gradient(  
-            135deg,  
-            #ff9800,  
-            #ffc107  
-        );  
-  
-    color:#171000;  
-  
-    font-weight:900;  
-  
-    cursor:pointer;  
-  
-}  
-  
-  
-.convert-button:disabled{  
-  
-    opacity:.4;  
-  
-    cursor:not-allowed;  
-  
-}  
-  
-  
-/* =========================================================  
-   CONVERSION STATUS  
-========================================================= */  
-  
-.convert-status{  
-  
-    text-align:center;  
-  
-    min-height:18px;  
-  
-    margin-top:9px;  
-  
-    font-size:11px;  
-  
-}  
-  
-  
-.success{  
-  
-    color:var(--green);  
-  
-}  
-  
-  
-.error{  
-  
-    color:var(--red);  
-  
-}  
-  
-  
-/* =========================================================  
-   MENU  
-========================================================= */  
-  
-.menu-title{  
-  
-    font-size:13px;  
-  
-    opacity:.55;  
-  
-    margin:  
-        5px  
-        3px  
-        12px;  
-  
-    text-transform:uppercase;  
-  
-    letter-spacing:1px;  
-  
-}  
-  
-  
-.menu{  
-  
-    display:flex;  
-  
-    flex-direction:column;  
-  
-    gap:10px;  
-  
-}  
-  
-  
-.menu-item{  
-  
-    display:flex;  
-  
-    align-items:center;  
-  
-    text-decoration:none;  
-  
-    color:white;  
-  
-    padding:17px;  
-  
-    background:var(--card);  
-  
-    border:  
-        1px solid  
-        rgba(255,255,255,.07);  
-  
-    border-radius:17px;  
-  
-    transition:.2s;  
-  
-}  
-  
-  
-.menu-item:active{  
-  
-    transform:scale(.98);  
-  
-}  
-  
-  
-.menu-icon{  
-  
-    width:40px;  
-  
-    height:40px;  
-  
-    border-radius:12px;  
-  
-    display:flex;  
-  
-    justify-content:center;  
-  
-    align-items:center;  
-  
-    background:  
-        rgba(0,210,255,.09);  
-  
-    margin-right:14px;  
-  
-    font-size:20px;  
-  
-}  
-  
-  
-.menu-text{  
-  
-    flex:1;  
-  
-}  
-  
-  
-.menu-name{  
-  
-    font-weight:bold;  
-  
-    font-size:14px;  
-  
-}  
-  
-  
-.menu-desc{  
-  
-    font-size:11px;  
-  
-    opacity:.5;  
-  
-    margin-top:3px;  
-  
-}  
-  
-  
-.arrow{  
-  
-    opacity:.4;  
-  
-    font-size:22px;  
-  
-}  
-  
-  
-/* =========================================================  
-   CONTACT ADMIN  
-========================================================= */  
-  
-.admin-contact{  
-  
-    margin-top:25px;  
-  
-    background:var(--card);  
-  
-    border:  
-        1px solid  
-        rgba(0,210,255,.2);  
-  
-    border-radius:22px;  
-  
-    padding:18px;  
-  
-}  
-  
-  
-.admin-contact-header{  
-  
-    display:flex;  
-  
-    align-items:center;  
-  
-    margin-bottom:15px;  
-  
-}  
-  
-  
-.admin-contact-icon{  
-  
-    width:45px;  
-  
-    height:45px;  
-  
-    border-radius:14px;  
-  
-    background:  
-        rgba(0,210,255,.1);  
-  
-    display:flex;  
-  
-    align-items:center;  
-  
-    justify-content:center;  
-  
-    font-size:22px;  
-  
-    margin-right:12px;  
-  
-}  
-  
-  
-.admin-contact-title{  
-  
-    font-size:15px;  
-  
-    font-weight:bold;  
-  
-}  
-  
-  
-.admin-contact-desc{  
-  
-    font-size:11px;  
-  
-    opacity:.5;  
-  
-    margin-top:3px;  
-  
-}  
-  
-  
-/* =========================================================  
-   CHAT  
-========================================================= */  
-  
-.chat-box{  
-  
-    max-height:430px;  
-  
-    overflow-y:auto;  
-  
-    padding:  
-        8px  
-        2px;  
-  
-    display:flex;  
-  
-    flex-direction:column;  
-  
-    gap:10px;  
-  
-}  
-  
-  
-.empty-chat{  
-  
-    text-align:center;  
-  
-    padding:25px 10px;  
-  
-    font-size:12px;  
-  
-    opacity:.45;  
-  
-}  
-  
-  
-/* =========================================================  
-   MESSAGE  
-========================================================= */  
-  
-.message{  
-  
-    max-width:85%;  
-  
-    padding:  
-        12px  
-        14px;  
-  
-    border-radius:15px;  
-  
-    font-size:13px;  
-  
-    line-height:1.45;  
-  
-    word-break:break-word;  
-  
-}  
-  
-  
-.message.user{  
-  
-    align-self:flex-end;  
-  
-    background:  
-        linear-gradient(  
-            135deg,  
-            var(--blue),  
-            var(--blue2)  
-        );  
-  
-    color:#001018;  
-  
-    border-bottom-right-radius:4px;  
-  
-}  
-  
-  
-.message.admin{  
-  
-    align-self:flex-start;  
-  
-    background:  
-        rgba(255,255,255,.07);  
-  
-    border:  
-        1px solid  
-        rgba(255,255,255,.08);  
-  
-    border-bottom-left-radius:4px;  
-  
-}  
-  
-  
-.message-author{  
-  
-    font-size:9px;  
-  
-    font-weight:bold;  
-  
-    opacity:.55;  
-  
-    margin-bottom:4px;  
-  
-}  
-  
-  
-.message-date{  
-  
-    font-size:9px;  
-  
-    opacity:.45;  
-  
-    margin-top:6px;  
-  
-}  
-  
-  
-/* =========================================================  
-   FICHIERS ADMIN  
-========================================================= */  
-  
-.admin-file{  
-  
-    margin-top:10px;  
-  
-    padding:12px;  
-  
-    border-radius:12px;  
-  
-    background:  
-        rgba(0,210,255,.07);  
-  
-    border:  
-        1px solid  
-        rgba(0,210,255,.15);  
-  
-}  
-  
-  
-.file-name{  
-  
-    font-size:12px;  
-  
-    font-weight:bold;  
-  
-    word-break:break-all;  
-  
-}  
-  
-  
-.file-size{  
-  
-    font-size:10px;  
-  
-    opacity:.5;  
-  
-    margin-top:3px;  
-  
-}  
-  
-  
-.download-file{  
-  
-    display:block;  
-  
-    margin-top:9px;  
-  
-    padding:9px;  
-  
-    border-radius:9px;  
-  
-    text-align:center;  
-  
-    text-decoration:none;  
-  
-    background:var(--blue);  
-  
-    color:#001018;  
-  
-    font-size:11px;  
-  
-    font-weight:bold;  
-  
-}  
-  
-  
-/* =========================================================  
-   MESSAGE INPUT  
-========================================================= */  
-  
-.message-area{  
-  
-    margin-top:12px;  
-  
-}  
-  
-  
-#jbMessageInput{  
-  
-    width:100%;  
-  
-    min-height:90px;  
-  
-    resize:none;  
-  
-    padding:13px;  
-  
-    border-radius:14px;  
-  
-    border:  
-        1px solid  
-        rgba(255,255,255,.1);  
-  
-    background:  
-        rgba(0,0,0,.35);  
-  
-    color:white;  
-  
-    outline:none;  
-  
-    font-family:inherit;  
-  
-}  
-  
-  
-#jbMessageInput:focus{  
-  
-    border-color:var(--blue);  
-  
-}  
-  
-  
-.send-message{  
-  
-    width:100%;  
-  
-    margin-top:9px;  
-  
-    padding:14px;  
-  
-    border:none;  
-  
-    border-radius:13px;  
-  
-    background:var(--blue);  
-  
-    color:#001018;  
-  
-    font-weight:900;  
-  
-    cursor:pointer;  
-  
-}  
-  
-  
-.send-message:disabled{  
-  
-    opacity:.5;  
-  
-    cursor:not-allowed;  
-  
-}  
-  
-  
-.chat-info{  
-  
-    margin-top:10px;  
-  
-    font-size:10px;  
-  
-    line-height:1.6;  
-  
-    opacity:.45;  
-  
-}  
-  
-  
-/* =========================================================  
-   LOGOUT  
-========================================================= */  
-  
-.logout{  
-  
-    width:100%;  
-  
-    margin-top:18px;  
-  
-    padding:15px;  
-  
-    border-radius:15px;  
-  
-    background:  
-        rgba(255,71,87,.1);  
-  
-    color:var(--red);  
-  
-    border:  
-        1px solid  
-        rgba(255,71,87,.4);  
-  
-    font-weight:bold;  
-  
-    cursor:pointer;  
-  
-}  
-  
-  
-/* =========================================================  
-   STATUS  
-========================================================= */  
-  
-.status{  
-  
-    text-align:center;  
-  
-    font-size:12px;  
-  
-    color:#ffeb3b;  
-  
-    padding:10px;  
-  
-}  
-  
-  
-/* =========================================================  
-   NAVBAR  
-========================================================= */  
-  
-.navbar{  
-  
-    position:fixed;  
-  
-    left:0;  
-  
-    right:0;  
-  
-    bottom:0;  
-  
-    z-index:20;  
-  
-    height:72px;  
-  
-    display:flex;  
-  
-    justify-content:space-around;  
-  
-    align-items:center;  
-  
-    background:  
-        rgba(4,10,20,.97);  
-  
-    border-top:  
-        1px solid  
-        var(--border);  
-  
-    backdrop-filter:  
-        blur(18px);  
-  
-}  
-  
-  
-.nav{  
-  
-    text-decoration:none;  
-  
-    color:white;  
-  
-    opacity:.5;  
-  
-    text-align:center;  
-  
-    font-size:11px;  
-  
-}  
-  
-  
-.nav span{  
-  
-    display:block;  
-  
-    font-size:21px;  
-  
-    margin-bottom:3px;  
-  
-}  
-  
-  
-.nav.active{  
-  
-    color:var(--blue);  
-  
-    opacity:1;  
-  
-    font-weight:bold;  
-  
-}  
-  
-  
-/* =========================================================  
-   RESPONSIVE  
-========================================================= */  
-  
-@media(max-width:380px){  
-  
-    .stats{  
-  
-        grid-template-columns:  
-            1fr  
-            1fr;  
-  
-    }  
-  
-}  
-  
-  
-@media(max-width:330px){  
-  
-    .points-rules{  
-  
-        grid-template-columns:1fr;  
-  
-    }  
-  
-}  
-  
-</style>  </head>  <body>  <div class="container">  <!-- ======================================================  
-     HEADER  
-====================================================== -->  <header class="header">  <div  
-    class="avatar"  
-    id="jbAvatar"  
->  
-    J  
-</div>  
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"
+>
+
+<meta
+    name="theme-color"
+    content="#050a14"
+>
+
+<meta
+    name="description"
+    content="JASON Business — Mon Profil"
+>
+
+<title>JASON Business — Mon Profil</title>
 
 
-<div  
-    class="name"  
-    id="jbName"  
->  
+<style>
 
-    Mon compte  
+/* =========================================================
+   JASON BUSINESS — PROFIL
+========================================================= */
 
-</div>  
+:root{
+
+    --blue:#00d2ff;
+    --blue2:#0077ff;
+
+    --dark:#050a14;
+
+    --card:rgba(8,15,28,.88);
+
+    --border:rgba(0,210,255,.25);
+
+    --green:#00e676;
+
+    --orange:#ff9800;
+
+    --gold:#ffd700;
+
+    --red:#ff4757;
+
+}
 
 
-<div  
-    class="phone"  
-    id="jbPhone"  
->  
-
-    Chargement...  
-
-</div>  
+*{
+    box-sizing:border-box;
+}
 
 
-<div  
-    class="invite"  
-    id="jbInviteCode"  
->  
+html{
+    scroll-behavior:smooth;
+}
 
-    ID : STAR-0000  
+
+body{
+
+    margin:0;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+
+        linear-gradient(
+            rgba(3,8,18,.82),
+            rgba(3,8,18,.94)
+        ),
+
+        url("IMG_0870.jpeg")
+        center/cover
+        fixed;
+
+    color:white;
+
+    min-height:100vh;
+
+    padding-bottom:100px;
+
+}
+
+
+button,
+textarea,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+.container{
+
+    width:100%;
+
+    max-width:650px;
+
+    margin:auto;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
+    padding:
+        28px
+        20px
+        25px;
+
+    text-align:center;
+
+    background:
+        rgba(0,0,0,.55);
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+
+.avatar{
+
+    width:82px;
+
+    height:82px;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--blue2)
+        );
+
+    color:#001018;
+
+    font-size:28px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 0 30px
+        rgba(0,210,255,.45);
+
+}
+
+
+.name{
+
+    margin:
+        12px
+        0
+        4px;
+
+    font-size:20px;
+
+    letter-spacing:1px;
+
+}
+
+
+.phone{
+
+    font-size:13px;
+
+    opacity:.65;
+
+}
+
+
+.invite{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:
+        7px
+        14px;
+
+    border-radius:20px;
+
+    color:var(--blue);
+
+    background:
+        rgba(0,210,255,.08);
+
+    border:
+        1px solid
+        var(--border);
+
+    font-size:12px;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+
+    padding:18px;
+
+}
+
+
+/* =========================================================
+   SOLDE
+========================================================= */
+
+.balance-card{
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(0,210,255,.18),
+            rgba(0,50,100,.25)
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:22px;
+
+    padding:22px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.3);
+
+}
+
+
+.balance-title{
+
+    font-size:12px;
+
+    opacity:.65;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+
+.total{
+
+    margin:
+        7px
+        0;
+
+    font-size:32px;
+
+    font-weight:900;
+
+    color:var(--blue);
+
+}
+
+
+.fc{
+
+    font-size:13px;
+
+    opacity:.7;
+
+}
+
+
+.balance-actions{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:10px;
+
+    margin-top:18px;
+
+}
+
+
+.action{
+
+    text-decoration:none;
+
+    text-align:center;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+}
+
+
+.recharge{
+
+    background:var(--blue);
+
+    color:#001018;
+
+}
+
+
+.withdraw{
+
+    background:
+        rgba(255,255,255,.07);
+
+    color:white;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+
+    margin-top:12px;
+
+}
+
+
+.stat{
+
+    background:var(--card);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:16px;
+
+    padding:
+        15px
+        8px;
+
+    text-align:center;
+
+}
+
+
+.stat-icon{
+
+    font-size:20px;
+
+}
+
+
+.stat-value{
+
+    margin-top:7px;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+}
+
+
+.stat-label{
+
+    margin-top:3px;
+
+    font-size:10px;
+
+    opacity:.55;
+
+}
+
+
+/* =========================================================
+   FIDELITE
+========================================================= */
+
+.loyalty{
+
+    margin-top:12px;
+
+    background:var(--card);
+
+    border:
+        1px solid
+        rgba(255,152,0,.25);
+
+    border-radius:20px;
+
+    padding:20px;
+
+}
+
+
+.loyalty-head{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+.loyalty-title{
+
+    font-weight:bold;
+
+}
+
+
+.points{
+
+    color:var(--orange);
+
+    font-size:22px;
+
+    font-weight:900;
+
+}
+
+
+.progress{
+
+    height:8px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin-top:15px;
+
+}
+
+
+.progress-bar{
+
+    height:100%;
+
+    width:0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff9800,
+            #ffc107
+        );
+
+    border-radius:20px;
+
+    transition:
+        width .4s ease;
+
+}
+
+
+.loyalty-info{
+
+    margin-top:9px;
+
+    font-size:11px;
+
+    opacity:.6;
+
+}
+
+
+/* =========================================================
+   POINTS INFO
+========================================================= */
+
+.points-rules{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:10px;
+
+    margin-top:15px;
+
+}
+
+
+.points-rule{
+
+    background:
+        rgba(255,152,0,.07);
+
+    border:
+        1px solid
+        rgba(255,152,0,.15);
+
+    border-radius:13px;
+
+    padding:12px;
+
+    text-align:center;
+
+}
+
+
+.points-rule strong{
+
+    display:block;
+
+    color:var(--orange);
+
+    font-size:17px;
+
+}
+
+
+.points-rule span{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:10px;
+
+    opacity:.6;
+
+}
+
+
+/* =========================================================
+   CONVERSION
+========================================================= */
+
+.convert-box{
+
+    margin-top:15px;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,152,0,.07);
+
+    border:
+        1px solid
+        rgba(255,152,0,.18);
+
+}
+
+
+.convert-info{
+
+    font-size:11px;
+
+    opacity:.65;
+
+    line-height:1.6;
+
+}
+
+
+.convert-info b{
+
+    color:var(--gold);
+
+}
+
+
+.convert-button{
+
+    width:100%;
+
+    margin-top:12px;
+
+    padding:13px;
+
+    border:none;
+
+    border-radius:11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #ffc107
+        );
+
+    color:#171000;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+}
+
+
+.convert-button:disabled{
+
+    opacity:.4;
+
+    cursor:not-allowed;
+
+}
+
+
+/* =========================================================
+   CONVERSION STATUS
+========================================================= */
+
+.convert-status{
+
+    text-align:center;
+
+    min-height:18px;
+
+    margin-top:9px;
+
+    font-size:11px;
+
+}
+
+
+.success{
+
+    color:var(--green);
+
+}
+
+
+.error{
+
+    color:var(--red);
+
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu-title{
+
+    font-size:13px;
+
+    opacity:.55;
+
+    margin:
+        5px
+        3px
+        12px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+
+.menu-item{
+
+    display:flex;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:17px;
+
+    background:var(--card);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    border-radius:17px;
+
+    transition:.2s;
+
+}
+
+
+.menu-item:hover{
+
+    border-color:
+        rgba(0,210,255,.25);
+
+    transform:translateY(-1px);
+
+}
+
+
+.menu-item:active{
+
+    transform:scale(.98);
+
+}
+
+
+.menu-icon{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+        rgba(0,210,255,.09);
+
+    margin-right:14px;
+
+    font-size:20px;
+
+}
+
+
+.menu-text{
+
+    flex:1;
+
+}
+
+
+.menu-name{
+
+    font-weight:bold;
+
+    font-size:14px;
+
+}
+
+
+.menu-desc{
+
+    font-size:11px;
+
+    opacity:.5;
+
+    margin-top:3px;
+
+}
+
+
+.arrow{
+
+    opacity:.4;
+
+    font-size:22px;
+
+}
+
+
+/* =========================================================
+   CONTACT ADMIN
+========================================================= */
+
+.admin-contact{
+
+    margin-top:25px;
+
+    background:var(--card);
+
+    border:
+        1px solid
+        rgba(0,210,255,.2);
+
+    border-radius:22px;
+
+    padding:18px;
+
+}
+
+
+.admin-contact-header{
+
+    display:flex;
+
+    align-items:center;
+
+    margin-bottom:15px;
+
+}
+
+
+.admin-contact-icon{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:14px;
+
+    background:
+        rgba(0,210,255,.1);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    margin-right:12px;
+
+}
+
+
+.admin-contact-title{
+
+    font-size:15px;
+
+    font-weight:bold;
+
+}
+
+
+.admin-contact-desc{
+
+    font-size:11px;
+
+    opacity:.5;
+
+    margin-top:3px;
+
+}
+
+
+/* =========================================================
+   CHAT
+========================================================= */
+
+.chat-box{
+
+    max-height:430px;
+
+    overflow-y:auto;
+
+    padding:
+        8px
+        2px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    scrollbar-width:thin;
+
+}
+
+
+.empty-chat{
+
+    text-align:center;
+
+    padding:25px 10px;
+
+    font-size:12px;
+
+    opacity:.45;
+
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message{
+
+    max-width:85%;
+
+    padding:
+        12px
+        14px;
+
+    border-radius:15px;
+
+    font-size:13px;
+
+    line-height:1.45;
+
+    word-break:break-word;
+
+}
+
+
+.message.user{
+
+    align-self:flex-end;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--blue2)
+        );
+
+    color:#001018;
+
+    border-bottom-right-radius:4px;
+
+}
+
+
+.message.admin{
+
+    align-self:flex-start;
+
+    background:
+        rgba(255,255,255,.07);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-bottom-left-radius:4px;
+
+}
+
+
+.message-author{
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    opacity:.55;
+
+    margin-bottom:4px;
+
+}
+
+
+.message-date{
+
+    font-size:9px;
+
+    opacity:.45;
+
+    margin-top:6px;
+
+}
+
+
+/* =========================================================
+   FICHIERS ADMIN
+========================================================= */
+
+.admin-file{
+
+    margin-top:10px;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    background:
+        rgba(0,210,255,.07);
+
+    border:
+        1px solid
+        rgba(0,210,255,.15);
+
+}
+
+
+.file-name{
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    word-break:break-all;
+
+}
+
+
+.file-size{
+
+    font-size:10px;
+
+    opacity:.5;
+
+    margin-top:3px;
+
+}
+
+
+.download-file{
+
+    display:block;
+
+    margin-top:9px;
+
+    padding:9px;
+
+    border-radius:9px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    background:var(--blue);
+
+    color:#001018;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================================================
+   MESSAGE INPUT
+========================================================= */
+
+.message-area{
+
+    margin-top:12px;
+
+}
+
+
+#jbMessageInput{
+
+    width:100%;
+
+    min-height:90px;
+
+    resize:none;
+
+    padding:13px;
+
+    border-radius:14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(0,0,0,.35);
+
+    color:white;
+
+    outline:none;
+
+    font-family:inherit;
+
+}
+
+
+#jbMessageInput:focus{
+
+    border-color:var(--blue);
+
+}
+
+
+.send-message{
+
+    width:100%;
+
+    margin-top:9px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:13px;
+
+    background:var(--blue);
+
+    color:#001018;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+}
+
+
+.send-message:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+}
+
+
+.chat-info{
+
+    margin-top:10px;
+
+    font-size:10px;
+
+    line-height:1.6;
+
+    opacity:.45;
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.logout{
+
+    width:100%;
+
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,71,87,.1);
+
+    color:var(--red);
+
+    border:
+        1px solid
+        rgba(255,71,87,.4);
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+
+.logout:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status{
+
+    text-align:center;
+
+    font-size:12px;
+
+    color:#ffeb3b;
+
+    padding:10px;
+
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+
+    position:fixed;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    z-index:20;
+
+    height:72px;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    background:
+        rgba(4,10,20,.97);
+
+    border-top:
+        1px solid
+        var(--border);
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+
+.nav{
+
+    text-decoration:none;
+
+    color:white;
+
+    opacity:.5;
+
+    text-align:center;
+
+    font-size:11px;
+
+    min-width:60px;
+
+}
+
+
+.nav span{
+
+    display:block;
+
+    font-size:21px;
+
+    margin-bottom:3px;
+
+}
+
+
+.nav.active{
+
+    color:var(--blue);
+
+    opacity:1;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:380px){
+
+    .stats{
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+    }
+
+}
+
+
+@media(max-width:330px){
+
+    .points-rules{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- ======================================================
+     HEADER
+====================================================== -->
+
+<header class="header">
+
+
+<div
+    class="avatar"
+    id="jbAvatar"
+>
+    J
+</div>
+
+
+<div
+    class="name"
+    id="jbName"
+>
+
+    Mon compte
 
 </div>
 
-</header>  <main class="section">  <!-- ======================================================  
-     SOLDE  
-====================================================== -->  <div class="balance-card">  <div class="balance-title">  
 
-    Solde disponible  
+<div
+    class="phone"
+    id="jbPhone"
+>
 
-</div>  
-
-
-<div  
-    class="total"  
-    id="jbTotalBalance"  
->  
-
-    0  
-
-</div>  
-
-
-<span class="fc">  
-
-    FC  
-
-</span>  
-
-
-<div class="balance-actions">  
-
-
-    <a  
-        href="recharge.html"  
-        class="action recharge"  
-    >  
-
-        ➕ Recharger  
-
-    </a>  
-
-
-    <a  
-        href="retrait.html"  
-        class="action withdraw"  
-    >  
-
-        💸 Retirer  
-
-    </a>  
-
+    Chargement...
 
 </div>
 
-</div>  <!-- ======================================================  
-     STATISTIQUES  
-====================================================== -->  <div class="stats">  <div class="stat">  
 
-    <div class="stat-icon">  
+<div
+    class="invite"
+    id="jbInviteCode"
+>
 
-        💰  
-
-    </div>  
-
-
-    <div  
-        class="stat-value"  
-        id="jbMainBalance"  
-    >  
-
-        0 FC  
-
-    </div>  
-
-
-    <div class="stat-label">  
-
-        Solde principal  
-
-    </div>  
-
-</div>  
-
-
-
-<div class="stat">  
-
-    <div class="stat-icon">  
-
-        📈  
-
-    </div>  
-
-
-    <div  
-        class="stat-value"  
-        id="jbGainBalance"  
-    >  
-
-        0 FC  
-
-    </div>  
-
-
-    <div class="stat-label">  
-
-        Gains  
-
-    </div>  
-
-</div>  
-
-
-
-<div class="stat">  
-
-    <div class="stat-icon">  
-
-        👥  
-
-    </div>  
-
-
-    <div  
-        class="stat-value"  
-        id="jbCommissionBalance"  
-    >  
-
-        0 FC  
-
-    </div>  
-
-
-    <div class="stat-label">  
-
-        Commissions  
-
-    </div>  
+    ID : STAR-0000
 
 </div>
 
-</div>  <!-- ======================================================  
-     FIDELITE  
-====================================================== -->  <div class="loyalty">  <div class="loyalty-head">  
 
-
-    <div>  
-
-        <div class="loyalty-title">  
-
-            ⭐ Programme fidélité  
-
-        </div>  
-
-
-        <div class="loyalty-info">  
-
-            Gagnez des points grâce à votre réseau.  
-
-        </div>  
-
-    </div>  
-
-
-    <div  
-        class="points"  
-        id="jbLoyaltyPoints"  
-    >  
-
-        0  
-
-    </div>  
-
-</div>  
+</header>
 
 
 
-<div class="progress">  
-
-    <div  
-        class="progress-bar"  
-        id="jbLoyaltyProgress"  
-    >  
-    </div>  
-
-</div>  
+<main class="section">
 
 
+<!-- ======================================================
+     SOLDE
+====================================================== -->
 
-<div class="loyalty-info">  
-
-    <span id="jbPointsText">  
-
-        0 / 1000 points  
-
-    </span>  
-
-</div>  
+<div class="balance-card">
 
 
+<div class="balance-title">
 
-<!-- ==================================================  
-     RÈGLES  
-================================================== -->  
-
-<div class="points-rules">  
-
-
-    <div class="points-rule">  
-
-        <strong>  
-            +5 points  
-        </strong>  
-
-        <span>  
-            1 personne parrainée  
-        </span>  
-
-    </div>  
-
-
-    <div class="points-rule">  
-
-        <strong>  
-            1 000 FC  
-        </strong>  
-
-        <span>  
-            100 points convertis  
-        </span>  
-
-    </div>  
-
-
-</div>  
-
-
-
-<!-- ==================================================  
-     CONVERSION  
-================================================== -->  
-
-<div class="convert-box">  
-
-
-    <div class="convert-info">  
-
-        ⭐ <b>100 points = 1 000 FC</b>  
-
-        <br>  
-
-        👥 Chaque personne parrainée rapporte  
-        <b>5 points</b>.  
-
-        <br>  
-
-        💰 Les points convertis sont ajoutés  
-        à votre <b>solde principal</b>.  
-
-    </div>  
-
-
-    <button  
-        class="convert-button"  
-        id="jbConvertPoints"  
-        disabled  
-    >  
-
-        💱 MINIMUM 100 POINTS  
-
-    </button>  
-
-
-    <div  
-        class="convert-status"  
-        id="jbConvertStatus"  
-    >  
-    </div>  
+    Solde disponible
 
 </div>
 
-</div>  <!-- ======================================================  
-     MENU  
-====================================================== -->  <div style="margin-top:25px;">  <div class="menu-title">  
 
-    Mon espace  
+<div
+    class="total"
+    id="jbTotalBalance"
+>
 
-</div>  
-
-
-<div class="menu">  
-
-
-    <a  
-        href="shop.html"  
-        class="menu-item"  
-    >  
-
-        <div class="menu-icon">  
-            🛒  
-        </div>  
-
-
-        <div class="menu-text">  
-
-            <div class="menu-name">  
-                Boutique  
-            </div>  
-
-
-            <div class="menu-desc">  
-                Acheter nos produits et services  
-            </div>  
-
-        </div>  
-
-
-        <div class="arrow">  
-            ›  
-        </div>  
-
-    </a>  
-
-
-
-    <a  
-        href="transactions.html"  
-        class="menu-item"  
-    >  
-
-        <div class="menu-icon">  
-            📊  
-        </div>  
-
-
-        <div class="menu-text">  
-
-            <div class="menu-name">  
-                Transactions  
-            </div>  
-
-
-            <div class="menu-desc">  
-                Voir mon historique financier  
-            </div>  
-
-        </div>  
-
-
-        <div class="arrow">  
-            ›  
-        </div>  
-
-    </a>  
-
-
-
-    <a  
-        href="equipe.html"  
-        class="menu-item"  
-    >  
-
-        <div class="menu-icon">  
-            👥  
-        </div>  
-
-
-        <div class="menu-text">  
-
-            <div class="menu-name">  
-                Mon équipe  
-            </div>  
-
-
-            <div class="menu-desc">  
-                Parrainage et commissions  
-            </div>  
-
-        </div>  
-
-
-        <div class="arrow">  
-            ›  
-        </div>  
-
-    </a>  
-
-
-
-    <a  
-        href="recharge.html"  
-        class="menu-item"  
-    >  
-
-        <div class="menu-icon">  
-            💳  
-        </div>  
-
-
-        <div class="menu-text">  
-
-            <div class="menu-name">  
-                Recharger mon compte  
-            </div>  
-
-
-            <div class="menu-desc">  
-                Ajouter de l'argent à mon solde  
-            </div>  
-
-        </div>  
-
-
-        <div class="arrow">  
-            ›  
-        </div>  
-
-    </a>  
-
-
-
-    <a  
-        href="retrait.html"  
-        class="menu-item"  
-    >  
-
-        <div class="menu-icon">  
-            💸  
-        </div>  
-
-
-        <div class="menu-text">  
-
-            <div class="menu-name">  
-                Retrait  
-            </div>  
-
-
-            <div class="menu-desc">  
-                Demander un paiement  
-            </div>  
-
-        </div>  
-
-
-        <div class="arrow">  
-            ›  
-        </div>  
-
-    </a>  
-
-
-
-    <a  
-        href="support.html"  
-        class="menu-item"  
-    >  
-
-        <div class="menu-icon">  
-            🎧  
-        </div>  
-
-
-        <div class="menu-text">  
-
-            <div class="menu-name">  
-                Support  
-            </div>  
-
-
-            <div class="menu-desc">  
-                Besoin d'aide ?  
-            </div>  
-
-        </div>  
-
-
-        <div class="arrow">  
-            ›  
-        </div>  
-
-    </a>  
-
+    0
 
 </div>
 
-</div>  <!-- ======================================================  
-     CONTACT ADMIN  
-====================================================== -->  <div class="admin-contact">  <div class="admin-contact-header">  
 
+<span class="fc">
 
-    <div class="admin-contact-icon">  
+    FC
 
-        💬  
+</span>
 
-    </div>  
 
+<div class="balance-actions">
 
-    <div>  
 
-        <div class="admin-contact-title">  
+<a
+    href="recharge.html"
+    class="action recharge"
+>
 
-            Contacter l'administration  
-
-        </div>  
-
-
-        <div class="admin-contact-desc">  
-
-            Assistance et réception de fichiers  
-
-        </div>  
-
-    </div>  
-
-</div>  
-
-
-
-<!-- MESSAGES -->  
-
-<div  
-    class="chat-box"  
-    id="jbChatBox"  
->  
-
-    <div class="empty-chat">  
-
-        💬 Aucun message pour le moment  
-
-    </div>  
-
-</div>  
-
-
-
-<!-- MESSAGE UTILISATEUR -->  
-
-<div class="message-area">  
-
-
-    <textarea  
-        id="jbMessageInput"  
-        placeholder="Écrivez votre message à l'administration..."  
-        maxlength="1000"  
-    ></textarea>  
-
-
-    <button  
-        id="jbSendMessage"  
-        class="send-message"  
-    >  
-
-        📤 ENVOYER LE MESSAGE  
-
-    </button>  
-
-</div>  
-
-
-<div class="chat-info">  
-
-    🔒 Vous pouvez envoyer uniquement des messages texte.  
-
-    <br>  
-
-    📥 Les photos, vidéos, musiques, APK et documents  
-    sont envoyés uniquement par l'administration.  
-
-</div>
-
-</div>  <!-- ======================================================  
-     LOGOUT  
-====================================================== -->  <button
-class="logout"
-id="jbLogout"
-
-> 
-
-🚪 DÉCONNEXION
-
-</button>  <div  
-    class="status"  
-    id="jbStatus"  
->  
-</div>  </main>  </div>  <!-- ======================================================  
-     NAVIGATION  
-====================================================== -->  <nav class="navbar">  <a  
-    href="dashboard.html"  
-    class="nav"  
->  
-
-    <span>📊</span>  
-
-    Dash  
-
-</a>  
-
-
-
-<a  
-    href="shop.html"  
-    class="nav"  
->  
-
-    <span>🛒</span>  
-
-    Boutique  
-
-</a>  
-
-
-
-<a  
-    href="equipe.html"  
-    class="nav"  
->  
-
-    <span>👥</span>  
-
-    Équipe  
-
-</a>  
-
-
-
-<a  
-    href="profil.html"  
-    class="nav active"  
->  
-
-    <span>👤</span>  
-
-    Profil  
+    ➕ Recharger
 
 </a>
 
-</nav>  <!-- ======================================================  
-     FIREBASE  
-====================================================== -->  <script type="module">  
-  
-  
-import {  
-  
-    initializeApp  
-  
-}  
-  
-from  
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";  
-  
-  
-import {  
-  
-    getDatabase,  
-  
-    ref,  
-  
-    onValue,  
-  
-    get,  
-  
-    push,  
-  
-    set,  
-  
-    runTransaction  
-  
-}  
-  
-from  
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";  
-  
-  
-/* =========================================================  
-   FIREBASE CONFIG  
-========================================================= */  
-  
-const jbFirebaseConfig = {  
-  
-    apiKey:  
-    "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",  
-  
-    authDomain:  
-    "starlink-investit.firebaseapp.com",  
-  
-    databaseURL:  
-    "https://starlink-investit-default-rtdb.firebaseio.com",  
-  
-    projectId:  
-    "starlink-investit",  
-  
-    storageBucket:  
-    "starlink-investit.firebasestorage.app",  
-  
-    messagingSenderId:  
-    "807081599583",  
-  
-    appId:  
-    "1:807081599583:web:e00ec3959bc4acdae031ea"  
-  
-};  
-  
-  
-const jbApp =  
-    initializeApp(  
-        jbFirebaseConfig  
-    );  
-  
-  
-const jbDB =  
-    getDatabase(  
-        jbApp  
-    );  
-  
-  
-/* =========================================================  
-   SESSION  
-========================================================= */  
-  
-const jbUserPhone =  
-    localStorage.getItem(  
-        "userPhone"  
-    );  
-  
-  
-if(!jbUserPhone){  
-  
-    window.location.href =  
-        "login.html";  
-  
-}  
-  
-  
-/* =========================================================  
-   CONSTANTES JASON BUSINESS  
-========================================================= */  
-  
-/*  
-  
-   1 personne = 5 points  
-  
-   100 points = 1000 FC  
-  
-   Donc :  
-  
-   1 point = 10 FC  
-  
-*/  
-  
-const JB_POINTS_PERSONNE = 5;  
-  
-const JB_POINTS_CONVERSION = 100;  
-  
-const JB_FC_CONVERSION = 1000;  
-  
-  
-/* =========================================================  
-   USER REF  
-========================================================= */  
-  
-const jbUserRef =  
-    ref(  
-        jbDB,  
-        "users/" +  
-        jbUserPhone  
-    );  
-  
-  
-/* =========================================================  
-   FORMAT  
-========================================================= */  
-  
-function jbFormatNumber(value){  
-  
-    return Math.floor(  
-        Number(value) || 0  
-    ).toLocaleString(  
-        "fr-FR"  
-    );  
-  
-}  
-  
-  
-function jbFormatFC(value){  
-  
-    return (  
-        jbFormatNumber(value) +  
-        " FC"  
-    );  
-  
-}  
-  
-  
-/* =========================================================  
-   CHARGEMENT UTILISATEUR  
-========================================================= */  
-  
-onValue(  
-  
-    jbUserRef,  
-  
-    (snapshot)=>{  
-  
-  
-        if(!snapshot.exists()){  
-  
-            document  
-                .getElementById(  
-                    "jbStatus"  
-                )  
-                .innerText =  
-                "⚠️ Compte introuvable.";  
-  
-            return;  
-  
-        }  
-  
-  
-        const data =  
-            snapshot.val();  
-  
-  
-        /* =================================================  
-           NOM  
-        ================================================= */  
-  
-        const name =  
-            data.nom ||  
-            data.name ||  
-            data.username ||  
-            "Mon compte";  
-  
-  
-        document  
-            .getElementById(  
-                "jbName"  
-            )  
-            .innerText =  
-            name;  
-  
-  
-        /* =================================================  
-           TELEPHONE  
-        ================================================= */  
-  
-        document  
-            .getElementById(  
-                "jbPhone"  
-            )  
-            .innerText =  
-            jbUserPhone;  
-  
-  
-        /* =================================================  
-           AVATAR  
-        ================================================= */  
-  
-        const avatarSource =  
-            String(name || jbUserPhone);  
-  
-  
-        const avatarText =  
-            avatarSource  
-                .substring(0,2)  
-                .toUpperCase();  
-  
-  
-        document  
-            .getElementById(  
-                "jbAvatar"  
-            )  
-            .innerText =  
-            avatarText;  
-  
-  
-        /* =================================================  
-           CODE PARRAINAGE  
-        ================================================= */  
-  
-        const inviteCode =  
-            data.inviteCode ||  
-            data.referralCode ||  
-            "STAR-0000";  
-  
-  
-        document  
-            .getElementById(  
-                "jbInviteCode"  
-            )  
-            .innerText =  
-            "ID : " +  
-            inviteCode;  
-  
-  
-        /* =================================================  
-           SOLDES  
-        ================================================= */  
-  
-        const principal =  
-            Number(  
-                data.solde_principal  
-            ) || 0;  
-  
-  
-        const gains =  
-            Number(  
-                data.solde_gains  
-            ) || 0;  
-  
-  
-        const commissions =  
-            Number(  
-                data.solde_commissions  
-            ) || 0;  
-  
-  
-        const total =  
-            principal +  
-            gains +  
-            commissions;  
-  
-  
-        document  
-            .getElementById(  
-                "jbTotalBalance"  
-            )  
-            .innerText =  
-            jbFormatNumber(  
-                total  
-            );  
-  
-  
-        document  
-            .getElementById(  
-                "jbMainBalance"  
-            )  
-            .innerText =  
-            jbFormatFC(  
-                principal  
-            );  
-  
-  
-        document  
-            .getElementById(  
-                "jbGainBalance"  
-            )  
-            .innerText =  
-            jbFormatFC(  
-                gains  
-            );  
-  
-  
-        document  
-            .getElementById(  
-                "jbCommissionBalance"  
-            )  
-            .innerText =  
-            jbFormatFC(  
-                commissions  
-            );  
-  
-  
-        /* =================================================  
-           POINTS  
-        ================================================= */  
-  
-        const points =  
-            Number(  
-  
-                data.points_fidelite ??  
-                data.points ??  
-                data.loyaltyPoints ??  
-                0  
-  
-            );  
-  
-  
-        document  
-            .getElementById(  
-                "jbLoyaltyPoints"  
-            )  
-            .innerText =  
-            jbFormatNumber(  
-                points  
-            );  
-  
-  
-        /* =================================================  
-           PROGRESSION  
-        ================================================= */  
-  
-        const maxPoints =  
-            1000;  
-  
-  
-        const progress =  
-            Math.min(  
-                (  
-                    points /  
-                    maxPoints  
-                ) * 100,  
-                100  
-            );  
-  
-  
-        document  
-            .getElementById(  
-                "jbLoyaltyProgress"  
-            )  
-            .style.width =  
-            progress +  
-            "%";  
-  
-  
-        document  
-            .getElementById(  
-                "jbPointsText"  
-            )  
-            .innerText =  
-  
-            jbFormatNumber(  
-                points  
-            )  
-  
-            +  
-  
-            " / "  
-  
-            +  
-  
-            jbFormatNumber(  
-                maxPoints  
-            )  
-  
-            +  
-  
-            " points";  
-  
-  
-        /* =================================================  
-           BOUTON CONVERSION  
-        ================================================= */  
-  
-        const convertButton =  
-            document.getElementById(  
-                "jbConvertPoints"  
-            );  
-  
-  
-        const pointsConvertibles =  
-            Math.floor(  
-                points /  
-                JB_POINTS_CONVERSION  
-            )  
-            *  
-            JB_POINTS_CONVERSION;  
-  
-  
-        if(  
-            pointsConvertibles >=  
-            JB_POINTS_CONVERSION  
-        ){  
-  
-            const fc =  
-                (  
-                    pointsConvertibles /  
-                    JB_POINTS_CONVERSION  
-                )  
-                *  
-                JB_FC_CONVERSION;  
-  
-  
-            convertButton.disabled =  
-                false;  
-  
-  
-            convertButton.innerText =  
-  
-                "💱 CONVERTIR "  
-  
-                +  
-  
-                jbFormatNumber(  
-                    pointsConvertibles  
-                )  
-  
-                +  
-  
-                " POINTS → "  
-  
-                +  
-  
-                jbFormatNumber(  
-                    fc  
-                )  
-  
-                +  
-  
-                " FC";  
-  
-        }  
-  
-        else{  
-  
-            convertButton.disabled =  
-                true;  
-  
-  
-            convertButton.innerText =  
-                "💱 MINIMUM 100 POINTS";  
-  
-        }  
-  
-    }  
-  
-);  
-  
-  
-/* =========================================================  
-   CONVERSION POINTS  
-========================================================= */  
-  
-document  
-    .getElementById(  
-        "jbConvertPoints"  
-    )  
-    .addEventListener(  
-  
-        "click",  
-  
-        async()=>{  
-  
-  
-            const button =  
-                document.getElementById(  
-                    "jbConvertPoints"  
-                );  
-  
-  
-            const status =  
-                document.getElementById(  
-                    "jbConvertStatus"  
-                );  
-  
-  
-            try{  
-  
-  
-                button.disabled =  
-                    true;  
-  
-  
-                status.className =  
-                    "convert-status";  
-  
-  
-                status.innerText =  
-                    "⏳ Vérification des points...";  
-  
-  
-                const snapshot =  
-                    await get(  
-                        jbUserRef  
-                    );  
-  
-  
-                if(  
-                    !snapshot.exists()  
-                ){  
-  
-                    throw new Error(  
-                        "ACCOUNT_NOT_FOUND"  
-                    );  
-  
-                }  
-  
-  
-                const data =  
-                    snapshot.val();  
-  
-  
-                const points =  
-                    Number(  
-  
-                        data.points_fidelite ??  
-                        data.points ??  
-                        data.loyaltyPoints ??  
-                        0  
-  
-                    );  
-  
-  
-                const pointsConvertibles =  
-                    Math.floor(  
-                        points /  
-                        JB_POINTS_CONVERSION  
-                    )  
-                    *  
-                    JB_POINTS_CONVERSION;  
-  
-  
-                if(  
-                    pointsConvertibles <  
-                    JB_POINTS_CONVERSION  
-                ){  
-  
-                    throw new Error(  
-                        "INSUFFICIENT_POINTS"  
-                    );  
-  
-                }  
-  
-  
-                const fc =  
-                    (  
-                        pointsConvertibles /  
-                        JB_POINTS_CONVERSION  
-                    )  
-                    *  
-                    JB_FC_CONVERSION;  
-  
-  
-                const confirmation =  
-                    confirm(  
-  
-                        "Convertir "  
-  
-                        +  
-  
-                        jbFormatNumber(  
-                            pointsConvertibles  
-                        )  
-  
-                        +  
-  
-                        " points en "  
-  
-                        +  
-  
-                        jbFormatFC(  
-                            fc  
-                        )  
-  
-                        +  
-  
-                        " ?"  
-  
-                    );  
-  
-  
-                if(!confirmation){  
-  
-                    button.disabled =  
-                        false;  
-  
-                    return;  
-  
-                }  
-  
-  
-                status.innerText =  
-                    "⏳ Conversion en cours...";  
-  
-  
-                /* =================================================  
-                   TRANSACTION ATOMIQUE  
-                ================================================= */  
-  
-                const result =  
-                    await runTransaction(  
-  
-                        jbUserRef,  
-  
-                        (current)=>{  
-  
-  
-                            if(  
-                                current === null  
-                            ){  
-  
-                                return;  
-  
-                            }  
-  
-  
-                            const currentPoints =  
-                                Number(  
-  
-                                    current.points_fidelite ??  
-                                    current.points ??  
-                                    current.loyaltyPoints ??  
-                                    0  
-  
-                                );  
-  
-  
-                            const convertibles =  
-                                Math.floor(  
-                                    currentPoints /  
-                                    JB_POINTS_CONVERSION  
-                                )  
-                                *  
-                                JB_POINTS_CONVERSION;  
-  
-  
-                            if(  
-                                convertibles <  
-                                JB_POINTS_CONVERSION  
-                            ){  
-  
-                                return;  
-  
-                            }  
-  
-  
-                            const amount =  
-                                (  
-                                    convertibles /  
-                                    JB_POINTS_CONVERSION  
-                                )  
-                                *  
-                                JB_FC_CONVERSION;  
-  
-  
-                            const currentBalance =  
-                                Number(  
-                                    current.solde_principal  
-                                ) || 0;  
-  
-  
-                            /* RETRAIT DES POINTS */  
-  
-                            current.points_fidelite =  
-                                currentPoints -  
-                                convertibles;  
-  
-  
-                            /* AJOUT AU SOLDE */  
-  
-                            current.solde_principal =  
-                                currentBalance +  
-                                amount;  
-  
-  
-                            return current;  
-  
-                        }  
-  
-                    );  
-  
-  
-                if(  
-                    !result.committed  
-                ){  
-  
-                    throw new Error(  
-                        "TRANSACTION_REFUSED"  
-                    );  
-  
-                }  
-  
-  
-                status.className =  
-                    "convert-status success";  
-  
-  
-                status.innerText =  
-  
-                    "✅ Conversion réussie : +"  
-  
-                    +  
-  
-                    jbFormatFC(  
-                        fc  
-                    );  
-  
-  
-            }  
-  
-            catch(error){  
-  
-  
-                console.error(  
-                    "JASON Business conversion :",  
-                    error  
-                );  
-  
-  
-                status.className =  
-                    "convert-status error";  
-  
-  
-                if(  
-                    error.message ===  
-                    "INSUFFICIENT_POINTS"  
-                ){  
-  
-                    status.innerText =  
-                        "❌ Vous devez avoir au moins 100 points.";  
-  
-                }  
-  
-                else if(  
-                    error.message ===  
-                    "ACCOUNT_NOT_FOUND"  
-                ){  
-  
-                    status.innerText =  
-                        "❌ Compte introuvable.";  
-  
-                }  
-  
-                else{  
-  
-                    status.innerText =  
-                        "⚠️ Impossible d'effectuer la conversion.";  
-  
-                }  
-  
-            }  
-  
-            finally{  
-  
-  
-                /* Le onValue actualisera  
-                   automatiquement le bouton */  
-  
-                setTimeout(  
-  
-                    ()=>{  
-  
-                        button.disabled =  
-                            false;  
-  
-                    },  
-  
-                    500  
-  
-                );  
-  
-            }  
-  
-        }  
-  
-    );  
-  
-  
-/* =========================================================  
-   CHAT ADMIN  
-========================================================= */  
-  
-const jbMessagesRef =  
-    ref(  
-  
-        jbDB,  
-  
-        "messages_admin/" +  
-        jbUserPhone  
-  
-    );  
-  
-  
-/* =========================================================  
-   CHARGER MESSAGES  
-========================================================= */  
-  
-onValue(  
-  
-    jbMessagesRef,  
-  
-    (snapshot)=>{  
-  
-  
-        const chatBox =  
-            document.getElementById(  
-                "jbChatBox"  
-            );  
-  
-  
-        chatBox.innerHTML =  
-            "";  
-  
-  
-        if(  
-            !snapshot.exists()  
-        ){  
-  
-            chatBox.innerHTML = `  
-  
-                <div class="empty-chat">  
-  
-                    💬 Aucun message pour le moment  
-  
-                </div>  
-  
-            `;  
-  
-            return;  
-  
-        }  
-  
-  
-        const messages =  
-            snapshot.val();  
-  
-  
-        const list =  
-            Object.entries(  
-                messages  
-            )  
-            .sort(  
-  
-                (a,b)=>{  
-  
-                    return (  
-  
-                        Number(  
-                            a[1].timestamp ||  
-                            0  
-                        )  
-  
-                        -  
-  
-                        Number(  
-                            b[1].timestamp ||  
-                            0  
-                        )  
-  
-                    );  
-  
-                }  
-  
-            );  
-  
-  
-        list.forEach(  
-  
-            ([id,msg])=>{  
-  
-                jbAfficherMessage(  
-                    msg  
-                );  
-  
-            }  
-  
-        );  
-  
-  
-        setTimeout(  
-  
-            ()=>{  
-  
-                chatBox.scrollTop =  
-                    chatBox.scrollHeight;  
-  
-            },  
-  
-            50  
-  
-        );  
-  
-    }  
-  
-);  
-  
-  
-/* =========================================================  
-   AFFICHER MESSAGE  
-========================================================= */  
-  
-function jbAfficherMessage(msg){  
-  
-  
-    const chatBox =  
-        document.getElementById(  
-            "jbChatBox"  
-        );  
-  
-  
-    const div =  
-        document.createElement(  
-            "div"  
-        );  
-  
-  
-    const isUser =  
-        msg.sender === "user";  
-  
-  
-    div.className =  
-        "message " +  
-  
-        (  
-  
-            isUser  
-            ? "user"  
-            : "admin"  
-  
-        );  
-  
-  
-    let contenu =  
-        "";  
-  
-  
-    /* =====================================================  
-       TEXTE  
-    ===================================================== */  
-  
-    if(msg.text){  
-  
-        const text =  
-            jbEscapeHTML(  
-                msg.text  
-            )  
-            .replace(  
-                /\n/g,  
-                "<br>"  
-            );  
-  
-  
-        contenu += `  
-  
-            <div>  
-  
-                ${text}  
-  
-            </div>  
-  
-        `;  
-  
-    }  
-  
-  
-    /* =====================================================  
-       FICHIER ADMIN  
-    ===================================================== */  
-  
-    if(  
-  
-        !isUser &&  
-        msg.fileData  
-  
-    ){  
-  
-  
-        const fileName =  
-            jbEscapeHTML(  
-  
-                msg.fileName ||  
-                "Fichier"  
-  
-            );  
-  
-  
-        const fileSize =  
-            jbFormatFileSize(  
-                msg.fileSize ||  
-                0  
-            );  
-  
-  
-        contenu += `  
-  
-            <div class="admin-file">  
-  
-                <div class="file-name">  
-  
-                    📎 ${fileName}  
-  
-                </div>  
-  
-  
-                <div class="file-size">  
-  
-                    ${fileSize}  
-  
-                </div>  
-  
-  
-                <a  
-  
-                    class="download-file"  
-  
-                    href="${msg.fileData}"  
-  
-                    download="${fileName}"  
-  
-                >  
-  
-                    📥 TÉLÉCHARGER  
-  
-                </a>  
-  
-            </div>  
-  
-        `;  
-  
-    }  
-  
-  
-    div.innerHTML = `  
-  
-        <div class="message-author">  
-  
-            ${  
-  
-                isUser  
-                ? "VOUS"  
-                : "ADMINISTRATION"  
-  
-            }  
-  
-        </div>  
-  
-  
-        ${contenu}  
-  
-  
-        <div class="message-date">  
-  
-            ${jbFormatDate(  
-                msg.timestamp  
-            )}  
-  
-        </div>  
-  
-    `;  
-  
-  
-    chatBox.appendChild(  
-        div  
-    );  
-  
-}  
-  
-  
-/* =========================================================  
-   ENVOYER MESSAGE  
-========================================================= */  
-  
-document  
-    .getElementById(  
-        "jbSendMessage"  
-    )  
-    .addEventListener(  
-  
-        "click",  
-  
-        async()=>{  
-  
-  
-            const input =  
-                document.getElementById(  
-                    "jbMessageInput"  
-                );  
-  
-  
-            const button =  
-                document.getElementById(  
-                    "jbSendMessage"  
-                );  
-  
-  
-            const text =  
-                input.value.trim();  
-  
-  
-            if(!text){  
-  
-                alert(  
-                    "Écrivez votre message."  
-                );  
-  
-                return;  
-  
-            }  
-  
-  
-            if(  
-                text.length >  
-                1000  
-            ){  
-  
-                alert(  
-                    "Message trop long."  
-                );  
-  
-                return;  
-  
-            }  
-  
-  
-            try{  
-  
-  
-                button.disabled =  
-                    true;  
-  
-  
-                button.innerText =  
-                    "📤 ENVOI...";  
-  
-  
-                const messageRef =  
-                    push(  
-                        jbMessagesRef  
-                    );  
-  
-  
-                await set(  
-  
-                    messageRef,  
-  
-                    {  
-  
-                        sender:  
-                            "user",  
-  
-                        text:  
-                            text,  
-  
-                        timestamp:  
-                            Date.now(),  
-  
-                        read:  
-                            false  
-  
-                    }  
-  
-                );  
-  
-  
-                input.value =  
-                    "";  
-  
-  
-                button.innerText =  
-                    "✅ MESSAGE ENVOYÉ";  
-  
-  
-                setTimeout(  
-  
-                    ()=>{  
-  
-                        button.disabled =  
-                            false;  
-  
-                        button.innerText =  
-                            "📤 ENVOYER LE MESSAGE";  
-  
-                    },  
-  
-                    1500  
-  
-                );  
-  
-  
-            }  
-  
-            catch(error){  
-  
-  
-                console.error(  
-                    "Erreur message :",  
-                    error  
-                );  
-  
-  
-                alert(  
-                    "❌ Impossible d'envoyer le message."  
-                );  
-  
-  
-                button.disabled =  
-                    false;  
-  
-  
-                button.innerText =  
-                    "📤 ENVOYER LE MESSAGE";  
-  
-            }  
-  
-        }  
-  
-    );  
-  
-  
-/* =========================================================  
-   SÉCURITÉ HTML  
-========================================================= */  
-  
-function jbEscapeHTML(text){  
-  
-    return String(text)  
-  
-        .replace(  
-            /&/g,  
-            "&amp;"  
-        )  
-  
-        .replace(  
-            /</g,  
-            "&lt;"  
-        )  
-  
-        .replace(  
-            />/g,  
-            "&gt;"  
-        )  
-  
-        .replace(  
-            /"/g,  
-            "&quot;"  
-        )  
-  
-        .replace(  
-            /'/g,  
-            "&#039;"  
-        );  
-  
-}  
-  
-  
-/* =========================================================  
-   DATE  
-========================================================= */  
-  
-function jbFormatDate(timestamp){  
-  
-    if(!timestamp){  
-  
-        return "";  
-  
-    }  
-  
-  
-    return new Date(  
-        Number(timestamp)  
-    )  
-    .toLocaleString(  
-  
-        "fr-FR",  
-  
-        {  
-  
-            day:  
-                "2-digit",  
-  
-            month:  
-                "2-digit",  
-  
-            year:  
-                "numeric",  
-  
-            hour:  
-                "2-digit",  
-  
-            minute:  
-                "2-digit"  
-  
-        }  
-  
-    );  
-  
-}  
-  
-  
-/* =========================================================  
-   TAILLE FICHIER  
-========================================================= */  
-  
-function jbFormatFileSize(bytes){  
-  
-    bytes =  
-        Number(bytes) || 0;  
-  
-  
-    if(  
-        bytes <= 0  
-    ){  
-  
-        return "";  
-  
-    }  
-  
-  
-    if(  
-        bytes < 1024  
-    ){  
-  
-        return (  
-            bytes +  
-            " octets"  
-        );  
-  
-    }  
-  
-  
-    if(  
-        bytes <  
-        1024 * 1024  
-    ){  
-  
-        return (  
-  
-            (  
-                bytes /  
-                1024  
-            )  
-            .toFixed(1)  
-  
-            +  
-  
-            " Ko"  
-  
-        );  
-  
-    }  
-  
-  
-    if(  
-        bytes <  
-        1024 *  
-        1024 *  
-        1024  
-    ){  
-  
-        return (  
-  
-            (  
-                bytes /  
-                (  
-                    1024 *  
-                    1024  
-                )  
-            )  
-            .toFixed(1)  
-  
-            +  
-  
-            " Mo"  
-  
-        );  
-  
-    }  
-  
-  
-    return (  
-  
-        (  
-            bytes /  
-            (  
-                1024 *  
-                1024 *  
-                1024  
-            )  
-        )  
-        .toFixed(1)  
-  
-        +  
-  
-        " Go"  
-  
-    );  
-  
-}  
-  
-  
-/* =========================================================  
-   DÉCONNEXION  
-========================================================= */  
-  
-document  
-    .getElementById(  
-        "jbLogout"  
-    )  
-    .addEventListener(  
-  
-        "click",  
-  
-        ()=>{  
-  
-  
-            const confirmation =  
-                confirm(  
-  
-                    "Voulez-vous vraiment vous déconnecter ?"  
-  
-                );  
-  
-  
-            if(!confirmation){  
-  
-                return;  
-  
-            }  
-  
-  
-            localStorage.removeItem(  
-                "userPhone"  
-            );  
-  
-  
-            window.location.href =  
-                "login.html";  
-  
-        }  
-  
-    );  
-  
-</script>  </body>  </html>  
+
+<a
+    href="retrait.html"
+    class="action withdraw"
+>
+
+    💸 Retirer
+
+</a>
+
+
+</div>
+
+</div>
+
+
+
+<!-- ======================================================
+     STATISTIQUES
+====================================================== -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+
+<div class="stat-icon">
+
+    💰
+
+</div>
+
+
+<div
+    class="stat-value"
+    id="jbMainBalance"
+>
+
+    0 FC
+
+</div>
+
+
+<div class="stat-label">
+
+    Solde principal
+
+</div>
+
+
+</div>
+
+
+
+<div class="stat">
+
+
+<div class="stat-icon">
+
+    📈
+
+</div>
+
+
+<div
+    class="stat-value"
+    id="jbGainBalance"
+>
+
+    0 FC
+
+</div>
+
+
+<div class="stat-label">
+
+    Gains
+
+</div>
+
+
+</div>
+
+
+
+<div class="stat">
+
+
+<div class="stat-icon">
+
+    👥
+
+</div>
+
+
+<div
+    class="stat-value"
+    id="jbCommissionBalance"
+>
+
+    0 FC
+
+</div>
+
+
+<div class="stat-label">
+
+    Commissions
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ======================================================
+     FIDELITE
+====================================================== -->
+
+<div class="loyalty">
+
+
+<div class="loyalty-head">
+
+
+<div>
+
+
+<div class="loyalty-title">
+
+    ⭐ Programme fidélité
+
+</div>
+
+
+<div class="loyalty-info">
+
+    Gagnez des points grâce à votre réseau.
+
+</div>
+
+
+</div>
+
+
+<div
+    class="points"
+    id="jbLoyaltyPoints"
+>
+
+    0
+
+</div>
+
+
+</div>
+
+
+
+<div class="progress">
+
+
+<div
+    class="progress-bar"
+    id="jbLoyaltyProgress"
+>
+</div>
+
+
+</div>
+
+
+
+<div class="loyalty-info">
+
+
+<span id="jbPointsText">
+
+    0 / 1000 points
+
+</span>
+
+
+</div>
+
+
+
+<!-- ==================================================
+     RÈGLES
+================================================== -->
+
+<div class="points-rules">
+
+
+<div class="points-rule">
+
+
+<strong>
+    +5 points
+</strong>
+
+
+<span>
+    1 personne parrainée
+</span>
+
+
+</div>
+
+
+
+<div class="points-rule">
+
+
+<strong>
+    1 000 FC
+</strong>
+
+
+<span>
+    100 points convertis
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ==================================================
+     CONVERSION
+================================================== -->
+
+<div class="convert-box">
+
+
+<div class="convert-info">
+
+    ⭐ <b>100 points = 1 000 FC</b>
+
+    <br>
+
+    👥 Chaque personne parrainée rapporte
+    <b>5 points</b>.
+
+    <br>
+
+    💰 Les points convertis sont ajoutés
+    à votre <b>solde principal</b>.
+
+</div>
+
+
+<button
+    class="convert-button"
+    id="jbConvertPoints"
+    disabled
+>
+
+    💱 MINIMUM 100 POINTS
+
+</button>
+
+
+<div
+    class="convert-status"
+    id="jbConvertStatus"
+>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ======================================================
+     MENU
+====================================================== -->
+
+<div style="margin-top:25px;">
+
+
+<div class="menu-title">
+
+    Mon espace
+
+</div>
+
+
+<div class="menu">
+
+
+<a
+    href="shop.html"
+    class="menu-item"
+>
+
+
+<div class="menu-icon">
+    🛒
+</div>
+
+
+<div class="menu-text">
+
+
+<div class="menu-name">
+    Boutique
+</div>
+
+
+<div class="menu-desc">
+    Acheter nos produits et services
+</div>
+
+
+</div>
+
+
+<div class="arrow">
+    ›
+</div>
+
+
+</a>
+
+
+
+<a
+    href="transactions.html"
+    class="menu-item"
+>
+
+
+<div class="menu-icon">
+    📊
+</div>
+
+
+<div class="menu-text">
+
+
+<div class="menu-name">
+    Transactions
+</div>
+
+
+<div class="menu-desc">
+    Voir mon historique financier
+</div>
+
+
+</div>
+
+
+<div class="arrow">
+    ›
+</div>
+
+
+</a>
+
+
+
+<a
+    href="equipe.html"
+    class="menu-item"
+>
+
+
+<div class="menu-icon">
+    👥
+</div>
+
+
+<div class="menu-text">
+
+
+<div class="menu-name">
+    Mon équipe
+</div>
+
+
+<div class="menu-desc">
+    Parrainage et commissions
+</div>
+
+
+</div>
+
+
+<div class="arrow">
+    ›
+</div>
+
+
+</a>
+
+
+
+<a
+    href="recharge.html"
+    class="menu-item"
+>
+
+
+<div class="menu-icon">
+    💳
+</div>
+
+
+<div class="menu-text">
+
+
+<div class="menu-name">
+    Recharger mon compte
+</div>
+
+
+<div class="menu-desc">
+    Ajouter de l'argent à mon solde
+</div>
+
+
+</div>
+
+
+<div class="arrow">
+    ›
+</div>
+
+
+</a>
+
+
+
+<a
+    href="retrait.html"
+    class="menu-item"
+>
+
+
+<div class="menu-icon">
+    💸
+</div>
+
+
+<div class="menu-text">
+
+
+<div class="menu-name">
+    Retrait
+</div>
+
+
+<div class="menu-desc">
+    Demander un paiement
+</div>
+
+
+</div>
+
+
+<div class="arrow">
+    ›
+</div>
+
+
+</a>
+
+
+
+<a
+    href="support.html"
+    class="menu-item"
+>
+
+
+<div class="menu-icon">
+    🎧
+</div>
+
+
+<div class="menu-text">
+
+
+<div class="menu-name">
+    Support
+</div>
+
+
+<div class="menu-desc">
+    Besoin d'aide ?
+</div>
+
+
+</div>
+
+
+<div class="arrow">
+    ›
+</div>
+
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ======================================================
+     CONTACT ADMIN
+====================================================== -->
+
+<div class="admin-contact">
+
+
+<div class="admin-contact-header">
+
+
+<div class="admin-contact-icon">
+
+    💬
+
+</div>
+
+
+<div>
+
+
+<div class="admin-contact-title">
+
+    Contacter l'administration
+
+</div>
+
+
+<div class="admin-contact-desc">
+
+    Assistance et réception de fichiers
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- MESSAGES -->
+
+<div
+    class="chat-box"
+    id="jbChatBox"
+>
+
+
+<div class="empty-chat">
+
+    💬 Aucun message pour le moment
+
+</div>
+
+
+</div>
+
+
+
+<!-- MESSAGE UTILISATEUR -->
+
+<div class="message-area">
+
+
+<textarea
+    id="jbMessageInput"
+    placeholder="Écrivez votre message à l'administration..."
+    maxlength="1000"
+></textarea>
+
+
+<button
+    id="jbSendMessage"
+    class="send-message"
+>
+
+    📤 ENVOYER LE MESSAGE
+
+</button>
+
+
+</div>
+
+
+<div class="chat-info">
+
+    🔒 Vous pouvez envoyer uniquement des messages texte.
+
+    <br>
+
+    📥 Les photos, vidéos, musiques, APK et documents
+    sont envoyés uniquement par l'administration.
+
+</div>
+
+
+</div>
+
+
+
+<!-- ======================================================
+     LOGOUT
+====================================================== -->
+
+<button
+    class="logout"
+    id="jbLogout"
+>
+
+    🚪 DÉCONNEXION
+
+</button>
+
+
+
+<div
+    class="status"
+    id="jbStatus"
+>
+</div>
+
+
+</main>
+
+
+</div>
+
+
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+
+<nav class="navbar">
+
+
+<a
+    href="dashboard.html"
+    class="nav"
+>
+
+    <span>📊</span>
+
+    Dash
+
+</a>
+
+
+
+<a
+    href="shop.html"
+    class="nav"
+>
+
+    <span>🛒</span>
+
+    Boutique
+
+</a>
+
+
+
+<a
+    href="equipe.html"
+    class="nav"
+>
+
+    <span>👥</span>
+
+    Équipe
+
+</a>
+
+
+
+<a
+    href="profil.html"
+    class="nav active"
+>
+
+    <span>👤</span>
+
+    Profil
+
+</a>
+
+
+</nav>
+
+
+
+<!-- ======================================================
+     FIREBASE
+====================================================== -->
+
+<script type="module">
+
+
+import {
+
+    initializeApp
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+
+import {
+
+    getDatabase,
+
+    ref,
+
+    onValue,
+
+    get,
+
+    push,
+
+    set,
+
+    runTransaction
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+
+
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
+
+const jbFirebaseConfig = {
+
+    apiKey:
+    "AIzaSyA24pBo8mBWiZssPtep--MMBdB7c8_Lu4U",
+
+    authDomain:
+    "starlink-investit.firebaseapp.com",
+
+    databaseURL:
+    "https://starlink-investit-default-rtdb.firebaseio.com",
+
+    projectId:
+    "starlink-investit",
+
+    storageBucket:
+    "starlink-investit.firebasestorage.app",
+
+    messagingSenderId:
+    "807081599583",
+
+    appId:
+    "1:807081599583:web:e00ec3959bc4acdae031ea"
+
+};
+
+
+
+const jbApp =
+    initializeApp(
+        jbFirebaseConfig
+    );
+
+
+const jbDB =
+    getDatabase(
+        jbApp
+    );
+
+
+
+/* =========================================================
+   SESSION
+========================================================= */
+
+const jbUserPhone =
+    localStorage.getItem(
+        "userPhone"
+    );
+
+
+if(!jbUserPhone){
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* =========================================================
+   CONSTANTES JASON BUSINESS
+========================================================= */
+
+const JB_POINTS_PERSONNE = 5;
+
+const JB_POINTS_CONVERSION = 100;
+
+const JB_FC_CONVERSION = 1000;
+
+
+
+/* =========================================================
+   USER REF
+========================================================= */
+
+const jbUserRef =
+    ref(
+        jbDB,
+        "users/" +
+        jbUserPhone
+    );
+
+
+
+/* =========================================================
+   FORMAT
+========================================================= */
+
+function jbFormatNumber(value){
+
+    return Math.floor(
+        Number(value) || 0
+    ).toLocaleString(
+        "fr-FR"
+    );
+
+}
+
+
+function jbFormatFC(value){
+
+    return (
+        jbFormatNumber(value) +
+        " FC"
+    );
+
+}
+
+
+
+/* =========================================================
+   CHARGEMENT UTILISATEUR
+========================================================= */
+
+onValue(
+
+    jbUserRef,
+
+    (snapshot)=>{
+
+
+        if(!snapshot.exists()){
+
+            document
+                .getElementById(
+                    "jbStatus"
+                )
+                .innerText =
+                "⚠️ Compte introuvable.";
+
+            return;
+
+        }
+
+
+        const data =
+            snapshot.val();
+
+
+
+        /* =================================================
+           NOM
+        ================================================= */
+
+        const name =
+            data.nom ||
+            data.name ||
+            data.username ||
+            "Mon compte";
+
+
+        document
+            .getElementById(
+                "jbName"
+            )
+            .innerText =
+            name;
+
+
+
+        /* =================================================
+           TELEPHONE
+        ================================================= */
+
+        document
+            .getElementById(
+                "jbPhone"
+            )
+            .innerText =
+            jbUserPhone;
+
+
+
+        /* =================================================
+           AVATAR
+        ================================================= */
+
+        const avatarSource =
+            String(name || jbUserPhone);
+
+
+        const avatarText =
+            avatarSource
+                .substring(0,2)
+                .toUpperCase();
+
+
+        document
+            .getElementById(
+                "jbAvatar"
+            )
+            .innerText =
+            avatarText;
+
+
+
+        /* =================================================
+           CODE PARRAINAGE
+        ================================================= */
+
+        const inviteCode =
+            data.inviteCode ||
+            data.referralCode ||
+            "STAR-0000";
+
+
+        document
+            .getElementById(
+                "jbInviteCode"
+            )
+            .innerText =
+            "ID : " +
+            inviteCode;
+
+
+
+        /* =================================================
+           SOLDES
+        ================================================= */
+
+        const principal =
+            Number(
+                data.solde_principal
+            ) || 0;
+
+
+        const gains =
+            Number(
+                data.solde_gains
+            ) || 0;
+
+
+        const commissions =
+            Number(
+                data.solde_commissions
+            ) || 0;
+
+
+        const total =
+            principal +
+            gains +
+            commissions;
+
+
+
+        document
+            .getElementById(
+                "jbTotalBalance"
+            )
+            .innerText =
+            jbFormatNumber(
+                total
+            );
+
+
+        document
+            .getElementById(
+                "jbMainBalance"
+            )
+            .innerText =
+            jbFormatFC(
+                principal
+            );
+
+
+        document
+            .getElementById(
+                "jbGainBalance"
+            )
+            .innerText =
+            jbFormatFC(
+                gains
+            );
+
+
+        document
+            .getElementById(
+                "jbCommissionBalance"
+            )
+            .innerText =
+            jbFormatFC(
+                commissions
+            );
+
+
+
+        /* =================================================
+           POINTS
+        ================================================= */
+
+        const points =
+            Number(
+
+                data.points_fidelite ??
+                data.points ??
+                data.loyaltyPoints ??
+                0
+
+            );
+
+
+        document
+            .getElementById(
+                "jbLoyaltyPoints"
+            )
+            .innerText =
+            jbFormatNumber(
+                points
+            );
+
+
+
+        /* =================================================
+           PROGRESSION
+        ================================================= */
+
+        const maxPoints =
+            1000;
+
+
+        const progress =
+            Math.min(
+
+                (
+                    points /
+                    maxPoints
+                ) * 100,
+
+                100
+
+            );
+
+
+        document
+            .getElementById(
+                "jbLoyaltyProgress"
+            )
+            .style.width =
+            progress +
+            "%";
+
+
+        document
+            .getElementById(
+                "jbPointsText"
+            )
+            .innerText =
+
+            jbFormatNumber(
+                points
+            )
+
+            +
+
+            " / "
+
+            +
+
+            jbFormatNumber(
+                maxPoints
+            )
+
+            +
+
+            " points";
+
+
+
+        /* =================================================
+           BOUTON CONVERSION
+        ================================================= */
+
+        const convertButton =
+            document.getElementById(
+                "jbConvertPoints"
+            );
+
+
+        const pointsConvertibles =
+            Math.floor(
+                points /
+                JB_POINTS_CONVERSION
+            )
+            *
+            JB_POINTS_CONVERSION;
+
+
+        if(
+            pointsConvertibles >=
+            JB_POINTS_CONVERSION
+        ){
+
+            const fc =
+                (
+                    pointsConvertibles /
+                    JB_POINTS_CONVERSION
+                )
+                *
+                JB_FC_CONVERSION;
+
+
+            convertButton.disabled =
+                false;
+
+
+            convertButton.innerText =
+
+                "💱 CONVERTIR "
+
+                +
+
+                jbFormatNumber(
+                    pointsConvertibles
+                )
+
+                +
+
+                " POINTS → "
+
+                +
+
+                jbFormatNumber(
+                    fc
+                )
+
+                +
+
+                " FC";
+
+        }
+
+        else{
+
+            convertButton.disabled =
+                true;
+
+
+            convertButton.innerText =
+                "💱 MINIMUM 100 POINTS";
+
+        }
+
+    }
+
+);
+
+
+
+/* =========================================================
+   CONVERSION POINTS
+========================================================= */
+
+document
+    .getElementById(
+        "jbConvertPoints"
+    )
+    .addEventListener(
+
+        "click",
+
+        async()=>{
+
+
+            const button =
+                document.getElementById(
+                    "jbConvertPoints"
+                );
+
+
+            const status =
+                document.getElementById(
+                    "jbConvertStatus"
+                );
+
+
+            try{
+
+
+                button.disabled =
+                    true;
+
+
+                status.className =
+                    "convert-status";
+
+
+                status.innerText =
+                    "⏳ Vérification des points...";
+
+
+                const snapshot =
+                    await get(
+                        jbUserRef
+                    );
+
+
+                if(
+                    !snapshot.exists()
+                ){
+
+                    throw new Error(
+                        "ACCOUNT_NOT_FOUND"
+                    );
+
+                }
+
+
+                const data =
+                    snapshot.val();
+
+
+                const points =
+                    Number(
+
+                        data.points_fidelite ??
+                        data.points ??
+                        data.loyaltyPoints ??
+                        0
+
+                    );
+
+
+                const pointsConvertibles =
+                    Math.floor(
+                        points /
+                        JB_POINTS_CONVERSION
+                    )
+                    *
+                    JB_POINTS_CONVERSION;
+
+
+                if(
+                    pointsConvertibles <
+                    JB_POINTS_CONVERSION
+                ){
+
+                    throw new Error(
+                        "INSUFFICIENT_POINTS"
+                    );
+
+                }
+
+
+                const fc =
+                    (
+                        pointsConvertibles /
+                        JB_POINTS_CONVERSION
+                    )
+                    *
+                    JB_FC_CONVERSION;
+
+
+                const confirmation =
+                    confirm(
+
+                        "Convertir "
+
+                        +
+
+                        jbFormatNumber(
+                            pointsConvertibles
+                        )
+
+                        +
+
+                        " points en "
+
+                        +
+
+                        jbFormatFC(
+                            fc
+                        )
+
+                        +
+
+                        " ?"
+
+                    );
+
+
+                if(!confirmation){
+
+                    button.disabled =
+                        false;
+
+                    return;
+
+                }
+
+
+                status.innerText =
+                    "⏳ Conversion en cours...";
+
+
+
+                /* =================================================
+                   TRANSACTION ATOMIQUE
+                ================================================= */
+
+                const result =
+                    await runTransaction(
+
+                        jbUserRef,
+
+                        (current)=>{
+
+
+                            if(
+                                current === null
+                            ){
+
+                                return;
+
+                            }
+
+
+                            const currentPoints =
+                                Number(
+
+                                    current.points_fidelite ??
+                                    current.points ??
+                                    current.loyaltyPoints ??
+                                    0
+
+                                );
+
+
+                            const convertibles =
+                                Math.floor(
+                                    currentPoints /
+                                    JB_POINTS_CONVERSION
+                                )
+                                *
+                                JB_POINTS_CONVERSION;
+
+
+                            if(
+                                convertibles <
+                                JB_POINTS_CONVERSION
+                            ){
+
+                                return;
+
+                            }
+
+
+                            const amount =
+                                (
+                                    convertibles /
+                                    JB_POINTS_CONVERSION
+                                )
+                                *
+                                JB_FC_CONVERSION;
+
+
+                            const currentBalance =
+                                Number(
+                                    current.solde_principal
+                                ) || 0;
+
+
+
+                            /* RETRAIT DES POINTS */
+
+                            current.points_fidelite =
+                                currentPoints -
+                                convertibles;
+
+
+
+                            /* AJOUT AU SOLDE */
+
+                            current.solde_principal =
+                                currentBalance +
+                                amount;
+
+
+                            return current;
+
+                        }
+
+                    );
+
+
+
+                if(
+                    !result.committed
+                ){
+
+                    throw new Error(
+                        "TRANSACTION_REFUSED"
+                    );
+
+                }
+
+
+                status.className =
+                    "convert-status success";
+
+
+                status.innerText =
+
+                    "✅ Conversion réussie : +"
+
+                    +
+
+                    jbFormatFC(
+                        fc
+                    );
+
+
+            }
+
+
+            catch(error){
+
+
+                console.error(
+                    "JASON Business conversion :",
+                    error
+                );
+
+
+                status.className =
+                    "convert-status error";
+
+
+                if(
+                    error.message ===
+                    "INSUFFICIENT_POINTS"
+                ){
+
+                    status.innerText =
+                        "❌ Vous devez avoir au moins 100 points.";
+
+                }
+
+                else if(
+                    error.message ===
+                    "ACCOUNT_NOT_FOUND"
+                ){
+
+                    status.innerText =
+                        "❌ Compte introuvable.";
+
+                }
+
+                else{
+
+                    status.innerText =
+                        "⚠️ Impossible d'effectuer la conversion.";
+
+                }
+
+            }
+
+
+            finally{
+
+
+                setTimeout(
+
+                    ()=>{
+
+                        button.disabled =
+                            false;
+
+                    },
+
+                    500
+
+                );
+
+            }
+
+        }
+
+    );
+
+
+
+/* =========================================================
+   CHAT ADMIN
+========================================================= */
+
+const jbMessagesRef =
+    ref(
+
+        jbDB,
+
+        "messages_admin/" +
+        jbUserPhone
+
+    );
+
+
+
+/* =========================================================
+   CHARGER MESSAGES
+========================================================= */
+
+onValue(
+
+    jbMessagesRef,
+
+    (snapshot)=>{
+
+
+        const chatBox =
+            document.getElementById(
+                "jbChatBox"
+            );
+
+
+        chatBox.innerHTML =
+            "";
+
+
+        if(
+            !snapshot.exists()
+        ){
+
+            chatBox.innerHTML = `
+
+                <div class="empty-chat">
+
+                    💬 Aucun message pour le moment
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        const messages =
+            snapshot.val();
+
+
+        const list =
+            Object.entries(
+                messages
+            )
+            .sort(
+
+                (a,b)=>{
+
+                    return (
+
+                        Number(
+                            a[1].timestamp ||
+                            0
+                        )
+
+                        -
+
+                        Number(
+                            b[1].timestamp ||
+                            0
+                        )
+
+                    );
+
+                }
+
+            );
+
+
+        list.forEach(
+
+            ([id,msg])=>{
+
+                jbAfficherMessage(
+                    msg
+                );
+
+            }
+
+        );
+
+
+        setTimeout(
+
+            ()=>{
+
+                chatBox.scrollTop =
+                    chatBox.scrollHeight;
+
+            },
+
+            50
+
+        );
+
+    }
+
+);
+
+
+
+/* =========================================================
+   AFFICHER MESSAGE
+========================================================= */
+
+function jbAfficherMessage(msg){
+
+
+    const chatBox =
+        document.getElementById(
+            "jbChatBox"
+        );
+
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    const isUser =
+        msg.sender === "user";
+
+
+    div.className =
+        "message " +
+
+        (
+
+            isUser
+            ? "user"
+            : "admin"
+
+        );
+
+
+    let contenu =
+        "";
+
+
+
+    /* =====================================================
+       TEXTE
+    ===================================================== */
+
+    if(msg.text){
+
+        const text =
+            jbEscapeHTML(
+                msg.text
+            )
+            .replace(
+                /\n/g,
+                "<br>"
+            );
+
+
+        contenu += `
+
+            <div>
+
+                ${text}
+
+            </div>
+
+        `;
+
+    }
+
+
+
+    /* =====================================================
+       FICHIER ADMIN
+    ===================================================== */
+
+    if(
+
+        !isUser &&
+        msg.fileData
+
+    ){
+
+
+        const fileName =
+            jbEscapeHTML(
+
+                msg.fileName ||
+                "Fichier"
+
+            );
+
+
+        const fileSize =
+            jbFormatFileSize(
+                msg.fileSize ||
+                0
+            );
+
+
+        contenu += `
+
+            <div class="admin-file">
+
+                <div class="file-name">
+
+                    📎 ${fileName}
+
+                </div>
+
+
+                <div class="file-size">
+
+                    ${fileSize}
+
+                </div>
+
+
+                <a
+
+                    class="download-file"
+
+                    href="${msg.fileData}"
+
+                    download="${fileName}"
+
+                >
+
+                    📥 TÉLÉCHARGER
+
+                </a>
+
+            </div>
+
+        `;
+
+    }
+
+
+
+    div.innerHTML = `
+
+        <div class="message-author">
+
+            ${
+                isUser
+                ? "VOUS"
+                : "ADMINISTRATION"
+            }
+
+        </div>
+
+
+        ${contenu}
+
+
+        <div class="message-date">
+
+            ${jbFormatDate(
+                msg.timestamp
+            )}
+
+        </div>
+
+    `;
+
+
+    chatBox.appendChild(
+        div
+    );
+
+}
+
+
+
+/* =========================================================
+   ENVOYER MESSAGE
+========================================================= */
+
+document
+    .getElementById(
+        "jbSendMessage"
+    )
+    .addEventListener(
+
+        "click",
+
+        async()=>{
+
+
+            const input =
+                document.getElementById(
+                    "jbMessageInput"
+                );
+
+
+            const button =
+                document.getElementById(
+                    "jbSendMessage"
+                );
+
+
+            const text =
+                input.value.trim();
+
+
+            if(!text){
+
+                alert(
+                    "Écrivez votre message."
+                );
+
+                return;
+
+            }
+
+
+            if(
+                text.length >
+                1000
+            ){
+
+                alert(
+                    "Message trop long."
+                );
+
+                return;
+
+            }
+
+
+            try{
+
+
+                button.disabled =
+                    true;
+
+
+                button.innerText =
+                    "📤 ENVOI...";
+
+
+                const messageRef =
+                    push(
+                        jbMessagesRef
+                    );
+
+
+                await set(
+
+                    messageRef,
+
+                    {
+
+                        sender:
+                            "user",
+
+                        text:
+                            text,
+
+                        timestamp:
+                            Date.now(),
+
+                        read:
+                            false
+
+                    }
+
+                );
+
+
+                input.value =
+                    "";
+
+
+                button.innerText =
+                    "✅ MESSAGE ENVOYÉ";
+
+
+                setTimeout(
+
+                    ()=>{
+
+                        button.disabled =
+                            false;
+
+                        button.innerText =
+                            "📤 ENVOYER LE MESSAGE";
+
+                    },
+
+                    1500
+
+                );
+
+
+            }
+
+            catch(error){
+
+
+                console.error(
+                    "Erreur message :",
+                    error
+                );
+
+
+                alert(
+                    "❌ Impossible d'envoyer le message."
+                );
+
+
+                button.disabled =
+                    false;
+
+
+                button.innerText =
+                    "📤 ENVOYER LE MESSAGE";
+
+            }
+
+        }
+
+    );
+
+
+
+/* =========================================================
+   SÉCURITÉ HTML
+========================================================= */
+
+function jbEscapeHTML(text){
+
+    return String(text)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+function jbFormatDate(timestamp){
+
+    if(!timestamp){
+
+        return "";
+
+    }
+
+
+    return new Date(
+        Number(timestamp)
+    )
+    .toLocaleString(
+
+        "fr-FR",
+
+        {
+
+            day:
+                "2-digit",
+
+            month:
+                "2-digit",
+
+            year:
+                "numeric",
+
+            hour:
+                "2-digit",
+
+            minute:
+                "2-digit"
+
+        }
+
+    );
+
+}
+
+
+
+/* =========================================================
+   TAILLE FICHIER
+========================================================= */
+
+function jbFormatFileSize(bytes){
+
+    bytes =
+        Number(bytes) || 0;
+
+
+    if(
+        bytes <= 0
+    ){
+
+        return "";
+
+    }
+
+
+    if(
+        bytes < 1024
+    ){
+
+        return (
+
+            bytes +
+            " octets"
+
+        );
+
+    }
+
+
+    if(
+        bytes <
+        1024 * 1024
+    ){
+
+        return (
+
+            (
+                bytes /
+                1024
+            )
+            .toFixed(1)
+
+            +
+
+            " Ko"
+
+        );
+
+    }
+
+
+    if(
+        bytes <
+        1024 *
+        1024 *
+        1024
+    ){
+
+        return (
+
+            (
+                bytes /
+                (
+                    1024 *
+                    1024
+                )
+            )
+            .toFixed(1)
+
+            +
+
+            " Mo"
+
+        );
+
+    }
+
+
+    return (
+
+        (
+            bytes /
+            (
+                1024 *
+                1024 *
+                1024
+            )
+        )
+        .toFixed(1)
+
+        +
+
+        " Go"
+
+    );
+
+}
+
+
+
+/* =========================================================
+   DÉCONNEXION
+========================================================= */
+
+document
+    .getElementById(
+        "jbLogout"
+    )
+    .addEventListener(
+
+        "click",
+
+        ()=>{
+
+
+            const confirmation =
+                confirm(
+
+                    "Voulez-vous vraiment vous déconnecter ?"
+
+                );
+
+
+            if(!confirmation){
+
+                return;
+
+            }
+
+
+            localStorage.removeItem(
+                "userPhone"
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+
+    );
+
+
+</script>
+
+
+</body>
+
+</html>
